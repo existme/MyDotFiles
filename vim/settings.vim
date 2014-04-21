@@ -41,3 +41,6 @@
     nmap <C-K> <C-U>
     nmap <C-H> 0
     nmap <C-L> $
+
+    nmap <C-Up> <C-W>-
+    nmap <C-Down> <C-W>+
