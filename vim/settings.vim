@@ -39,4 +39,5 @@
 
     nmap <C-J> <C-D>
     nmap <C-K> <C-U>
-
+    nmap <C-H> 0
+    nmap <C-L> $
