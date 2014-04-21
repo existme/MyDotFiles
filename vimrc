@@ -102,8 +102,13 @@ set sidescroll=1
 execute pathogen#infect()
 Helptags
 
-let g:airline_theme='solarized'
+"let g:airline_theme='solarized'
+let g:airline_theme='murmur'
 let g:solarized_termcolors=256
+
+colorscheme solarized
+set ignorecase
+"set smartcase
 command ZZ w|execute "!git add --all && git commit -m updated && git push"
 map <C-right> <ESC>:bn<CR>
 map <C-left> <ESC>:bp<CR>
