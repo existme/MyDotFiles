@@ -33,13 +33,6 @@ syntax on
 " the plugins.
 let mapleader=","
 
-" =============== Vundle Initialization ===============
-" This loads all the plugins specified in ~/.vim/vundle.vim
-" Use Vundle plugin to manage all other plugins
-if filereadable(expand("~/.vim/vundles.vim"))
-  source ~/.vim/vundles.vim
-endif
-
 " ================ Turn Off Swap Files ==============
 
 set noswapfile
@@ -114,5 +107,6 @@ let g:solarized_termcolors=256
 command ZZ w|execute "!git add --all && git commit -m updated && git push"
 map <C-right> <ESC>:bn<CR>
 map <C-left> <ESC>:bp<CR>
+map <F3> <ESC>:NERDTreeToggle<CR>
 set colorcolumn=81
 set laststatus=2
