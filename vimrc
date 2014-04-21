@@ -110,6 +110,7 @@ execute pathogen#infect()
 Helptags
 
 let g:airline_theme='solarized'
+let g:solarized_termcolors=256
 command ZZ w|execute "!git add --all && git commit -m updated && git push"
 map <C-right> <ESC>:bn<CR>
 map <C-left> <ESC>:bp<CR>
