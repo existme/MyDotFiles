@@ -101,7 +101,7 @@ set sidescroll=1
 "so ~/.yadr/vim/settings.vim
 execute pathogen#infect()
 Helptags
-
+so ~/.vim/settings.vim
 let g:airline_theme='murmur'
 let g:solarized_termcolors=256
 
@@ -112,5 +112,7 @@ map <C-right> <ESC>:bn<CR>
 map <C-left> <ESC>:bp<CR>
 map <F3> <ESC>:NERDTreeToggle<CR>
 map <leader>p :Mm<CR><C-L>
+map <C-V> "*p
 set colorcolumn=81
 set laststatus=2
+
