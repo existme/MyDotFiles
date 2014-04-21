@@ -36,3 +36,7 @@
     inoremap jj <Esc><Esc>
     inoremap jk <Esc><Esc>
     inoremap kj <Esc><Esc>
+
+    nmap <C-J> <C-D>
+    nmap <C-K> <C-U>
+
