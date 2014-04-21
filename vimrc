@@ -107,8 +107,11 @@ set sidescroll=1
 " ================ Custom Settings ========================
 "so ~/.yadr/vim/settings.vim
 execute pathogen#infect()
+Helptags
+
+let g:airline_theme='solarized'
 command ZZ w|execute "!git add --all && git commit -m updated && git push"
 map <C-right> <ESC>:bn<CR>
 map <C-left> <ESC>:bp<CR>
 set colorcolumn=81
-
+set laststatus=2
