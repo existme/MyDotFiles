@@ -115,5 +115,5 @@ map <leader>p :Mm<CR><C-L>
 map <C-V> "*p
 set colorcolumn=81
 set laststatus=2
-
+set background=dark
 
