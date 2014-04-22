@@ -14,18 +14,18 @@
     noremap <leader>yy "*Y
     noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>"
 
-    "map up/down arrow keys to unimpaired commands
-    nmap <Up> [e
-    nmap <Down> ]e
-    vmap <Up> [egv
-    vmap <Down> ]egv
-
-    "map left/right arrow keys to indendation
-    nmap <Left> <<
-    nmap <Right> >>
-    vmap <Left> <gv
-    vmap <Right> >gv
-
+    " "map up/down arrow keys to unimpaired commands
+    " nmap <Up> [e
+    " nmap <Down> ]e
+    " vmap <Up> [egv
+    " vmap <Down> ]egv
+    "
+    " "map left/right arrow keys to indendation
+    " nmap <Left> <<
+    " nmap <Right> >>
+    " vmap <Left> <gv
+    " vmap <Right> >gv
+    "
     noremap <Leader>/ :nohls<CR>
 
     nnoremap <Tab>h <C-w>h
