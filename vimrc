@@ -116,4 +116,6 @@ map <C-V> "*p
 set colorcolumn=81
 set laststatus=2
 set background=dark
+" =========  Toggle spell checker ===========
+nmap <silent> <leader>s :set spell!<CR>
 
