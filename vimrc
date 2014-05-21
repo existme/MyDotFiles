@@ -53,10 +53,10 @@ endif
 set autoindent
 set smartindent
 set smarttab
-set shiftwidth=2
-set softtabstop=2
-set tabstop=2
-set expandtab
+set shiftwidth=3
+set softtabstop=3
+set tabstop=3
+"set expandtab
 
 filetype plugin on
 filetype indent on
@@ -118,4 +118,7 @@ set laststatus=2
 set background=dark
 " =========  Toggle spell checker ===========
 nmap <silent> <leader>s :set spell!<CR>
-
+" =========  Toggle list          ===========
+nmap <leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+set showbreak=…
