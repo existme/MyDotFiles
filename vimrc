@@ -122,3 +122,14 @@ nmap <silent> <leader>s :set spell!<CR>
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 set showbreak=…
+
+" ========= Configuring Fonts for gvim =======
+if has("gui_running")
+  if has("gui_gtk2")
+    set guifont=Consolas\ 14
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
+endif
