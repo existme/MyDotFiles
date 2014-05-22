@@ -63,6 +63,7 @@ filetype indent on
 
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
+set list!
 
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
@@ -123,6 +124,10 @@ nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 set showbreak=…
 
+
+
+nmap <leader>\ :set fo+=ta<CR>
+nmap <leader>' :set fo-=ta<CR>
 " ========= Configuring Fonts for gvim =======
 if has("gui_running")
   if has("gui_gtk2")
