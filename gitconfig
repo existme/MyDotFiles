@@ -9,8 +9,13 @@
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
-  old = red
-  new = green
+  old = red bold
+  new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
 [alias]
   # add
   a = add                           # add
@@ -117,6 +122,7 @@
 	autocrlf = input
   editor = vim
   excludesfile = ~/.yadr/git/gitignore
+	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
 [advice]
   statusHints = false
 [diff]

@@ -138,3 +138,6 @@ if has("gui_running")
     set guifont=Consolas:h11:cANSI
   endif
 endif
+
+set columns=86
+set wrap
