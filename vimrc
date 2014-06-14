@@ -5,19 +5,19 @@ set nocompatible
 " TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
 " source ~/.vimrc.before if it exists.
 if filereadable(expand("~/.vimrc.before"))
-  source ~/.vimrc.before
+	source ~/.vimrc.before
 endif
 
 " ================ General Config ====================
 
-set number                      "Line numbers are good
-set backspace=indent,eol,start  "Allow backspace in insert mode
-set history=1000                "Store lots of :cmdline history
-set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
-set gcr=a:blinkon0              "Disable cursor blink
-set visualbell                  "No sounds
-set autoread                    "Reload files changed outside vim
+set number								"Line numbers are good
+set backspace=indent,eol,start	"Allow backspace in insert mode
+set history=1000						"Store lots of :cmdline history
+set showcmd								"Show incomplete cmds down the bottom
+set showmode							"Show current mode down the bottom
+set gcr=a:blinkon0					"Disable cursor blink
+set visualbell							"No sounds
+set autoread							"Reload files changed outside vim
 
 " This makes vim act like all other editors, buffers can
 " exist in the background without being in a window.
@@ -43,9 +43,9 @@ set nowb
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
 if has('persistent_undo')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
-  set undofile
+	silent !mkdir ~/.vim/backups > /dev/null 2>&1
+	set undodir=~/.vim/backups
+	set undofile
 endif
 
 " ================ Indentation ======================
@@ -65,19 +65,19 @@ filetype indent on
 set list listchars=tab:\ \ ,trail:·
 set list!
 
-set nowrap       "Don't wrap lines
-set linebreak    "Wrap lines at convenient points
+set nowrap			"Don't wrap lines
+set linebreak		"Wrap lines at convenient points
 
 " ================ Folds ============================
 
-set foldmethod=indent   "fold based on indent
-set foldnestmax=3       "deepest fold is 3 levels
-set nofoldenable        "dont fold by default
+set foldmethod=indent	"fold based on indent
+set foldnestmax=3			"deepest fold is 3 levels
+set nofoldenable			"dont fold by default
 
 " ================ Completion =======================
 
 set wildmode=list:longest
-set wildmenu                "enable ctrl-n and ctrl-p to scroll thru matches
+set wildmenu					 "enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*vim/backups*
 set wildignore+=*sass-cache*
@@ -93,7 +93,7 @@ set wildignore+=*.png,*.jpg,*.gif
 
 " ================ Scrolling ========================
 
-set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set scrolloff=8			"Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
@@ -119,7 +119,7 @@ set laststatus=2
 set background=dark
 " =========  Toggle spell checker ===========
 nmap <silent> <leader>s :set spell!<CR>
-" =========  Toggle list          ===========
+" =========  Toggle list			 ===========
 nmap <leader>l :set list!<CR>
 set listchars=tab:▸\ ,eol:¬
 set showbreak=…
@@ -130,11 +130,64 @@ nmap <leader>\ :set fo+=ta<CR>
 nmap <leader>' :set fo-=ta<CR>
 " ========= Configuring Fonts for gvim =======
 if has("gui_running")
-  if has("gui_gtk2")
-    set guifont=Consolas\ 14
-  elseif has("gui_macvim")
-    set guifont=Menlo\ Regular:h14
-  elseif has("gui_win32")
-    set guifont=Consolas:h11:cANSI
-  endif
+	if has("gui_gtk2")
+	 set guifont=Consolas\ 14
+	elseif has("gui_macvim")
+	 set guifont=Menlo\ Regular:h14
+	elseif has("gui_win32")
+	 set guifont=Consolas:h11:cANSI
+	endif
+endif
+
+" =========== Extending wrapping functionality ========= 
+
+function ToggleWrap(show)
+	if &wrap
+	 setlocal nowrap
+	 set virtualedit=all
+	 set columns=9999
+	 silent! nunmap <buffer> <Up>
+	 silent! nunmap <buffer> <Down>
+	 silent! nunmap <buffer> <Home>
+	 silent! nunmap <buffer> <End>
+	 silent! iunmap <buffer> <Up>
+	 silent! iunmap <buffer> <Down>
+	 silent! iunmap <buffer> <Home>
+	 silent! iunmap <buffer> <End>
+	 if a:show
+		echom "Wrap OFF"
+	 endif
+ else
+	 setlocal wrap linebreak nolist
+	 set virtualedit=
+	 setlocal display+=lastline
+	 set columns=86
+	 noremap	<buffer> <silent> <Up>	 gk
+	 noremap	<buffer> <silent> <Down> gj
+	 noremap	<buffer> <silent> <Home> g<Home>
+	 noremap	<buffer> <silent> <End>  g<End>
+	 inoremap <buffer> <silent> <Up>	 <C-o>gk
+	 inoremap <buffer> <silent> <Down> <C-o>gj
+	 inoremap <buffer> <silent> <Home> <C-o>g<Home>
+	 inoremap <buffer> <silent> <End>  <C-o>g<End>
+	 if a:show
+		echom "Wrap ON"
+	 endif
+	endif
+endfunction
+
+noremap <silent> <Leader>w :call ToggleWrap(1)<CR>
+
+" ============= Highlight search ===============
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+:set hlsearch
+" ============= Mouse Options    ===============
+:set mouse=a
+" =============     Vimdiff      ===============
+set equalalways
+set columns=80
+call ToggleWrap(0)
+if &diff
+	let &columns = ((&columns*2 > 172)? 172: &columns*2)
+else
 endif

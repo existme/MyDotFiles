@@ -9,8 +9,13 @@
 [color "diff"]
   meta = yellow bold
   frag = magenta bold
-  old = red
-  new = green
+  old = red bold
+  new = green bold
+	whitespace = red reverse
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
 [alias]
   # add
   a = add                           # add
@@ -41,10 +46,15 @@
   cp = cherry-pick -x               # grab a change from a branch
 
   # diff
-	d = difftool
-  dc = diff --cached                # diff staged changes
-  last = diff HEAD^                 # diff last committed change
-
+	last	= diff HEAD^						 # diff last committed change
+	d		= difftool
+	dl		= difftool HEAD
+	dll	= difftool HEAD~1
+	dc		= difftool --cached            # diff staged changes
+	vd		= difftool -t vimdiff
+	vdl	= difftool -t vimdiff HEAD 
+	vdll	= difftool -t vimdiff HEAD~1 
+	vdc	= difftool --cached -t vimdiff # diff staged changes
   # log
   l = log --graph --date=short
   changes = log --pretty=format:\"%h %cr %cn %Cgreen%s%Creset\" --name-status
@@ -90,9 +100,7 @@
   svnd = svn dcommit
   svnl = svn log --oneline --show-commit
   br = branch
-	lol = log --pretty=oneline --abbrev-commit --graph --decorate
-	dd = difftool
-	dt = difftool
+  lol = log --pretty=oneline --abbrev-commit --graph --decorate
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
@@ -117,6 +125,7 @@
 	autocrlf = input
   editor = vim
   excludesfile = ~/.yadr/git/gitignore
+	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
 [advice]
   statusHints = false
 [diff]
@@ -124,7 +133,9 @@
   # instead of a/b/c/d as prefixes for patches
   mnemonicprefix = true
 	algorithm = patience
-	tool = diffmerge
+	tool = vimdiff
+	external = vimdiff
+	merge = vimdiff
 [rerere]
   # Remember my merges
   # http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
@@ -137,6 +148,7 @@
 	helper = cache --timeout=3600
 [user]
 	name = Reza Shams Amiri
+	email = existme@gmail.com
 [difftool]
 	prompt = false
 [mergetool "diffmerge"]
