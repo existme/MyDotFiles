@@ -177,4 +177,17 @@ function ToggleWrap(show)
 endfunction
 
 noremap <silent> <Leader>w :call ToggleWrap(1)<CR>
+
+" ============= Highlight search ===============
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
+:set hlsearch
+" ============= Mouse Options    ===============
+:set mouse=a
+" =============     Vimdiff      ===============
+set equalalways
+set columns=80
 call ToggleWrap(0)
+if &diff
+	let &columns = ((&columns*2 > 172)? 172: &columns*2)
+else
+endif
