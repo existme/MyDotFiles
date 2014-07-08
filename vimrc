@@ -157,8 +157,8 @@ function ToggleWrap(show)
 endfunction
 
 noremap <silent> <Leader>w :call ToggleWrap(1)<CR>
-call ToggleWrap(0)
-call ToggleWrap(0)
+"call ToggleWrap(0)
+"call ToggleWrap(0)
 
 set hlsearch
 
@@ -167,8 +167,8 @@ set mouse=a
 
 " =============     Vimdiff      ===============
 set equalalways
-set columns=80
-if &diff
-	let &columns = ((&columns*2 > 172)? 172: &columns*2)
-else
-endif
+"set columns=80
+"if &diff
+"	let &columns = ((&columns*2 > 172)? 172: &columns*2)
+"else
+"endif
