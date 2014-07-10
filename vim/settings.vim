@@ -13,8 +13,8 @@
 	noremap <leader>y "*y
 	noremap <leader>yy "*Y
 	noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>"
-	map <C-V> "*p
-
+	map <C-V> "+p
+	map <C-C> "+y
 	" "map up/down arrow keys to unimpaired commands
 	" nmap <Up> [e
 	" nmap <Down> ]e
@@ -77,10 +77,10 @@
 	vmap <S-Right> <Right>
 	
 	" Using arrow keys in insert mode will change to normal mode.
-	inoremap <buffer> <Up> k<Esc>k
-	inoremap <buffer> <Down> j<Esc>j
-	vnoremap <buffer> <Down> j<Esc>j
-	nnoremap <buffer> <Down> j<Esc>j
+	inoremap <buffer> <Up> <Esc>k
+	inoremap <buffer> <Down> <Esc>j
+	"vnoremap <buffer> <Down> j<Esc>j
+	"nnoremap <buffer> <Down> j<Esc>j
 	inoremap <Left> <Esc><Left>
 	inoremap <Right> <Esc><Right>
 	
