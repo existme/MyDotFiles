@@ -1,1 +1,6 @@
-ln gvimrc ~/.gvimrc
+rm ~/.vimrc
+rm ~/.vim
+rm ~/.gvimrc
+ln -s ~/git/MyVimConfig/vimrc ~/.vimrc
+ln -s ~/git/MyVimConfig/vim ~/.vim
+ln -s ~/git/MyVimConfig/gvimrc ~/.gvimrc
