@@ -1,4 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_cnt =5
 let g:netrw_dirhist_1='/home/rezasa/git/ExistmeVim/vim/autoload'
 let g:netrw_dirhist_2='/home/rezasa/git/ExistmeVim/.git'
+let g:netrw_dirhist_3='/etc/libbiz-db/conf.d'
+let g:netrw_dirhist_4='/etc/apache2/sites-available'
+let g:netrw_dirhist_5='/home/rezasa/git/axis/axis-crm-unil/texts_notify'
