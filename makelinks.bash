@@ -1,3 +1,4 @@
+#!/bin/sh
 rm ~/.vimrc
 rm -r ~/.vim
 rm ~/.gvimrc
