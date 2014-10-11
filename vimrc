@@ -85,14 +85,25 @@ set sidescroll=1
 
 
 " ================ Custom Settings ========================
-"so ~/.yadr/vim/settings.vim
 execute pathogen#infect()
 "Helptags
-so ~/.vim/settings.vim
-let g:airline_theme='murmur'
-let g:solarized_termcolors=256
 
-colorscheme solarized
+if has("win32")
+	so ~/vimfiles/settings.vim
+	colorscheme slate
+else
+	so ~/.vim/settings.vim
+	let g:solarized_termcolors=256
+	colorscheme solarized
+	if has("unix")
+    let s:uname = system("uname")
+    if s:uname == "Darwin\n"
+      "Mac options here
+    endif
+  endif
+endif
+let g:airline_theme='murmur'
+
 set ignorecase						"set search to be case insensitive
 set smartcase						"unless you typed uppercase letters in your query
 command ZZ w|execute "!git add --all && git commit -m updated && git push"
