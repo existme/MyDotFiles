@@ -25,3 +25,9 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+[submodule "vim/bundle/--name"]
+	path = vim/bundle/--name
+	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "vim/bundle/tvim-markdown"]
+	path = vim/bundle/tvim-markdown
+	url = https://github.com/plasticboy/vim-markdown.git
