@@ -7,3 +7,4 @@ ln -s ~/git/ExistmeVim/vimrc ~/.vimrc
 After cloning the repository you should run:
 git submodule update --init
 
+to move a line one row up/down use Ctrl+j/k

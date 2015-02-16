@@ -17,6 +17,7 @@
 	changed = green
 	untracked = cyan
 [alias]
+
   # add
   a = add                           # add
   chunkyadd = add --patch           # stage commits chunk by chunk
@@ -107,6 +108,8 @@
   svnl = svn log --oneline --show-commit
   br = branch
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
+
+	dchanges = difftool develop
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
@@ -130,7 +133,7 @@
 [core]
 	autocrlf = input
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
+	excludesfile = /Users/rezasa/.gitignore_global
 	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
 [advice]
   statusHints = false
@@ -153,8 +156,8 @@
 [credential]
 	helper = cache --timeout=3600
 [user]
-	name = Reza Shams Amiri
-	email = existme@gmail.com
+	name = Reza Shams
+	email = rezasa@axis.com
 [difftool]
 	prompt = false
 [mergetool "diffmerge"]
@@ -162,3 +165,9 @@
 	trustExitCode = true
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
