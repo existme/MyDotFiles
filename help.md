@@ -5,3 +5,6 @@ git submodule add git://github.com/tpope/vim-fugitive.git bundle/vim-fugitive
 *Vim-Sorround*
 use cs"' to change sorrounding " to '
 
+To update all submodules:
+
+git submodule foreach git pull origin master

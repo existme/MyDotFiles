@@ -2,6 +2,8 @@
 # See the README for examples.
 [color]
 	ui = true
+	interactive = always
+	pager = true
 [color "branch"]
   current = yellow reverse
   local = yellow
@@ -16,6 +18,9 @@
 	added = yellow
 	changed = green
 	untracked = cyan
+	header = normal blink
+	updated = green reverse
+	nobranch = red white bold
 [alias]
 
   # add
@@ -37,9 +42,9 @@
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
   cl = commit -eF commit.log			# commit with message from file commit.log
-  amend = commit --amend            # ammend your last commit
   ammend = commit --amend           # ammend your last commit
-
+  amend = commit --amend            # ammend your last commit
+  amendf = !git add --all && git commit --amend --no-edit # Use previous message
   # checkout
   co = checkout                     # checkout
   nb = checkout -b                  # create and switch to a new branch (mnemonic: "git new branch branchname...")
@@ -70,6 +75,21 @@
   simple = log --pretty=format:\" * %s\"
   shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
 
+  #List commits in short form, with colors and branch/tag annotation
+  ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate
+  # List commits showing changed files
+  ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+  ll2 = log --stat --abbrev-commit --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]"
+  # List oneline commits showing dates
+  lds = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+  # List oneline commits showing relative dates
+  ld = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=relative
+
+  authors = shortlog -sn 
+
+  # Show all your aliases
+  la = "!git config -l | grep alias | cut -c 7-"
+
   # pull
   pl = pull                         # pull
 
@@ -86,7 +106,15 @@
   # reset
   unstage = reset HEAD              # remove files from index (tracking)
   uncommit = reset --soft HEAD^     # go back before last commit, with files in uncommitted state
+  r = reset
+  r1 = reset HEAD^
+  r2 = reset HEAD^^
+  rh = reset --hard
+  rh1 = reset HEAD^ --hard
+  rh2 = reset HEAD^^ --hard
+
   filelog = log -u                  # show changes to a file
+  fl = log -u
   mt = mergetool                    # fire up the merge tool
 
   # stash
@@ -103,13 +131,14 @@
   # tag
   t = tag -n                        # show tags with <n> lines of each tag message
 
-  # svn helpers
-  svnr = svn rebase
-  svnd = svn dcommit
-  svnl = svn log --oneline --show-commit
+  # helpers
   br = branch
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
 
+	#add
+	a	= !git add . && git add -u && git status
+	au = !git add -u && git status
+	aa = !git add . && git add -u && git status
 	dchanges = difftool develop
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
@@ -137,6 +166,7 @@
   editor = vim
 	excludesfile = /Users/rezasa/.gitignore_global
 	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
+	pager = less -JFRSXr
 [advice]
   statusHints = false
 [diff]
