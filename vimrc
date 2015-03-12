@@ -104,6 +104,9 @@ else
 endif
 let g:airline_theme='murmur'
 
+if &diff
+	colorscheme zellner
+endif
 set ignorecase						"set search to be case insensitive
 set smartcase						"unless you typed uppercase letters in your query
 command ZZ w|execute "!git add --all && git commit -m updated && git push"

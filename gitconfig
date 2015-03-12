@@ -54,6 +54,7 @@
 
   # diff
 	last	= diff HEAD^						 # diff last committed change
+	difftool =  difftool --color-words --word-diff
 	d		= difftool
 	dl		= difftool HEAD
 	dll	= difftool HEAD~1
@@ -187,7 +188,7 @@
 [github]
 	user = existme
 [credential]
-	helper = cache
+	helper = cache --timeout=3600
 [user]
 	name = Reza Shams
 	email = rezasa@axis.com
