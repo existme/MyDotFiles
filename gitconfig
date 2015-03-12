@@ -36,6 +36,7 @@
   c = commit -m                     # commit with message
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
+  cl = commit -eF commit.log			# commit with message from file commit.log
   amend = commit --amend            # ammend your last commit
   ammend = commit --amend           # ammend your last commit
 
@@ -126,6 +127,7 @@
   whitespace = nowarn
 [branch]
   autosetupmerge = true
+	autosetuprebase = always
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
@@ -143,7 +145,8 @@
   mnemonicprefix = true
 	algorithm = patience
 	tool = vimdiff
-	external = vimdiff
+	external = vimdiff									# for others
+	external = /Users/rezasa/bin/git-diff-cmd.sh # for mac
 	merge = vimdiff
 [rerere]
   # Remember my merges
