@@ -177,7 +177,8 @@
 	algorithm = patience
 	tool = vimdiff
 	external = vimdiff									# for others
-	external = /Users/rezasa/bin/git-diff-cmd.sh # for mac
+	#external = /Users/rezasa/bin/git-diff-cmd.sh # for mac
+	# See the third answer here http://stackoverflow.com/questions/14754762/can-gitconfig-options-be-set-conditionally
 	merge = vimdiff
 [rerere]
   # Remember my merges
