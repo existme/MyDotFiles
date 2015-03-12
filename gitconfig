@@ -17,6 +17,7 @@
 	changed = green
 	untracked = cyan
 [alias]
+
   # add
   a = add                           # add
   chunkyadd = add --patch           # stage commits chunk by chunk
@@ -35,6 +36,7 @@
   c = commit -m                     # commit with message
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
+  cl = commit -eF commit.log			# commit with message from file commit.log
   amend = commit --amend            # ammend your last commit
   ammend = commit --amend           # ammend your last commit
 
@@ -107,6 +109,8 @@
   svnl = svn log --oneline --show-commit
   br = branch
   lol = log --pretty=oneline --abbrev-commit --graph --decorate
+
+	dchanges = difftool develop
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
@@ -123,6 +127,7 @@
   whitespace = nowarn
 [branch]
   autosetupmerge = true
+	autosetuprebase = always
 [push]
   # 'git push' will push the current branch to its tracking branch
   # the usual default is to push all branches
@@ -130,7 +135,7 @@
 [core]
 	autocrlf = input
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
+	excludesfile = /Users/rezasa/.gitignore_global
 	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
 [advice]
   statusHints = false
@@ -140,7 +145,8 @@
   mnemonicprefix = true
 	algorithm = patience
 	tool = vimdiff
-	external = vimdiff
+	external = vimdiff									# for others
+	external = /Users/rezasa/bin/git-diff-cmd.sh # for mac
 	merge = vimdiff
 [rerere]
   # Remember my merges
@@ -153,8 +159,8 @@
 [credential]
 	helper = cache
 [user]
-	name = Reza Shams Amiri
-	email = existme@gmail.com
+	name = Reza Shams
+	email = rezasa@axis.com
 [difftool]
 	prompt = false
 [mergetool "diffmerge"]
@@ -162,3 +168,9 @@
 	trustExitCode = true
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
