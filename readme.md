@@ -8,3 +8,6 @@ After cloning the repository you should run:
 git submodule update --init
 
 to move a line one row up/down use Ctrl+j/k
+
+To update all submodules 
+git submodule update --remote --merge

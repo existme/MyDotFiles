@@ -104,8 +104,9 @@ else
 endif
 let g:airline_theme='murmur'
 
+colorscheme jellybeans
 if &diff
-	colorscheme zellner
+	colorscheme jellybeans
 endif
 set ignorecase						"set search to be case insensitive
 set smartcase						"unless you typed uppercase letters in your query

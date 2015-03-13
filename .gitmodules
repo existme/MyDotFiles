@@ -31,3 +31,9 @@
 [submodule "vim/bundle/tvim-markdown"]
 	path = vim/bundle/tvim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "vim/bundle/colorschemes"]
+	path = vim/bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
