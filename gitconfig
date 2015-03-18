@@ -163,7 +163,7 @@
   # the usual default is to push all branches
   default = tracking
 [core]
-	autocrlf = input
+	autocrlf = true
   editor = vim
 	excludesfile = /Users/rezasa/.gitignore_global
 	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
