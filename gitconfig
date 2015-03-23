@@ -42,6 +42,7 @@
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
   cl = commit -eF commit.log			# commit with message from file commit.log
+  av = commit -av
   ammend = commit --amend           # ammend your last commit
   amend = commit --amend            # ammend your last commit
   amendf = !git add --all && git commit --amend --no-edit # Use previous message
@@ -163,7 +164,8 @@
   # the usual default is to push all branches
   default = tracking
 [core]
-	autocrlf = true
+	# for mac set to "input" for dos it should be "true"
+	autocrlf = input
   editor = vim
 	excludesfile = /Users/rezasa/.gitignore_global
 	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
