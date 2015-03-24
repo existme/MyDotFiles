@@ -31,9 +31,18 @@
 [submodule "vim/bundle/tvim-markdown"]
 	path = vim/bundle/tvim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
-[submodule "bundle/colorschemes"]
-	path = bundle/colorschemes
-	url = https://github.com/flazz/vim-colorschemes.git
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "zsh/zsh-syntax-highlighting-filetypes"]
+	path = zsh/zsh-syntax-highlighting-filetypes
+	url = https://github.com/trapd00r/zsh-syntax-highlighting-filetypes.git
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "extras/fonts"]
+	path = extras/fonts
+	url = https://github.com/powerline/fonts.git
+[submodule "vim/bundle/vim-fugitive"]
+	path = vim/bundle/vim-fugitive
+	url = git://github.com/tpope/vim-fugitive.git

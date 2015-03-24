@@ -88,26 +88,33 @@ set sidescroll=1
 execute pathogen#infect()
 "Helptags
 
+set t_co=256
+set term=xterm-256color
 if has("win32")
+	let s:uname = "win"
 	so ~/vimfiles/settings.vim
 	colorscheme slate
 else
 	so ~/.vim/settings.vim
 	let g:solarized_termcolors=256
-	colorscheme solarized
 	if has("unix")
     let s:uname = system("uname")
     if s:uname == "Darwin\n"
-      "Mac options here
+		so ~/.vim/mac.vim
+	 elseif s:uname == "Linux\n"
+		so ~/.vim/linux.vim
+	 else
+		colorscheme solarized
     endif
   endif
 endif
-let g:airline_theme='murmur'
 
-colorscheme jellybeans
-if &diff
-	colorscheme jellybeans
-endif
+let g:airline_theme='dark'
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline_extensions = ['branch','tabline']
+
 set ignorecase						"set search to be case insensitive
 set smartcase						"unless you typed uppercase letters in your query
 command ZZ w|execute "!git add --all && git commit -m updated && git push"
@@ -116,7 +123,6 @@ set laststatus=2
 set background=dark
 set listchars=tab:▸\ ,eol:¬
 set showbreak=…
-
 
 
 " ========= Configuring Fonts for gvim =======

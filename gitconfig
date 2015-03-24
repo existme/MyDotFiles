@@ -42,7 +42,7 @@
   ca = commit -am                   # commit all with message
   ci = commit                       # commit
   cl = commit -eF commit.log			# commit with message from file commit.log
-  av = commit -av
+  av = !git add --all && git commit -av
   ammend = commit --amend           # ammend your last commit
   amend = commit --amend            # ammend your last commit
   amendf = !git add --all && git commit --amend --no-edit # Use previous message
