@@ -10,9 +10,6 @@
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = https://github.com/gabrielelana/vim-markdown.git
-[submodule "vim/bundle/vim-markdown-preview"]
-	path = vim/bundle/vim-markdown-preview
-	url = https://github.com/nelstrom/vim-markdown-preview.git
 [submodule "vim/bundle/tcomment_vim"]
 	path = vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
@@ -45,4 +42,13 @@
 	url = https://github.com/powerline/fonts.git
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
-	url = git://github.com/tpope/vim-fugitive.git
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim/bundle/bbye"]
+	path = vim/bundle/bbye
+	url = https://github.com/moll/vim-bbye.git
+[submodule "zsh/bundle/k"]
+	path = zsh/bundle/k
+	url = https://github.com/supercrabtree/k.git
+[submodule "zsh/bundle/lesaint-mvn"]
+	path = zsh/bundle/lesaint-mvn
+	url = https://github.com/lesaint/lesaint-mvn.git
