@@ -191,7 +191,7 @@
 [github]
 	user = existme
 [credential]
-	helper = cache --timeout=3600
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
 [user]
 	name = Reza Shams
 	email = rezasa@axis.com
