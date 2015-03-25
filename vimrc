@@ -184,7 +184,7 @@ noremap <silent> <Leader>w :call ToggleWrap(1)<CR>
 
 set hlsearch
 
-" ============= Mouse Options    ===============
+" =============   Mouse Options  ===============
 set mouse=n
 
 " =============     Vimdiff      ===============
@@ -194,3 +194,6 @@ set equalalways
 "	let &columns = ((&columns*2 > 172)? 172: &columns*2)
 "else
 "endif
+
+" =============  Split Options   ===============
+set splitright

@@ -23,5 +23,8 @@ use cs"' to change sorrounding " to '
 
 Paste in command line				:CTRL-R "
 Show help in vertical mode			:vert help e
+Open another file in vertical w	:vsp ~/.zshrc
+Set files to open in right			:set splitright
 
 Move to next buffer					CTRL+ -> / <-
+Close current buffer					:bd
