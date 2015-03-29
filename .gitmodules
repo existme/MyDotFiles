@@ -22,18 +22,12 @@
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/--name"]
-	path = vim/bundle/--name
-	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/tvim-markdown"]
 	path = vim/bundle/tvim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
-[submodule "zsh/zsh-syntax-highlighting-filetypes"]
-	path = zsh/zsh-syntax-highlighting-filetypes
-	url = https://github.com/trapd00r/zsh-syntax-highlighting-filetypes.git
 [submodule "bundle/colorschemes"]
 	path = bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
@@ -52,3 +46,9 @@
 [submodule "zsh/bundle/lesaint-mvn"]
 	path = zsh/bundle/lesaint-mvn
 	url = https://github.com/lesaint/lesaint-mvn.git
+[submodule "zsh/bundle/LS_COLORS"]
+	path = zsh/bundle/LS_COLORS
+	url = https://github.com/trapd00r/LS_COLORS
+[submodule "zsh/bundle/opp.zsh"]
+	path = zsh/bundle/opp.zsh
+	url = https://github.com/hchbaw/opp.zsh

@@ -41,6 +41,7 @@ export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export HISTSIZE=5000
 export SAVEHIST=5000
 export HISTFILE=~/.history
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -76,3 +77,17 @@ source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 #export x=`which mvn`
 alias k="k -h"
 
+# Setting up vim mode
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+export KEYTIMEOUT=1
+function zle-line-init zle-keymap-select {
+    VIM_PROMPT="%{$fg_bold[38;5;227]%} [% NORMAL]% %{$reset_color%}"
+    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select

@@ -1,4 +1,12 @@
-## Install help
+## Prerequirements 
+
+256 color term:
+	sudo apt-get install ncurses-term
+then use
+	export TERM=xterm-256color
+you shoud have
+	$ tput colors
+	256
 
 # Install help
 	> Submodule Help

@@ -4,6 +4,8 @@
 
 ln -s ~/git/ExistmeVim/vim ~/.vim
 ln -s ~/git/ExistmeVim/vimrc ~/.vimrc
+ln -s ~/git/ExistmeVim/extras/dircolors ~/.dircolors
+
 After cloning the repository you should run:
 git submodule update --init
 
