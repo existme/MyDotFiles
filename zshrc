@@ -8,6 +8,9 @@ export HISTCONTROL=erasedups
 export TERM=gnome-256color
 #export TERM=xterm-256color
 export GREP_OPTIONS='--color=auto'
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+export PYG_STYLE=terminal				# or you can set to terminal256 if it works
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then

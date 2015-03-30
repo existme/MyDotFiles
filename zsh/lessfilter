@@ -1,0 +1,27 @@
+#!/bin/sh
+if [ -z "$PYG_STYLE" ]; then
+	PYG_STYLE="terminal"
+fi
+
+case "$1" in
+    *.awk|*.groff|*.java|*.js|*.m4|*.php|*.pl|*.pm|*.pod|*.sh|\
+    *.ad[asb]|*.asm|*.inc|*.[ch]|*.[ch]pp|*.[ch]xx|*.cc|*.hh|\
+    *.lsp|*.l|*.pas|*.p|*.xml|*.xps|*.xsl|*.axp|*.ppd|*.pov|\
+    *.diff|*.patch|*.py|*.rb|*.sql|*.ebuild|*.eclass|*.vim|*.json|*.md|*.tex)
+        pygmentize -f $PYG_STYLE $1| nl --body-numbering=a;;
+    .sh|.bash)
+        pygmentize -f $PYG_STYLE -l sh $1| nl --body-numbering=a;;
+    *)
+        grep "#\!" $1 > /dev/null
+        if [ "$?" -eq "0" ]; then
+            pygmentize -f $PYG_STYLE -l sh $1
+        else
+			  # use filename@type format to force a type like gitconfig@kconfig 
+			  filename=$(echo $1 | awk -F '[/@]' '{print $1}')
+			  type=$(echo $1 | awk -F '[/@]' '{print $2}')
+				pygmentize -f $PYG_STYLE -l $type $filename | perl -e 'print ++$i." $_" for <>'
+				exit 0
+        fi
+esac
+
+exit 0
