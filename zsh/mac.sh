@@ -9,7 +9,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
 # Custom Paths
 export PATH=$M2:$PATH
 
-ZSH_THEME="amuse"
+#ZSH_THEME="amuse"
 
 alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias sub="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
@@ -18,3 +18,5 @@ alias gitk="/Applications/SmartGit.app/Contents/Resources/git/bin/gitk &"
 bindkey -e 
 bindkey '\e\e[C' forward-word 
 bindkey '\e\e[D' backward-word
+
+source $SCRIPTPATH/zsh/shell-prompt-mac.sh

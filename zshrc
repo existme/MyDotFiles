@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=erasedups
-
+export TERM='xterm-256color'
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -70,6 +70,7 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+eval $( dircolors -b ~/.dircolors)
 # Load bundles
 source $SCRIPTPATH/zsh/bundle/k/k.sh
 source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
@@ -91,3 +92,4 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
