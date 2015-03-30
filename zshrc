@@ -5,7 +5,9 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=erasedups
-export TERM='xterm-256color'
+export TERM=gnome-256color
+#export TERM=xterm-256color
+export GREP_OPTIONS='--color=auto'
 platform='unknown'
 unamestr=`uname`
 if [[ "$unamestr" == 'Linux' ]]; then
@@ -14,8 +16,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='mac'
 fi
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -52,6 +53,7 @@ alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
 alias	memo="cd ~/Dropbox/Memo"
+
 #Find the path to this git repo
 SCRIPT=$(readlink ~/.zshrc -f)
 SCRIPTPATH=$(dirname "$SCRIPT")
@@ -75,21 +77,8 @@ eval $( dircolors -b ~/.dircolors)
 source $SCRIPTPATH/zsh/bundle/k/k.sh
 source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 
-#export x=`which mvn`
 alias k="k -h"
-
-# Setting up vim mode
-bindkey -v
-bindkey '^R' history-incremental-search-backward
-bindkey '^S' history-incremental-search-forward
-bindkey '^P' history-search-backward
-bindkey '^N' history-search-forward
-export KEYTIMEOUT=1
-function zle-line-init zle-keymap-select {
-    VIM_PROMPT="%{$fg_bold[38;5;227]%} [% NORMAL]% %{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
-    zle reset-prompt
-}
-zle -N zle-line-init
-zle -N zle-keymap-select
-
+# Enable vi-mode 
+source $SCRIPTPATH/extras/vi-mode.sh
+# Use custom shell prompt
+source $SCRIPTPATH/zsh/shell-prompt.sh
