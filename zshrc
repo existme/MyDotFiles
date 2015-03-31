@@ -83,5 +83,3 @@ source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 alias k="k -h"
 # Enable vi-mode 
 source $SCRIPTPATH/extras/vi-mode.sh
-# Use custom shell prompt
-source $SCRIPTPATH/zsh/shell-prompt.sh

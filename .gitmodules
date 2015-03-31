@@ -52,3 +52,9 @@
 [submodule "zsh/bundle/opp.zsh"]
 	path = zsh/bundle/opp.zsh
 	url = https://github.com/hchbaw/opp.zsh
+[submodule "promptline.vim"]
+	path = promptline.vim
+	url = https://github.com/edkolev/promptline.vim
+[submodule "vim/bundle/promptline"]
+	path = vim/bundle/promptline
+	url = https://github.com/existme/promptline.vim
