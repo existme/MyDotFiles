@@ -58,3 +58,6 @@
 [submodule "vim/bundle/promptline"]
 	path = vim/bundle/promptline
 	url = https://github.com/existme/promptline.vim
+[submodule "vim/bundle/vim-taglist-plus"]
+	path = vim/bundle/vim-taglist-plus
+	url = https://github.com/yazug/vim-taglist-plus

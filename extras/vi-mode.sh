@@ -15,7 +15,7 @@ export KEYTIMEOUT=1
 autoload -U colors && colors
 
 __promptline
-vim_cmd_mode="%{$RED$LIME_YELLOWB%}[%{$BLACK%} NORMAL  %{$RED%}]%{$reset_color%}"
+vim_cmd_mode="%{$RED$LIME_YELLOWB%}[%{$BLACK%} NORMAL %{$RED%}]%{$reset_color%}"
 vim_ins_mode=$RPROMPT
 vim_mode=$vim_ins_mode;
 function zle-line-init zle-keymap-select {
