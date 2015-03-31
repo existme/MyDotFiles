@@ -11,12 +11,17 @@ bindkey '^N' history-search-forward
 # allow v to edit the command line (standard behaviour)
 autoload -Uz edit-command-line
 bindkey -M vicmd 'v' edit-command-line
-
 export KEYTIMEOUT=1
 autoload -U colors && colors
+
+__promptline
+vim_cmd_mode="%{$RED$LIME_YELLOWB%}[%{$BLACK%} NORMAL  %{$RED%}]%{$reset_color%}"
+vim_ins_mode=$RPROMPT
+vim_mode=$vim_ins_mode;
 function zle-line-init zle-keymap-select {
-	 VIM_PROMPT="%{$RED$LIME_YELLOWB%}[%{$BLACK%} NORMAL  %{$RED%}]%{$reset_color%}"
-    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/}$EPS1"
+    RPS1="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+	 RPS2=$RPS1
+setopt transientrprompt
     zle reset-prompt
 }
 zle -N zle-line-init
