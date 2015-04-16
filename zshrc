@@ -13,10 +13,11 @@ source ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE
 
 export OTERM=$TERM
 if [[ $TERM == 'linux' ]]; then
-	export TERM=linux
+	export TERM=xterm-256color
 elif [[ $TERM == 'xterm' ]]; then
 	export TERM=xterm-256color
 fi
+export TERMCAP=$(echo $TERMCAP | sed -e 's/Co#8/Co#256/g')
 export CLICOLOR=true
 export GREP_OPTIONS='--color=always'
 export LESS='-R'
@@ -30,7 +31,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    platform='mac'
 fi
 
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -68,6 +69,7 @@ alias ls="ls -GF --color"
 alias	memo="cd ~/Dropbox/Memo"
 alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
 alias cat="grc cat"
+alias ds="du -hd 1"
 #Find the path to this git repo
 SCRIPT=$(readlink ~/.zshrc -f)
 SCRIPTPATH=$(dirname "$SCRIPT")
