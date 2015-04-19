@@ -95,6 +95,7 @@ source $SCRIPTPATH/zsh/bundle/k/k.sh
 source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 
 alias k="k -h"
+alias h="head -n 40 "
 # Enable vi-mode 
 source $SCRIPTPATH/extras/vi-mode.sh
 
