@@ -70,9 +70,14 @@ alias	memo="cd ~/Dropbox/Memo"
 alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
 alias cat="grc cat"
 alias ds="du -hd 1"
-#Find the path to this git repo
+alias k="k -h"
+alias h="head -n 40 "
+
+# Find the path to this git repo
 SCRIPT=$(readlink ~/.zshrc -f)
 SCRIPTPATH=$(dirname "$SCRIPT")
+# add scripts folder to path variable to use commands like cleanmem
+export PATH=$SCRIPTPATH/extras/scripts:$PATH
 
 if [[ $platform == 'linux' ]]; then
 	source $SCRIPTPATH/zsh/linux.sh
@@ -94,8 +99,6 @@ eval $( dircolors -b ~/.dircolors)
 source $SCRIPTPATH/zsh/bundle/k/k.sh
 source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 
-alias k="k -h"
-alias h="head -n 40 "
 # Enable vi-mode 
 source $SCRIPTPATH/extras/vi-mode.sh
 
