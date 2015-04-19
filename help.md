@@ -58,6 +58,12 @@ use cs"' to change sorrounding " to '
 	> Powerline fonts in mac:
 		after installing it's important to set both fonts in iterm2
 
+## tcomment
+
+Toggle comment							gc
+Comment selected						g>
+
+## other commands
 Paste in command line				:CTRL-R "
 Show help in vertical mode			:vert help e
 Open another file in vertical w	:vsp ~/.zshrc

@@ -14,7 +14,7 @@ bindkey -M vicmd 'v' edit-command-line
 export KEYTIMEOUT=1
 autoload -U colors && colors
 
-if __promptline; then
+if [ type __promptline &>/dev/null  ]; then
 	__promptline
 fi
 
