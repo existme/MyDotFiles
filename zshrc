@@ -5,7 +5,7 @@ export LANG=en_US.UTF-8
 export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=erasedups
-
+export XDG_RUNTIME_DIR=/run/user/0
 # only change term config if it is xterm
 autoload zkbd
 [[ ! -f ${ZDOTDIR:-$HOME}/.zkbd/$TERM-$VENDOR-$OSTYPE ]] && zkbd
@@ -45,7 +45,7 @@ ENABLE_CORRECTION="false"
 COMPLETION_WAITING_DOTS="true"
 DEFAULT_USER=`whoami`
 user=`whoami`
-HOST="local"
+# HOST="local"
 use_color=true
 HIST_STAMPS="yyyy-mm-dd" # also: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 

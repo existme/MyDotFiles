@@ -185,7 +185,7 @@ noremap <silent> <Leader>w :call ToggleWrap(1)<CR>
 set hlsearch
 
 " =============   Mouse Options  ===============
-set mouse=n
+set mouse=v
 
 " =============     Vimdiff      ===============
 set equalalways

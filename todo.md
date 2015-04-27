@@ -8,3 +8,7 @@
 - configure mergetool alternative to use kdiff3
 - Find out how to change color pallete in less independent of terminal?
 
+Get the list of all xfce4 shortcuts:
+	xfconf-query -c xfce4-keyboard-shortcuts -l -v
+
+
