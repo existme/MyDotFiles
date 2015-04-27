@@ -52,7 +52,7 @@ HIST_STAMPS="yyyy-mm-dd" # also: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # General Paths
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-
+export PATH=$HOME/Dropbox/Docs/todo.txt-cli:$PATH
 export HISTSIZE=5000
 export SAVEHIST=5000
 export HISTFILE=~/.history
@@ -72,6 +72,8 @@ alias cat="grc cat"
 alias ds="du -hd 1"
 alias k="k -h"
 alias h="head -n 40 "
+alias t='$HOME/Dropbox/Docs/todo.txt-cli/todo.sh -d $HOME/Dropbox/Docs/todo.txt-cli/todo.cfg'
+alias h="history|grep"
 
 # Find the path to this git repo
 SCRIPT=$(readlink ~/.zshrc -f)
