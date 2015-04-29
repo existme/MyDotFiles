@@ -74,6 +74,8 @@ alias k="k -h"
 alias h="head -n 40 "
 alias t='$HOME/Dropbox/Docs/todo.txt-cli/todo.sh -d $HOME/Dropbox/Docs/todo.txt-cli/todo.cfg'
 alias h="history|grep"
+alias rfind="find . -name"
+function rgrep(){ grep --color=always -R "$1" * | less;} 
 
 # Find the path to this git repo
 SCRIPT=$(readlink ~/.zshrc -f)
