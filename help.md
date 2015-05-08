@@ -64,25 +64,32 @@ Toggle comment							gc
 Comment selected						g>
 
 ## other commands
-Paste in command line				:CTRL-R "
-Show help in vertical mode			:vert help e
-Open another file in vertical w	:vsp ~/.zshrc
-Set files to open in right			:set splitright
 
-Move to next buffer					CTRL+ -> / <-
-Close current window					CTRL w+c
+File opening
+	Show help in vertical mode		:vert help e
+	Open another file in vertical :vsp ~/.zshrc
+	Set files to open in right		:set splitright
+	Vertical split						:vsp {filename}
+	Vertical split buffer #			:vsp#2				# 2 is an example
 
-Toggle previouse buffer				,,				#, is <leader>
+Buffer commands
+	Move to next buffer				CTRL+ -> / <-
+	Close current window				CTRL w+c
+	Toggle previouse buffer			,,						#, is <leader>
+	Close current buffer				:bd
+	Delete current buffer & move	,q
+
 Toggle spell checker					,s
+	When spell checking:
+		Show the suggestions			z=
+		Add to dictionary				zg		
+
+Copy/Paste
+	Set Pasting & PasteClipboard	,p
+	Paste in command line			:CTRL-R "
+
+Search * Replace
+	Toggle highlight						F4
+	Select all occurance of word		*
+
 Toggle white space					,l
-Set Pasting & PasteClipboard		,p
-Close current buffer					:bd
-Delete current buffer and move	,q
-
-Toggle highlight						F4
-Select all occurance of word		*
-
-Vertical split							:vsp {filename}
-Vertical split buffer #				:vsp#2				# 2 is an example
-
-

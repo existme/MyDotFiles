@@ -16,6 +16,8 @@ if [[ $TERM == 'linux' ]]; then
 	export TERM=xterm-256color
 elif [[ $TERM == 'xterm' ]]; then
 	export TERM=xterm-256color
+elif [[ $TERM == 'rxvt-unicode' ]]; then
+	export TERM=rxvt-256color
 fi
 export TERMCAP=$(echo $TERMCAP | sed -e 's/Co#8/Co#256/g')
 export CLICOLOR=true
@@ -74,9 +76,17 @@ alias k="k -h"
 alias h="head -n 40 "
 alias t='$HOME/Dropbox/Docs/todo.txt-cli/todo.sh -d $HOME/Dropbox/Docs/todo.txt-cli/todo.cfg'
 alias h="history|grep"
-
 function rgrep(){ grep --color=always -R -i "$1" * | less;} 
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
+
+# easy archive extraction either use extract x.tar or extract x.tar "/your/destination
+function extract(){
+	if [[ -z ${2+x} ]]; then
+		tar xf $1;
+	else
+		tar xf $1 -C $2;
+	fi
+} 
 
 # Find the path to this git repo
 SCRIPT=$(readlink ~/.zshrc -f)
