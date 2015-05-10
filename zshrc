@@ -74,8 +74,9 @@ alias cat="grc cat"
 alias ds="du -hd 1"
 alias k="k -h"
 alias h="head -n 40 "
-alias t='$HOME/Dropbox/Docs/todo.txt-cli/todo.sh -d $HOME/Dropbox/Docs/todo.txt-cli/todo.cfg'
+alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
 alias h="history|grep"
+alias todo="vim ~/git/todo/todo.txt"
 function rgrep(){ grep --color=always -R -i "$1" * | less;} 
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
 
@@ -137,3 +138,8 @@ source $SCRIPTPATH/extras/vi-mode.sh
 
 # Use colors for less, man, etc.
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
+
+# Cosmetics
+fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
+echo "$(date '+%D %T' | toilet -f term -F border --gay)";
+pal

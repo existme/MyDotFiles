@@ -157,7 +157,7 @@ function ToggleWrap(show)
 		endif
 	else
 		setlocal wrap linebreak nolist
-		set virtualedit=block
+		set virtualedit=onemore
 		setlocal display+=lastline
 		set columns=86
 		noremap	<buffer> <silent> <Up>		gk

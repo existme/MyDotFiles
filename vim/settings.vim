@@ -1,4 +1,5 @@
 	let mapleader=","						"Change the leader to comma
+	let maplocalleader = "\\"			"Change localleader to backslash
 
 	" ================ Tabularize =====================
 	nmap <Leader>a= :Tabularize /=<CR>
@@ -111,3 +112,8 @@
 	vnoremap <C-j> :m '>+1<CR>gv=gv
 	vnoremap <C-k> :m '<-2<CR>gv=gv
 	
+	" boxes shortcuts
+	nmap ,mc !!boxes -d shell -a hcvc<CR>
+	vmap ,mc !boxes -d shell -a hcvc<CR>
+	nmap ,xc !!boxes -d shell -a hcvc -r<CR>
+	vmap ,xc !boxes -d shell -a hcvc -r<CR>

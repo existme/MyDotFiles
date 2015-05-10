@@ -8,7 +8,9 @@ you shoud have
 	$ tput colors
 	256
 
-# Install help
+ ################
+ # Install help #
+ ################
 	> Submodule Help
 	
 	+ To add a new plugin from git use the following command:
@@ -26,7 +28,10 @@ you shoud have
 		But you seem to still need a:
 
 rm -rf .git/modules/asubmodule
-## Mac configuration
+
+ #####################
+ # Mac configuration #
+ #####################
 	In order that cursor movement works correctly in iTerm2, you should send
 	an escape sequence for the right movement sequence. For example to simulate
 	ctrl+arrow movment (since for some reason ctrl+arrow is not catched by
@@ -44,26 +49,76 @@ rm -rf .git/modules/asubmodule
 	ctrl+e (0x05) for end 
 	ctrl+d (0x04) for delete
 
-## FUGITIVE help
+ #################
+ # FUGITIVE help #
+ #################
 	> see fugitive help for using git with vim:
 	http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
 
 	update help file using:
 	vim -u NONE -c "helptags vim/bundle/vim-fugitive/doc" -c q
 
-## Vim-Sorround
+ ################
+ # Vim-Sorround #
+ ################
+
 use cs"' to change sorrounding " to '
 
-## VIM help
+ ############
+ # VIM help #
+ ############
+
 	> Powerline fonts in mac:
 		after installing it's important to set both fonts in iterm2
 
-## tcomment
+ ################
+ # todo.txt-vim #
+ ################
+
+Sorting tasks:
+	/s		Sort the file
+	/s+	Sort the file on +Projects
+	/s@	Sort the file on @Contexts
+	/sd	Sort the file on dates
+
+Edit priority:
+	/j		Decrease the priority of the current line
+	/k		Increase the priority of the current line
+	/a		Add the priority (A) to the current line
+	/b		Add the priority (B) to the current line
+	/c		Add the priority (C) to the current line
+
+Date:
+	/d		Set current task's creation date to the current date
+	date<tab> (Insert mode) Insert the current date
+
+Mark as done:
+	/x		Mark current task as done
+	/X		Mark all tasks as done
+	/D		Move completed tasks to done.txt
+
+ ############
+ # tcomment #
+ ############
 
 Toggle comment							gc
 Comment selected						g>
 
-## other commands
+ #########
+ # Boxes #
+ #########
+	add boxes							,mc
+	remove boxes						,xc
+	
+ ##################
+ # other commands #
+ ##################
+
+Editing
+	To insert after a character	a
+	To insert before a character	i
+	To insert at the end of line	A
+	To insert at the beg of line	I
 
 File opening
 	Show help in vertical mode		:vert help e
@@ -91,5 +146,9 @@ Copy/Paste
 Search * Replace
 	Toggle highlight						F4
 	Select all occurance of word		*
+	----------
+	Replace foo to bar current line	:s/foo/bar/g
+	Replace foo to bar all line		:%s/foo/bar/g
+
 
 Toggle white space					,l
