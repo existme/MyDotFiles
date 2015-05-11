@@ -29,9 +29,8 @@ rm -rf $HOME/git/todo
 ln -s $HOME/Dropbox/Apps/todotxttdi/ $HOME/git/todo
 echo "todo.text configuration linked"
 
-#######
-# pal #
-#######
-rm -rf $HOME/.pal
-ln -s $CONFIGPATH/pal $HOME/.pal
-echo "pal configuration linked"
+
+
+######
+"save and close buffer"
+

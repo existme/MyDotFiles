@@ -152,3 +152,12 @@ Search * Replace
 
 
 Toggle white space					,l
+Open this file(help.md)				<c-h>					
+Close and save current buffer		<c-a>
+
+######################
+# Map an expression: #
+######################
+
+	:imap <expr> <F2> "\u611B"
+

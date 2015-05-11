@@ -2,7 +2,7 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 scriptencoding utf8
-
+let dotfilespath=fnamemodify(resolve($MYVIMRC),':h')
 " ================ General Config ====================
 
 set number								"Line numbers are good
@@ -197,3 +197,11 @@ set equalalways
 
 " =============  Split Options   ===============
 set splitright
+
+" =============  Final Mappings  ===============
+
+"open the help file
+nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
+
+"save and close buffer"
+nnoremap <c-a> <esc>:exec "w \| bd" <cr>

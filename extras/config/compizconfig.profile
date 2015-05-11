@@ -13,8 +13,8 @@ s0_thumb_highlight_gradient_shadow_color = #dfdfdfff
 s0_arrow_base_color = #e6e6e6d9
 s0_arrow_shadow_color = #dcdcdcd9
 s0_allow_wraparound = true
-s0_left_key = <Super>Prior
-s0_right_key = <Super>Next
+s0_left_key = <Control><Alt>Right
+s0_right_key = <Control><Alt>Left
 s0_up_key = Disabled
 s0_down_key = Disabled
 
@@ -119,12 +119,17 @@ s0_initiate_key = Disabled
 s0_mode = 2
 
 [grid]
-s0_put_center_key = <Control>KP_5
-s0_put_left_key = <Shift><Control>KP_Left
-s0_put_right_key = <Shift><Control>KP_Right
-s0_put_top_key = <Control>KP_8
-s0_put_bottom_key = <Control>KP_2
-s0_put_restore_key = <Shift><Control>KP_Begin
+s0_put_center_key = <Super>KP_5
+s0_put_left_key = <Super>KP_4
+s0_put_right_key = <Super>KP_6
+s0_put_top_key = <Super>KP_8
+s0_put_bottom_key = <Super>KP_2
+s0_put_topleft_key = <Super>KP_7
+s0_put_topright_key = <Super>KP_9
+s0_put_bottomleft_key = <Super>KP_1
+s0_put_bottomright_key = <Super>KP_3
+s0_put_maximize_key = Disabled
+s0_put_restore_key = Disabled
 s0_left_maximize = <Shift><Control>KP_End
 s0_right_maximize = <Shift><Control>KP_Next
 s0_top_left_corner_action = 7
@@ -136,15 +141,16 @@ s0_bottom_right_corner_action = 3
 s0_initiate_key = Disabled
 
 [staticswitcher]
-s0_speed = 2.000000
+s0_next_all_key = <Alt>grave
+s0_prev_all_key = <Shift><Alt>asciitilde
+s0_timestep = 1.000000
 s0_popup_delay = 0.000000
-s0_saturation = 10
+s0_mouse_select = false
+s0_brightness = 50
 s0_mipmap = true
-s0_row_align = 0
 s0_focus_on_switch = true
 s0_bring_to_front = true
 s0_highlight_mode = 1
-s0_highlight_rect_hidden = 2
 
 [addhelper]
 s0_toggle_key = <Shift><Super>p
@@ -154,10 +160,9 @@ s0_timestep = 2.200000
 s0_saturation = 50
 s0_brightness = 90
 s0_opacity = 100
-s0_focus_on_switch = true
-s0_zoom = 0.000000
+s0_zoom = 0.400000
+s0_icon = false
 s0_icon_only = true
-s0_minimized = false
 s0_auto_rotate = true
 
 [put]
@@ -184,12 +189,13 @@ s0_prev_key = <Shift><Alt>Tab
 s0_next_all_key = <Alt>U200D
 s0_prev_all_key = <Shift><Alt>division
 s0_speed = 1.000000
-s0_timestep = 5.200000
+s0_timestep = 1.000000
+s0_inactive_opacity = 99
 s0_ring_width = 50
 s0_ring_height = 40
 s0_thumb_width = 1024
-s0_thumb_height = 768
-s0_min_scale = 0.600000
+s0_thumb_height = 1024
+s0_min_scale = 0.850000
 s0_title_font_bold = true
 s0_title_font_size = 32
 s0_title_font_color = #d7d100ff
@@ -229,8 +235,8 @@ s0_outline_color = #e6e6e6ff
 [rotate]
 s0_edge_flip_window = false
 s0_raise_on_rotate = true
-s0_rotate_left_key = <Super>Prior
-s0_rotate_right_key = <Super>Next
+s0_rotate_left_key = <Control><Alt>Right
+s0_rotate_right_key = <Control><Alt>Left
 
 [widget]
 s0_toggle_key = F11
@@ -250,7 +256,7 @@ s0_current_viewport = false
 s0_font_background_color = #0000007f
 
 [core]
-s0_active_plugins = core;composite;opengl;decor;regex;text;compiztoolbox;wall;imgjpeg;showdesktop;extrawm;mousepoll;dbus;place;commands;workspacenames;gnomecompat;resize;kdecompat;grid;move;ring;imgsvg;imgpng;winrules;expo;scale;scaleaddon;
+s0_active_plugins = core;composite;opengl;decor;regex;text;compiztoolbox;wall;imgjpeg;showdesktop;extrawm;mousepoll;dbus;place;commands;workspacenames;gnomecompat;resize;kdecompat;grid;move;staticswitcher;imgsvg;imgpng;winrules;expo;scale;scaleaddon;
 s0_audible_bell = false
 s0_ignore_hints_when_maximized = false
 s0_hide_skip_taskbar_windows = false
@@ -260,12 +266,13 @@ s0_outputs = 1920x1080+0+0;
 s0_autoraise = false
 s0_autoraise_delay = 500
 s0_focus_prevention_level = 0
-s0_minimize_window_key = <Alt>Next
+s0_minimize_window_key = <Super>KP_Subtract
 s0_maximize_window_key = Disabled
+s0_unmaximize_or_minimize_window_key = Disabled
 s0_window_menu_key = Disabled
 s0_window_menu_button = <Alt>Button2
 s0_show_desktop_key = <Super>d
-s0_toggle_window_maximized_key = <Alt>Prior
+s0_toggle_window_maximized_key = <Super>KP_Add
 s0_hsize = 2
 
 [decor]
