@@ -29,8 +29,9 @@ rm -rf $HOME/git/todo
 ln -s $HOME/Dropbox/Apps/todotxttdi/ $HOME/git/todo
 echo "todo.text configuration linked"
 
-
-
-######
-"save and close buffer"
-
+#############
+# TeXstudio #
+#############
+rm $HOME/.config/texstudio/texstudio.ini
+ln -s $CONFIGPATH/texstudio/texstudio.ini $HOME/.config/texstudio/texstudio.ini
+echo "TeXstudio configuration linked"
