@@ -127,12 +127,12 @@ set showbreak=…
 
 " ========= Configuring Fonts for gvim =======
 if has("gui_running")
-	if has("gui_gtk2")
-	 set guifont=Consolas\ 14
+	if has("gui_gtk2")			# Linux
+	 set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 12
 	elseif has("gui_macvim")
-	 set guifont=Menlo\ Regular:h14
+	 set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 12
 	elseif has("gui_win32")
-	 set guifont=Consolas:h11:cANSI
+	 set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 12
 	endif
 endif
 
@@ -205,3 +205,6 @@ nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
 
 "save and close buffer"
 nnoremap <c-a> <esc>:exec "w \| bd" <cr>
+
+set novb
+set noeb
