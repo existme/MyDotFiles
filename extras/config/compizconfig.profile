@@ -139,6 +139,7 @@ s0_bottom_right_corner_action = 3
 
 [move]
 s0_initiate_key = Disabled
+s0_lazy_positioning = true
 
 [staticswitcher]
 s0_next_all_key = <Alt>grave
@@ -176,8 +177,15 @@ s0_put_bottomleft_key = <Control><Alt>KP_End
 s0_put_bottomright_key = <Control><Alt>KP_Next
 
 [ezoom]
+s0_zoom_in_button = <Super>Button4
+s0_zoom_out_button = <Super>Button5
+s0_zoom_box_button = <Super>Button1
 s0_zoom_box_outline_color = #2f2f4f9f
 s0_zoom_box_fill_color = #2f2f2f4f
+s0_center_mouse_key = <Super>F1
+s0_zoom_specific_1_key = <Super>1
+s0_zoom_specific_2_key = <Super>2
+s0_zoom_specific_3_key = <Super>3
 
 [animation]
 s0_unminimize_effects = animation:Glide 2;
@@ -256,7 +264,7 @@ s0_current_viewport = false
 s0_font_background_color = #0000007f
 
 [core]
-s0_active_plugins = core;composite;opengl;decor;regex;text;compiztoolbox;wall;imgjpeg;showdesktop;extrawm;mousepoll;dbus;place;commands;workspacenames;gnomecompat;resize;kdecompat;grid;move;staticswitcher;imgsvg;imgpng;winrules;expo;scale;scaleaddon;
+s0_active_plugins = core;composite;opengl;decor;regex;text;compiztoolbox;wall;imgjpeg;showdesktop;extrawm;mousepoll;dbus;place;commands;workspacenames;gnomecompat;resize;kdecompat;grid;move;imgsvg;imgpng;winrules;expo;scale;scaleaddon;ezoom;staticswitcher;
 s0_audible_bell = false
 s0_ignore_hints_when_maximized = false
 s0_hide_skip_taskbar_windows = false
@@ -280,4 +288,5 @@ s0_active_shadow_radius = 4.000000
 s0_active_shadow_color = #00000080
 s0_inactive_shadow_color = #000000ff
 s0_command = emerald
+s0_mipmap = true
 
