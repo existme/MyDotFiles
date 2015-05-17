@@ -20,4 +20,7 @@ for xhci in /sys/bus/pci/drivers/?hci_hcd ; do
     echo -n "$i" > unbind
     echo -n "$i" > bind
   done
+  sudo service g15daemon restart
+  pkill g15macro
+  g15macro&
 done
