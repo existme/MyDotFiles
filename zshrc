@@ -90,6 +90,7 @@ alias h="head -n 40 "
 alias t='todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
 alias h="history|grep"
 alias todo="vim ~/git/todo/todo.txt"
+alias jq="jq '.' "
 function rgrep(){ grep --color=always -R -i "$1" * | less;} 
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
 
