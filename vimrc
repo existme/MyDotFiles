@@ -127,7 +127,7 @@ set showbreak=…
 
 " ========= Configuring Fonts for gvim =======
 if has("gui_running")
-	if has("gui_gtk2")			# Linux
+	if has("gui_gtk2")			" Linux
 	 set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 12
 	elseif has("gui_macvim")
 	 set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 12
