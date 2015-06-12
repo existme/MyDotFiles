@@ -121,7 +121,7 @@ if [ -f $HOME/zshrc.local.sh ]; then
 	source $HOME/zshrc.local.sh
 fi
 
-plugins=(git history-substring-search)
+plugins=(git history-substring-search mvn)
 source $ZSH/oh-my-zsh.sh
 
 eval $( dircolors -b ~/.dircolors)
