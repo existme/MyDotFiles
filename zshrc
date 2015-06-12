@@ -71,7 +71,11 @@ export PATH=$HOME/Dropbox/Docs/todo.txt-cli:$PATH
 export HISTSIZE=5000
 export SAVEHIST=5000
 export HISTFILE=~/.history
-
+# Setup for google go
+export GOROOT=$HOME/go
+export GOPATH=$HOME/go/downloads
+export GOARCH=amd64
+export GOOS=linux
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -91,6 +95,8 @@ alias t='todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
 alias h="history|grep"
 alias todo="vim ~/git/todo/todo.txt"
 alias jq="jq '.' "
+alias myvim="cd ~/git/MyVimConfig"
+alias ex="chmod u+x "
 function rgrep(){ grep --color=always -R -i "$1" * | less;} 
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
 
@@ -121,7 +127,8 @@ if [ -f $HOME/zshrc.local.sh ]; then
 	source $HOME/zshrc.local.sh
 fi
 
-plugins=(git history-substring-search mvn)
+plugins=(git history-substring-search web-search debian)
+
 source $ZSH/oh-my-zsh.sh
 
 eval $( dircolors -b ~/.dircolors)
