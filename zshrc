@@ -165,8 +165,9 @@ fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
 echo "$(date '+%D %T' | toilet -f term -F border --gay)";
 pal
 
-autoload predict-on
-predict-on
+#autoload predict-on
+#predict-on
 CASE_SENSITIVE="false"
 zstyle ':completion:*' completer _complete
 bindkey '\t' expand-or-complete
+compinit
