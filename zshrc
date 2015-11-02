@@ -161,7 +161,11 @@ source $SCRIPTPATH/extras/vi-mode.sh
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 
 # Cosmetics
-fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
+if [ -f /usr/share/cowsay/cows/ ]; then 
+	fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
+else
+	fortune | cowsay -f $(ls /usr/local/share/cows/ | shuf -n1)
+fi
 echo "$(date '+%D %T' | toilet -f term -F border --gay)";
 pal
 
