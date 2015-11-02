@@ -7,6 +7,8 @@ ln -s ~/git/MyVimConfig/vim ~/.vim
 ln -s ~/git/MyVimConfig/gvimrc ~/.gvimrc
 ln -s ~/git/MyVimConfig/extras/dircolors ~/.dircolors
 
+git submodule update --init
+git submodule foreach git pull origin master
 
 #---------------
 # linux specific
