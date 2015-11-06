@@ -6,7 +6,7 @@ ln -s ~/git/MyVimConfig/vimrc ~/.vimrc
 ln -s ~/git/MyVimConfig/vim ~/.vim
 ln -s ~/git/MyVimConfig/gvimrc ~/.gvimrc
 ln -s ~/git/MyVimConfig/extras/dircolors ~/.dircolors
-
+ln -s ~/git/MyVimConfig/gitconfig ~/.gitconfig
 git submodule update --init
 git submodule foreach git pull origin master
 
