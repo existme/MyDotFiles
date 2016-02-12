@@ -179,6 +179,7 @@
 	whitespace=fix,-ident-with-non-tab,trailing-space,cr-at-eol
 	pager = less -JFRSXr
 	trustctime = false
+	eol = lf
 [advice]
 	statusHints = true
 [diff]

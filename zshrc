@@ -21,8 +21,9 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # only change term config if it is xterm
 autoload zkbd
-[[ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]] && zkbd
-source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+# [[ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]] && zkbd
+# source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+
 
 export OTERM=$TERM
 if [[ $TERM == 'linux' ]]; then
@@ -87,7 +88,7 @@ alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
 alias	memo="cd ~/Dropbox/Memo"
 alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
-alias cat="grc cat"
+#alias cat="grc cat"
 alias ds="du -hd 1"
 alias k="k -h"
 alias h="head -n 40 "
@@ -134,7 +135,7 @@ source $ZSH/oh-my-zsh.sh
 eval $( dircolors -b ~/.dircolors)
 # Load bundles
 source $SCRIPTPATH/zsh/bundle/k/k.sh
-source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
+#source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 
 # Enable vi-mode 
 source $SCRIPTPATH/extras/vi-mode.sh
