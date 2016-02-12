@@ -8,7 +8,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
 
 # Custom Paths
 export PATH=$M2:$PATH
-
+export ATOM_NODE_URL=http://gh-contractor-zcbenz.s3.amazonaws.com/atom-shell/dist
 #ZSH_THEME="amuse"
 
 alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"

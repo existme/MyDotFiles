@@ -91,7 +91,7 @@ alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
 #alias cat="grc cat"
 alias ds="du -hd 1"
 alias k="k -h"
-alias h="head -n 40 "
+alias hd="head -n 40 "
 alias t='todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
 alias h="history|grep"
 alias todo="vim ~/git/todo/todo.txt"
@@ -100,7 +100,14 @@ alias myvim="cd ~/git/MyVimConfig"
 alias ex="chmod u+x "
 function rgrep(){ grep --color=always -R -i "$1" * | less;} 
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
-
+# A macro to see the contents of a jar or war file
+function lessj(){ 
+	if [[ -z $1 ]]; then
+		jar tvf *.jar|pygmentize -f "terminal" -l sv -f terminal256 -s|less
+	else
+		jar tvf $1|pygmentize -f "terminal" -l sv -f terminal256 -s|less
+	fi
+}
 # easy archive extraction either use extract x.tar or extract x.tar "/your/destination
 function extract(){
 	if [[ -z ${2+x} ]]; then
