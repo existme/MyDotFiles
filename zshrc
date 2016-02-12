@@ -102,9 +102,9 @@ function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always}
 # A macro to see the contents of a jar or war file
 function lessj(){ 
 	if [[ -z $1 ]]; then
-		jar tvf *.jar|less
+		jar tvf *.jar|pygmentize -f "terminal" -l sv -f terminal256 -s|less
 	else
-		jar tvf $1|less
+		jar tvf $1|pygmentize -f "terminal" -l sv -f terminal256 -s|less
 	fi
 }
 # easy archive extraction either use extract x.tar or extract x.tar "/your/destination
