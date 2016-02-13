@@ -41,7 +41,10 @@ cd cowsay-3.03
 rm -rf cowsay-3.03/
 rm cowsay_3.03.orig.tar.gz
 
-#MAC specific
+# MAC specific
 # source highliter installation for mac
 sudo easy_install Pygments
 
+# Win specific
+#
+# Install pygmentize package using this link: https://groups.google.com/forum/#!topic/asciidoc/ZWwujiCAcH0
