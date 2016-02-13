@@ -161,3 +161,10 @@ Close and save current buffer		<c-a>
 
 	:imap <expr> <F2> "\u611B"
 
+#######################
+# CYGWIN HELP         #
+#######################
+
+for using zsh shell in other console applications like conemu or console2
+use the following command as 
+C:\cygwin64\bin\mintty.exe -i /Cygwin-Terminal.ico /bin/zsh --login
