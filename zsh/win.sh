@@ -24,3 +24,4 @@ export MAVEN_OPTS="-Xms256m -Xmx512m"
 export M2HOME=/cygdrive/c/unix/apache-maven-3.3.9
 alias sublime="/cygdrive/c/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
 alias start="cygstart"
+alias cyg-get="/cygdrive/c/cygwin64/setup-x86_64.exe -q -P"
