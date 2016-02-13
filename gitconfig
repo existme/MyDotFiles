@@ -201,7 +201,7 @@
 [github]
 	user = existme
 [credential]
-	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
+	helper = cache
 [user]
 	name = Reza Shams Amiri
 	email = rezasa@axis.com
