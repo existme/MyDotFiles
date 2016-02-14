@@ -201,7 +201,7 @@
 [github]
 	user = existme
 [credential]
-	helper = cache
+	helper = cache --timeout=300000
 [user]
 	name = Reza Shams Amiri
 	email = rezasa@axis.com
