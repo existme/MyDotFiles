@@ -15,6 +15,7 @@ alias sublime="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias sub="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias gitall="git config --list | grep alias"
 alias gitk="/Applications/SmartGit.app/Contents/Resources/git/bin/gitk &"
+export IDEAPATH="/Applications/IntelliJ\ IDEA\ 15.app/Contents/MacOS/idea"
 bindkey -e 
 bindkey '\e\e[C' forward-word 
 bindkey '\e\e[D' backward-word
