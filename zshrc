@@ -99,6 +99,7 @@ alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
 alias jq="jq '.' "
 alias myvim="cd ~/git/MyVimConfig"
 alias ex="chmod u+x "
+alias idea='. $SCRIPTPATH/extras/scripts/idea'
 function rgrep(){ grep --color=always -R -i "$1" * | less;} 
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
 # A macro to see the contents of a jar or war file
