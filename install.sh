@@ -37,7 +37,6 @@ sudo apt-get install pal
 wget http://ftp.acc.umu.se/mirror/cdimage/snapshot/Debian/pool/main/c/cowsay/cowsay_3.03.orig.tar.gz
 tar xf cowsay_3.03.orig.tar.gz
 cd cowsay-3.03
-./install.sh
 rm -rf cowsay-3.03/
 rm cowsay_3.03.orig.tar.gz
 
