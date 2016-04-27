@@ -1,5 +1,8 @@
 #!/bin/sh
 # Creating symbolic links
+rm ~/.zshrc
+ln -s ~/git/MyVimConfig/zshrc ~/.zshrc
+
 rm ~/.vimrc
 ln -s ~/git/MyVimConfig/vimrc ~/.vimrc
 
