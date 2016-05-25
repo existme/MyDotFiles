@@ -158,7 +158,8 @@ if [ -f /usr/share/cowsay/cows/ ]; then
 else
 	fortune | cowsay -f $(ls /usr/local/share/cows/ | shuf -n1)
 fi
-echo "$(date '+%D %T' | toilet -f term -F border --gay)";
+#echo "$(date '+%D %T' | toilet -f term -F border --gay)";
+echo "$(date '+%D %T')";
 pal
 
 #autoload predict-on

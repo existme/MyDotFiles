@@ -50,3 +50,7 @@ sudo easy_install Pygments
 # Win specific
 #
 # Install pygmentize package using this link: https://groups.google.com/forum/#!topic/asciidoc/ZWwujiCAcH0
+
+apt-cyg install cowsay
+apt-cyg install pal
+
