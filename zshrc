@@ -155,8 +155,10 @@ source $SCRIPTPATH/zsh/keyinfo.sh
 # Cosmetics
 if [ -f /usr/share/cowsay/cows/ ]; then 
 	fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
-else
+elif [ -f /usr/local/share/cows/ ]; then 
 	fortune | cowsay -f $(ls /usr/local/share/cows/ | shuf -n1)
+else
+	fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
 fi
 #echo "$(date '+%D %T' | toilet -f term -F border --gay)";
 echo "$(date '+%D %T')";

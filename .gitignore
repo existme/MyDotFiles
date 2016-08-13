@@ -3,3 +3,5 @@ vim/backups/
 vim/.netrwhist
 .idea
 cow*
+._.DS_Store
+.DS_Store
