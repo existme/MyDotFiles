@@ -70,8 +70,8 @@ HIST_STAMPS="yyyy-mm-dd" # also: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$HOME/Dropbox/Docs/todo.txt-cli:$PATH
-export HISTSIZE=5000
-export SAVEHIST=5000
+export HISTSIZE=20000
+export SAVEHIST=20000
 export HISTFILE=~/.history
 # Setup for google go
 export GOROOT=$HOME/go
@@ -137,6 +137,10 @@ if [ -f $HOME/zshrc.local.sh ]; then
 	source $HOME/zshrc.local.sh
 fi
 
+if [ -f $HOME/zshrc.local.env ]; then
+	source $HOME/zshrc.local.env
+fi
+
 plugins=(git history-substring-search web-search debian)
 
 source $ZSH/oh-my-zsh.sh
@@ -192,3 +196,6 @@ bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+export NVM_DIR="/Users/rezasa/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
