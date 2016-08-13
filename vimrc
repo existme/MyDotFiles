@@ -113,7 +113,7 @@ let g:airline_theme='dark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_extensions = ['branch','tabline']
+let g:airline_extensions = ['tabline']
 
 set ignorecase						"set search to be case insensitive
 set smartcase						"unless you typed uppercase letters in your query

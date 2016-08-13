@@ -4,27 +4,15 @@
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-[submodule "vim/bundle/vim-markdown"]
-	path = vim/bundle/vim-markdown
-	url = https://github.com/gabrielelana/vim-markdown.git
 [submodule "vim/bundle/tcomment_vim"]
 	path = vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
-[submodule "vim/bundle/tabular"]
-	path = vim/bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "vim/bundle/tvim-markdown"]
-	path = vim/bundle/tvim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
@@ -34,9 +22,6 @@
 [submodule "extras/fonts"]
 	path = extras/fonts
 	url = https://github.com/powerline/fonts.git
-[submodule "vim/bundle/vim-fugitive"]
-	path = vim/bundle/vim-fugitive
-	url = https://github.com/tpope/vim-fugitive.git
 [submodule "vim/bundle/bbye"]
 	path = vim/bundle/bbye
 	url = https://github.com/moll/vim-bbye.git
@@ -52,18 +37,3 @@
 [submodule "zsh/bundle/opp.zsh"]
 	path = zsh/bundle/opp.zsh
 	url = https://github.com/hchbaw/opp.zsh
-[submodule "promptline.vim"]
-	path = promptline.vim
-	url = https://github.com/edkolev/promptline.vim
-[submodule "vim/bundle/promptline"]
-	path = vim/bundle/promptline
-	url = https://github.com/existme/promptline.vim
-[submodule "vim/bundle/vim-taglist-plus"]
-	path = vim/bundle/vim-taglist-plus
-	url = https://github.com/yazug/vim-taglist-plus
-[submodule "vim/bundle/todo.txt-vim"]
-	path = vim/bundle/todo.txt-vim
-	url = git://github.com/freitass/todo.txt-vim.git
-[submodule "vim/bundle/treesome"]
-	path = vim/bundle/treesome
-	url = https://github.com/sjl/threesome.vim.git

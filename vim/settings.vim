@@ -118,3 +118,5 @@
 	vmap ,mc !boxes -d shell -a hcvc<CR>
 	nmap ,xc !!boxes -d shell -a hcvc -r<CR>
 	vmap ,xc !boxes -d shell -a hcvc -r<CR>
+
+	nmap qq :q<CR>
