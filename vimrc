@@ -104,7 +104,8 @@ else
 	 elseif s:uname == "Linux\n"
 		so ~/.vim/linux.vim
 	 else
-		colorscheme solarized
+		"colorscheme solarized
+		colorscheme desert256v2
     endif
   endif
 endif
