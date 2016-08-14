@@ -1,0 +1,713 @@
+# You can edit this file by hand, but it's recommended not to do that.
+
+# Bookmarks:
+'H
+	/home/pi/
+	../
+1471115674
+'b
+	/home/pi/bin/
+	../
+1471115674
+'h
+	/home/pi/
+	../
+1471115674
+'m
+	/media/pi/MyBook
+	transfer/
+1471121569
+'p
+	/home/pi
+	../
+1471122509
+'t
+	/media/pi/MyBook/Torrent
+	../
+1471121576
+'w
+	/home/pi/git/bd/wiki/en
+	linux/
+1471124044
+'z
+	/home/pi/.vifm
+	../
+1471115674
+
+# TUI:
+al
+q0
+v2
+ov
+m-1
+l2
+r2
+
+# Left window history (oldest to newest):
+d/
+	home/
+4
+d/home
+	pi/
+2
+d/home/pi
+	../
+0
+d/home
+	pi/
+2
+d/home/pi
+	WD/
+3
+d/media/pi/MyBook/Torrent
+	../
+0
+d/media/pi/MyBook
+	transfer/
+20
+d/media/pi/MyBook/Torrent
+	../
+0
+d/home/pi
+	WD/
+3
+d/home/pi/WD
+	mobile/
+3
+d/home/pi
+	WD/
+3
+d/home
+	torrent/
+3
+d/
+	etc/
+3
+d/home/pi
+	WD/
+3
+d/home/pi/WD
+	Desktop/
+1
+d/home/pi/WD/Desktop
+	../
+0
+d/home/pi/WD
+	../
+0
+d/home/pi
+	.vifm/
+11
+d/home/pi/.vifm
+	colors/
+2
+d/home/pi/.vifm/colors
+	../
+0
+d/home/pi/.vifm
+	colors/
+2
+d/home/pi/.vifm/colors
+	../
+0
+d/home/pi/.vifm
+	colors/
+2
+d/home/pi/.vifm/colors
+	../
+0
+d/home/pi/.vifm
+	colors/
+2
+d/home/pi/.vifm/colors
+	../
+0
+d/home/pi/.vifm
+	../
+0
+d/home/pi
+	.vifm/
+11
+d/home/pi/.vifm
+	../
+0
+d/home/pi
+	../
+0
+d/home
+	pi/
+2
+d/home/pi
+	.vifm/
+11
+d/home/pi/.vifm
+	../
+0
+d/home/pi
+	git/
+18
+d/home/pi/git
+	MyVimConfig/
+1
+d/home/pi/git/MyVimConfig
+	vim/
+6
+d/home/pi/git/MyVimConfig/vim
+	bundle/
+3
+d/home/pi/git/MyVimConfig/vim/bundle
+	../
+0
+d/home/pi/git/MyVimConfig/vim
+	bundle/
+3
+d/home/pi/git/MyVimConfig/vim/bundle
+	tabular/
+5
+d/home/pi/git/MyVimConfig/vim/bundle/tabular
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	treesome/
+7
+d/home/pi/git/MyVimConfig/vim/bundle/treesome
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	vim-taglist-plus/
+13
+d/home/pi/git/MyVimConfig/vim/bundle/vim-taglist-plus
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	vim-unimpaired/
+13
+d/home/pi/git/MyVimConfig/vim/bundle/vim-unimpaired
+	plugin/
+2
+d/home/pi/git/MyVimConfig/vim/bundle/vim-unimpaired/plugin
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle/vim-unimpaired
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	vim-fugitive/
+11
+d/home/pi/git/MyVimConfig/vim/bundle/vim-fugitive
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	nerdtree/
+3
+d/home/pi/git/MyVimConfig/vim/bundle/nerdtree
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	bbye/
+1
+d/home/pi/git/MyVimConfig/vim/bundle/bbye
+	plugin/
+1
+d/home/pi/git/MyVimConfig/vim/bundle/bbye/plugin
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle/bbye
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	../
+0
+d/home/pi/git/MyVimConfig/vim
+	../
+0
+d/home/pi/git/MyVimConfig
+	vim-taglist-plus/
+8
+d/home/pi/git/MyVimConfig/vim-taglist-plus
+	../
+0
+d/home/pi/git/MyVimConfig
+	tabular/
+6
+d/home/pi/git/MyVimConfig/tabular
+	../
+0
+d/home/pi/git/MyVimConfig
+	vim/
+6
+d/home/pi/git/MyVimConfig/vim
+	../
+0
+d/home/pi/git/MyVimConfig
+	configs/
+2
+d/home/pi/git/MyVimConfig/configs
+	../
+0
+d/home/pi/git/MyVimConfig
+	.git/
+1
+d/home/pi/git/MyVimConfig/.git
+	../
+0
+d/home/pi/git/MyVimConfig
+	help/
+5
+d/home/pi/git/MyVimConfig/help
+	../
+0
+d/home/pi/git/MyVimConfig
+	vim/
+6
+d/home/pi/git/MyVimConfig/vim
+	../
+0
+d/home/pi/git/MyVimConfig
+	vim/
+6
+d/home/pi/git/MyVimConfig/vim
+	../
+0
+d/home/pi/git/MyVimConfig
+	vim/
+6
+d/home/pi/git/MyVimConfig/vim
+	bundle/
+3
+d/home/pi/git/MyVimConfig/vim/bundle
+	colorschemes/
+2
+d/home/pi/git/MyVimConfig/vim/bundle/colorschemes
+	colors/
+1
+d/home/pi/git/MyVimConfig/vim/bundle/colorschemes/colors
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle/colorschemes
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	promptline/
+3
+d/home/pi/git/MyVimConfig/vim/bundle/promptline
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	promptline/
+3
+d/home/pi/git/MyVimConfig/vim/bundle/promptline
+	autoload/
+1
+d/home/pi/git/MyVimConfig/vim/bundle/promptline/autoload
+	promptline/
+1
+d/home/pi/git/MyVimConfig/vim/bundle/promptline/autoload/promptline
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle/promptline/autoload
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle/promptline
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	promptline/
+3
+d/home/pi/git/MyVimConfig/vim/bundle/promptline
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	nerdtree/
+3
+d/home/pi/git/MyVimConfig/vim/bundle/nerdtree
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	tcomment_vim/
+5
+d/home/pi/git/MyVimConfig/vim/bundle/tcomment_vim
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	treesome/
+7
+d/home/pi/git/MyVimConfig/vim/bundle/treesome
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	tvim-markdown/
+7
+d/home/pi/git/MyVimConfig/vim/bundle/tvim-markdown
+	../
+0
+d/home/pi/git/MyVimConfig/vim/bundle
+	../
+0
+d
+
+# Right window history (oldest to newest):
+D/home/pi
+	../
+0
+D/home
+	pi/
+2
+D/home/pi
+	git/
+4
+D/home/pi/git
+	../
+0
+D/home/pi
+	rbin/
+6
+D/home/pi/rbin
+	../
+0
+D/home/pi
+	Downloads/
+2
+D/home/pi/Downloads
+	../
+0
+D/home/pi
+	WD/
+3
+D/home/pi/WD
+	android/
+2
+D/home/pi/WD/android
+	../
+0
+D/home/pi/WD
+	../
+0
+D/home/pi
+	../
+0
+D/home
+	../
+0
+D/
+	media/
+7
+D/media
+	../
+0
+D/
+	media/
+7
+D/media
+	pi/
+1
+D/media/pi
+	../
+0
+D/media
+	../
+0
+D/
+	media/
+7
+D/media
+	pi/
+1
+D/media/pi
+	MyBook/
+1
+D/media/pi/MyBook
+	Torrent/
+18
+D/media/pi/MyBook/Torrent
+	Flutter.2014.HDRip.XViD-ETRG/
+1
+D/media/pi/MyBook/Torrent/Flutter.2014.HDRip.XViD-ETRG
+	../
+0
+D/media/pi/MyBook/Torrent
+	../
+0
+D/media/pi/MyBook
+	Archive-Cinematics/
+3
+D/media/pi/MyBook/Archive-Cinematics
+	../
+0
+D/media/pi/MyBook
+	../
+0
+D/media/pi/MyBook/Torrent
+	../
+0
+D/home/pi
+	WD/
+3
+D/home/pi/WD
+	../
+0
+D/home/pi
+	WD/
+3
+D/home/pi/WD
+	Desktop/
+1
+D/home/pi/WD/Desktop
+	Camera/
+1
+D/home/pi/WD/Desktop/Camera
+	../
+0
+D/home/pi/WD/Desktop
+	Images/
+3
+D/home/pi/WD/Desktop/Images
+	../
+0
+D/home/pi/WD/Desktop
+	Memories/
+5
+D/home/pi/WD/Desktop/Memories
+	../
+0
+D/home/pi/WD/Desktop
+	Memories/
+5
+D/home/pi
+	.vnc/
+13
+D/home/pi/.vnc
+	../
+0
+D/home/pi
+	.dbus/
+3
+D/home/pi/.dbus
+	../
+0
+D/home/pi
+	.config/
+2
+D/home/pi/.config
+	autostart/
+1
+D/home/pi/.config/autostart
+	../
+0
+D/home/pi/.config
+	../
+0
+D/home/pi
+	../
+0
+D/home
+	pi/
+2
+D/home/pi
+	../
+0
+D/home
+	../
+0
+D/
+	home/
+4
+D/home/pi
+	git/
+4
+D/home/pi/git
+	bd/
+2
+D/home/pi/git/bd
+	wiki/
+4
+D/home/pi/git/bd/wiki
+	en/
+2
+D/home/pi/git/bd/wiki/en
+	linux/
+3
+D/home/pi/git/bd/wiki/en/linux
+	../
+0
+D/home/pi/git/bd/wiki/en
+	../
+0
+D/home/pi/git/bd/wiki
+	en/
+2
+D/home/pi/git/bd/wiki/en
+	Example_Subcategory/
+2
+D/home/pi/git/bd/wiki/en/Example_Subcategory
+	../
+0
+D/home/pi/git/bd/wiki/en
+	Example_Subcategory/
+2
+D/home/pi/git/bd/wiki/en/Example_Subcategory
+	../
+0
+D/home/pi/git/bd/wiki/en
+	Example_Subcategory/
+2
+D/home/pi
+	WD/
+3
+D/home/pi/WD
+	Desktop/
+1
+D/home/pi/WD/Desktop
+	Notes/
+6
+D/home/pi/WD/Desktop/Notes
+	../
+0
+D/home/pi/WD/Desktop
+	../
+0
+D/home/pi/WD
+	../
+0
+D/home/pi
+	git/
+4
+D/home/pi/git
+	MyVimConfig/
+1
+D/home/pi/git/MyVimConfig
+	vim/
+6
+D/home/pi/git/MyVimConfig/vim
+	../
+0
+D/home/pi/git/MyVimConfig
+	vim/
+7
+D/home/pi/git/MyVimConfig/vim
+	autoload/
+1
+D/home/pi/git/MyVimConfig/vim/autoload
+	../
+0
+D/home/pi/git/MyVimConfig/vim
+	../
+0
+D/home/pi/git/MyVimConfig
+	vim/
+7
+D/home/pi/git/MyVimConfig/vim
+	../
+0
+D/home/pi/git/MyVimConfig
+	../
+0
+D/home/pi/git
+	bundles/
+3
+D/home/pi/git/bundles
+	nerdtree/
+1
+D/home/pi/git/bundles/nerdtree
+	../
+0
+D/home/pi/git/bundles
+	tvim-markdown/
+6
+D/home/pi/git/bundles/tvim-markdown
+	../
+0
+D/home/pi/git/bundles
+	../
+0
+D
+
+# Command line history (oldest to newest):
+:vs
+:o
+:help horizontal
+:cd \
+:!cd \
+:sv
+:hs
+:sh
+:sp
+:m
+:marks
+:! wget "https://github.com/vifm/vifm-colors/raw/master/zenburn.vifm"
+:colorscheme zenburn.vifm
+:! wget "https://github.com/vifm/vifm-colors/raw/master/solarized-dark.vifm"
+:colorscheme solarized-dark.vifm
+:colorscheme darkdesert.vifm
+:q
+:mkdir bundles
+
+# Search history (oldest to newest):
+/init
+
+# Prompt history (oldest to newest):
+p/mnt/mycloud/DataVolume/shares/WD/
+p.vim
+
+# Local filter history (oldest to newest):
+
+# Registers:
+""/home/pi/.vifm/Trash/001_nerdtree
+""/home/pi/.vifm/Trash/001_promptline
+""/home/pi/.vifm/Trash/000_tabular
+""/home/pi/.vifm/Trash/001_todo.txt-vim
+""/home/pi/.vifm/Trash/001_treesome
+""/home/pi/.vifm/Trash/001_tvim-markdown
+""/home/pi/.vifm/Trash/001_vim-fugitive
+""/home/pi/.vifm/Trash/002_vim-taglist-plus
+
+# Directory stack (oldest to newest):
+
+# Trash content:
+t/home/pi/.vifm/Trash/000_.vim
+	/home/pi/.vim
+t/home/pi/.vifm/Trash/000_.DS_Store
+	/home/pi/.DS_Store
+t/home/pi/.vifm/Trash/000_vim-taglist-plus
+	/home/pi/git/MyVimConfig/vim-taglist-plus
+t/home/pi/.vifm/Trash/000_nerdtree
+	/home/pi/git/MyVimConfig/vim/bundle/nerdtree
+t/home/pi/.vifm/Trash/000_treesome
+	/home/pi/git/MyVimConfig/vim/bundle/treesome
+t/home/pi/.vifm/Trash/000_tvim-markdown
+	/home/pi/git/MyVimConfig/vim/bundle/tvim-markdown
+t/home/pi/.vifm/Trash/000_vim-fugitive
+	/home/pi/git/MyVimConfig/vim/bundle/vim-fugitive
+t/home/pi/.vifm/Trash/001_vim-taglist-plus
+	/home/pi/git/MyVimConfig/vim/bundle/vim-taglist-plus
+t/home/pi/.vifm/Trash/000_todo.txt-vim
+	/home/pi/git/MyVimConfig/vim/bundle/todo.txt-vim
+t/home/pi/.vifm/Trash/000_promptline
+	/home/pi/git/MyVimConfig/vim/bundle/promptline
+t/home/pi/.vifm/Trash/001_nerdtree
+	/home/pi/git/MyVimConfig/vim/bundle/nerdtree
+t/home/pi/.vifm/Trash/001_promptline
+	/home/pi/git/MyVimConfig/vim/bundle/promptline
+t/home/pi/.vifm/Trash/000_tabular
+	/home/pi/git/MyVimConfig/vim/bundle/tabular
+t/home/pi/.vifm/Trash/001_todo.txt-vim
+	/home/pi/git/MyVimConfig/vim/bundle/todo.txt-vim
+t/home/pi/.vifm/Trash/001_treesome
+	/home/pi/git/MyVimConfig/vim/bundle/treesome
+t/home/pi/.vifm/Trash/001_tvim-markdown
+	/home/pi/git/MyVimConfig/vim/bundle/tvim-markdown
+t/home/pi/.vifm/Trash/001_vim-fugitive
+	/home/pi/git/MyVimConfig/vim/bundle/vim-fugitive
+t/home/pi/.vifm/Trash/002_vim-taglist-plus
+	/home/pi/git/MyVimConfig/vim/bundle/vim-taglist-plus
+
+# State:
+f
+i1
+[.0
+[F
+F
+I1
+].0
+]F
+s0
