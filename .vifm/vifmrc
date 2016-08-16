@@ -423,13 +423,21 @@ nnoremap <f8> :delete<cr>
 " nnoremap <left> <nop>
 nmap q ZZ
 nmap ; :
+nmap t t<down>
 nmap <space> t
 
-"nmap yy :!cp %f %D<cr>
-"nmap dd :!mv %f %D<cr>
+nmap yy :!cp %f %D<cr>
+nmap dd :!mv %f %D<cr>
 nmap yp :clone <cr>
 
 " trash-cli to handle trash
-nmap <delete> :!trash-put %f<cr>
+"nmap <delete> :!trash-put %f<cr>
 "nmap u :!restore-trash <cr>
 "nmap DD :!trash-empty <cr>
+
+" Sync panes together
+nnoremap <left> :sync<cr>
+nnoremap <right> :sync<cr>
+nnoremap <insert> t<down>
+
+
