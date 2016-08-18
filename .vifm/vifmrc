@@ -437,7 +437,25 @@ nmap yp :clone <cr>
 
 " Sync panes together
 nnoremap <left> :sync<cr>
-nnoremap <right> :sync<cr>
+
+" Map insert to select file and then go to next file
 nnoremap <insert> t<down>
 
+"Disable delete all because it turns out to be so dangerous
+nmap da :echo "disabled"<cr>
 
+"Map control+f to preview mode (for normal and quick view mode)
+nnoremap <c-f> <c-w>h<c-w>=30<c-w>-<esc><esc>:view!<cr><s-tab>
+qmap <c-f> <s-tab>
+
+"Use control+g to go back to normal equal two pane mode
+nnoremap <c-g> <c-w>=<c-w>z
+qnoremap <c-g> <s-tab><c-w>=<c-w>z
+nnoremap <c-e> <esc><s-tab><esc><tab>
+
+"Map right arrow to shift tab to enable jumping easier to preview pane
+qnoremap <right> <s-tab>
+nnoremap <right> <s-tab>
+
+"Turn off soft wrap
+set wrap!
