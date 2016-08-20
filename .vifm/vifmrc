@@ -445,7 +445,7 @@ nnoremap <insert> t<down>
 nmap da :echo "disabled"<cr>
 
 "Map control+f to preview mode (for normal and quick view mode)
-nnoremap <c-f> <c-w>h<c-w>=30<c-w>-<esc><esc>:view!<cr><s-tab>
+nnoremap <c-f> <c-w>h<c-w>30|:view!<cr><s-tab>
 qmap <c-f> <s-tab>
 
 "Use control+g to go back to normal equal two pane mode
