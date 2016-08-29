@@ -157,16 +157,16 @@ source $SCRIPTPATH/zsh/keyinfo.sh
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 
 # Cosmetics
-if [ -f /usr/share/cowsay/cows/ ]; then 
-	fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
-elif [ -f /usr/local/share/cows/ ]; then 
-	fortune | cowsay -f $(ls /usr/local/share/cows/ | shuf -n1)
-else
-	fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
-fi
+# if [ -f /usr/share/cowsay/cows/ ]; then 
+# 	fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
+# elif [ -f /usr/local/share/cows/ ]; then 
+# 	fortune | cowsay -f $(ls /usr/local/share/cows/ | shuf -n1)
+# else
+# 	fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
+# fi
 #echo "$(date '+%D %T' | toilet -f term -F border --gay)";
 echo "$(date '+%D %T')";
-pal
+#pal
 
 #autoload predict-on
 #predict-on

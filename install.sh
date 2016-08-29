@@ -27,6 +27,8 @@ ln -s ~/git/MyVimConfig/.vifm ~/.vifm
 git submodule update --init
 git submodule foreach git pull origin master
 
+ln -s ~/git/MyVimConfig/tmux.conf ~/.tmux.con
+ln -s ~/git/MyVimConfig/tmux ~/.tmux
 #---------------
 # linux specific
 #---------------

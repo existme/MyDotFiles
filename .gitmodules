@@ -37,3 +37,12 @@
 [submodule "zsh/bundle/opp.zsh"]
 	path = zsh/bundle/opp.zsh
 	url = https://github.com/hchbaw/opp.zsh
+[submodule "tmux/plugins/tmux-themepack"]
+	path = tmux/plugins/tmux-themepack
+	url = https://github.com/jimeh/tmux-themepack.git
+[submodule "tmux/plugins/tmux-yank"]
+	path = tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
+[submodule "tmux/plugins/tmux-sensible"]
+	path = tmux/plugins/tmux-sensible
+	url = https://github.com/tmux-plugins/tmux-sensible.git
