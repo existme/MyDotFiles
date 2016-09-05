@@ -22,11 +22,11 @@ set vicmd=vim
 " I recommend not changing this until you are familiar with vifm.
 " This probably shouldn't be an option.
 
-set trash
+"set trash
 
 " This is how many directories to store in the directory history.
 
-set history=100
+set history=1000
 
 " Automatically resolve symbolic links on l or Enter.
 
@@ -404,7 +404,7 @@ nnoremap <f4> :edit<cr>
 nnoremap <f5> :copy<cr>
 nnoremap <f6> :move<cr>
 nnoremap <f7> :mkdir<space>
-nnoremap <f8> :delete<cr>
+nnoremap <f8> :delete! &<cr>
 
 " ------------------------------------------------------------------------------
 
@@ -427,7 +427,7 @@ nmap t t<down>
 nmap <space> t
 
 nmap yy :!cp %f %D<cr>
-nmap dd :!mv %f %D<cr>
+nmap dd :!rm -rfI %f<cr>
 nmap yp :clone <cr>
 
 " trash-cli to handle trash
@@ -459,3 +459,6 @@ nnoremap <right> <s-tab>
 
 "Turn off soft wrap
 set wrap!
+
+"Set '' to show mark list window
+nnoremap '' :marks<cr>

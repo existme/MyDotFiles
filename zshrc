@@ -144,7 +144,7 @@ fi
 plugins=(git history-substring-search web-search debian)
 
 source $ZSH/oh-my-zsh.sh
-
+source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
 # Load bundles
 source $SCRIPTPATH/zsh/bundle/k/k.sh
