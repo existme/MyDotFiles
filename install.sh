@@ -24,6 +24,9 @@ ln -s ~/git/MyVimConfig/zsh/lessfilter ~/.lessfilter
 rm ~/.vifm
 ln -s ~/git/MyVimConfig/.vifm ~/.vifm
 
+rm ~/LESS_TERMCAP
+ln -s ~/git/MyVimConfig/zsh/LESS_TERMCAP ~/
+
 git submodule update --init
 git submodule foreach git pull origin master
 
