@@ -1,48 +1,64 @@
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
+	ignore = dirty
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized
+	ignore = dirty
 [submodule "vim/bundle/tcomment_vim"]
 	path = vim/bundle/tcomment_vim
 	url = https://github.com/tomtom/tcomment_vim.git
+	ignore = dirty
 [submodule "vim/bundle/vim-unimpaired"]
 	path = vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
+	ignore = dirty
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
+	ignore = dirty
 [submodule "vim/bundle/colorschemes"]
 	path = vim/bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+	ignore = dirty
 [submodule "bundle/colorschemes"]
 	path = bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+	ignore = dirty
 [submodule "extras/fonts"]
 	path = extras/fonts
 	url = https://github.com/powerline/fonts.git
+	ignore = dirty
 [submodule "vim/bundle/bbye"]
 	path = vim/bundle/bbye
 	url = https://github.com/moll/vim-bbye.git
+	ignore = dirty
 [submodule "zsh/bundle/k"]
 	path = zsh/bundle/k
 	url = https://github.com/supercrabtree/k.git
+	ignore = dirty
 [submodule "zsh/bundle/lesaint-mvn"]
 	path = zsh/bundle/lesaint-mvn
 	url = https://github.com/lesaint/lesaint-mvn.git
+	ignore = dirty
 [submodule "zsh/bundle/LS_COLORS"]
 	path = zsh/bundle/LS_COLORS
 	url = https://github.com/trapd00r/LS_COLORS
+	ignore = dirty
 [submodule "zsh/bundle/opp.zsh"]
 	path = zsh/bundle/opp.zsh
 	url = https://github.com/hchbaw/opp.zsh
+	ignore = dirty
 [submodule "tmux/plugins/tmux-themepack"]
 	path = tmux/plugins/tmux-themepack
 	url = https://github.com/jimeh/tmux-themepack.git
+	ignore = dirty
 [submodule "tmux/plugins/tmux-yank"]
 	path = tmux/plugins/tmux-yank
 	url = https://github.com/tmux-plugins/tmux-yank.git
+	ignore = dirty
 [submodule "tmux/plugins/tmux-sensible"]
 	path = tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible.git
+	ignore = dirty

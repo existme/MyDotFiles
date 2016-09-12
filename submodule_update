@@ -1,0 +1,6 @@
+git submodule sync
+git submodule update --init
+git submodule foreach --recursive git reset --hard
+git submodule foreach --recursive git checkout .
+git submodule foreach --recursive git pull
+
