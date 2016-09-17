@@ -29,11 +29,15 @@ ln -s $DOTPATH/.vifm ~/.vifm
 rm ~/LESS_TERMCAP > /dev/null
 ln -s $DOTPATH/zsh/LESS_TERMCAP ~/
 
+rm ~/.tmux.con > /dev/null
+ln -s $DOTPATH/tmux.conf ~/.tmux.con
+
+rm ~/.tmux > /dev/null
+ln -s $DOTPATH/tmux ~/.tmux
+
 git submodule update --init --recursive
 git submodule foreach git pull origin master
 
-ln -s $DOTPATH/tmux.conf ~/.tmux.con
-ln -s $DOTPATH/tmux ~/.tmux
 #---------------
 # linux specific
 #---------------
