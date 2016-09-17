@@ -1,38 +1,39 @@
-$dotpath=~/git/MyDotFiles
 #!/bin/sh
+DOTPATH=~/git/MyDotFiles
+
 # Creating symbolic links
-[ -e ~/.zshrc] && rm ~/.zshrc
-ln -s $dotpath/zshrc ~/.zshrc
+rm ~/.zshrc > /dev/null
+ln -s $DOTPATH/zshrc ~/.zshrc
 
-[ -e ~/.vimrc] && rm ~/.vimrc
-ln -s $dotpath/vimrc ~/.vimrc
+rm ~/.vimrc > /dev/null
+ln -s $DOTPATH/vimrc ~/.vimrc
 
-[ -e ~/.vim] && rm -r ~/.vim
-ln -s $dotpath/vim ~/.vim
+rm -r ~/.vim > /dev/null
+ln -s $DOTPATH/vim ~/.vim
 
-[ -e ~/.gvimrc] && rm ~/.gvimrc
-ln -s $dotpath/gvimrc ~/.gvimrc
+rm ~/.gvimrc > /dev/null
+ln -s $DOTPATH/gvimrc ~/.gvimrc
 
-[ -e ~/.dircolors] && rm ~/.dircolors
-ln -s $dotpath/extras/dircolors ~/.dircolors
+rm ~/.dircolors > /dev/null
+ln -s $DOTPATH/extras/dircolors ~/.dircolors
 
-[ -e ~/.gitconfig] && rm ~/.gitconfig
-ln -s $dotpath/gitconfig ~/.gitconfig
+rm ~/.gitconfig > /dev/null
+ln -s $DOTPATH/gitconfig ~/.gitconfig
 
-[ -e ~/.lessfilter] && rm ~/.lessfilter
-ln -s $dotpath/zsh/lessfilter ~/.lessfilter
+rm ~/.lessfilter > /dev/null
+ln -s $DOTPATH/zsh/lessfilter ~/.lessfilter
 
-[ -e ~/.vifm] && rm ~/.vifm
-ln -s $dotpath/.vifm ~/.vifm
+rm ~/.vifm > /dev/null
+ln -s $DOTPATH/.vifm ~/.vifm
 
-[ -e ~/LESS_TERMCAP] && rm ~/LESS_TERMCAP
-ln -s $dotpath/zsh/LESS_TERMCAP ~/
+rm ~/LESS_TERMCAP > /dev/null
+ln -s $DOTPATH/zsh/LESS_TERMCAP ~/
 
-git submodule update --init recursive
+git submodule update --init --recursive
 git submodule foreach git pull origin master
 
-ln -s $dotpath/tmux.conf ~/.tmux.con
-ln -s $dotpath/tmux ~/.tmux
+ln -s $DOTPATH/tmux.conf ~/.tmux.con
+ln -s $DOTPATH/tmux ~/.tmux
 #---------------
 # linux specific
 #---------------
