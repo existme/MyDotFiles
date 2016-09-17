@@ -1,31 +1,31 @@
 $dotpath=~/git/MyDotFiles
 #!/bin/sh
 # Creating symbolic links
-rm ~/.zshrc
+[ -e ~/.zshrc] && rm ~/.zshrc
 ln -s $dotpath/zshrc ~/.zshrc
 
-rm ~/.vimrc
+[ -e ~/.vimrc] && rm ~/.vimrc
 ln -s $dotpath/vimrc ~/.vimrc
 
-rm -r ~/.vim
+[ -e ~/.vim] && rm -r ~/.vim
 ln -s $dotpath/vim ~/.vim
 
-rm ~/.gvimrc
+[ -e ~/.gvimrc] && rm ~/.gvimrc
 ln -s $dotpath/gvimrc ~/.gvimrc
 
-rm ~/.dircolors
+[ -e ~/.dircolors] && rm ~/.dircolors
 ln -s $dotpath/extras/dircolors ~/.dircolors
 
-rm ~/.gitconfig
+[ -e ~/.gitconfig] && rm ~/.gitconfig
 ln -s $dotpath/gitconfig ~/.gitconfig
 
-rm ~/.lessfilter
+[ -e ~/.lessfilter] && rm ~/.lessfilter
 ln -s $dotpath/zsh/lessfilter ~/.lessfilter
 
-rm ~/.vifm
+[ -e ~/.vifm] && rm ~/.vifm
 ln -s $dotpath/.vifm ~/.vifm
 
-rm ~/LESS_TERMCAP
+[ -e ~/LESS_TERMCAP] && rm ~/LESS_TERMCAP
 ln -s $dotpath/zsh/LESS_TERMCAP ~/
 
 git submodule update --init recursive
