@@ -23,7 +23,7 @@ ln -s $DOTPATH/gitconfig ~/.gitconfig
 rm ~/.lessfilter > /dev/null
 ln -s $DOTPATH/zsh/lessfilter ~/.lessfilter
 
-rm ~/.vifm > /dev/null
+rm -rf ~/.vifm > /dev/null
 ln -s $DOTPATH/.vifm ~/.vifm
 
 rm ~/LESS_TERMCAP > /dev/null
