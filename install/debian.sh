@@ -35,9 +35,3 @@ ln -s $DOTPATH/tmux.conf ~/.tmux.con
 rm ~/.tmux > /dev/null
 ln -s $DOTPATH/tmux ~/.tmux
 
-git submodule update --init --recursive
-git submodule foreach git pull origin master
-
-#---------------
-# linux specific
-#---------------

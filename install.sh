@@ -29,6 +29,7 @@ ln -s ~/git/MyVimConfig/zsh/LESS_TERMCAP ~/
 
 git submodule update --init
 git submodule foreach git pull origin master
+git submodule update
 
 ln -s ~/git/MyVimConfig/tmux.conf ~/.tmux.con
 ln -s ~/git/MyVimConfig/tmux ~/.tmux
