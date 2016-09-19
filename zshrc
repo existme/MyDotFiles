@@ -78,28 +78,6 @@ export GOROOT=$HOME/go
 export GOPATH=$HOME/go/downloads
 export GOARCH=amd64
 export GOOS=linux
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ls="ls -GF --color"
-alias	memo="cd ~/Dropbox/Memo"
-alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
-#alias cat="grc cat"
-alias ds="du -hd 1"
-alias k="k -h"
-alias hd="head -n 40 "
-alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
-alias h="history|grep"
-alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
-alias jq="jq '.' "
-alias myvim="cd ~/git/MyVimConfig"
-alias ex="chmod u+x "
-alias idea='. $SCRIPTPATH/extras/scripts/idea'
 function rgrep(){ grep --color=always -R -i "$1" * | less;} 
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
 # A macro to see the contents of a jar or war file
@@ -199,3 +177,27 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 export NVM_DIR="/Users/rezasa/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+alias zshconfig="vim ~/.zshrc"
+alias ohmyzsh="vim ~/.oh-my-zsh"
+alias ls="ls -GF --color"
+alias	memo="cd ~/Dropbox/Memo"
+alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
+#alias cat="grc cat"
+alias ds="du -hd 1"
+alias k="k -h"
+alias hd="head -n 40 "
+alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
+alias h="history|grep"
+alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
+alias jq="jq '.' "
+alias myvim="cd ~/git/MyDotFiles"
+alias ex="chmod u+x "
+alias idea='. $SCRIPTPATH/extras/scripts/idea'
+alias ll="ls -la"
