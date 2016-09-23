@@ -186,7 +186,7 @@ export NVM_DIR="/Users/rezasa/.nvm"
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ls="ls -GF --color"
+alias ls="ls -F --color"
 alias	memo="cd ~/Dropbox/Memo"
 alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
 #alias cat="grc cat"
