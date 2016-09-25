@@ -3,7 +3,8 @@ This guide goes through what aliases are available by using the provided
 templates. To view markdown file the alias uses a terminal markdown viewer
 called mdp (https://github.com/visit1985/mdp).
     - mac: brew install mdp
-    - debian: apt-get install mdp
+    - debian: sudo apt-get install libncursesw10 libncurses-devel
+    - Rasp: sudo apt-get install libncurses5-dev libncursesw5-dev
 
 ## Custom aliases:
 

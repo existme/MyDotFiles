@@ -127,6 +127,7 @@ alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lah"
 alias help="mdp $SCRIPTPATH/help.md"
+alias v="vifm"
 
 # Load OS spesific envoronments
 
