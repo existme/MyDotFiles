@@ -126,6 +126,7 @@ alias myvim="cd ~/git/MyVimConfig"
 alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lah"
+alias help="mdp $SCRIPTPATH/help.md"
 
 # Load OS spesific envoronments
 
