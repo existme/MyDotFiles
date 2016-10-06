@@ -181,6 +181,8 @@
 	pager = less -JFRSXr
 	trustctime = false
 	eol = lf
+	preloadindex = true
+	fscache = true
 [advice]
 	statusHints = true
 [diff]
@@ -221,3 +223,5 @@
 	trustExitCode = true
 [http]
 	sslVerify = false
+[gc]
+	auto = 256
