@@ -1,5 +1,6 @@
 #!/bin/zsh
 # Path to your oh-my-zsh installation.
+export CDPATH=$HOME
 export ZSH=$HOME/.oh-my-zsh
 export LANG=en_US.UTF-8
 # Uncomment the following line to enable vi mode
