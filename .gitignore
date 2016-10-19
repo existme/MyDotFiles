@@ -7,3 +7,4 @@ cow*
 .DS_Store
 .vifm/vifminfo
 .vifm/Trash/
+.netrc
