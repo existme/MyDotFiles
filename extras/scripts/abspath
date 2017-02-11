@@ -6,7 +6,7 @@ for fn in $* ; do
     if [ -z $d ]; then 
       echo `pwd`/$fn
     else
-      cd $d
+      cd $d >> /dev/null
       echo `pwd`"/"`basename $fn`
     fi
   else
