@@ -3,6 +3,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/mas
 sudo chsh `whoami` -s /bin/zsh
 DOTPATH=~/git/MyDotFiles
 
+# Create local zhrc config
+touch ~/zshrc.local.sh
+
 # Creating symbolic links
 rm ~/.zshrc > /dev/null
 ln -s $DOTPATH/zshrc ~/.zshrc
