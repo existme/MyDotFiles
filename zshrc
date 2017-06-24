@@ -77,11 +77,7 @@ export HISTSIZE=20000
 export SAVEHIST=20000
 export HISTFILE=~/.history
 # Setup for google go
-export GOROOT=$HOME/go
-export GOPATH=$HOME/go/downloads
-export GOARCH=amd64
-export GOOS=linux
-function rgrep(){ grep --color=always -R -i "$1" * | less;} 
+function rgrep(){ grep --color=always -R -i "$1" * | less;}
 function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
 # A macro to see the contents of a jar or war file
 function lessj(){ 
@@ -115,7 +111,7 @@ export PATH=$SCRIPTPATH/extras/scripts:$PATH
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
-alias	memo="cd ~/Dropbox/Memo"
+alias memo="cd ~/Dropbox/Memo"
 alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
 #alias cat="grc cat"
 alias ds="du -hd 1"
@@ -150,8 +146,7 @@ if [ -f $HOME/zshrc.local.env ]; then
 	source $HOME/zshrc.local.env
 fi
 
-plugins=(git history-substring-search web-search debian)
-
+plugins=(git history-substring-search debian)
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
@@ -205,8 +200,8 @@ bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-export NVM_DIR="/Users/rezasa/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
+# Fix  oh-myzsh git prompt slowness issue for some repos
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+}

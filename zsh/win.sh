@@ -30,4 +30,3 @@ alias cyg-get="/cygdrive/c/cygwin64/setup-x86_64.exe -q -P"
 alias pygmentize="~/git/Pygments-2.1/pygmentize "
 alias atom="/cygdrive/c/Users/Reza/AppData/Local/atom/app-1.4.3/resources/cli/atom.cmd"
 alias idea="$SCRIPTPATH/extras/scripts/ideawin"
-

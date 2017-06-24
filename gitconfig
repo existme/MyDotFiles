@@ -150,6 +150,9 @@
 	aa = !git add . && git add -u && git status
 	dchanges = difftool develop
 	exclude = !sh -c 'echo "$1" >> .git/info/exclude' -
+
+	# review
+   review = push origin HEAD:refs/for/develop	
 [format]
 	pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]

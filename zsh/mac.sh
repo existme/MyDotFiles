@@ -21,3 +21,5 @@ bindkey '\e\e[C' forward-word
 bindkey '\e\e[D' backward-word
 
 source $SCRIPTPATH/zsh/shell-prompt-mac.sh
+export NVM_DIR="/Users/rezasa/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
