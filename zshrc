@@ -2,7 +2,9 @@
 # Path to your oh-my-zsh installation.
 export CDPATH=$HOME
 export ZSH=$HOME/.oh-my-zsh
+export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 # Uncomment the following line to enable vi mode
 #export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
