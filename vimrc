@@ -209,3 +209,5 @@ nnoremap <c-a> <esc>:exec "w \| bd" <cr>
 
 set novb
 set noeb
+
+set paste
