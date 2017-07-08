@@ -72,6 +72,15 @@
 	fdll	= difftool -t opendiff HEAD~1 
 	fdc	= difftool --cached -t opendiff # diff staged changes
 
+	md		= difftool -t meld 
+	mdl	= difftool -t meld HEAD
+ 	mdll	= difftool -t meld HEAD~1
+	mdc	= difftool --cached -t meld # diff staged changes
+
+	pd		= difftool -t /usr/local/bin/p4diff
+	pdl	= difftool -t /usr/local/bin/p4diff HEAD
+ 	pdll	= difftool -t /usr/local/bin/p4diff HEAD~1
+	pdc	= difftool --cached -t /usr/local/bin/p4diff # diff staged changes
 
 	# log
 	l = log --graph --date=short

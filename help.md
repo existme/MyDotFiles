@@ -1,6 +1,6 @@
 # My dot files 
-This guide goes through what aliases are available by using the provided
 templates. To view markdown file the alias uses a terminal markdown viewer
+This guide goes through what aliases are available by using the provided
 called mdp (https://github.com/visit1985/mdp).
     - mac: brew install mdp
     - debian: sudo apt-get install libncursesw10 libncurses-devel
@@ -49,9 +49,4 @@ youtube             | Search Youtube for a specific term
 news                | Search Google news for a specific term
 map                 | Search Google maps for a specific term
 image               | Search images.google.com for a specific term
-
-
-
-
-
 
