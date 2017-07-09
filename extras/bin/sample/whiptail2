@@ -1,0 +1,44 @@
+#!/bin/bash
+
+COLOR=$(whiptail --inputbox "What is your favorite Color?" 8 78 --title "Example Dialog" 3>&1 1>&2 2>&3)
+
+exitstatus=$?P
+if [ $exitstatus = 0 ]; then
+    echo "User selected Ok and entered " $COLOR
+else
+    echo "User selected Cancel."
+fi
+
+echo "(Exit status was $exitstatus)"
+
+whiptail --title "Menu example" --menu "Choose an option" 22 78 16 \
+"<-- Back" "Return to the main menu." \
+"Add User" "Add a user to the system." \
+"Modify User" "Modify an existing user." \
+"List Users" "List all users on the system." \
+"Add Group" "Add a user group to the system." \
+"Modify Group" "Modify a group and its list of members." \
+"List Groups" "List all groups on the system."
+
+
+{
+    for ((i = 0 ; i <= 100 ; i+=1)); do
+        sleep 0.01
+        echo $i
+    done
+} | whiptail --gauge "Please wait" 5 50 0
+
+whiptail --menu "Preferred Linux Distro" 10 40 4 \
+debian "Venerable Debian" off  \
+ubuntu "Popular Ubuntu"   on   \
+fedora "Hackish Fedora"   off  \
+centos "Stable Centos"    off  \
+mint "Rising Star Mint"   off  \
+
+# whiptail --checklist "Preferred Linux distros" 15 40 5\
+# debian "Venerable Debian" off \
+# ubuntu "Popular Ubuntu"   on  \
+# fedora "Hackish Fedora"   off \
+# centos "Stable Centos"    off \
+# mint "Rising Star Mint"   off
+

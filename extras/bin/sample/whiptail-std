@@ -1,0 +1,3 @@
+#!/bin/bash
+
+whiptail --textbox /dev/stdin 40 80 <<<"$(ls -l)"

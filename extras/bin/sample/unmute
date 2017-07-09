@@ -1,0 +1,1 @@
+amixer -q sset Master unmute && amixer -q sset Side unmute && amixer -q sset Front unmute && amixer -q sset Surround unmute && amixer -q sset LFE unmute && amixer -q sset Center unmute

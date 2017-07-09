@@ -77,10 +77,10 @@
  	mdll	= difftool -t meld HEAD~1
 	mdc	= difftool --cached -t meld # diff staged changes
 
-	pd		= difftool -t /usr/local/bin/p4diff
-	pdl	= difftool -t /usr/local/bin/p4diff HEAD
- 	pdll	= difftool -t /usr/local/bin/p4diff HEAD~1
-	pdc	= difftool --cached -t /usr/local/bin/p4diff # diff staged changes
+	pd		= difftool -t p4merge
+	pdl	= difftool -t p4merge HEAD
+ 	pdll	= difftool -t p4merge HEAD~1
+	pdc	= difftool --cached -t p4merge # diff staged changes
 
 	# log
 	l = log --graph --date=short

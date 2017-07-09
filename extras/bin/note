@@ -1,0 +1,40 @@
+#!/bin/zsh
+SNIPPET=$@
+COMMENT=$(whiptail --inputbox "What is does this snippet do?\n\
+---------------------------\n\
+$SNIPPET\n\
+---------------------------\n\
+" 20 "" --title 'Create a snippet:' 3>&1 1>&2 2>&3)
+echo "COMMENT=$COMMENT"
+if [ ! $COMMENT ]; then
+  exit
+fi
+
+
+SNIPPET=$(whiptail --inputbox 'Do you want to modify this snippet?' 8 48 "$SNIPPET" --title 'Create a snippet:' 3>&1 1>&2 2>&3)
+echo "SNIPPET=$SNIPPET"
+if [ ! $SNIPPET ]; then
+  exit
+fi
+TAGS=$(whiptail --inputbox "Please enter tags for\n\
+---------------------------\n\
+$SNIPPET\n\
+---------------------------\n\
+(tags are space separated):" 14 48 "" --title "Any tags for your snippet?:" 3>&1 1>&2 2>&3)
+
+if [ ! -d /mnt/wiki/wiki/en ]; then
+  mpi
+fi
+
+file="/mnt/wiki/wiki/en/scratch.md"
+#note=$(zenity --entry "What do you want to note?")
+echo "<hr>  " >> $file
+echo \#\#"<red>**Purpose**</red>: $COMMENT  " >> $file
+echo "`date +%Y-%m-%d\ %H:%M:%S`" >> $file
+echo "~~~sh" >> $file
+echo $SNIPPET >> $file
+echo "~~~" >> $file
+#echo "" >> $file
+echo "tags: <tag>$TAGS</tag>  " >> $file
+
+xdg-open "http://rsha.ddns.net/?c=&p=scratch.md"

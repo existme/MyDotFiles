@@ -1,0 +1,15 @@
+#!/bin/bash
+
+cd /dev
+cnt="`/bin/ls -1Ad * | wc -l`"
+pct="`echo \"100/$cnt\" | bc -l`"
+total=0
+ 
+for file in `/bin/ls -1Ad *`; do
+    total=`echo $total+$pct | bc -l`
+    echo $total|cut -d'.' -f1
+    sleep 0.08
+    echo "XXX"
+    echo "Processing ... $file"
+    echo "XXX"
+done | dialog --backtitle "Demonstrating the gauge box in dialog" --title "Progress" --gauge "About to process /dev ..." 6 70 0

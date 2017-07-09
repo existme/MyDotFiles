@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#you should fist install: sudo apt-get install pm-utils
+
+sudo pm-suspend

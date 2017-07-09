@@ -1,0 +1,54 @@
+#! /bin/zsh
+
+# variables to hold command and common options.
+dlg=dialog
+stdo=--stdout
+titl=--title
+titlbg=--backtitle
+# function to handle open file choice.
+fileselect() {
+    file=$($dlg $stdo $titlbg "Menu choice was file selection dialog" $titl "Select file" --fselect ~ 0 0)
+    if [ $? -eq 0 ]
+    then
+        $dlg $titlbg "Selected file content" $titl $file -textbox $file 0 0
+    fi
+}
+
+# function to handle choose directory choice.
+dirselect() {
+    directory=$($dlg $stdo $titlbg "Menu choice was directory selection dialog" $titl "Select directory" --dselect ~ 0 0)
+    if [ $? -eq 0 ]
+    then
+        $dlg $titlbg "Selected directory info" $titl "Directory Info" --infobox "Your chosen directory is  : $directory" 0 0
+    fi
+}
+
+# function to handle show timebox choice.
+timebox() {
+    time=$($dlg $stdo $titlbg "Menu choice was Time Box." $titl "Select time" --timebox "Choose your favourite time" 0 0)
+    if [ $? -eq 0 ]
+    then
+        $dlg $titlbg "Selected time info" $titl "Time Info" --infobox "Your favourite time is : $time" 0 0
+    fi
+}
+
+# menu widget to show various choices.
+choice=$($dlg $stdo $titlbg "Dialog usage in shell script" $titl "Action menu" \
+                 --menu "Make a choice to proceed" 0 0 0                       \
+                 1 "Open file"                                                 \
+                 2 "Choose directory"                                          \
+                 3 "Show timebox"                                              \
+                );
+
+
+if [ $? -eq 0 ]; then
+    if [ "$choice" = "1" ]; then 
+        fileselect
+    elif [ "$choice" = "2" ]; then 
+        dirselect
+    elif [ "$choice" = "3" ]; then 
+        timebox
+    fi
+fi
+
+echo "done!";

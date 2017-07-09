@@ -1,0 +1,1 @@
+/home/existme/git/MyVimConfig/extras/scripts/fix_mouse_lag.sh

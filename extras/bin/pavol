@@ -1,0 +1,19 @@
+#! /bin/bash
+
+switch "$argv[1]"
+  case up
+    set type 'volume'
+    set cmd '+10%'
+  case down
+    set type 'volume'
+    set cmd '-10%'
+  case mute
+    set type 'mute'
+    set cmd 'toggle'
+  case '*'
+    echo 'Usage: pavol [up|down|mute]'
+    exit 2
+end
+
+set default (pactl info | grep "Default Sink" | cut -f2 -d: | sed 's/^ *//')
+pactl set-sink-$type $default $cmd
