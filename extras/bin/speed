@@ -1,0 +1,3 @@
+rm ~/test500.zip
+rm ~/test500.zip.aria2
+aria2c -x 16 http://speedtest.wdc01.softlayer.com/downloads/test500.zip
