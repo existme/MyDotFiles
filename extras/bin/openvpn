@@ -1,0 +1,24 @@
+#!/bin/bash
+
+echo "what do you want to do?"
+echo "-----------------------"
+echo "1 - Start open vpn"
+echo "2 - Stop open vpn"
+echo "q - quit"
+echo ""
+echo -n "Your choice: "
+read choice
+if [ $choice = "1" ]; then
+	echo "sudo openvpn --config /etc/openvpn/strong.ovpn"
+	sudo openvpn --config /etc/openvpn/strong.ovpn
+elif [ $choice = "2" ]; then
+	echo "sudo /etc/init.d/openvpn stop"
+	sudo /etc/init.d/openvpn stop
+elif [ $choice = "3" ]; then
+	echo "xxx" 
+	sudo ls -la 
+else
+	echo "Nothing to do... quiting"
+fi
+
+

@@ -1,0 +1,13 @@
+Remove existing xorg using the following command
+
+sudo apt-get remove --purge xserver-xorg
+
+Install xorg using the following command
+
+sudo apt-get install xserver-xorg
+
+Reconfigure xorg using the following command
+
+sudo dpkg-reconfigure xserver-xorg
+
+I hope this helps some users to fix their xorg problems.
