@@ -217,9 +217,7 @@
 	user = existme
 [credential]
 	helper = cache --timeout=300000
-[user]
-	name = Reza Shams Amiri
-	email = rezasa@axis.com
+# User section moved to the local config file .gitconfig.user
 [difftool]
 	prompt = false
 [mergetool "diffmerge"]
@@ -237,3 +235,5 @@
 	sslVerify = false
 [gc]
 	auto = 256
+[commit]
+	template = ~/.stCommitMsg

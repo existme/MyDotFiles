@@ -1,4 +1,5 @@
 #!/bin/bash
 absfile=`$SCRIPTPATH/extras/scripts/abspath $1`
 #eval $IDEAPATH $absfile >> /dev/null 2>&1 & 
+echo "Runnning: $IDEAPATH $absfile"
 eval $IDEAPATH $absfile & 
