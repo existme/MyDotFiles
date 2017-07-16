@@ -1,0 +1,14 @@
+#!/bin/bash
+# this should be placed in /etc/pm/sleep.d/16_restart_i3
+# don't forget to do chmod ugo+x /etc/pm/sleep.d/16_restart_i3
+## restart i3 after resume to fix radeon problem. 
+
+echo "suspend log: $1">> /tmp/i3-suspend.log
+case "$1" in
+    suspend | hibernate)
+        ;;
+    thaw | resume)
+		/usr/bin/i3-msg restart &>> /tmp/i3-suspend.log
+		echo "i3 should be restarted ">> /tmp/i3-suspend.log
+    ;;
+esac

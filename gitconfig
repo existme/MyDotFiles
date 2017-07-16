@@ -237,3 +237,7 @@
 	auto = 256
 [commit]
 	template = ~/.stCommitMsg
+# move this part to '~/.gitconfig.user'
+# [user]
+# 	email = existme@gmail.com
+# 	name = Reza Shams Amiri

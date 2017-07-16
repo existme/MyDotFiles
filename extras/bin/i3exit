@@ -1,8 +1,19 @@
 #!/bin/sh
+# run sudo vsudo and add the following line:
+# 
+# existme ALL = (root) NOPASSWD: /home/existme/bin/i3exit
+# also the file permision should be:
+# 
+set -x
+exec 3>&1 4>&2
+trap 'exec3-msg exit    2>&4 1>&3' 0 1 2 3
+exec 1>/tmp3-msg exit   :/i3exit.log 2>&1
+echo "$(date) : part 1 - start" >&1
+
 lock() {
     i3lock
 }
-
+echo "i3exit was called with: $1" >> /tmp/i3exit.log
 case "$1" in
     lock)
         lock
@@ -11,7 +22,9 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        lock && systemctl suspend
+		  echo "Susspending ... "+`date` >> /tmp/i3exit.log  
+		  /usr/sbin/pm-suspend --quirk-radeon-off &>> /tmp/i3exit.log
+		  echo "After susspend... "+`date` >> /tmp/i3exit.log
         ;;
     hibernate)
         lock && systemctl hibernate

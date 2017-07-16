@@ -1,38 +1,38 @@
 #!/bin/sh
 # Creating symbolic links
 rm ~/.zshrc
-ln -s ~/git/MyVimConfig/zshrc ~/.zshrc
+ln -s ~/git/MyDotFiles/zshrc ~/.zshrc
 
 rm ~/.vimrc
-ln -s ~/git/MyVimConfig/vimrc ~/.vimrc
+ln -s ~/git/MyDotFiles/vimrc ~/.vimrc
 
 rm -r ~/.vim
-ln -s ~/git/MyVimConfig/vim ~/.vim
+ln -s ~/git/MyDotFiles/vim ~/.vim
 
 rm ~/.gvimrc
-ln -s ~/git/MyVimConfig/gvimrc ~/.gvimrc
+ln -s ~/git/MyDotFiles/gvimrc ~/.gvimrc
 
 rm ~/.dircolors
-ln -s ~/git/MyVimConfig/extras/dircolors ~/.dircolors
+ln -s ~/git/MyDotFiles/extras/dircolors ~/.dircolors
 
 rm ~/.gitconfig
-ln -s ~/git/MyVimConfig/gitconfig ~/.gitconfig
+ln -s ~/git/MyDotFiles/gitconfig ~/.gitconfig
 
 rm ~/.lessfilter
-ln -s ~/git/MyVimConfig/zsh/lessfilter ~/.lessfilter
+ln -s ~/git/MyDotFiles/zsh/lessfilter ~/.lessfilter
 
 rm ~/.vifm
-ln -s ~/git/MyVimConfig/.vifm ~/.vifm
+ln -s ~/git/MyDotFiles/.vifm ~/.vifm
 
 rm ~/LESS_TERMCAP
-ln -s ~/git/MyVimConfig/zsh/LESS_TERMCAP ~/
+ln -s ~/git/MyDotFiles/zsh/LESS_TERMCAP ~/
 
 git submodule update --init
 git submodule foreach git pull origin master
 git submodule update
 
-ln -s ~/git/MyVimConfig/tmux.conf ~/.tmux.con
-ln -s ~/git/MyVimConfig/tmux ~/.tmux
+ln -s ~/git/MyDotFiles/tmux.conf ~/.tmux.con
+ln -s ~/git/MyDotFiles/tmux ~/.tmux
 #---------------
 # linux specific
 #---------------

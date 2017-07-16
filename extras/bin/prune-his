@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+echo "Removing duplicates from history"
+HISTFILE="~/.history"
+TEMPFILE="~/unduped_history"
+FILESIZE_BEFORE=$(stat -c%s "$HISTFILE") 
+nl $HISTFILE | sort -k 2  -k 1,1nr | uniq -f 1 | sort -n | cut -f 2 > $TEMPFILE
+
+FILESIZE_AFTER=$(stat -c%s "$TEMPFILE") 
+
+echo "Size of $HISTFILE before prunning: $FILESIZE_BEFORE"
+echo "Size of $HISTFILE before prunning: $FILESIZE_AFTER"
+
+echo $FILESIZE_BEFORE - $FILESIZE_AFTER
+#cat ~/unduped_history > $HISTFILE

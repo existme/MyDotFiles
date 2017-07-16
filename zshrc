@@ -73,8 +73,8 @@ HIST_STAMPS="yyyy-mm-dd" # also: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export PATH=$HOME/Dropbox/Docs/todo.txt-cli:$PATH
-export HISTSIZE=20000
-export SAVEHIST=20000
+export HISTSIZE=10000000
+export SAVEHIST=10000000
 export HISTFILE=~/.history
 # Setup for google go
 function rgrep(){ grep --color=always -R -i "$1" * | less;}

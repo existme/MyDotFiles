@@ -11,22 +11,20 @@ called mdp (https://github.com/visit1985/mdp).
 aliases             | Desc
 --------------------|--------------------------------------------------
                     | 
-**Help Pages**          | 
+**Help Pages**      | 
                     |
 help                | Displays this help page.
 h                   | Grep history for a specific keyword
 zdoc                | Opens zsh pdf document.
                     |
-**App Openers**         | 
+**App Openers**     | 
                     |
 idea                | Opens a file or folder in IntelliJ Idea
 subl                | Opens a file or folder in sublime texteditor
 atom                | Opens a file or folder in atom texteditor
                     |
-
----
-
-**Operations**          | 
+--------------------|--------------------------------------------------
+**Operations**      | 
                     | 
 ds                  | Calculates subfolder sizes in a directory 
                     | **EQ:**  to 'du -hd 1'
@@ -38,7 +36,7 @@ rgrep               | Search current folder for a specific keyword including all
 rfind               | Search current folder for a specific filename including all subfolders
                     | **Usage:** $ rfind mac.sh 
                     | **EQ:** find . -iname "*$1*"|grep -i "$1" --color=always
-**Web Search**          | 
+**Web Search**      | 
                     | 
 google              | Search Google for a specific term
 ddg                 | Search DuckDuckGo for a specific term

@@ -135,6 +135,8 @@ if has("gui_running")
 	elseif has("gui_win32")
 	 set guifont=Inconsolata-g\ for\ Powerline\ Medium\ 12
 	endif
+else
+	let g:AutoClosePreservDotReg = 0
 endif
 
 " =========== Extending wrap functionality ========= 
@@ -203,11 +205,11 @@ set splitright
 
 "open the help file
 nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
+nmap <F1> <esc>:execute "e ".dotfilespath."/help.md"<enter>
 
 "save and close buffer"
 nnoremap <c-a> <esc>:exec "w \| bd" <cr>
-
+nnoremap <c-o> <esc>:w !sudo tee % <cr>
 set novb
 set noeb
-
-set paste
+"set paste
