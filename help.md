@@ -6,6 +6,43 @@ called mdp (https://github.com/visit1985/mdp).
     - debian: sudo apt-get install libncursesw10 libncurses-devel
     - Rasp: sudo apt-get install libncurses5-dev libncursesw5-dev
 
+## vim
+
+Commands
+
+command                     |   description   
+---[ files and buffers]-----|--------------------------------------------------
+ctrl + right/left arrow     |   move to next or previous buffer
+,,                          |   toggle previous buffer
+:bd                         |   close current buffer
+,q                          |   delete current buffer and move on
+:vert help e                |   show help in vertical mode
+:vsp                        |   open another file in vertical
+:vsp ~/.zshrc               |   open another file in vertical
+:set splitright             |   set files to open in right
+:vsp#2                      |   vertical split
+                            |
+----[ spell checker ]-------|--------------------------------------------------
+,s                          |   toggle spell checker
+z=                          |   show the suggestions
+zg                          |   add to dictionary
+                            |
+------[ white space ]-------|--------------------------------------------------
+set list                    |   show listchars including tab
+set nolist                  |   hide listchars including tab
+:w !sudo tee %              |   save file with sudo privileges
+                            |
+--[ function key mapping ]--|--------------------------------------------------
+F2                          |   toggle paste
+F3                          |   Toggle nerd tree¬
+F4                          |   Toggle highlight 
+F5                          |   Toggle list invisible characters like tabs 
+                            |
+-----[ miscellaneous ]------|--------------------------------------------------
+gc                          |   Toggle comment for the selected text or block
+g>                          |   Toggle comment for the selected text or block
+                            |
+----------------------------|--------------------------------------------------
 ## Custom aliases:
 
 aliases             | Desc
