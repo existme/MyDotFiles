@@ -1,0 +1,15 @@
+#!/bin/bash
+
+TOOLFOLDER="/opt/JetBrains/Toolbox"
+POSTFIX="apps/IDEA-U/ch-0"
+SYM="/usr/local/bin/idea.sh"
+
+LATEST=$(ls $TOOLFOLDER/$POSTFIX | sort -t. -k 1,1nr -k 2,2nr -k 3,3nr -k 4,4nr | head -n1);
+
+echo "Changing latest version to $LATEST"
+
+sudo rm $SYM
+sudo ln -s $TOOLFOLDER/$POSTFIX/$LATEST/bin/idea.sh $SYM
+
+echo "Update done, symlink created"
+ls -la $SYM 
