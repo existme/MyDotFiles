@@ -63,6 +63,7 @@ ENABLE_CORRECTION="false"
 
 # User configuration
 COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="true"
 DEFAULT_USER=`whoami`
 user=`whoami`
 # HOST="local"
@@ -146,7 +147,7 @@ if [ -f $HOME/zshrc.local.env ]; then
 	source $HOME/zshrc.local.env
 fi
 
-plugins=(git history-substring-search debian last-working-dir ubuntu)
+plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages)
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
@@ -156,6 +157,9 @@ source $SCRIPTPATH/zsh/bundle/k/k.sh
 
 # Load keyboard shortcuts
 source $SCRIPTPATH/zsh/keyinfo.sh
+
+# Load z
+. $SCRIPTPATH/bundle/z/z.sh
 
 # Use colors for less, man, etc.
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
