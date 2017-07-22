@@ -23,3 +23,21 @@ else
     exit 3
   fi
 fi
+
+# the elif using [[ works but with one [ I got = not found
+if [ ! $SNIPPET ]; then
+   xdg-open $url 
+   echo "Usage:"
+   echo "Note           : open scratch file in brwoser"
+   echo "Note snippet   : Start adding snippet to the begining of scratch file"
+   echo "Note --edit    : vim $file"
+   echo "Note --code    : code $file"
+   exit
+elif [[ "$SNIPPET" == '--edit' ]]; then
+   vim $file
+   exit
+elif [[ "$SNIPPET" == '--code' ]]; then
+   code $file
+   exit
+fi
+
