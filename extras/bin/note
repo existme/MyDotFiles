@@ -1,4 +1,7 @@
 #!/bin/zsh
+set -euo pipefail
+IFS=$'\n\t'
+
 SNIPPET=$@
 file="/mnt/wiki/wiki/en/scratch.md"
 url="http://rsha.ddns.net/?c=&p=scratch.md"
@@ -13,6 +16,9 @@ if [ ! $SNIPPET ]; then
    exit
 elif [[ "$SNIPPET" == '--edit' ]]; then
    vim $file
+   exit
+elif [[ "$SNIPPET" == '--path' ]]; then
+   echo $file
    exit
 elif [[ "$SNIPPET" == '--code' ]]; then
    code $file
@@ -43,11 +49,11 @@ $SNIPPET\n\
 (tags are space separated):" 14 48 "" --title "Any tags for your snippet?:" 3>&1 1>&2 2>&3)
 
 if [ ! -d /mnt/wiki/wiki/en ]; then
-  mpi
+  mount-pi
 fi
 
 #note=$(zenity --entry "What do you want to note?")
-t="<hr>   
+t="   
 ##<red>**Purpose**</red>: $COMMENT  
 `date +%Y-%m-%d\ %H:%M:%S`
 ~~~sh

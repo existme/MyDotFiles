@@ -79,7 +79,13 @@ export SAVEHIST=10000000
 export HISTFILE=~/.history
 # Setup for google go
 function rgrep(){ grep --color=always -R -i "$1" * | less;}
-function rfind(){ find . -iname "*$1*"|grep -i "$1" --color=always} 
+function rfind(){ 
+   if [[ $1 == "--help" || $# -eq 0 ]]; then
+      echo "Usage: rfind readme ~/git/MyDotFiles"
+      return
+   fi
+   find $2 -iname "*$1*"|grep -i "$1" --color=always
+} 
 # A macro to see the contents of a jar or war file
 function lessj(){ 
 	if [[ -z $1 ]]; then
@@ -112,8 +118,8 @@ export PATH=$SCRIPTPATH/extras/scripts:$PATH
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
-alias memo="cd ~/Dropbox/Memo"
-alias zdoc="xdg-open /usr/share/doc/zsh/zsh.pdf >> /dev/null 2>&1"
+hash -d memo="cd ~/Dropbox/Memo"
+alias zdoc="xdg-open /usr/share/doc/zsh/doc/zsh.pdf >> /dev/null 2>&1 &"
 #alias cat="grc cat"
 alias ds="du -hd 1| sort -h"
 alias k="k -h"
@@ -122,7 +128,7 @@ alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/
 alias h="history|grep"
 alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
 alias jq="jq '.' "
-alias myvim="cd ~/git/MyVimConfig"
+hash -d myvim=~/git/MyDotFiles
 alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lah"
@@ -147,7 +153,7 @@ if [ -f $HOME/zshrc.local.env ]; then
 	source $HOME/zshrc.local.env
 fi
 
-plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages)
+plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages vi-mode)
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
@@ -204,8 +210,23 @@ bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#Return “yes” if the repository is on an “nfs” mount
+function __is_slow_storage() {
+   export STAT_OPT='-L --file-system --format="%T"'
+   if [ $OSTYPE == "Darwin" ]; then
+      STAT_OPT='-L -f "%HT"'
+   fi
+   RES=$(stat `echo $STAT_OPT` `echo $1`)
+
+   if [[ $RES == "nfs" || $RES == "cifs" ]]; then
+      echo "yes"
+   else
+      echo "no"
+   fi
+}
 # Fix  oh-myzsh git prompt slowness issue for some repos
 function git_prompt_info() {
+  local ref
   ref=$(git symbolic-ref HEAD 2> /dev/null) || return
   echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
 }
@@ -214,3 +235,13 @@ function git_prompt_info() {
 # .oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
 unalias ag
 alias ap="sudo apt-get"
+
+# Allow zsh to expand star
+unsetopt no_match
+# Allow caseincensitive globing
+setopt nocaseglob
+
+hash -d mydotfiles=$SCRIPTPATH
+
+# automatically cd to directory when using ~
+setopt auto_cd

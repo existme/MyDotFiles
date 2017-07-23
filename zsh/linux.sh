@@ -2,7 +2,8 @@ echo "Loading Linux-specific configuration..."
 
 export DISPLAY=:0.0
 
-export ZSH_THEME="blinks"
+#export ZSH_THEME="blinks"
+export ZSH_THEME="agnoster"
 
 eval $( dircolors -b ~/.dircolors)
 
@@ -13,8 +14,9 @@ alias sublime='/opt/sublime_text/subl $1> /dev/null 2>&1'
 # Use custom shell prompt
 
 print $OTERM
-if [[ $OTERM == 'xterm' ]]; then
-	source $SCRIPTPATH/zsh/shell-prompt.sh
+if [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' ]]; then
+	#source $SCRIPTPATH/zsh/shell-prompt.sh
+	#echo "--- Shell prompt loaded ---"
 else
 	echo "Shell prompt not loaded"
 	export ZSH_THEME="norm"
