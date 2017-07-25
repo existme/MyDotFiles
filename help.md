@@ -43,6 +43,20 @@ gc                          |   Toggle comment for the selected text or block
 g>                          |   Toggle comment for the selected text or block
                             |
 ----------------------------|--------------------------------------------------
+## Vifm
+
+
+command                    |   description   
+---[    Preview       ]----|--------------------------------------------------
+                           |
+w                          | Preview on the alternate pane
+e                          | Preview on the current pane
+q                          | Quit preview 
+CTRL+w z                   | Quit all preview modes
+SHIFT+TAB                  | Switch to preview tab inorder to scroll
+
+
+
 ## Custom aliases:
 
 aliases             | Desc

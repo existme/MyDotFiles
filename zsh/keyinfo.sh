@@ -1,8 +1,9 @@
 # If you dont't know what is the code for a key combination, use <ctrl-v> followed by the key sequence
 # Enable vi-mode 
-if [[ $EDITOR == 'vim' ]]; then
+if [[ $EDITOR == 'enablevim' ]]; then
 	source $SCRIPTPATH/extras/vi-mode.sh
 	echo "VI mode ENABLED"
+   export EDITOR = 'vim'
 fi
 
 [[ -n ${key[Backspace]} ]] && bindkey "${key[Backspace]}" backward-delete-char

@@ -6,7 +6,7 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 # Uncomment the following line to enable vi mode
-#export EDITOR='vim'
+export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=ignoreboth:erasedups
 export XDG_RUNTIME_DIR=/run/user/0
@@ -134,6 +134,7 @@ alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lah"
 alias help="mdp $SCRIPTPATH/help.md"
 alias v="vifm"
+alias s="sudo"
 
 # Load OS spesific envoronments
 
