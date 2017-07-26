@@ -1,0 +1,7 @@
+#!/bin/bash
+dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
+if [ ! -d "$2" ]; then
+	mkdir -p "$2"
+fi
+cp -R "$1" "$2"
+

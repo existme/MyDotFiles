@@ -24,7 +24,7 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # only change term config if it is xterm
-# autoload zkbd
+autoload zkbd
 # [[ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]] && zkbd
 # source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
 
@@ -77,7 +77,7 @@ export PATH=$HOME/Dropbox/Docs/todo.txt-cli:$PATH
 export HISTSIZE=10000000
 export SAVEHIST=10000000
 export HISTFILE=~/.history
-
+# Setup for google go
 function rgrep(){ grep --color=always -R -i "$1" * | less;}
 function rfind(){ 
    if [[ $1 == "--help" || $# -eq 0 ]]; then
@@ -154,7 +154,7 @@ if [ -f $HOME/zshrc.local.env ]; then
 	source $HOME/zshrc.local.env
 fi
 
-plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages)
+plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages vi-mode)
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
@@ -183,8 +183,8 @@ source $SCRIPTPATH/zsh/keyinfo.sh
 echo "$(date '+%D %T')";
 #pal
 
-# autoload predict-on
-# predict-on
+#autoload predict-on
+#predict-on
 CASE_SENSITIVE="false"
 zstyle ':completion:*' completer _complete
 bindkey '\t' expand-or-complete

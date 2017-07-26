@@ -133,7 +133,7 @@
 
 	filelog = log -u                  # show changes to a file
 	fl = log -u
-	mt = mergetool                    # fire up the merge tool
+	mt = mergetool -t meld            # fire up the merge tool
 
 	# stash
 	ss = stash                        # stash changes

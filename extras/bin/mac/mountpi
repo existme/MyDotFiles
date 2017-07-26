@@ -1,0 +1,7 @@
+sudo kextunload -b com.apple.filesystems.smbfs 
+sudo kextutil /Library/Filesystems/osxfuse.fs/Contents/Extensions/10.12/osxfuse.kext
+sudo umount -f ~/Volumes/rsha
+sudo umount -f pi@rsha.ddns.net:
+mkdir -p ~/Volumes/rsha
+sshfs -p 443 pi@rsha.ddns.net: ~/Volumes/rsha -ovolname=rsha -o follow_symlinks -o transform_symlinks -o reconnect
+ls ~/Volumes/rsha

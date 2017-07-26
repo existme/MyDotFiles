@@ -9,3 +9,6 @@ cow*
 .vifm/Trash/
 .netrc
 /extras/bin/mount-pi
+/extras/bin/mac/mwiki
+/extras/bin/mac/remount-unil
+/extras/bin/mac/remount-pi

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+truncate -s0 ~/wildfly-8.2.1.Final/standalone/log/server.log
+ls -la ~/wildfly-8.2.1.Final/standalone/log/server.log

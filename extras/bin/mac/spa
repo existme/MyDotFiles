@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+# source ~/.zshrc > /dev/null
+# . idea ~/git/csi-wiki-ui/wiki/en > /dev/null
+eval $IDEAPATH ~/git/spa >> /dev/null 2>&1
+

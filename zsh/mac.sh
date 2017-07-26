@@ -4,7 +4,6 @@ export http_proxy=http://wwwproxy.axis.com:3128
 export https_proxy=http://wwwproxy.axis.com:3128
 export M2_HOME=/usr/local/apache-maven/apache-maven-3.2.3
 export M2=$M2_HOME/bin
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home
 
 # Custom Paths
 export PATH=$M2:$PATH
