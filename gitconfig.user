@@ -1,0 +1,5 @@
+[user]
+   name = Reza Shams Amiri
+   email = existme@gmail.com
+[commit]
+   template = ~/.stCommitMsg
