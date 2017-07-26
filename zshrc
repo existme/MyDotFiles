@@ -39,7 +39,7 @@ elif [[ $TERM == 'rxvt-unicode' ]]; then
 fi
 export TERMCAP=$(echo $TERMCAP | sed -e 's/Co#8/Co#256/g')
 export CLICOLOR=true
-export GREP_OPTIONS='--color=always'
+export GREP_OPTIONS="--color=always"
 export LESS='-R'
 export LESSOPEN='|~/.lessfilter %s'
 export PYG_STYLE=terminal				# or you can set to terminal256 if it works
@@ -135,7 +135,6 @@ alias ll="ls -lah"
 alias help="mdp $SCRIPTPATH/help.md"
 alias v="vifm"
 alias s="sudo"
-
 # Load OS spesific envoronments
 
 if [[ $platform == 'linux' ]]; then
@@ -154,7 +153,7 @@ if [ -f $HOME/zshrc.local.env ]; then
 	source $HOME/zshrc.local.env
 fi
 
-plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages)
+plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases)
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
@@ -246,3 +245,5 @@ hash -d mydotfiles=$SCRIPTPATH
 
 # automatically cd to directory when using ~
 setopt auto_cd
+
+alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'

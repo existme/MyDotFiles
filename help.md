@@ -22,6 +22,14 @@ ctrl + right/left arrow     |   move to next or previous buffer
 :set splitright             |   set files to open in right
 :vsp#2                      |   vertical split
                             |
+----[ search & replace ]----|--------------------------------------------------
+:%s/foo/bar/g               |   replaces foo with bar in all lines
+:s/foo/bar/g                |   replaces foo with bar only in current line
+:%s/foo/bar/gc              |   replaces all foos with bar but asks each time
+:%s/\<foo\>/bar/gc          |   replaces all exact "foo"s with "bar" with confirmation
+:%s/foo/bar/gci             |   (case insensitive) replaces all "foo"s with "bar" with confirmation
+:set ignorecase             |   make all searches case insensitive
+                            |
 ----[ spell checker ]-------|--------------------------------------------------
 ,s                          |   toggle spell checker
 z=                          |   show the suggestions

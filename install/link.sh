@@ -28,3 +28,4 @@ ln -s ~/git/MyDotFiles/zsh/LESS_TERMCAP ~/
 rm -rf ~/bin
 ln -s ~/git/MyDotFiles/extras/bin ~/
 
+touch ~/.stCommitMsg
