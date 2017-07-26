@@ -29,3 +29,4 @@ rm -rf ~/bin
 ln -s ~/git/MyDotFiles/extras/bin ~/
 
 touch ~/.stCommitMsg
+cp ~/git/MyDotFiles/gitconfig.user ~/.gitconfig.user
