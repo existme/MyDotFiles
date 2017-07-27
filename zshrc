@@ -5,6 +5,7 @@ export ZSH=$HOME/.oh-my-zsh
 export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export KEYTIMEOUT=1
 # Uncomment the following line to enable vi mode
 export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -125,7 +126,6 @@ alias ds="du -hd 1| sort -h"
 alias k="k -h"
 alias hd="head -n 40 "
 alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
-alias h="history|grep"
 alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
 alias jq="jq '.' "
 hash -d myvim=~/git/MyDotFiles
@@ -209,6 +209,9 @@ zle -N                 cdUndoKey
 bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
 
+# Bind Escape to vi-cmd-mode
+bindkey "\e" vi-cmd-mode
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 #Return “yes” if the repository is on an “nfs” mount
 function __is_slow_storage() {
@@ -246,4 +249,5 @@ hash -d mydotfiles=$SCRIPTPATH
 # automatically cd to directory when using ~
 setopt auto_cd
 
+alias h="history|grep"
 alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'

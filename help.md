@@ -63,7 +63,14 @@ q                          | Quit preview
 CTRL+w z                   | Quit all preview modes
 SHIFT+TAB                  | Switch to preview tab inorder to scroll
 
+## ZSH tricks
 
+aliases             | Desc
+--------------------|--------------------------------------------------
+                    | 
+**Escape Sequences**| 
+Esc-.(period)       | Insert the last argument of the previous command line. 
+                    |       Repeat to retrieve arguments from earlier lines.
 
 ## Custom aliases:
 
