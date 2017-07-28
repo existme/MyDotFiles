@@ -22,6 +22,7 @@ ctrl + right/left arrow     |   move to next or previous buffer
 :set splitright             |   set files to open in right
 :vsp#2                      |   vertical split
                             |
+                            |
 ----[ search & replace ]----|--------------------------------------------------
 :%s/foo/bar/g               |   replaces foo with bar in all lines
 :s/foo/bar/g                |   replaces foo with bar only in current line
@@ -49,6 +50,8 @@ F5                          |   Toggle list invisible characters like tabs
 -----[ miscellaneous ]------|--------------------------------------------------
 gc                          |   Toggle comment for the selected text or block
 g>                          |   Toggle comment for the selected text or block
+set nonumber                |   Hide line numbers
+set number                  |   Show line numbers
                             |
 ----------------------------|--------------------------------------------------
 ## Vifm
