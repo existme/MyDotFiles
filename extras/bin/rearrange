@@ -1,0 +1,19 @@
+#!/bin/bash
+export left=DVI-1
+export right=DVI-0
+
+export w1="1: www"
+export w2="2: terminal"
+export w3="3: editors"
+export w4="4: development"
+export w5="5: file manager"
+export w6="6: x6"
+export w0="0: chat-mail"
+
+i3-msg workspace '"'$w1'"', move workspace to output $left, layout tabbed
+i3-msg workspace '"'$w3'"', move workspace to output $right, layout tabbed
+i3-msg workspace '"'$w4'"', move workspace to output $right, layout tabbed
+i3-msg workspace '"'$w5'"', move workspace to output $right, layout tabbed
+i3-msg workspace '"'$w6'"', move workspace to output $right, layout tabbed
+i3-msg workspace '"'$w0'"', move workspace to output $right, layout tabbed
+i3-msg workspace '"'$w2'"', move workspace to output $right

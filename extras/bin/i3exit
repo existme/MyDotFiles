@@ -10,6 +10,14 @@ exec 3>&1 4>&2
 #exec 1>/tmp/tmp3-msg exit   :/i3exit.log 2>&1
 echo "$(date) : part 1 - start" >&1
 
+close_apps(){
+    echo "Closing apps..."
+    i3-msg [class="Google-chrome"] kill
+    i3-msg [class="Firefox"] kill
+    echo "all apps closed now"
+    sleep 3
+}
+
 lock() {
     i3lock
 }
@@ -19,6 +27,9 @@ case "$1" in
         lock
         ;;
     logout)
+        echo "logging out ... "+`date` >> /tmp/i3exit.log
+        close_apps
+        echo "After logging out ... "+`date` >> /tmp/i3exit.log
         i3-msg exit
         ;;
     suspend)
@@ -30,9 +41,11 @@ case "$1" in
         lock && systemctl hibernate
         ;;
     reboot)
+        close_apps
         systemctl reboot
         ;;
     shutdown)
+        close_apps
         systemctl poweroff
         ;;
     *)

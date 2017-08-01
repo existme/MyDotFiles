@@ -31,6 +31,10 @@ ctrl + right/left arrow     |   move to next or previous buffer
 :%s/foo/bar/gci             |   (case insensitive) replaces all "foo"s with "bar" with confirmation
 :set ignorecase             |   make all searches case insensitive
                             |
+----[ Key mapping ]---------|--------------------------------------------------
+:verbose imap <tab>         |   Show where the kepmap is defined and in which file/plugin
+:scripts                    |   Shows all effective scripts 
+                            |
 ----[ spell checker ]-------|--------------------------------------------------
 ,s                          |   toggle spell checker
 z=                          |   show the suggestions
@@ -42,8 +46,8 @@ set nolist                  |   hide listchars including tab
 :w !sudo tee %              |   save file with sudo privileges
                             |
 --[ function key mapping ]--|--------------------------------------------------
-F2                          |   toggle paste
-F3                          |   Toggle nerd tree¬
+F2                          |   toggle paste ~/paste
+F3                          |   Toggle nerd tree 
 F4                          |   Toggle highlight 
 F5                          |   Toggle list invisible characters like tabs 
                             |
@@ -52,6 +56,7 @@ gc                          |   Toggle comment for the selected text or block
 g>                          |   Toggle comment for the selected text or block
 set nonumber                |   Hide line numbers
 set number                  |   Show line numbers
+<tab>                       |   Auto compilation
                             |
 ----------------------------|--------------------------------------------------
 ## Vifm

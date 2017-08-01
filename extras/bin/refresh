@@ -1,0 +1,7 @@
+#!/bin/bash
+export left=DVI-1
+export right=DVI-0
+
+xrandr --output $left --off;xrandr --output $right --off;
+
+/usr/bin/xrandr --output $left --auto --pos 0x0 --output $right --auto --pos 1920x1080 --right-of $left --auto

@@ -68,3 +68,6 @@
 [submodule "bundle/z"]
 	path = bundle/z
 	url = https://github.com/rupa/z.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
