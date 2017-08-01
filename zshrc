@@ -117,6 +117,7 @@ export PATH=$SCRIPTPATH/extras/scripts:$PATH
 #
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
+alias zshlocal="vim ~/zshrc.local.sh"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
 hash -d memo="cd ~/Dropbox/Memo"
@@ -251,3 +252,10 @@ setopt auto_cd
 
 alias h="history|grep"
 alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+
+# The TOOLBOX variable should be set in zshrc.local.sh to something like this: 
+# TOOLBOX=/Users/(uid)/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0
+export IDEA_VERSION=$(ls -ltx $TOOLBOX|awk '{print $NF}')
+# IDEA_POSTIFIX should also be set in zshrc.local.sh ex:
+# IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea
+export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
