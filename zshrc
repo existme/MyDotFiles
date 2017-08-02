@@ -120,7 +120,6 @@ alias zshconfig="vim ~/.zshrc"
 alias zshlocal="vim ~/zshrc.local.sh"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
-hash -d memo="cd ~/Dropbox/Memo"
 alias zdoc="xdg-open /usr/share/doc/zsh/doc/zsh.pdf >> /dev/null 2>&1 &"
 #alias cat="grc cat"
 alias ds="du -hd 1| sort -h"
@@ -129,13 +128,28 @@ alias hd="head -n 40 "
 alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
 alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
 alias jq="jq '.' "
-hash -d myvim=~/git/MyDotFiles
 alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lah"
-alias help="mdp $SCRIPTPATH/help.md"
 alias v="vifm"
 alias s="sudo"
+# mh is a shortcut for showing help.md in this repo
+# every 34 line the text should break with --- inorder to 
+# be represented as a slide
+alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
+
+# these are mappings for frequently used folder, type for example:
+# ~myvim <Enter> to cd to ~/git/MyDotFiles
+hash -d myvim=~/git/MyDotFiles
+hash -d memo="cd ~/Dropbox/Memo"
+hash -d mydotfiles=$SCRIPTPATH
+# automatically cd to directory when using ~
+setopt auto_cd
+
+# help is used for getting man page for built-in commands: 
+# usage: help read
+alias help=run-help
+
 # Load OS spesific envoronments
 
 if [[ $platform == 'linux' ]]; then
@@ -245,12 +259,14 @@ unsetopt no_match
 # Allow caseincensitive globing
 setopt nocaseglob
 
-hash -d mydotfiles=$SCRIPTPATH
-
-# automatically cd to directory when using ~
-setopt auto_cd
 
 alias h="history|grep"
+# function hh(){
+#    # var=("${(f@)$(cat)}")
+#    # echo Searching history for \"$var\"
+#    #history | grep  | less
+#    echo !!
+# }
 alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 # The TOOLBOX variable should be set in zshrc.local.sh to something like this: 
