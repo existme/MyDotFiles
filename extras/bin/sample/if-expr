@@ -1,0 +1,8 @@
+#!/bin/bash
+
+v=`ls $TOOLBOX|wc -w` 
+echo $v
+if [[ $(expr v) -gt 1 ]]; then
+   echo "more"
+fi
+

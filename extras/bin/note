@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 SNIPPET=$@
-file="/mnt/wiki/wiki/en/scratch.md"
+file=~/wiki/wiki/en/scratch.md
 url="http://rsha.ddns.net/?c=&p=scratch.md"
 
 if [ ! $SNIPPET ]; then
@@ -48,9 +48,9 @@ $SNIPPET\n\
 ---------------------------\n\
 (tags are space separated):" 14 48 "" --title "Any tags for your snippet?:" 3>&1 1>&2 2>&3)
 
-if [ ! -d /mnt/wiki/wiki/en ]; then
-  mount-pi
-fi
+# if [ ! -d /mnt/wiki/wiki/en ]; then
+#   mount-pi
+# fi
 
 #note=$(zenity --entry "What do you want to note?")
 t="   

@@ -131,7 +131,7 @@ alias jq="jq '.' "
 alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lah"
-alias v="vifm"
+alias v="vim"
 alias s="sudo"
 # mh is a shortcut for showing help.md in this repo
 # every 34 line the text should break with --- inorder to 
@@ -140,9 +140,12 @@ alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
 
 # these are mappings for frequently used folder, type for example:
 # ~myvim <Enter> to cd to ~/git/MyDotFiles
-hash -d myvim=~/git/MyDotFiles
-hash -d memo="cd ~/Dropbox/Memo"
+hash -d memo=~/Dropbox/Memo
 hash -d mydotfiles=$SCRIPTPATH
+hash -d b=~/bin
+hash -d s=~/bin/sample
+hash -d wiki=~/wiki
+
 # automatically cd to directory when using ~
 setopt auto_cd
 
@@ -271,6 +274,8 @@ alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 # The TOOLBOX variable should be set in zshrc.local.sh to something like this: 
 # TOOLBOX=/Users/(uid)/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0
+# or in Linux:
+# TOOLBOX=opt/JetBrains/Toolbox/apps/IDEA-U/ch-0
 export IDEA_VERSION=$(ls -ltx $TOOLBOX|awk '{print $NF}')
 # IDEA_POSTIFIX should also be set in zshrc.local.sh ex:
 # IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea

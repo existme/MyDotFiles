@@ -1,0 +1,17 @@
+#!/bin/bash
+
+v=`ls -ltx $TOOLBOX` 
+IFS=' '
+ary=($v)
+count=${#ary[@]}
+first=${ary[0]}
+lastIndex=expr(count-1)
+last=${ary[$lastIndex]}
+echo "Count:$count"
+echo "First:$first"
+echo "LastIndex:$LastIndex"
+echo "Last:$first"
+for key in "${!ary[@]}"; do
+   echo "$key ${ary[$key]}"
+done
+
