@@ -9,6 +9,8 @@ case "$1" in
         ;;
     thaw | resume)
 		/usr/bin/i3-msg restart &>> /tmp/i3-suspend.log
+		/home/existme/bin/refresh &>> /tmp/i3-suspend.log
+		/home/existme/bin/rearrange &>> /tmp/i3-suspend.log
 		echo "i3 should be restarted ">> /tmp/i3-suspend.log
     ;;
 esac
