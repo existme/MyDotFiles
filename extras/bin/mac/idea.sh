@@ -1,1 +1,0 @@
-/Users/rezasa/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/171.4694.70/IntelliJ IDEA.app/Contents/MacOS/idea

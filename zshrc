@@ -280,3 +280,6 @@ export IDEA_VERSION=$(ls -ltx $TOOLBOX|awk '{print $NF}')
 # IDEA_POSTIFIX should also be set in zshrc.local.sh ex:
 # IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea
 export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
+# additional
+# alias ll=exa -la --color=always
+# alias ls=exa --color=always
