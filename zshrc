@@ -167,9 +167,6 @@ if [ -f $HOME/zshrc.local.sh ]; then
 	source $HOME/zshrc.local.sh
 fi
 
-if [ -f $HOME/zshrc.local.env ]; then
-	source $HOME/zshrc.local.env
-fi
 
 plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases)
 source $ZSH/oh-my-zsh.sh
@@ -283,3 +280,7 @@ export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
 # additional
 # alias ll=exa -la --color=always
 # alias ls=exa --color=always
+
+if [ -f $HOME/zshrc.local.post ]; then
+	source $HOME/zshrc.local.post
+fi
