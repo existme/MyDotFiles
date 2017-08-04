@@ -35,6 +35,9 @@ ctrl + right/left arrow     |   move to next or previous buffer
 :verbose imap <tab>         |   Show where the kepmap is defined and in which file/plugin
 :scripts                    |   Shows all effective scripts 
                             |
+--[ Syntax Highlighter ]----|--------------------------------------------------
+:set syntax=yaml            |   for wrong or unknown types you can manually set syntax
+                            |
 ----[ spell checker ]-------|--------------------------------------------------
 ,s                          |   toggle spell checker
 z=                          |   show the suggestions
