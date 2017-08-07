@@ -51,14 +51,17 @@ nmap <leader>\		:set fo+=ta<CR>
 nmap <leader>'		:set fo-=ta<CR>
 
 " =========  Cursor Movement		 ===========
-map <C-right>		<ESC>:bn<CR>
-map <C-left>		<ESC>:bp<CR>
-map <leader>q		:Bdelete<CR>
-nmap <C-Q>			:Bdelete<CR>
-nmap <C-J>			<C-D>
-nmap <C-K>			<C-U>
-nmap <C-H>			0							"Control H will goto to begining of line
-nmap <C-L>			$							"Control L will goto to the end of line
+inoremap <C-Right>		<ESC>:bn<CR>
+
+inoremap <C-Left>		<ESC>:bp<CR>
+
+map <leader>q :Bdelete<CR> 
+
+nmap <C-Q> :Bdelete<CR> nmap <C-J><C-D>
+
+nmap <C-K> <C-U> nmap <C-H> 0
+"Control H will goto to begining of line nmap <C-L>			$
+"Control L will goto to the end of line
 
 inoremap jj			<Esc><Esc>				"Writing jj would cause to change to Normal M.
 inoremap jk			<Esc><Esc>				"Writing jk would cause to change to Normal M.
@@ -121,4 +124,4 @@ nmap qq						:qa<CR>
 set		pastetoggle=<F2>										"Toggle paste with F2
 map		<F3>				<ESC>:NERDTreeToggle<CR>		"Toggle nerd tree  F3
 noremap	<F4>				:set hlsearch! hlsearch?<CR>	"Toggle highlight  F4
-noremap	<F5>				:set invlist<CR>					"Toggle list-invis F5
+noremap	<F5>				:set invlist<CR>					"Toggle highlight  F5

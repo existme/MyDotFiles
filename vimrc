@@ -213,5 +213,6 @@ nnoremap <c-a> <esc>:exec "w \| bd" <cr>
 nnoremap <c-o> <esc>:w !sudo tee % <cr>
 set novb
 set noeb
-
+set mouse=n
+set ttymouse=xterm2
 "au BufNewFile,BufRead *.yaml,*.yml so dotfilespath/vim/bundle/syntax/YAML.vim

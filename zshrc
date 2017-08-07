@@ -142,9 +142,14 @@ alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
 # ~myvim <Enter> to cd to ~/git/MyDotFiles
 hash -d memo=~/Dropbox/Memo
 hash -d mydotfiles=$SCRIPTPATH
-hash -d b=~/bin
-hash -d s=~/bin/sample
+hash -d vim=$SCRIPTPATH
+hash -d download=~/Downloads
+hash -d git=~/git
+hash -d bin=~/bin
+hash -d sample=~/bin/sample
 hash -d wiki=~/wiki
+hash -d pictures=~/pictures
+hash -d local=~/zshrc.local.sh
 
 # automatically cd to directory when using ~
 setopt auto_cd

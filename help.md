@@ -7,6 +7,13 @@ called mdp (https://github.com/visit1985/mdp).
     - Rasp: sudo apt-get install libncurses5-dev libncursesw5-dev
 
 ## vim
+to open several files in split mode use:
+
+vim -O *.txt
+
+or
+
+vim -O ~/.zshrc ~/zshrc.local.sh
 
 Commands
 
@@ -21,6 +28,15 @@ ctrl + right/left arrow     |   move to next or previous buffer
 :vsp ~/.zshrc               |   open another file in vertical
 :set splitright             |   set files to open in right
 :vsp#2                      |   vertical split
+                            |
+                            |
+----[ Buffer manipulation]--|--------------------------------------------------
+:bn                         | next buffer
+:Ctrl+w |                   | set width (ex. 50<C-w>_) 
+:Ctrl+w =                   | equalize width and height of all windows
+:help CTRL-W                | See also
+,q                          | delete current buffer and move on
+                            |
                             |
                             |
 ----[ search & replace ]----|--------------------------------------------------

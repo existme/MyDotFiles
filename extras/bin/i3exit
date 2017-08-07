@@ -33,9 +33,11 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
+        sudo service autofs stop
 		  echo "Susspending ... "+`date` >> /tmp/i3exit.log  
 		  sudo /usr/sbin/pm-suspend --quirk-radeon-off &>> /tmp/i3exit.log
 		  echo "After susspend... "+`date` >> /tmp/i3exit.log
+        sudo service autofs start
         ;;
     hibernate)
         lock && systemctl hibernate
