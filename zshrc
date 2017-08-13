@@ -11,6 +11,8 @@ export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=ignoreboth:erasedups
 export XDG_RUNTIME_DIR=/run/user/0
+export STOW_DIR="/opt/"
+export MANPATH=/usr/share/man
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -232,7 +234,7 @@ bindkey '^[[1;3D'      cdUndoKey
 # Bind Escape to vi-cmd-mode
 bindkey "\e" vi-cmd-mode
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/local/stow" # Add RVM to PATH for scripting
 #Return “yes” if the repository is on an “nfs” mount
 function __is_slow_storage() {
    export STAT_OPT='-L --file-system --format="%T"'
@@ -274,6 +276,14 @@ alias h="history|grep"
 # }
 alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
+function y(){
+
+   if [[ $1 == "--help" || $# -eq 0 ]]; then
+      echo "Usage: y i3"
+      return
+   fi
+   yelp man:$1 &
+}
 # The TOOLBOX variable should be set in zshrc.local.sh to something like this: 
 # TOOLBOX=/Users/(uid)/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0
 # or in Linux:
