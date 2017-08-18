@@ -5,21 +5,21 @@ import sys
 import executor
 
 def get_active_sink():
-  return executor.run('pacmd list-sinks | grep "* index" | awk \'{print $3}\'')[0]
+  return executor.execute('pacmd list-sinks | grep "* index" | awk \'{print $3}\'')
 
 def get_volume():
-  return executor.run('amixer -D pulse get Master | grep -o "\[.*%\]" | grep -o "[0-9]*" | head -n1')[0]
+  return executor.execute('amixer -D pulse get Master | grep -o "\[.*%\]" | grep -o "[0-9]*" | head -n1')
 
 def set_volume(percentage):
-  executor.run('pactl set-sink-volume ' + get_active_sink() + ' ' + str(percentage) + '%')
+  executor.execute('pactl set-sink-volume ' + get_active_sink() + ' ' + str(percentage) + '%')
   emit_signal()
 
 def toggle_volume():
-  executor.run('amixer -D pulse set Master Playback Switch toggle')
+  executor.execute('amixer -D pulse set Master Playback Switch toggle')
   emit_signal()
 
 def is_muted():
-  return not executor.run('amixer -D pulse get Master | grep -o "\[on\]" | head -n1')[0]
+  return not executor.execute('amixer -D pulse get Master | grep -o "\[on\]" | head -n1')
 
 def write(message):
   sys.stdout.write(message)
@@ -40,7 +40,7 @@ def status():
     return 'on'
 
 def emit_signal():
-  executor.run('pkill -RTMIN+1 i3blocks')
+  executor.execute('pkill -RTMIN+1 i3blocks')
 
 if __name__ == '__main__':
   command = sys.argv[1]

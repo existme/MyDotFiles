@@ -11,7 +11,7 @@ export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=ignoreboth:erasedups
 export XDG_RUNTIME_DIR=/run/user/0
-export STOW_DIR="/opt/"
+export STOW_DIR="/home/existme/local/stow"
 export MANPATH=/usr/share/man
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
@@ -132,20 +132,22 @@ alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
 alias jq="jq '.' "
 alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
-alias ll="ls -lah"
+alias ll="ls -lSahr"
 alias v="vim"
 alias s="sudo"
+alias dq="sudo dpkg-query --listfiles"
+alias iconf="code ~config/i3/config"
 # mh is a shortcut for showing help.md in this repo
 # every 34 line the text should break with --- inorder to 
 # be represented as a slide
 alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
 
 # these are mappings for frequently used folder, type for example:
-# ~myvim <Enter> to cd to ~/git/MyDotFiles
 hash -d memo=~/Dropbox/Memo
 hash -d mydotfiles=$SCRIPTPATH
 hash -d vim=$SCRIPTPATH
 hash -d download=~/Downloads
+hash -d desktop=~/Desktop
 hash -d git=~/git
 hash -d bin=~/bin
 hash -d sample=~/bin/sample
@@ -296,6 +298,30 @@ export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
 # alias ll=exa -la --color=always
 # alias ls=exa --color=always
 
+alias lt="ls -larh -t modified"
+
 if [ -f $HOME/zshrc.local.post ]; then
 	source $HOME/zshrc.local.post
 fi
+
+autoload -Uz promptinit
+promptinit
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+# Fix default zstyle for tab completion
+zstyle ':completion:*' format ''
+zstyle ':completion:*' menu select auto

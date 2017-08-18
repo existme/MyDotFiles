@@ -4,16 +4,23 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CertInstallCommand	../get-pip.py	/^    class CertInstallCommand(InstallCommand):$/;"	kind:class	line:87
+_b85alphabet	../get-pip.py	/^    _b85alphabet = (b"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"$/;"	kind:variable	line:43
 action	../compiz-send.py	/^    action = sys.argv[2]$/;"	kind:variable	line:60
 args	../compiz-send.py	/^args = ['root', rootwin_id]$/;"	kind:variable	line:62
+args	../get-pip.py	/^        args = sys.argv[1:]$/;"	kind:variable	line:108
+b85decode	../get-pip.py	/^    def b85decode(b):$/;"	kind:function	line:46
 booldict	../compiz-send.py	/^booldict = {'true': True, 'false': False}$/;"	kind:variable	line:7
+bootstrap	../get-pip.py	/^def bootstrap(tmpdir=None):$/;"	kind:function	line:80
 candidates	../hop.py	/^candidates = [str(w['name']) for w in works if w['output'] == output]$/;"	kind:variable	line:22
+cert_path	../get-pip.py	/^        cert_path = os.path.join(tmpdir, "cacert.pem")$/;"	kind:variable	line:166
 compiz-send.py	../compiz-send.py	1;"	kind:file	line:1
 cur_name	../hop.py	/^cur_name = str([w['name'] for w in works if w['focused']][0])$/;"	kind:variable	line:19
 destrify	../compiz-send.py	/^def destrify(s):$/;"	kind:function	line:10
 emit_signal	../volume_control.py	/^def emit_signal():$/;"	kind:function	line:42
 extra_len	../compiz-send.py	/^extra_len = len(sys.argv[3:])$/;"	kind:variable	line:64
 focus-i3.py	../focus-i3.py	1;"	kind:file	line:1
+get-pip.py	../get-pip.py	1;"	kind:file	line:1
 get_active_sink	../volume_control.py	/^def get_active_sink():$/;"	kind:function	line:7
 get_volume	../volume_control.py	/^def get_volume():$/;"	kind:function	line:10
 hop.py	../hop.py	1;"	kind:file	line:1
@@ -21,14 +28,20 @@ i3	../focus-i3.py	/^i3 = i3ipc.Connection()$/;"	kind:variable	line:7
 i3	../hop.py	/^i3 = i3ipc.Connection()$/;"	kind:variable	line:5
 iid	../hop.py	/^iid = "3"$/;"	kind:variable	line:33
 iid	../hop.py	/^iid = candidates[target]$/;"	kind:variable	line:32
+implicit_setuptools	../get-pip.py	/^        implicit_setuptools = False$/;"	kind:variable	line:106
+implicit_wheel	../get-pip.py	/^        implicit_wheel = False$/;"	kind:variable	line:113
 index	../hop.py	/^index = candidates.index(cur_name)$/;"	kind:variable	line:25
 is_muted	../volume_control.py	/^def is_muted():$/;"	kind:function	line:21
+iterbytes	../get-pip.py	/^    def iterbytes(buf):$/;"	kind:function	line:37
+iterbytes	../get-pip.py	/^    iterbytes = iter$/;"	kind:variable	line:35
+main	../get-pip.py	/^def main():$/;"	kind:function	line:179
 method	../compiz-send.py	/^        method = METHOD_LIST$/;"	kind:variable	line:49
 method	../compiz-send.py	/^    method = METHOD_ACTIVATE$/;"	kind:variable	line:56
 obj	../compiz-send.py	/^    obj = dbus.Interface(proxy, interface)$/;"	kind:variable	line:76
 obj	../compiz-send.py	/^    obj = dbus.Interface(proxy, interface)$/;"	kind:variable	line:81
 on_window_focus	../focus-i3.py	/^def on_window_focus(i3, e):$/;"	kind:function	line:11
 output	../hop.py	/^output = str([w['output'] for w in works if w['focused']][0])$/;"	kind:variable	line:18
+parse_args	../get-pip.py	/^        def parse_args(self, args):$/;"	kind:member	line:88
 plugin	../compiz-send.py	/^plugin = sys.argv[1]$/;"	kind:variable	line:58
 proxy	../compiz-send.py	/^        proxy = session_bus.get_object(service, "\/org\/freedesktop\/compiz")$/;"	kind:variable	line:51
 proxy	../compiz-send.py	/^    proxy = session_bus.get_object($/;"	kind:variable	line:74

@@ -124,7 +124,7 @@ set colorcolumn=81
 set laststatus=2
 set background=dark
 set listchars=tab:▸\ ,eol:¬
-set showbreak=…
+"set showbreak=…
 
 
 " ========= Configuring Fonts for gvim =======
@@ -146,7 +146,7 @@ function ToggleWrap(show)
 	if &wrap
 		setlocal nowrap
 		set virtualedit=all
-		set columns=120
+		set columns=400
 		silent! nunmap <buffer> <Up>
 		silent! nunmap <buffer> <Down>
 		silent! nunmap <buffer> <Home>
@@ -163,7 +163,7 @@ function ToggleWrap(show)
 		setlocal wrap linebreak nolist
 		set virtualedit=onemore
 		setlocal display+=lastline
-		set columns=86
+		set columns=81
 		noremap	<buffer> <silent> <Up>		gk
 		noremap	<buffer> <silent> <Down>	gj
 		noremap	<buffer> <silent> <Home>	g<Home>
@@ -207,12 +207,14 @@ set splitright
 "open the help file
 nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
 nmap <F1> <esc>:execute "e ".dotfilespath."/help.md"<enter>
-
+nmap <F8> <esc>:call ToggleWrap(1)<cr>
 "save and close buffer"
 nnoremap <c-a> <esc>:exec "w \| bd" <cr>
 nnoremap <c-o> <esc>:w !sudo tee % <cr>
+set nowrap
 set novb
 set noeb
-set mouse=n
+set mouse=v
 set ttymouse=xterm2
+set nonumber
 "au BufNewFile,BufRead *.yaml,*.yml so dotfilespath/vim/bundle/syntax/YAML.vim
