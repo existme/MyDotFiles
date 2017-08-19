@@ -1,0 +1,30 @@
+#!/bin/bash
+
+case "$1" in
+        start)
+            echo "start"
+            ;;
+         
+        stop)
+            echo "stop"
+            ;;
+         
+        status)
+            echo "status anacron"
+            ;;
+        restart)
+            echo "stop"
+            echo "start"
+            ;;
+        condrestart)
+            if test "x`pidof anacron`" != x; then
+                echo "stop"
+                echo "start"
+            fi
+            ;;
+         
+        *)
+            echo $"Usage: $0 {start|stop|restart|condrestart|status}"
+            exit 1
+ 
+esac

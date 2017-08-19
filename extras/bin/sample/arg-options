@@ -1,0 +1,44 @@
+#! /bin/bash
+A_SELECTED=0
+
+while getopts ":@aAbB:" Option
+do
+  case $Option in
+    '@' )
+        ## HIDE_CONTEXT_NAMES starts at zero (false); increment it to one
+        ##   (true) the first time this flag is seen. Each time the flag
+        ##   is seen after that, increment it again so that an even
+        ##   number shows context names and an odd number hides context
+        ##   names.
+        : $(( counter++ ))
+        if [ $(( $A_SELECTED % 2 )) -eq 0 ]
+        then
+            ## Zero or even value -- show context names
+            #unset HIDE_CONTEXTS_SUBSTITUTION
+            echo "$Option:$counter:(A not included)"
+        else
+            ## One or odd value -- hide context names
+            echo "$Option:$counter:(A included)"
+        fi
+        ;;
+
+    a )
+        echo "Choice a"
+        ;;
+
+    A )
+        echo "Choice A"
+        A_SELECTED=1
+        ;;
+    B )
+        echo "Choice B"
+        ;;
+    b )
+        echo "Choice b"
+        ;;
+    *)
+        echo "not supported $Option"
+        ;;
+  esac 
+done
+shift $(($OPTIND - 1))

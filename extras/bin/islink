@@ -1,0 +1,8 @@
+#!/bin/bash
+
+if [[ -h dirname ]]; then
+    echo "it's a symbolic link"
+    if ! stat $(readlink dirname) &>/dev/null; then
+        echo "link target does not exist"
+    fi
+fi
