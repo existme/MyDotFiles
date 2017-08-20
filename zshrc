@@ -177,7 +177,7 @@ if [ -f $HOME/zshrc.local.sh ]; then
 fi
 
 
-plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases)
+plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases zsh-autosuggestion)
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
@@ -325,3 +325,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 # Fix default zstyle for tab completion
 zstyle ':completion:*' format ''
 zstyle ':completion:*' menu select auto
+
+source $SCRIPTPATH/bundle/zsh-autosuggestion/zsh-autosuggestions.zsh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240,bold"
+
