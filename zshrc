@@ -177,7 +177,7 @@ if [ -f $HOME/zshrc.local.sh ]; then
 fi
 
 
-plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases zsh-autosuggestion)
+plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases)
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
