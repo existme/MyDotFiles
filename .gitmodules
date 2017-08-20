@@ -34,10 +34,6 @@
 	path = vim/bundle/bbye
 	url = https://github.com/moll/vim-bbye.git
 	ignore = dirty
-[submodule "zsh/bundle/k"]
-	path = zsh/bundle/k
-	url = https://github.com/supercrabtree/k.git
-	ignore = dirty
 [submodule "zsh/bundle/lesaint-mvn"]
 	path = zsh/bundle/lesaint-mvn
 	url = https://github.com/lesaint/lesaint-mvn.git
@@ -74,3 +70,6 @@
 [submodule "bundle/zsh-autosuggestion"]
 	path = bundle/zsh-autosuggestion
 	url = git://github.com/zsh-users/zsh-autosuggestions
+[submodule "zsh/bundle/zsh-syntax-highlighting"]
+	path = zsh/bundle/zsh-syntax-highlighting
+	url = git://github.com/zsh-users/zsh-syntax-highlighting.git

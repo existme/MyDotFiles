@@ -328,4 +328,4 @@ zstyle ':completion:*' menu select auto
 
 source $SCRIPTPATH/bundle/zsh-autosuggestion/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240,bold"
-
+source $SCRIPTPATH/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
