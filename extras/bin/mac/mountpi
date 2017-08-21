@@ -1,7 +1,18 @@
-sudo kextunload -b com.apple.filesystems.smbfs 
-sudo kextutil /Library/Filesystems/osxfuse.fs/Contents/Extensions/10.12/osxfuse.kext
-sudo umount -f ~/Volumes/rsha
-sudo umount -f pi@rsha.ddns.net:
-mkdir -p ~/Volumes/rsha
-sshfs -p 443 pi@rsha.ddns.net: ~/Volumes/rsha -ovolname=rsha -o follow_symlinks -o transform_symlinks -o reconnect
-ls ~/Volumes/rsha
+#! /bin/sh
+if [ -d "/Users/rezasa/Volumes/rsha/WD/Desktop/eBooks" ]; then
+   echo "*******************************************"
+   echo "**                                       **"
+   echo "**  RSHA is Mounted 'Success'            **"
+   echo "**                                       **"
+   echo "*******************************************"
+
+   ls -l /Users/rezasa/Volumes/rsha
+else
+   sudo kextunload -b com.apple.filesystems.smbfs 
+   sudo kextutil /Library/Filesystems/osxfuse.fs/Contents/Extensions/10.12/osxfuse.kext
+   sudo umount -f ~/Volumes/rsha
+   sudo umount -f pi@rsha.ddns.net:
+   mkdir -p ~/Volumes/rsha
+   sshfs -p 443 pi@rsha.ddns.net: ~/Volumes/rsha -ovolname=rsha -o follow_symlinks -o transform_symlinks -o reconnect
+   ls -la ~/Volumes/rsha
+fi
