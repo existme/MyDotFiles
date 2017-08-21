@@ -182,7 +182,6 @@ source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
 # Load bundles
-source $SCRIPTPATH/zsh/bundle/k/k.sh
 #source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 
 # Load keyboard shortcuts
