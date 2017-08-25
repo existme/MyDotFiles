@@ -10,7 +10,7 @@ export KEYTIMEOUT=1
 export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=ignoreboth:erasedups
-export XDG_RUNTIME_DIR=/run/user/0
+#export XDG_RUNTIME_DIR=/run/user/0
 export STOW_DIR="/home/existme/local/stow"
 export MANPATH=/usr/share/man
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
@@ -143,7 +143,7 @@ alias iconf="code ~config/i3/config"
 alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
 
 # these are mappings for frequently used folder, type for example:
-hash -d memo=~/Dropbox/Memo
+#hash -d memo=~/Dropbox/Memo
 hash -d mydotfiles=$SCRIPTPATH
 hash -d vim=$SCRIPTPATH
 hash -d download=~/Downloads
@@ -153,7 +153,7 @@ hash -d bin=~/bin
 hash -d sample=~/bin/sample
 hash -d wiki=~/wiki
 hash -d pictures=~/pictures
-hash -d local=~/zshrc.local.sh
+alias localzsh="vim ~/zshrc.local.sh"
 
 # automatically cd to directory when using ~
 setopt auto_cd
@@ -210,7 +210,7 @@ echo "$(date '+%D %T')";
 CASE_SENSITIVE="false"
 zstyle ':completion:*' completer _complete
 bindkey '\t' expand-or-complete
-compinit
+compinit -u
 cdUndoKey() {
   popd      > /dev/null
   zle       reset-prompt

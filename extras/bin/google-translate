@@ -1,0 +1,82 @@
+#!/usr/bin/env ruby
+
+# Command line tool to translate a text with Google Translate.
+# Source language will be detected.
+# If no text is given, then read standard input.
+
+# With a mini Google Translate Ruby lib inside, just for fun \o/
+# Author: Vivien Didelot (v0n).
+
+require 'rubygems'
+require 'open-uri'
+require 'json'
+require 'optparse'
+
+# Add translation method to String class
+# Using Google Translate.
+class String
+
+  # Translate the string.
+  def translate(to = "en", from = "auto")
+    json = translate_json(from, to)
+
+    return json['sentences'].first['trans']
+  end
+
+  # Detect the language of the string.
+  def language
+    json = translate_json('auto', 'en')
+
+    return json['src']
+  end
+
+  # Is is French?
+  def french?
+    language == 'fr'
+  end
+
+  # Is is English?
+  def english?
+    language == 'en'
+  end
+
+  private
+
+  # Private method to get the raw JSON response from Google
+  def translate_json(from, to)
+    url = URI.escape("http://translate.google.com/translate_a/t?client=j&text=#{self}&sl=#{from}&tl=#{to}")
+    response = open(url, 'User-Agent' => 'Mozilla/5.0', 'Accept-Charset' => 'utf-8').read
+
+    return JSON.parse(response)
+  end
+end
+
+# Program
+from = 'auto'
+to = 'en'
+
+ARGV.options do |o|
+  o.banner = "Usage: #{$0} [options] [<text to translate> | -]"
+  o.on_head("Options:")
+  o.on('-f', '--from=LANGUAGE', String, "Translate from LANGUAGE") { |lang| from = lang }
+  o.on('-t', '--to=LANGUAGE',   String, "Translate to LANGUAGE")   { |lang| to = lang }
+end
+
+begin
+  ARGV.options.parse!
+  if ARGV.empty? || ARGV.first == "-"
+    text = STDIN.gets.strip
+  else
+    text = ARGV.join(' ')
+  end
+
+  # Make the script smarter!
+  to = 'fr' if from == 'auto' && to == 'en' && text.english?
+
+  # All that for this
+  puts text.translate(to, from)
+rescue => e
+  STDERR.puts "Oops! #{e}"
+end
+
+exit
