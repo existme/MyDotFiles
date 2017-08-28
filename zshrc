@@ -210,6 +210,9 @@ echo "$(date '+%D %T')";
 CASE_SENSITIVE="false"
 zstyle ':completion:*' completer _complete
 bindkey '\t' expand-or-complete
+
+
+bindkey '\e.' insert-last-word
 compinit -u
 cdUndoKey() {
   popd      > /dev/null

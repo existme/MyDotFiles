@@ -3,7 +3,7 @@ set -euo pipefail
 IFS=$'\n\t'
 
 SNIPPET=$@
-file=~/wiki/wiki/en/scratch.md
+file=~/wiki/scratch.md
 url="http://rsha.ddns.net/?c=&p=scratch.md"
 
 if [ ! $SNIPPET ]; then
