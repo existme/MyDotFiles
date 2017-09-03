@@ -13,6 +13,7 @@ export HISTCONTROL=ignoreboth:erasedups
 #export XDG_RUNTIME_DIR=/run/user/0
 export STOW_DIR="/home/existme/local/stow"
 export MANPATH=/usr/share/man
+export LSCOLORS=ExFxCxDxBxegedabagacad
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
