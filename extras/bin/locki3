@@ -1,4 +1,5 @@
 #!/bin/sh
 
-i3lock -f -i ~/Pictures/dual/quotue-01.png
+#i3lock -f -i ~/Pictures/dual/quotue-01.png
+~/bin/i3colorlock
 sleep 60; pgrep i3lock && xset dpms force off
