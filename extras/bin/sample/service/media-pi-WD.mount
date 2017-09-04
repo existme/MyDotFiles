@@ -1,0 +1,16 @@
+#this file should be copied to /etc/systemd/system/ and be
+#started by "sudo systemctl media-pi-WD.mount start"
+
+[Unit]
+Description=WD Sshfs mount
+Requires=network-online.target
+After=netctl@enp0s25.service
+
+[Mount]
+What=root@192.168.0.50:/DataVolume/shares/WD
+Where=/media/pi/WD
+Type=fuse.sshfs
+Options=_netdev,user,idmap=user,umask=0000,uid=vagrant,gid=pi,allow_other,transform_symlinks
+
+[Install]
+WantedBy=multi-user.target
