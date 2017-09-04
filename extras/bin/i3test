@@ -1,1 +1,6 @@
-/usr/bin/nautilus
+#!/bin/sh
+FILE=/tmp/i3test.log
+
+echo "==============" >> $FILE 
+echo `/bin/date` >> $FILE 
+echo "args: [$@]" >> $FILE 
