@@ -1,0 +1,13 @@
+Note xsession environment variables
+The date is: Tuesday 05 September 2017, 19:00:18
+-----------------------------------------
+It appears that the most important place to update your environment
+variables to be captured by xsession based wms is:
+
+vim /etc/profile.d/apps-bin-path.sh
+
+**note**: your environment should be restarted for this settings be effective
+
+another place which worth looking at is:
+vim /etc/environment
+-----------------------------------------

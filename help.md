@@ -66,6 +66,8 @@ Commands
 | set nonumber                 | Hide line numbers                                                   |
 | set number                   | Show line numbers                                                   |
 | .                            | Auto compilation                                                    |
+| :w!!                         | Vim sudo trick or :w !sudo tee > /dev/null %                        |
+| <ctrl>o                      | Vim sudo trick or :w !sudo tee > /dev/null %                        |
 
 ## 1.2. Vifm
 

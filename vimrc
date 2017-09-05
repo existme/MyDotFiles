@@ -210,7 +210,9 @@ nmap <F1> <esc>:execute "e ".dotfilespath."/help.md"<enter>
 nmap <F8> <esc>:call ToggleWrap(1)<cr>
 "save and close buffer"
 nnoremap <c-a> <esc>:exec "w \| bd" <cr>
+"vim sudo trick
 nnoremap <c-o> <esc>:w !sudo tee % <cr>
+cmap w!! w !sudo tee > /dev/null %
 set nowrap
 set novb
 set noeb

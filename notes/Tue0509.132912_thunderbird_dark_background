@@ -1,0 +1,46 @@
+Note thunderbird dark background
+The date is: Tuesday 05 September 2017, 13:29:12
+-----------------------------------------
+Go to thunderbird:
+   Menu -> Help -> Troubleshooting Information -> about:profiles
+
+You can find where is your profile storage, somewhere like:
+
+cd ~/.thunderbird/6py0ngzb.default
+mkdir chrome
+cd chrome
+vim userContent.css
+
+add the following lines to the css:
+
+=============[ userContent.css ]=================
+* {                                                                              
+   color: white !important;                                                      
+   background-color: #282C39 !important;                                         
+   font-family: "Inconsolata-g\ for\ Powerline";                                 
+   font-size: 24px;                                                              
+   font-style: normal;                                                           
+   font-weight: 500;                                                             
+   font-height: 26.4;                                                            
+}                                                                                
+:link {color: #aaf}                                                              
+                                                                                 
+td {color: black; background-color: white}                                       
+:link {color: #0000c8}                                                           
+                                                                                 
+                                                                                 
+                                                                                 
+@-moz-document url-prefix(mailbox:) {                                            
+  /* all the other rules go here */                                              
+}
+==================================================
+
+Also to modify elements in the ui itself create the
+following file:
+
+============[ userChrome.css ]====================
+:link {color: #F17700 !important;}
+.link {color: #F17700 !important;}
+:textWrap {color: #F17700 !important;}
+.textWrap {color: #F17700 !important;}
+==================================================
