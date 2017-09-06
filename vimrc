@@ -207,6 +207,7 @@ set splitright
 "open the help file
 nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
 nmap <F1> <esc>:execute "e ".dotfilespath."/help.md"<enter>
+nmap <F6> <esc>:set invnumber\|set relativenumber!<cr>
 nmap <F8> <esc>:call ToggleWrap(1)<cr>
 "save and close buffer"
 nnoremap <c-a> <esc>:exec "w \| bd" <cr>

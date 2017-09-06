@@ -60,6 +60,7 @@ Commands
 | F3                           | Toggle nerd tree                                                    |
 | F4                           | Toggle highlight                                                    |
 | F5                           | Toggle list invisible characters like tabs                          |
+| F6                           | Toggle showing the line numbers                                     |
 | --[ miscellaneous ]--        |                                                                     |
 | gc                           | Toggle comment for the selected text or block                       |
 | g>                           | Toggle comment for the selected text or block                       |

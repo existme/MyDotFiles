@@ -19,7 +19,7 @@ close_apps(){
 }
 
 lock() {
-    i3lockcolor
+    $HOME/i3colorlock
 }
 echo "i3exit was called with: $1" >> /tmp/i3exit.log
 case "$1" in
@@ -35,12 +35,12 @@ case "$1" in
     suspend)
         sudo service autofs stop
 		  echo "Susspending ... "+`date` >> /tmp/i3exit.log  
-        /home/rezasa/bin/i3colorlock
-        sleep 1
+        $HOME/bin/i3colorlock&
+        sleep 4
 		  sudo /usr/sbin/pm-suspend --quirk-radeon-off &>> /tmp/i3exit.log
         sleep 2
-        /home/rezasa/bin/refresh
-        /home/rezasa/bin/rearrange
+        $HOME/bin/refresh
+        $HOME/bin/rearrange
 		  echo "After susspend... "+`date` >> /tmp/i3exit.log
         sudo service autofs start
         ;;
