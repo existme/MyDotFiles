@@ -27,7 +27,10 @@ fi
 
 
 ~/.screenlayout/layout.sh
-xrandr --output $DP1 --primary
+xrandr --output $DP0 --verbose --auto 
+xrandr --output $DP1 --primary --auto
+xrandr --output $DP2 --verbose --auto 
+~/.screenlayout/layout.sh
 xrandr --dpi 120
 i3-msg restart
 exit
@@ -35,11 +38,11 @@ exit
 if [[ $DP0 ]]; then 
    xrandr --output $DP0 --verbose --auto 
 fi
-
+sleep 1
 if [[ $DP1 ]]; then
    xrandr --output $DP1 --verbose --auto --primary --right-of $DP0 
 fi
-
+sleep 1
 if [[ $DP2 ]]; then
    xrandr --output $DP2 --verbose --auto --right-of $DP1
 fi
