@@ -20,13 +20,14 @@ Commands
 | command                      | description                                                         |
 |------------------------------|---------------------------------------------------------------------|
 | --[ files and buffers ]--    |                                                                     |
-| ctrl + right/left arrow      | move to next or previous buffer                                     |
+| shift + right/left arrow     | move to next or previous buffer                                     |
 | ,,                           | toggle previous buffer                                              |
 | :bd                          | close current buffer                                                |
 | ,q                           | delete current buffer and move on                                   |
 | :vert help e                 | show help in vertical mode                                          |
 | :vsp                         | open another file in vertical                                       |
 | :vsp ~/.zshrc                | open another file in vertical                                       |
+| :e ~/.zshrc                  | open another file in a new buffer                                   |
 | :set splitright              | set files to open in right                                          |
 | :vsp#2                       | vertical split                                                      |
 | --[ Buffer manipulation ]--  |                                                                     |

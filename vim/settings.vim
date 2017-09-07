@@ -8,8 +8,10 @@ vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
 
-" ================  Toggle to previuse buffer  ========
+" ================  Buffer  ========
 map <Leader><Leader> <C-^>
+map <S-Right>		<ESC>:bn<CR>
+map <S-Left>		<ESC>:bp<CR>
 
 " ===========  Copy/Paste Mapping ================
 noremap <leader>y "*y
@@ -51,10 +53,6 @@ nmap <leader>\		:set fo+=ta<CR>
 nmap <leader>'		:set fo-=ta<CR>
 
 " =========  Cursor Movement		 ===========
-inoremap <C-Right>		<ESC>:bn<CR>
-
-inoremap <C-Left>		<ESC>:bp<CR>
-
 map <leader>q :Bdelete<CR> 
 
 nmap <C-Q> :Bdelete<CR> nmap <C-J><C-D>
@@ -89,12 +87,12 @@ vmap <C-E>					<End>
 " Activating shif+cursor to act as normal
 nmap <S-Up>					v<Up>
 nmap <S-Down>				v<Down>
-nmap <S-Left>				v<Left>
-nmap <S-Right>				v<Right>
+" nmap <S-Left>				v<Left>
+" nmap <S-Right>				v<Right>
 vmap <S-Up>					<Up>
 vmap <S-Down>				<Down>
-vmap <S-Left>				<Left>
-vmap <S-Right>				<Right>
+" vmap <S-Left>				<Left>
+" vmap <S-Right>				<Right>
 
 " ======== Using arrow keys in insert mode will change to normal mode. =====
 imap <Up>					<Esc><UP>
