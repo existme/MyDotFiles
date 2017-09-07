@@ -31,8 +31,25 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # autoload zkbd
 # [[ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]] && zkbd
 # source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
-
-
+export cZ=$(echo -en '\033[0m')				# RESET
+export cR=$(echo -en '\033[00;31m')			# red
+export cG=$(echo -en '\033[00;32m')			# green
+export cY=$(echo -en '\033[00;33m')			# yellow
+export cB=$(echo -en '\033[00;34m')			# blue
+export cM=$(echo -en '\033[00;35m')			# magenta (purple)
+export cP=$(echo -en '\033[00;35m')			# purple (magenta)
+export cC=$(echo -en '\033[00;36m')			# cyan
+export cW=$(echo -en '\033[00;37m')			# white
+export bR=$(echo -en '\033[01;31m')			# bold red
+export bG=$(echo -en '\033[01;32m')			# bold green
+export bY=$(echo -en '\033[01;33m')			# bold yellow
+export bB=$(echo -en '\033[01;34m')			# bold blue
+export bM=$(echo -en '\033[01;35m')			# bold magenta
+export bP=$(echo -en '\033[01;35m')			# bold purple
+export bC=$(echo -en '\033[01;36m')			# bold cyan
+export bW=$(echo -en '\033[01;37m')			# bold white
+#  ex: echo "\$cR (${cR}red${cZ}) \$bG (${bG}bold green${cZ})"
+msgRGB=${cR}R${cG}G${cY}Y${cB}B${cP}P${cC}C${cW}W${cZ}Z${bR}R${bG}G${bY}Y${bB}B${bP}P${bC}C${bW}W${cZ}
 export OTERM=$TERM
 if [[ $TERM == 'linux' ]]; then
 	export TERM=xterm-256color
@@ -145,12 +162,15 @@ alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
 
 # these are mappings for frequently used folder, type for example:
 #hash -d memo=~/Dropbox/Memo
+hash -d MyDotFiles=$SCRIPTPATH
 hash -d mydotfiles=$SCRIPTPATH
 hash -d vim=$SCRIPTPATH
 hash -d download=~/Downloads
+hash -d config=~/.config
 hash -d desktop=~/Desktop
 hash -d git=~/git
 hash -d bin=~/bin
+hash -d notes=~/notes
 hash -d sample=~/bin/sample
 hash -d wiki=~/wiki
 hash -d pictures=~/pictures
@@ -203,6 +223,7 @@ source $SCRIPTPATH/zsh/keyinfo.sh
 # 	fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
 # fi
 #echo "$(date '+%D %T' | toilet -f term -F border --gay)";
+echo $msgRGB
 echo "$(date '+%D %T')";
 #pal
 
@@ -332,3 +353,5 @@ zstyle ':completion:*' menu select auto
 source $SCRIPTPATH/bundle/zsh-autosuggestion/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240,bold"
 source $SCRIPTPATH/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+[[ -s "/etc/grc.zsh" ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"

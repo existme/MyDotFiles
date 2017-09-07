@@ -1,0 +1,2 @@
+#!/bin/sh
+sudo find ~/ -amin -4 -type f -printf "%A@ ${bY}%AH:%AM:%.2AS${cW} %AY/%Am/%Ad$cR %p$cZ\n"|egrep -v ".cache|google-chrome|firefox|GLCache|.thunderbird|Mattermost|Slack|.pulse|.jar|Dropbox|.zip"|cut -d' ' -f2-
