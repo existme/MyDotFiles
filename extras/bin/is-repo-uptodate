@@ -1,0 +1,26 @@
+#/bin/bash
+>/dev/stderr
+
+git remote -v update
+# pwd 
+
+UPSTREAM=${1:-'@{u}'}
+LOCAL=$(git rev-parse @)
+REMOTE=$(git rev-parse "$UPSTREAM")
+BASE=$(git merge-base @ "$UPSTREAM")
+
+echo "LOCAL  = $LOCAL"
+echo "REMOTE = $REMOTE"
+if [ "$LOCAL" = "$REMOTE" ]; then
+    echo "Up-to-date"
+    exit 0
+elif [ "$LOCAL" = "$BASE" ]; then
+    echo "Need to pull"
+    exit 1
+elif [ "$REMOTE" = "$BASE" ]; then
+    echo "Need to push"
+    exit 0
+else
+    echo "Diverged"
+    exit 1
+fi

@@ -1,0 +1,23 @@
+#!/bin/zsh
+# !! It's important to use bash or zsh otherwise reads doesn't work
+echo "Do you want to pull$bR i3-gaps$cZ located at$cG $HOME/git/i3-gaps$cZ?"
+read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?" 
+echo
+cd ~/git/i3-gaps
+
+if [[ $pr =~ ^[Yy]$ ]]; then
+   git pull
+fi
+read -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?" 
+echo
+if [[ ! $pr =~ ^[Yy]$ ]]; then
+   exit
+fi
+
+rm -rf ~/git/i3-gaps/build
+mkdir ~/git/i3-gaps/build
+cd ~/git/i3-gaps/build
+grc ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+grc make
+grc sudo make install
+

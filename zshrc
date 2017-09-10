@@ -179,9 +179,6 @@ alias localzsh="vim ~/zshrc.local.sh"
 # automatically cd to directory when using ~
 setopt auto_cd
 
-# help is used for getting man page for built-in commands: 
-# usage: help read
-alias help=run-help
 
 # Load OS spesific envoronments
 
@@ -353,5 +350,9 @@ zstyle ':completion:*' menu select auto
 source $SCRIPTPATH/bundle/zsh-autosuggestion/zsh-autosuggestions.zsh
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240,bold"
 source $SCRIPTPATH/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# help is used for getting man page for built-in commands: 
+# usage: help read
+alias help=run-help
 
 [[ -s "/etc/grc.zsh" ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"

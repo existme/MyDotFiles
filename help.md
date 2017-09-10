@@ -85,12 +85,17 @@ Commands
 
 ## 1.3. ZSH tricks
 
-| aliases              | Desc                                                   |
-|----------------------|--------------------------------------------------------|
-|                      |                                                        |
-| **Escape Sequences** |                                                        |
-| Esc-.(period)        | Insert the last argument of the previous command line. |
-| .                    | Repeat to retrieve arguments from earlier lines.       |
+| aliases                   | Desc                                                         |
+|-- ----------------------- | ---------------------------------------------------------- --|
+|                           |                                                              |
+| **Escape Sequences**     |                                                             |
+| Esc-.(period)             | Insert the last argument of the previous command line.       |
+| .                         | Repeat to retrieve arguments from earlier lines.             |
+| man -k randr              | List all man pages that include a specific word.             |
+| look echo ~/.zshrc        | Prints only the first word on the matching lines.            |
+| watch -n 3 ps -aux X      | Prints only the first word on the matching lines.            |
+| stat -c '%n %a' ~/.zshrc  | Provides information about the file with -c you can specify  |
+|                           | which fields you want to show: %n name, %a access rights     |
 
 ## 1.4. Custom aliases:
 

@@ -1,0 +1,26 @@
+#!/bin/bash
+Red='\033[0;31m'          # Red
+Color_Off='\033[0m'       # Text Reset
+if [ "$1" = "" ]; then
+   (>&2
+   echo -e "[$Red!$Color_Off] repo name is required."
+   echo "--------------------------------------------"
+   echo "ex:"
+   echo
+   echo "build-repo i3-gaps";
+   echo
+   echo "Will try to build ~/git/i3-gaps by fetching the repo"
+   echo "and building it if needed."
+   )
+   exit 1
+fi
+echo "building repo ~/git/"$1
+cd $HOME/git/$1
+$HOME/bin/is-repo-uptodate 
+is_uptodate=$?
+echo "[$is_uptodate]"
+if [[ $is_uptodate -eq 0 ]]; then
+   echo "repo is uptodate";
+else
+   echo "repo needs update";
+fi

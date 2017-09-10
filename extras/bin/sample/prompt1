@@ -1,0 +1,9 @@
+#!/bin/zsh
+# !! It's important to use bash or zsh otherwise reads doesn't work
+echo "Do you want to pull$bR i3-gaps$cZ located at$cG $HOME/git/i3-gaps$cZ?"
+read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?" 
+echo
+
+if [[ $pr =~ ^[Yy]$ ]]; then
+	echo "Pulling git repo..."
+fi
