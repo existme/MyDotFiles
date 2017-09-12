@@ -1,14 +1,18 @@
-#!/bin/bash
+#!/bin/zsh
 
 set -e
 
 ARG=$@
 ARG=${ARG// /-}
 NOTESDIR=~/notes
-[ ! -z $ARG ] && NOTE=$ARG
+[ ! -z $ARG ] && NOTE="$ARG.md"
 
 [ ! -d "$NOTESDIR" ] && mkdir $NOTESDIR
 cd $NOTESDIR
+if [[ -f $NOTE ]]; then
+   vim -c 'set statusline="hello dear"' $NOTE +4 
+   exit
+fi
 touch $NOTE
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 cat << EOD >> $NOTE
