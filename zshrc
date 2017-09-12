@@ -31,6 +31,8 @@ setopt HIST_BEEP                 # Beep when accessing nonexistent history.
 # autoload zkbd
 # [[ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]] && zkbd
 # source ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE}
+
+# todo: use .oh-my-zsh/lib/spectrum.zsh instead
 export cZ=$(echo -en '\033[0m')				# RESET
 export cR=$(echo -en '\033[00;31m')			# red
 export cG=$(echo -en '\033[00;32m')			# green

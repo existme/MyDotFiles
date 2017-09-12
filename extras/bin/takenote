@@ -3,18 +3,17 @@
 set -e
 
 ARG=$@
-ARG=${ARG// /_}
+ARG=${ARG// /-}
 NOTESDIR=~/notes
-NOTE=$(date +%a%d%m.%k%M%S)
-[ ! -z $ARG ] && NOTE=${NOTE}_$ARG
+[ ! -z $ARG ] && NOTE=$ARG
 
 [ ! -d "$NOTESDIR" ] && mkdir $NOTESDIR
 cd $NOTESDIR
 touch $NOTE
-
+DATE=$(date '+%Y-%m-%d %H:%M:%S')
 cat << EOD >> $NOTE
 Note $@
-The date is: $(date +"%A %d %B %Y, %T")
+The date is: $DATE)
 -----------------------------------------
 
 -----------------------------------------

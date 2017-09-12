@@ -65,7 +65,8 @@ set nofoldenable			"dont fold by default
 
 " ================ Completion =======================
 
-set wildmode=list:longest		"make cmdline tab completion similar to bash
+set wildchar=<Tab>            " Key used to start command-line completion.
+set wildmode=full             "make cmdline tab completion similar to bash
 set wildmenu						"enable ctrl-n and ctrl-p to scroll thru matches
 set wildignore=*.o,*.obj,*~	"stuff to ignore when tab completing
 set wildignore+=*vim/backups*
@@ -77,7 +78,12 @@ set wildignore+=*.gem
 set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
-
+set wildignore+=*.swp,*.un~   " Ignore vim's temporaries.
+set wildignore+=*.cmo,*.cmi " Ignore OCaml's build artifacts
+set wildignore+=*.pdf,*.dvi " Ignore prepared documents (common with LaTeX).
+set wildignore+=*.class     " Ignore Java class files.
+set wildignore+=*.hi        " Ignore Haskell interface files.
+set wildignore+=*.pyc       " Ignore Python byte-code.
 " ================ Scrolling ========================
 
 set scrolloff=8			"Start scrolling when we're 8 lines away from margins
@@ -201,6 +207,12 @@ set equalalways
 
 " =============  Split Options   ===============
 set splitright
+
+" ====== Corrections for common mistakes  ======
+
+command! W w
+command! Q q
+command! Wq wq
 
 " =============  Final Mappings  ===============
 

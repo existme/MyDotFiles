@@ -62,6 +62,7 @@ Commands
 | F4                           | Toggle highlight                                                    |
 | F5                           | Toggle list invisible characters like tabs                          |
 | F6                           | Toggle showing the line numbers                                     |
+| F8                           | Toggle wrap and its indicator                                       |
 | --[ miscellaneous ]--        |                                                                     |
 | gc                           | Toggle comment for the selected text or block                       |
 | g>                           | Toggle comment for the selected text or block                       |

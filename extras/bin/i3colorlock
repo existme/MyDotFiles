@@ -1,4 +1,12 @@
 #!/bin/zsh
+# Using i3lock-color from https://github.com/meskarune/i3lock-color.git
+#
+# git clone https://github.com/Airblader/xcb-util-xrm
+# git submodule init update
+#
+# to build you need:
+# s apt install xutils-dev
+#
 killall i3lock
 echo "i3colorlock entered ... "+`date` >> /tmp/i3exit.log 
 B='#00000000'  # blank
