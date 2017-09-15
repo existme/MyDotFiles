@@ -1,6 +1,6 @@
 #!/bin/sh
 last=4
-if [[ $1 -neq "-m" && $1 -neq "-a" ]]; then
+if [[ $1 != "-m" ]] && [[ $1 != "-a" ]]; then
    echo "Usage: latestAccessFiles$bR -[m|a]$bW [n]$cZ # -m lists modified and -a lists accessed files\n n specifies the minutes" 
    exit
 fi
