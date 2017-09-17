@@ -7,17 +7,26 @@
 # to build you need:
 # s apt install xutils-dev
 #
-killall i3lock
+#killall i3lock
 echo "i3colorlock entered ... "+`date` >> /tmp/i3exit.log 
 B='#00000000'  # blank
 C='#ffffff22'  # clear ish
-D='#ff00ffcc'  # default
-T='#ee00eeee'  # text
+D='#ffbb55cc'  # default
+T='#C17CR744'  # text
 W='#880000bb'  # wrong
-V='#bb00bbbb'  # verifying
-DATE='%A, %m %Y'
-TIME='%H:%M:%S'
-STATEMENT="i3lock --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C --ringwrongcolor=$W --insidecolor=$B --ringcolor=$D --linecolor=$B --separatorcolor=$D --textcolor=$T --timecolor=$T --datecolor=$T --keyhlcolor=$W --bshlcolor=$W --screen 0 --blur 5 --clock --indicator --timestr=$TIME --datestr=$DATE"
+V='#105C1055'  # verifying
+F="Monofur Bold for Powerline" # date font
+DATE='%A, %m %y ☘ %V'
+TIME='◴ %H:%M:%S' 
+# STATEMENT="i3lock --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C --ringwrongcolor=$W --insidecolor=$B --ringcolor=$D --linecolor=$B --separatorcolor=$D --textcolor=$T --timecolor=$T --datecolor=$T --keyhlcolor=$W --bshlcolor=$W --screen 0 --blur 5 --clock --indicator --timestr=$TIME --datestr=$DATE"
+STATEMENT="i3lock --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C\
+   --ringwrongcolor=$W --insidecolor=$B --ringcolor=$D \
+   --linecolor=$B --separatorcolor=$D --textcolor=$T \
+   --timecolor=$T --datecolor=$T --keyhlcolor=$W \
+   --bshlcolor=$W --screen 0 --blur 6  --clock --indicator \
+   --datefont=$F --datesize=28 --radius=150 --modsize=28 \
+   --datestr=\"$DATE\" --timestr=\"$TIME\" \
+   --veriftext='↝ Verifying...' "
 #echo $STATEMENT
-i3lock --insidevercolor=$C --ringvercolor=$V --insidewrongcolor=$C --ringwrongcolor=$W --insidecolor=$B --ringcolor=$D --linecolor=$B --separatorcolor=$D --textcolor=$T --timecolor=$T --datecolor=$T --keyhlcolor=$W --bshlcolor=$W --screen 0 --blur 5 --clock --indicator --timestr=$TIME --datestr=$DATE
-#i3-msg exec $STATEMENT
+eval $STATEMENT
+#i3-msg exec "$STATEMENT"

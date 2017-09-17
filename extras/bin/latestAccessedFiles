@@ -1,14 +1,21 @@
-#!/bin/sh
+#!/bin/zsh
 last=4
+dir=$HOME
 if [[ $1 != "-m" ]] && [[ $1 != "-a" ]]; then
-   echo "Usage: latestAccessFiles$bR -[m|a]$bW [n]$cZ # -m lists modified and -a lists accessed files\n n specifies the minutes" 
+   echo "Usage:\n" 
+   echo "latestAccessFiles$bR -[m|a]$bW [n]$cZ [/home/existme/]"
+   echo ""
+   echo "  $bR -m$cZ lists modified files" 
+   echo "  $bR -a$cZ lists accessed files"
+   echo "  $bW n$cZ specifies the minutes"
    exit
 fi
 [[ -z $2 ]] || last=$2
+[[ -z $3 ]] || dir=$3
 if [[ $1 == "-m" ]]; then 
-   echo Finding files modified within last $1 minutes
-   sudo find ~/ -mmin -$last -type f -printf "%M@ ${bY}%MH:%MM:%.2MS${cW} %MY/%Mm/%Md$cR %p$cZ\n"|egrep -v ".cache|google-chrome|firefox|GLCache|.thunderbird|Mattermost|Slack|.pulse|.jar|Dropbox|.zip"|sort -n|cut -d' ' -f2-
+   echo "Finding files modified within last $last minutes"
+   sudo find $dir -mmin -$last -type f -printf "%M@ ${bY}%MH:%MM:%.2MS${cW} %MY/%Mm/%Md$cR %p$cZ\n"|egrep -v ".cache|google-chrome|firefox|GLCache|.thunderbird|Mattermost|Slack|.pulse|.jar|Dropbox|.zip"|sort -n|cut -d' ' -f2-
 elif [[ $1 == "-a" ]]; then
-   echo Finding files accessed within last $1 minutes
-   sudo find ~/ -amin -$last -type f -printf "%A@ ${bY}%AH:%AM:%.2AS${cW} %AY/%Am/%Ad$cR %p$cZ\n"|egrep -v ".cache|google-chrome|firefox|GLCache|.thunderbird|Mattermost|Slack|.pulse|.jar|Dropbox|.zip"|sort -n|cut -d' ' -f2-
+   echo "Finding files accessed within last $last minutes"
+   sudo find $dir -amin -$last -type f -printf "%A@ ${bY}%AH:%AM:%.2AS${cW} %AY/%Am/%Ad$cR %p$cZ\n"|egrep -v ".cache|google-chrome|firefox|GLCache|.thunderbird|Mattermost|Slack|.pulse|.jar|Dropbox|.zip"|sort -n|cut -d' ' -f2-
 fi
