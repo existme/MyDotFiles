@@ -24,4 +24,7 @@ ssh $DEST 'bash -s' << 'ENDSSH'
 	sudo rm -rf ~/.vim
 	sudo rm ~/.viminfo
 	~/git/MyDotFiles/install/link.sh
+   rm -rf ~/.lnav/formats/https___github_com_hagfelsh_lnav_formats_git
+   rm -rf ~/.lnav/formats/https___github_com_PaulWay_lnav_formats_git
+   rm -rf ~/.lnav/formats/https___github_com_aspiers_lnav_formats_git
 ENDSSH
