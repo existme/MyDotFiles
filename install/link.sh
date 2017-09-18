@@ -1,32 +1,45 @@
+#!/bin/sh
+DOTPATH=~/git/MyDotFiles
+
+# Create local zhrc config
+touch ~/zshrc.local.sh
+
 rm ~/.zshrc
-ln -s ~/git/MyDotFiles/zshrc ~/.zshrc
+ln -s $DOTPATH/zshrc ~/.zshrc
 
 rm ~/.vimrc
-ln -s ~/git/MyDotFiles/vimrc ~/.vimrc
+ln -s $DOTPATH/vimrc ~/.vimrc
 
 rm -r ~/.vim
-ln -s ~/git/MyDotFiles/vim ~/.vim
+ln -s $DOTPATH/vim ~/.vim
 
 rm ~/.gvimrc
-ln -s ~/git/MyDotFiles/gvimrc ~/.gvimrc
+ln -s $DOTPATH/gvimrc ~/.gvimrc
 
 rm ~/.dircolors
-ln -s ~/git/MyDotFiles/extras/dircolors ~/.dircolors
+ln -s $DOTPATH/extras/dircolors ~/.dircolors
 
 rm ~/.gitconfig
-ln -s ~/git/MyDotFiles/gitconfig ~/.gitconfig
+ln -s $DOTPATH/gitconfig ~/.gitconfig
 
 rm ~/.lessfilter
-ln -s ~/git/MyDotFiles/zsh/lessfilter ~/.lessfilter
+ln -s $DOTPATH/zsh/lessfilter ~/.lessfilter
 
 rm ~/.vifm
-ln -s ~/git/MyDotFiles/.vifm ~/.vifm
+ln -s $DOTPATH/.vifm ~/.vifm
 
 rm ~/LESS_TERMCAP
-ln -s ~/git/MyDotFiles/zsh/LESS_TERMCAP ~/
+ln -s $DOTPATH/zsh/LESS_TERMCAP ~/
+
+rm -rf ~/.fonts
+ln -s $DOTPATH/extras/fonts ~/.fonts
 
 rm -rf ~/bin
-ln -s ~/git/MyDotFiles/extras/bin ~/
+ln -s $DOTPATH/extras/bin ~/
 
 touch ~/.stCommitMsg
-cp ~/git/MyDotFiles/gitconfig.user ~/.gitconfig.user
+cp $DOTPATH/gitconfig.user ~/.gitconfig.user
+
+touch ~/zshrc.local.sh
+
+

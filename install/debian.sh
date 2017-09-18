@@ -35,7 +35,7 @@ rm ~/LESS_TERMCAP > /dev/null
 ln -s $DOTPATH/zsh/LESS_TERMCAP ~/
 
 rm ~/.tmux.con > /dev/null
-ln -s $DOTPATH/tmux.conf ~/.tmux.con
+ln -s $DOTPATH/tmux.conf ~/.tmux.conf
 
 rm ~/.tmux > /dev/null
 ln -s $DOTPATH/tmux ~/.tmux

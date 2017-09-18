@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+DEST=$1
+
+ssh $DEST 'bash -s' << 'ENDSSH'
+   mkdir -p ~/git/
+ENDSSH
+
+echo "Copying ~/.oh-my-zsh/$cG $DEST:$cZ"
+grc rsync -z -avhe ssh ~/.oh-my-zsh $DEST:
+echo "$cZ"
+
+echo "Copying ~/git/MyDotFiles to$cG $DEST:$cZ"
+grc rsync -z -avhe ssh ~/git/MyDotFiles $DEST:~/git/
+echo "$cZ"
+
+echo "Copying ~/.lnav to$cG $DEST:$cZ"
+grc rsync -z -avhe ssh ~/.lnav $DEST:~/
+echo "$cZ"
+
+ssh $DEST 'bash -s' << 'ENDSSH'
+	sudo apt install -y zsh grc git tig language-pack-en lnav 
+	sudo chsh `whoami` -s `which zsh`
+	sudo rm -rf ~/.vim
+	sudo rm ~/.viminfo
+	~/git/MyDotFiles/install/link.sh
+ENDSSH
