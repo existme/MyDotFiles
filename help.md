@@ -19,7 +19,10 @@ Commands
 
 | command                      | description                                                         |
 |------------------------------|---------------------------------------------------------------------|
-| --[ files and buffers ]--    |                                                                     |
+|                              |                                                                     |
+|-----[ files and buffers ]----|---------------------------------------------------------------------|
+|                              |                                                                     |
+|                              |                                                                     |
 | shift + right/left arrow     | move to next or previous buffer                                     |
 | ,,                           | toggle previous buffer                                              |
 | :bd                          | close current buffer                                                |
@@ -30,25 +33,44 @@ Commands
 | :e ~/.zshrc                  | open another file in a new buffer                                   |
 | :set splitright              | set files to open in right                                          |
 | :vsp#2                       | vertical split                                                      |
-| --[ Buffer manipulation ]--  |                                                                     |
+|                              |                                                                     |
+|                              |                                                                     |
+|---[ Buffer manipulation ]----|---------------------------------------------------------------------|
+|                              |                                                                     |
+|                              |                                                                     |
 | :bn                          | next buffer                                                         |
 | :Ctrl+w                      | set width (ex. 50<C-w>_)                                            |
 | :Ctrl+w =                    | equalize width and height of all windows                            |
 | :help CTRL-W                 | See also                                                            |
 | ,q                           | delete current buffer and move on                                   |
-| --[ search & replace ]--     |                                                                     |
+|                              |                                                                     |
+|                              |                                                                     |
+|-----[ search & replace ]-----|---------------------------------------------------------------------|
+|                              |                                                                     |
 | :%s/foo/bar/g                | replaces foo with bar in all lines                                  |
 | :s/foo/bar/g                 | replaces foo with bar only in current line                          |
 | :%s/foo/bar/gc               | replaces all foos with bar but asks each time                       |
 | :%s/\<foo\>/bar/gc           | replaces all exact "foo"s with "bar" with confirmation              |
 | :%s/foo/bar/gci              | (case insensitive) replaces all "foo"s with "bar" with confirmation |
 | :set ignorecase              | make all searches case insensitive                                  |
-| --[ Key mapping ]--          |                                                                     |
+|                              |                                                                     |
+|                              |                                                                     |
+|--------[ Key mapping ]-------|---------------------------------------------------------------------|
+|                              |                                                                     |
+|                              |                                                                     |
 | :verbose imap <tab>          | Show where the kepmap is defined and in which file/plugin           |
 | :scripts                     | Shows all effective scripts                                         |
-| --[ Syntax Highlighter ]--   |                                                                     |
+|                              |                                                                     |
+|                              |                                                                     |
+|----[ Syntax Highlighter ]----|---------------------------------------------------------------------|
+|                              |                                                                     |
+|                              |                                                                     |
 | :set syntax=yaml             | for wrong or unknown types you can manually set syntax              |
-| --[ spell checker ]--        |                                                                     |
+|                              |                                                                     |
+|                              |                                                                     |
+|-------[ spell checker ]------|---------------------------------------------------------------------|
+|                              |                                                                     |
+|                              |                                                                     |
 | ,s                           | toggle spell checker                                                |
 | z=                           | show the suggestions                                                |
 | zg                           | add to dictionary                                                   |
@@ -56,14 +78,22 @@ Commands
 | set list                     | show listchars including tab                                        |
 | set nolist                   | hide listchars including tab                                        |
 | :w !sudo tee %               | save file with sudo privileges                                      |
-| --[ function key mapping ]-- |                                                                     |
+|                              |                                                                     |
+|                              |                                                                     |
+|---[ function key mapping ]---|---------------------------------------------------------------------|
+|                              |                                                                     |
+|                              |                                                                     |
 | F2                           | toggle paste ~/paste                                                |
 | F3                           | Toggle nerd tree                                                    |
 | F4                           | Toggle highlight                                                    |
 | F5                           | Toggle list invisible characters like tabs                          |
 | F6                           | Toggle showing the line numbers                                     |
 | F8                           | Toggle wrap and its indicator                                       |
-| --[ miscellaneous ]--        |                                                                     |
+|                              |                                                                     |
+|                              |                                                                     |
+|------[ miscellaneous ]-------|---------------------------------------------------------------------|
+|                              |                                                                     |
+|                              |                                                                     |
 | gc                           | Toggle comment for the selected text or block                       |
 | g>                           | Toggle comment for the selected text or block                       |
 | set nonumber                 | Hide line numbers                                                   |
@@ -71,6 +101,8 @@ Commands
 | .                            | Auto compilation                                                    |
 | :w!!                         | Vim sudo trick or :w !sudo tee > /dev/null %                        |
 | <ctrl>o                      | Vim sudo trick or :w !sudo tee > /dev/null %                        |
+| :red                         | Redo                                                                |
+| <ctrl>r                      | Redo                                                                |
 
 ## 1.2. Vifm
 
