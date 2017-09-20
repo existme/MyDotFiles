@@ -2,7 +2,16 @@
 # Have a look at http://man7.org/linux/man-pages/man1/find.1.html
 last=4
 dir=$HOME
-if [[ $1 != "-m" ]] && [[ $1 != "-a" ]]; then
+[[ -z $2 ]] || last=$2
+[[ -z $3 ]] || dir=$3
+if [[ $1 == "-m" ]]; then
+   echo Finding files modified within last $last minutes
+   msg="%T@ ${bY}%TH:%TM:%.2TS${cW} %TY/%Tm/%Td$cR %p$cZ\n"
+elif [[ $1 == "-a" ]]; then
+   echo Finding files accessed within last $last minutes
+   msg="%A@ ${bY}%AH:%AM:%.2AS${cW} %AY/%Am/%Ad$cR %p$cZ\n"
+#if [[ $1 != "-m" ]] && [[ $1 != "-a" ]]; then
+else
    echo "Usage:\n" 
    echo "latestAccessFiles$bR -[m|a]$bW [n]$cZ [/home/existme/]"
    echo ""
@@ -18,14 +27,10 @@ if [[ $1 != "-m" ]] && [[ $1 != "-a" ]]; then
    echo ""
    exit
 fi
-[[ -z $2 ]] || last=$2
-[[ -z $3 ]] || dir=$3
-flags=
-remove="vim/backups/|\.git/|.cache|google-chrome|firefox|GLCache|.thunderbird|Mattermost|Slack|.pulse|.jar|Dropbox|.zip"
-if [[ $1 == "-m" ]]; then 
-   echo Finding files modified within last $1 minutes
-   sudo find $dir $flags -mmin -$last -type f -printf "%T@ ${bY}%TH:%TM:%.2TS${cW} %TY/%Tm/%Td$cR %p$cZ\n"|egrep -v $remove|sort -n|cut -d' ' -f2-
-elif [[ $1 == "-a" ]]; then
-   echo Finding files accessed within last $1 minutes
-   sudo find $dir $flags -amin -$last -type f -printf "%A@ ${bY}%AH:%AM:%.2AS${cW} %AY/%Am/%Ad$cR %p$cZ\n"|egrep -v $remove|sort -n|cut -d' ' -f2-
-fi
+flags=$4
+expath='.*\/(google-chrome|.git|.cache|firefox|.thunderbird|GLCache|Mattermost|Slack|.pulse|.jar|Dropbox|.zip)\/*.*'
+remove="vim/backups/|\.git/|.cache|google-chrome|firefox|GLCache|.thunderbird|Mattermost|Slack|.pulse|pulse|*.jar|Dropbox|.zip"
+
+sudo find -P $dir $flags -mmin -$last -regextype posix-egrep -type f -not -regex "$expath" -printf $msg|sort -n|cut -d' ' -f2-
+#
+#sudo find -P $dir $flags -amin -$last -type f -printf "%A@ ${bY}%AH:%AM:%.2AS${cW} %AY/%Am/%Ad$cR %p$cZ\n"|egrep -v $remove|sort -n|cut -d' ' -f2-
