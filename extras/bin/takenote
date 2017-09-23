@@ -2,10 +2,21 @@
 
 set -e
 
+ARG1=$1
+echo $ARG1
+[[ $ARG1 == "-p" ]] && shift;
+
 ARG=$@
 ARG=${ARG// /-}
+
+echo $ARG
+
 NOTESDIR=~/notes
 [ ! -z $ARG ] && NOTE="$ARG.md"
+if [[ ! -z $ARG1 ]]; then
+   echo "Private note";
+   NOTESDIR=~/notes/private
+fi
 
 [ ! -d "$NOTESDIR" ] && mkdir $NOTESDIR
 cd $NOTESDIR
@@ -16,15 +27,17 @@ fi
 touch $NOTE
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
 cat << EOD >> $NOTE
-Note $@
-The date is: $DATE)
------------------------------------------
+# $@
+$DATE
+----------------------------------------- <hr>
 
+```bash
+```
 -----------------------------------------
 EOD
 
 vim $NOTE +4
 
-echo "note saved in $NOTESDIR/$NOTE"
+echo "your note was saved in [$NOTESDIR/$NOTE]"
 
 exit 0

@@ -174,7 +174,7 @@
 [merge]
 	summary = true
 	verbosity = 1
-	tool = kdiff
+	tool = diff
 [apply]
 	whitespace = nowarn
 [branch]
@@ -203,7 +203,7 @@
 	mnemonicprefix = true
 	algorithm = MYERS
 	tool = vimdiff
-	external = kdiff3									# for others
+   #external = kdiff3									# for others
 	#external = /Users/rezasa/bin/git-diff-cmd.sh # for mac
 	# See the third answer here http://stackoverflow.com/questions/14754762/can-gitconfig-options-be-set-conditionally
 	merge = vimdiff
