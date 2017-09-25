@@ -1,18 +1,20 @@
 Note thunderbird dark background
-The date is: Tuesday 05 September 2017, 13:29:12
 -----------------------------------------
 Go to thunderbird:
-   Menu -> Help -> Troubleshooting Information -> about:profiles
+   `Menu` -> `Help` -> `Troubleshooting Information` -> `about:profiles`
 
 You can find where is your profile storage, somewhere like:
 
+```bash
 cd ~/.thunderbird/6py0ngzb.default
 mkdir chrome
 cd chrome
 vim userContent.css
+```
 
 add the following lines to the css:
 
+~~~css
 =============[ userContent.css ]=================
 * {
    color: white !important; 
@@ -35,11 +37,12 @@ td {color: #282C39; background-color: white}
 @-moz-document url-prefix(mailbox:) {                                            
   /* all the other rules go here */                                              
 }
-==================================================
+~~~
 
 Also to modify elements in the ui itself create the
 following file:
 
+```css
 ============[ userChrome.css ]====================
 :link, .link, .textWrap, :textWrap { 
    color: #F17700 !important;
@@ -47,7 +50,7 @@ following file:
 #content, browser, body {
    background-color: #282C39 !important;
 }
-==================================================
-
+```
 
 -----------------------------------------
+Tuesday 05 September 2017, 13:29:12

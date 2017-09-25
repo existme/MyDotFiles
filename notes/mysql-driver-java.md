@@ -1,5 +1,5 @@
-Note mysql driver java
-The date is: Wednesday 06 September 2017, 11:58:30
+#Mysql driver java
+
 -----------------------------------------
 Create this folder:
 
@@ -10,6 +10,7 @@ copy these two files to the folder that was just created:
 mysql-connector-java-5.1.26.jar
 module.xml
 
+~~~xml
 ==================[ module.xml ]==================
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns="urn:jboss:module:1.3" name="com.mysql">
@@ -22,9 +23,11 @@ module.xml
     </dependencies>
 </module>
 ==================================================
+~~~
 
 In standalone.xml add the driver:
 
+~~~xml
 =================[ standalone.xml ]===============
  <drivers>
      <driver name="mysql" module="com.mysql">
@@ -33,8 +36,8 @@ In standalone.xml add the driver:
       .
       .
  </drivers>
-
 ==================================================
+~~~
 
 also for jpa use:
 
@@ -45,3 +48,4 @@ and copy these three files there:
 eclipselink.jar, jipijapa-eclipselink-1.0.1.Final.jar, module.xml
 
 -----------------------------------------
+The date is: Wednesday 06 September 2017, 11:58:30

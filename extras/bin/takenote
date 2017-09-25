@@ -7,36 +7,44 @@ echo $ARG1
 [[ $ARG1 == "-p" ]] && shift;
 
 ARG=$@
+TITLE="${(C)ARG}"
 ARG=${ARG// /-}
 
 echo $ARG
 
 NOTESDIR=~/notes
 [ ! -z $ARG ] && NOTE="$ARG.md"
-if [[ ! -z $ARG1 ]]; then
+
+if [[ $ARG1 == "-p" ]]; then
    echo "Private note";
    NOTESDIR=~/notes/private
 fi
 
 [ ! -d "$NOTESDIR" ] && mkdir $NOTESDIR
+
 cd $NOTESDIR
+
 if [[ -f $NOTE ]]; then
-   vim -c 'set statusline="hello dear"' $NOTE +4 
+   vim -c 'set statusline="hello dear"' $NOTE +6 
    exit
 fi
+
 touch $NOTE
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
-cat << EOD >> $NOTE
-# $@
-$DATE
------------------------------------------ <hr>
+cat << EOD >> $NOTE 
+# $TITLE
 
-```bash
-```
+----------------------------------------- 
+
+\`\`\`bash
+
+\`\`\`
+
 -----------------------------------------
+$DATE
 EOD
 
-vim $NOTE +4
+vim $NOTE +6
 
 echo "your note was saved in [$NOTESDIR/$NOTE]"
 
