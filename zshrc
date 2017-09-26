@@ -96,7 +96,6 @@ HIST_STAMPS="yyyy-mm-dd" # also: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # General Paths
 export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH=$HOME/Dropbox/Docs/todo.txt-cli:$PATH
 export HISTSIZE=10000000
 export SAVEHIST=10000000
 export HISTFILE=~/.history
@@ -161,7 +160,6 @@ alias iconf="code ~config/i3/config"
 # every 34 line the text should break with --- inorder to 
 # be represented as a slide
 alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
-
 # these are mappings for frequently used folder, type for example:
 #hash -d memo=~/Dropbox/Memo
 hash -d MyDotFiles=$SCRIPTPATH
@@ -356,5 +354,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240,bold"
 # help is used for getting man page for built-in commands: 
 # usage: help read
 alias help=run-help
+alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg"
+alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
 
 [[ -s "/etc/grc.zsh" ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
