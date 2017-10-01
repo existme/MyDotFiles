@@ -356,5 +356,5 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240,bold"
 alias help=run-help
 alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg"
 alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
-
+alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 [[ -s "/etc/grc.zsh" ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
