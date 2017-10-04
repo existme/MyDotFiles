@@ -174,6 +174,8 @@ hash -d notes=~/notes
 hash -d sample=~/bin/sample
 hash -d wiki=~/wiki
 hash -d pictures=~/pictures
+hash -d apps=/usr/share/applications
+hash -d lapps=~/.local/share/applications/
 alias localzsh="vim ~/zshrc.local.sh"
 
 # automatically cd to directory when using ~
