@@ -14,6 +14,7 @@ export HISTCONTROL=ignoreboth:erasedups
 export STOW_DIR="/home/existme/local/stow"
 export MANPATH=/usr/share/man
 export LSCOLORS=ExFxCxDxBxegedabagacad
+export CLICOLOR=true
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
@@ -27,6 +28,9 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt HIST_BEEP                 # Beep when accessing nonexistent history.
+setopt HIST_REDUCE_BLANKS
+setopt complete_aliases          # don't expand aliases _before_ completion has finished
+
 # only change term config if it is xterm
 # autoload zkbd
 # [[ ! -f ~/.zkbd/$TERM-${${DISPLAY:t}:-$VENDOR-$OSTYPE} ]] && zkbd
@@ -156,6 +160,8 @@ alias v="vim"
 alias s="sudo"
 alias dq="sudo dpkg-query --listfiles"
 alias iconf="code ~config/i3/config"
+alias reload!='. ~/.zshrc'
+alias cls='clear' # Good 'ol Clear Screen command
 # mh is a shortcut for showing help.md in this repo
 # every 34 line the text should break with --- inorder to 
 # be represented as a slide
@@ -177,6 +183,7 @@ hash -d pictures=~/pictures
 hash -d apps=/usr/share/applications
 hash -d lapps=~/.local/share/applications/
 alias localzsh="vim ~/zshrc.local.sh"
+alias dpk="grc dpkg-query --listfiles"
 
 # automatically cd to directory when using ~
 setopt auto_cd
@@ -255,6 +262,7 @@ zle -N                 cdParentKey
 zle -N                 cdUndoKey
 bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
+
 
 # Bind Escape to vi-cmd-mode
 bindkey "\e" vi-cmd-mode
