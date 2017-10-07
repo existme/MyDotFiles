@@ -1,5 +1,5 @@
 if &diff
-	colorscheme xoria256
+	colorscheme chrysoprase
 else
-	colorscheme devbox-dark-256
+	colorscheme gruvbox
 endif

@@ -112,16 +112,21 @@ else
 		so ~/.vim/linux.vim
 	 else
 		"colorscheme solarized
-		colorscheme desert256v2
+		colorscheme gruvbox
     endif
   endif
 endif
+" If you have vim >=8.0 or Neovim >= 0.1.5
+if (has("termguicolors"))
+    set termguicolors
+endif
 
-let g:airline_theme='dark'
+let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_extensions = ['tabline']
+let g:Powerline_symbols = 'fancy'
 
 set ignorecase						"set search to be case insensitive
 set smartcase						"unless you typed uppercase letters in your query
@@ -233,3 +238,4 @@ set mouse=v
 set ttymouse=xterm2
 set nonumber
 "au BufNewFile,BufRead *.yaml,*.yml so dotfilespath/vim/bundle/syntax/YAML.vim
+so ~/.vim/preview-scheme.vim

@@ -13,3 +13,16 @@ to move a line one row up/down use Ctrl+j/k
 
 To update all submodules 
 git submodule update --remote --merge
+
+
+# Good colorschemes for diff mod in vim
+- alduin
+- blueshift
+- ccascadia
+- chrysoprase
+- AutumnLeaf
+- bluechia
+- Cleanroom
+- colorsbox-stbright
+- colorsbox-stnight
+- earthburn
