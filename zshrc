@@ -57,14 +57,14 @@ export bW=$(echo -en '\033[01;37m')			# bold white
 #  ex: echo "\$cR (${cR}red${cZ}) \$bG (${bG}bold green${cZ})"
 msgRGB=${cR}R${cG}G${cY}Y${cB}B${cP}P${cC}C${cW}W${cZ}Z${bR}R${bG}G${bY}Y${bB}B${bP}P${bC}C${bW}W${cZ}
 export OTERM=$TERM
-if [[ $TERM == 'linux' ]]; then
-	export TERM=xterm-256color
-elif [[ $TERM == 'xterm' ]]; then
-	export TERM=xterm-256color
-elif [[ $TERM == 'rxvt-unicode' ]]; then
-	export TERM=rxvt-unicode-256color
-fi
-export TERMCAP=$(echo $TERMCAP | sed -e 's/Co#8/Co#256/g')
+# if [[ $TERM == 'linux' ]]; then
+# 	export TERM=xterm-256color
+# elif [[ $TERM == 'xterm' ]]; then
+# 	export TERM=xterm-256color
+# elif [[ $TERM == 'rxvt-unicode' ]]; then
+# 	export TERM=rxvt-unicode-256color
+# fi
+# export TERMCAP=$(echo $termcap | sed -e 's/Co#8/Co#256/g')
 export CLICOLOR=true
 export GREP_OPTIONS="--color=always"
 export LESS='-R'
@@ -329,7 +329,6 @@ export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
 # alias ll=exa -la --color=always
 # alias ls=exa --color=always
 
-alias lt="ls -larh -t modified"
 
 if [ -f $HOME/zshrc.local.post ]; then
 	source $HOME/zshrc.local.post
@@ -369,3 +368,12 @@ alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
 alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 [[ -s "/etc/grc.zsh" ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
 
+if [ `which exa` ]; then
+   echo "$bR exa $cZ is installed, using it instead of $cB ls $cZ"
+   alias ls="exa -xF --time-style long-iso --color=always --color-scale --group-directories-first"
+   alias ll="exa -aFl --time-style long-iso --color=always --color-scale --group-directories-first"
+   alias lart="exa -lgaF@ -s modified --time-style long-iso --color=always --color-scale"
+else
+   echo "$cB exa $cZ is not installed, using normal $cR ls $cZ"
+   alias lart="grc ls -lart"
+fi

@@ -99,7 +99,6 @@ set t_co=256
 let base16colorspace=256
 "set term=xterm-256color
 set term=$TERM
-set termguicolors
 if has("win32")
 	let s:uname = "win"
 	so ~/vimfiles/settings.vim
@@ -241,3 +240,7 @@ set ttymouse=xterm2
 set nonumber
 "au BufNewFile,BufRead *.yaml,*.yml so dotfilespath/vim/bundle/syntax/YAML.vim
 so ~/.vim/preview-scheme.vim
+
+let g:load_doxygen_syntax=1
+let g:doxygen_enhanced_color=1
+let doxygen_my_rendering=1
