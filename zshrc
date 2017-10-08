@@ -1,4 +1,7 @@
 #!/bin/zsh
+
+export TERM=xterm-256color
+
 # Path to your oh-my-zsh installation.
 export CDPATH=$HOME
 export ZSH=$HOME/.oh-my-zsh
@@ -371,7 +374,7 @@ alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 if [ `which exa` ]; then
    echo "$bR exa $cZ is installed, using it instead of $cB ls $cZ"
    alias ls="exa -xF --time-style long-iso --color=always --color-scale --group-directories-first"
-   alias ll="exa -aFl --time-style long-iso --color=always --color-scale --group-directories-first"
+   alias ll="exa -lgaF --time-style long-iso --color=always --color-scale --group-directories-first"
    alias lart="exa -lgaF@ -s modified --time-style long-iso --color=always --color-scale"
 else
    echo "$cB exa $cZ is not installed, using normal $cR ls $cZ"

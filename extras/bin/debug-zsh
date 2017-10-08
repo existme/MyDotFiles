@@ -1,0 +1,17 @@
+#! /bin/zsh
+exec 7<&1 8<&2
+exec 1> ~/omz-debug.log 2>&1
+
+set -xv
+source ~/.zshrc
+set +xv
+
+exec 1>&7 7>&-
+exec 2>&8 8>&-
+
+omz_diagnostic_dump ~/dump
+vim ~/dump
+rm ~/dump -f
+
+vim ~/omz-debug.log
+rm ~/omz-debug.log -f

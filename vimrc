@@ -244,3 +244,12 @@ so ~/.vim/preview-scheme.vim
 let g:load_doxygen_syntax=1
 let g:doxygen_enhanced_color=1
 let doxygen_my_rendering=1
+" set t_ks=
+" set t_ti=
+"
+" let &t_Co=256
+" let &t_8b="\<Esc>[48:2:%lu:%lu:%lum" 
+" let &t_8f="\<Esc>[38:2:%lu:%lu:%lum"                                  
+" set t_Co=256
+" set t_AB=^[[48;5;%dm
+" set t_AF=^[[38;5;%dm
