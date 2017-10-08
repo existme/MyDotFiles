@@ -96,7 +96,10 @@ execute pathogen#infect()
 "Helptags
 
 set t_co=256
-set term=xterm-256color
+let base16colorspace=256
+"set term=xterm-256color
+set term=$TERM
+set termguicolors
 if has("win32")
 	let s:uname = "win"
 	so ~/vimfiles/settings.vim
@@ -111,7 +114,6 @@ else
 	 elseif s:uname == "Linux\n"
 		so ~/.vim/linux.vim
 	 else
-		"colorscheme solarized
 		colorscheme gruvbox
     endif
   endif

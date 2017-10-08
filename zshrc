@@ -62,7 +62,7 @@ if [[ $TERM == 'linux' ]]; then
 elif [[ $TERM == 'xterm' ]]; then
 	export TERM=xterm-256color
 elif [[ $TERM == 'rxvt-unicode' ]]; then
-	export TERM=rxvt-256color
+	export TERM=rxvt-unicode-256color
 fi
 export TERMCAP=$(echo $TERMCAP | sed -e 's/Co#8/Co#256/g')
 export CLICOLOR=true
@@ -368,3 +368,4 @@ alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg
 alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
 alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 [[ -s "/etc/grc.zsh" ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
+
