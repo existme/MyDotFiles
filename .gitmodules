@@ -73,3 +73,9 @@
 [submodule "zsh/bundle/zsh-syntax-highlighting"]
 	path = zsh/bundle/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "bundle/zsh-256color"]
+	path = bundle/zsh-256color
+	url = https://github.com/chrissicool/zsh-256color.git
+[submodule "bundle/zaw"]
+	path = bundle/zaw
+	url = git://github.com/zsh-users/zaw.git

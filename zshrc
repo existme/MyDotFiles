@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 # Path to your oh-my-zsh installation.
 export CDPATH=$HOME
@@ -360,9 +360,12 @@ zstyle ':completion:*' format ''
 zstyle ':completion:*' menu select auto
 
 source $SCRIPTPATH/bundle/zsh-autosuggestion/zsh-autosuggestions.zsh
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240,bold"
+#Other colors: man zshall search for fg=colour
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240bold"
 #source $SCRIPTPATH/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+source $SCRIPTPATH/bundle/zsh-256color/zsh-256color.plugin.zsh
+source $SCRIPTPATH/bundle/zaw/zaw.zsh
 # help is used for getting man page for built-in commands: 
 # usage: help read
 alias help=run-help
