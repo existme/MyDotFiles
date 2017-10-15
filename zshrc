@@ -361,7 +361,7 @@ zstyle ':completion:*' menu select auto
 
 source $SCRIPTPATH/bundle/zsh-autosuggestion/zsh-autosuggestions.zsh
 #Other colors: man zshall search for fg=colour
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=240bold"
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 #source $SCRIPTPATH/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $SCRIPTPATH/bundle/zsh-256color/zsh-256color.plugin.zsh
@@ -376,7 +376,7 @@ alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 
 if [ `which exa` ]; then
    echo "$bR exa $cZ is installed, using it instead of $cB ls $cZ"
-   alias ls="exa -xF --time-style long-iso --color=always --color-scale --group-directories-first"
+   alias ls="exa -F --time-style long-iso --color=always --color-scale --group-directories-first"
    alias ll="exa -lgaF --time-style long-iso --color=always --color-scale --group-directories-first"
    alias lart="exa -lgaF@ -s modified --time-style long-iso --color=always --color-scale"
 else

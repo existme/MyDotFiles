@@ -1,7 +1,7 @@
 #
 # This shell prompt config file was created by promptline.vim
 #
-
+# Symboles mainly from 'Private Use Area' under 'Low Surrogates'
 function __promptline_last_exit_code {
 
   [[ $last_exit_code -gt 0 ]] || return 1;
@@ -60,12 +60,17 @@ function __promptline_vcs_branch {
   return 1
 }
 function __promptline_cwd {
-  local dir_limit="3"
-  local truncation=" "
+  local dir_limit="2"
+  local truncation="${c2_fg}${c2_bg}  $c2_fgs$b_bg ${b_fg}${b_bg}"
   local first_char
   local part_count=0
   local formatted_cwd=""
-  local dir_sep="$a_fg $b_fg"
+   local dir_sep="$a_fg $b_fg"
+  # local dir_sep="$a_fg ⟼  $b_fg"
+  # local dir_sep="$a_fg ⯈ $b_fg"
+  # local dir_sep="$a_fg ▶ $b_fg"
+  # local dir_sep="$a_fg  $b_fg"
+  #local dir_sep="$a_fg  $b_fg"
   local tilde="~"
 
   local cwd="${PWD/#$HOME/$tilde}"
@@ -84,23 +89,24 @@ function __promptline_cwd {
     formatted_cwd="$dir_sep$part$formatted_cwd"
     part_count=$((part_count+1))
 
-    [[ $part_count -eq $dir_limit ]] && first_char="$truncation" && break
+    [[ $part_count -eq $dir_limit ]] && first_char="…" && break
   done
-
-  printf "%s" "$first_char$formatted_cwd"
+  printf "%s" "$truncation $first_char$formatted_cwd"
 }
 function __promptline_left_prompt {
   local slice_prefix slice_empty_prefix slice_joiner slice_suffix is_prompt_empty=1
 
   # section "a" header
-  slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${a_fg}${a_bg}${space}"
+  slice_prefix="${a_bg}${sep}${a_fg}${a_bg}${space}" slice_suffix="$space${a_sep_fg}" slice_joiner="${a_fg}${a_bg}${alt_sep}${space}" slice_empty_prefix="${c2_fg}${c2_bg}${space}"
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
   # section "a" slices
   __promptline_wrapper "" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
   # section "b" header
   slice_prefix="${b_bg}${sep}${b_fg}${b_bg}${space}" slice_suffix="$space${b_sep_fg}" slice_joiner="${b_fg}${b_bg}${alt_sep}${space}" slice_empty_prefix="${b_fg}${b_bg}${space}"
+  slice_empty_prefix=""
   [ $is_prompt_empty -eq 1 ] && slice_prefix="$slice_empty_prefix"
+  #slice_prefix=""
   # section "b" slices
   __promptline_wrapper "$(__promptline_cwd)" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; is_prompt_empty=0; }
 
@@ -123,14 +129,14 @@ function __promptline_wrapper {
 function __promptline_git_status {
   [[ $(git rev-parse --is-inside-work-tree 2>/dev/null) == true ]] || return 1
 
-  local added_symbol="●"
-  local unmerged_symbol="✗"
-  local modified_symbol="+"
-  local clean_symbol="✔"
+  local added_symbol=" "
+  local unmerged_symbol=" "
+  local modified_symbol=" "
+  local clean_symbol=""
   local has_untracked_files_symbol="…"
 
-  local ahead_symbol="↑"
-  local behind_symbol="↓"
+  local ahead_symbol=""
+  local behind_symbol=""
 
   local unmerged_count=0 modified_count=0 has_untracked_files=0 added_count=0 is_clean=""
 
@@ -161,11 +167,12 @@ function __promptline_git_status {
   fi
 
   local leading_whitespace=""
-  [[ $ahead_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$ahead_symbol$ahead_count"; leading_whitespace=" "; }
-  [[ $behind_count -gt 0 ]]        && { printf "%s" "$leading_whitespace$behind_symbol$behind_count"; leading_whitespace=" "; }
-  [[ $modified_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$modified_symbol$modified_count"; leading_whitespace=" "; }
-  [[ $unmerged_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$unmerged_symbol$unmerged_count"; leading_whitespace=" "; }
-  [[ $added_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$added_symbol$added_count"; leading_whitespace=" "; }
+  #printf " "
+  [[ $ahead_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$ahead_symbol${git_number_fg}$ahead_count${c_fg}"; leading_whitespace=" "; }
+  [[ $behind_count -gt 0 ]]        && { printf "%s" "$leading_whitespace$behind_symbol${git_number_fg}$behind_count${c_fg}"; leading_whitespace=" "; }
+  [[ $modified_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$modified_symbol${git_number_fg}$modified_count${c_fg}"; leading_whitespace=" "; }
+  [[ $unmerged_count -gt 0 ]]      && { printf "%s" "$leading_whitespace$unmerged_symbol${git_number_fg}$unmerged_count${c_fg}"; leading_whitespace=" "; }
+  [[ $added_count -gt 0 ]]         && { printf "%s" "$leading_whitespace$added_symbol${git_number_fg}$added_count${c_fg}"; leading_whitespace=" "; }
   [[ $has_untracked_files -gt 0 ]] && { printf "%s" "$leading_whitespace$has_untracked_files_symbol"; leading_whitespace=" "; }
   [[ $is_clean -gt 0 ]]            && { printf "%s" "$leading_whitespace$clean_symbol"; leading_whitespace=" "; }
 }
@@ -181,7 +188,7 @@ function __promptline_right_prompt {
   # section "z" header
   slice_prefix="${z_sep_fg}${rsep}${z_fg}${z_bg}${space}" slice_suffix="$space${z_sep_fg}" slice_joiner="${z_fg}${z_bg}${alt_rsep}${space}" slice_empty_prefix=""
   # section "z" slices
-  __promptline_wrapper "◴ %T" "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
+  __promptline_wrapper "%T " "$slice_prefix" "$slice_suffix" && { slice_prefix="$slice_joiner"; }
 
   # close sections
   printf "%s" "$reset"
@@ -200,26 +207,32 @@ function __promptline {
   local wrap="$noprint$esc" end_wrap="$end_esc$end_noprint"
   local space=" "
   local sep=""
-  local rsep=""
+  # local sep="  "
+  # local rsep=""
+  local rsep=" "
   local alt_sep=" "
   local alt_rsep=""
   local reset="${wrap}0${end_wrap}"
   local reset_bg="${wrap}49${end_wrap}"
-  local a_fg="${wrap}38;5;239${end_wrap}"
-  local a_bg="${wrap}48;5;236${end_wrap}"
+  local a_fg="${wrap}38;5;242${end_wrap}"            # Path Separator FG 
+  local a_bg="${wrap}48;5;5${end_wrap}"            # 
   local a_sep_fg="${wrap}38;5;236${end_wrap}"
-  local b_fg="${wrap}38;5;7${end_wrap}"
-  local b_bg="${wrap}48;5;235${end_wrap}"
-  local b_sep_fg="${wrap}38;5;235${end_wrap}"
-  local c_fg="${wrap}38;5;188${end_wrap}"
-  local c_bg="${wrap}48;5;234${end_wrap}"
-  local c_sep_fg="${wrap}38;5;234${end_wrap}"
-  local warn_fg="${wrap}38;5;220${end_wrap}"
+  local b_fg="${wrap}38;5;253${end_wrap}"            # Path FG
+  local b_bg="${wrap}48;5;239${end_wrap}"            # Path BG
+  local b_sep_fg="${wrap}38;5;239${end_wrap}"        # Path  bg color
+  local c_fg="${wrap}38;5;247${end_wrap}"          # Git FG
+  local c_bg="${wrap}48;5;240${end_wrap}"          # Git BG
+  local c_sep_fg="${wrap}38;5;240${end_wrap}"      # Git  bg color
+  local warn_fg="${wrap}38;5;188${end_wrap}"        # Git Branch FG
   local warn_bg="${wrap}48;5;52${end_wrap}"
   local warn_sep_fg="${wrap}38;5;52${end_wrap}"
-  local z_fg="${wrap}38;5;230${end_wrap}"
-  local z_bg="${wrap}48;5;16${end_wrap}"
-  local z_sep_fg="${wrap}38;5;16${end_wrap}"
+  local z_fg="${wrap}38;5;237${end_wrap}"          # Clock FG
+  local z_bg="${wrap}48;5;3${end_wrap}"            # Clock BG
+  local z_sep_fg="${wrap}38;5;3${end_wrap}"
+  local git_number_fg="${wrap}38;5;220${end_wrap}"   # git numbers 
+  local c2_fg="${wrap}38;5;251${end_wrap}"         # gear fg
+  local c2_bg="${wrap}48;5;96${end_wrap}"         # gear bg
+  local c2_fgs="${wrap}38;5;96${end_wrap}"         # gear separator fg
   if [[ -n ${ZSH_VERSION-} ]]; then
     PROMPT="$(__promptline_left_prompt)"
     RPROMPT="$(__promptline_right_prompt)"

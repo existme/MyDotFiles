@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# coding=utf-8
 # Copyright (C) 2006 by Johannes Zellner, <johannes@zellner.org>
 # modified by mac@calmar.ws to fit my output needs
 # modified by crncosta@carloscosta.org to fit my output needs
@@ -6,11 +7,22 @@
 import sys
 import os
 
+fg = "255"
+if __name__ == "__main__":
+        if len(sys.argv) == 2:
+            # fg = int(sys.argv[1])
+            fg = sys.argv[1]
+
+print "using forecolor: " + fg
+
 def echo(msg):
     os.system('echo -n "' + str(msg) + '"')
 
 def out(n):
-    os.system("tput setab " + str(n) + "; echo -n " + ("\"% 4d\"" % n))
+    os.system("tput setaf " + str(n) + ";tput setab 0; echo -n " + ("\"% 4d\"" % n))
+    os.system("tput setab " + str(n) + ";tput setaf 0; echo -n ''")
+    os.system("tput setab " + str(n) + ";tput setaf "+fg+"; echo -n " + ("\"% 4d\"" % n))
+    os.system("tput setaf " + str(n) + ";tput setab 0; echo -n ''")
     os.system("tput setab 0")
 
 # normal colors 1 - 16
