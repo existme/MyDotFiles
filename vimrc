@@ -122,12 +122,36 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:airline_theme='dark'
+" let g:airline_theme='gruvbox'
+let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline_extensions = ['tabline']
 let g:Powerline_symbols = 'fancy'
+let g:airline#extensions#tabline#enabled = 1
+
+function! WindowNumber(...)
+    let builder = a:1
+    let context = a:2
+    call builder.add_section('airline_b', '%{tabpagewinnr(tabpagenr())}')
+    return 0
+endfunction
+
+call airline#add_statusline_func('WindowNumber')
+call airline#add_inactive_statusline_func('WindowNumber')
+
+function! Render_Only_File(...)
+  let builder = a:1
+  let context = a:2
+
+  call builder.add_section('file', '!! %F')
+
+  return 0   " the default: draw the rest of the statusline
+  return -1  " do not modify the statusline
+  return 1   " modify the statusline with the current contents of the builder
+endfunction
+call airline#add_inactive_statusline_func('Render_Only_File')
 
 set ignorecase						"set search to be case insensitive
 set smartcase						"unless you typed uppercase letters in your query
