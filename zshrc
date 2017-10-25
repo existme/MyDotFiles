@@ -206,6 +206,8 @@ if [ -f $HOME/zshrc.local.sh ]; then
 	source $HOME/zshrc.local.sh
 fi
 
+# Add completion path before oh-my-zsh starts cmpinit
+fpath=($SCRIPTPATH/zsh/completion $fpath)
 
 plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases)
 source $ZSH/oh-my-zsh.sh

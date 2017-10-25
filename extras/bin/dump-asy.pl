@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 # vim:ts=4:sw=4:expandtab
 # renders the layout tree using asymptote
+# s apt install asymptote
 #
 # ./dump-asy.pl
 #   will render the entire tree

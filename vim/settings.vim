@@ -17,7 +17,9 @@ map <S-Left>		<ESC>:bp<CR>
 noremap <leader>y "*y
 noremap <leader>yy "*Y
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>"
-map <C-V> "+p
+
+" disabling paste in favor of visual block mode
+"map <C-V> "+p
 map <C-C> "+y
 " "map up/down arrow keys to unimpaired commands
 " nmap <Up> [e
@@ -117,6 +119,7 @@ nmap ,xc						!!boxes -d shell -a hcvc -r<CR>
 vmap ,xc						!boxes -d shell -a hcvc -r<CR>
 
 nmap qq						:qa<CR>
+nmap QQ						:qa!<CR>
 
 " ============= Function Keys Mappings ===========
 set		pastetoggle=<F2>										"Toggle paste with F2
