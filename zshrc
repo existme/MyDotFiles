@@ -361,7 +361,7 @@ zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 zstyle ':completion:*' format ''
 zstyle ':completion:*' menu select auto
 
-source $SCRIPTPATH/bundle/zsh-autosuggestion/zsh-autosuggestions.zsh
+source $SCRIPTPATH/zsh/completion/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #Other colors: man zshall search for fg=colour
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 #source $SCRIPTPATH/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
