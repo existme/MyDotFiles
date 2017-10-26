@@ -75,7 +75,7 @@
 	url = https://github.com/chrissicool/zsh-256color.git
 [submodule "bundle/zaw"]
 	path = bundle/zaw
-	url = git://github.com/zsh-users/zaw.git
+	url = https://github.com/zsh-users/zaw.git
 [submodule "zsh/bundle/powerline"]
 	path = zsh/bundle/powerline
 	url = https://github.com/banga/powerline-shell.git
