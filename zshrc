@@ -325,11 +325,14 @@ function y(){
 # The TOOLBOX variable should be set in zshrc.local.sh to something like this: 
 # TOOLBOX=/Users/(uid)/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0
 # or in Linux:
-# TOOLBOX=opt/JetBrains/Toolbox/apps/IDEA-U/ch-0
-export IDEA_VERSION=$(ls -ltx $TOOLBOX|awk '{print $NF}')
-# IDEA_POSTIFIX should also be set in zshrc.local.sh ex:
-# IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea
-export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
+# TOOLBOX=/opt/JetBrains/Toolbox/apps/IDEA-U/ch-0
+if [ $TOOLBOX ]; then
+   echo "${bY}IDEA$cZ found"
+   export IDEA_VERSION=$(ls -ltx $TOOLBOX|awk '{print $NF}')
+   # IDEA_POSTIFIX should also be set in zshrc.local.sh ex:
+   # IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea
+   export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
+fi
 # additional
 # alias ll=exa -la --color=always
 # alias ls=exa --color=always
