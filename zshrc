@@ -385,3 +385,7 @@ else
    echo "$cB exa $cZ is not installed, using normal $cR ls $cZ"
    alias lart="grc ls -lart"
 fi
+
+# Adding autocomplete for aliases
+compdef s=sudo
+compdef dq=dpkg-reconfigure
