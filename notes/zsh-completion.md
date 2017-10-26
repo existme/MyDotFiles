@@ -2,6 +2,7 @@
 
 ----------------------------------------- 
 References
+0 - [zsh completion - the best so far][zsh0]
 1 - [A User's guide to the Z-Shell][zsh1] 
 2 - [A User's guide to the Z-Shell][zsh2] 
 3 - help zshzle
@@ -30,6 +31,7 @@ Then you can bind it to a key for example: (ctrl+x)
 2017-10-04 23:41:19
 
 
+[zsh0]: https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
 [zsh1]: http://zsh.sourceforge.net/Guide/zshguide04.html#l103
 [zsh2]: http://zsh.sourceforge.net/Guide/zshguide06.html
 
