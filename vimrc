@@ -259,7 +259,7 @@ cmap w!! w !sudo tee > /dev/null %
 set nowrap
 set novb
 set noeb
-set mouse=v
+set mouse=a
 set ttymouse=xterm2
 set nonumber
 "au BufNewFile,BufRead *.yaml,*.yml so dotfilespath/vim/bundle/syntax/YAML.vim
@@ -268,6 +268,10 @@ so ~/.vim/preview-scheme.vim
 let g:load_doxygen_syntax=1
 let g:doxygen_enhanced_color=1
 let doxygen_my_rendering=1
+
+" We need to reload airline theme manually after colorscheme change
+autocmd FileType symbol colorscheme babymate256 | call airline#load_theme()
+
 " set t_ks=
 " set t_ti=
 "

@@ -120,6 +120,8 @@ vmap ,xc						!boxes -d shell -a hcvc -r<CR>
 
 nmap qq						:qa<CR>
 nmap QQ						:qa!<CR>
+vmap qq						<ESC>:qa<CR>
+vmap QQ						<ESC>:qa!<CR>
 
 " ============= Function Keys Mappings ===========
 set		pastetoggle=<F2>										"Toggle paste with F2

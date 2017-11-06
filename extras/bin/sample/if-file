@@ -1,0 +1,11 @@
+#!/bin/bash
+# [] is equivalent to "test -e /file"
+if [ -e "/Users/rezasa/Volumes/rsha/WD/Desktop/test.pdf" ]; then
+	echo "file exists"
+else
+	echo "file doesnot exists"
+fi                                                                                                 
+
+if ! [ -e "$@" ]; then
+    echo "file does not exists"
+file
