@@ -1,13 +1,16 @@
 #!/bin/bash
 source ~/.displays
 
-export w1="1: www"
-export w2="2: terminal"
-export w3="3: editors"
-export w4="4: development"
-export w5="5: file manager"
-export w6="6: x6"
-export w0="0: chat-mail"
+set $w1 1:  
+set $w2 2: ⚯❶
+set $w3 3:   
+set $w4 4: ➡❷
+set $w5 5: file manager
+set $w6 6: help
+set $w7 7: x7
+set $w8 8: x8
+set $w9 9: x9
+set $w0 0:  
 
 i3-msg workspace '"'$w1'"', move workspace to output $DP1, layout tabbed
 i3-msg workspace '"'$w3'"', move workspace to output $DP2, layout tabbed
