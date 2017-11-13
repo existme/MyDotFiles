@@ -31,9 +31,6 @@ ln -s $DOTPATH/.vifm ~/.vifm
 rm ~/LESS_TERMCAP
 ln -s $DOTPATH/zsh/LESS_TERMCAP ~/
 
-rm -rf ~/.fonts
-ln -s $DOTPATH/extras/fonts ~/.fonts
-
 rm -rf ~/bin
 ln -s $DOTPATH/extras/bin ~/
 
