@@ -165,6 +165,12 @@ alias dq="sudo dpkg-query --listfiles"
 alias iconf="code ~config/i3/config"
 alias reload!='. ~/.zshrc'
 alias cls='clear' # Good 'ol Clear Screen command
+alias localzsh="vim ~/zshrc.local.sh"
+alias dpk="grc dpkg-query --listfiles"
+alias pp="s grc ps -aux|grep "
+alias kk="s killall "
+alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+
 # mh is a shortcut for showing help.md in this repo
 # every 34 line the text should break with --- inorder to 
 # be represented as a slide
@@ -185,8 +191,6 @@ hash -d wiki=~/wiki
 hash -d pictures=~/pictures
 hash -d apps=/usr/share/applications
 hash -d lapps=~/.local/share/applications/
-alias localzsh="vim ~/zshrc.local.sh"
-alias dpk="grc dpkg-query --listfiles"
 
 # automatically cd to directory when using ~
 setopt auto_cd
@@ -388,7 +392,7 @@ else
    echo "$cB exa $cZ is not installed, using normal $cR ls $cZ"
    alias lart="grc ls -lart"
 fi
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # Adding autocomplete for aliases
 compdef s=sudo
 compdef dq=dpkg-reconfigure

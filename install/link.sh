@@ -37,6 +37,9 @@ ln -s $DOTPATH/extras/fonts ~/.fonts
 rm -rf ~/bin
 ln -s $DOTPATH/extras/bin ~/
 
+rm -rf ~/.fzf.zsh
+ln -s $DOTPATH/fzf.zsh ~/.fzf.zsh
+
 touch ~/.stCommitMsg
 cp $DOTPATH/gitconfig.user ~/.gitconfig.user
 

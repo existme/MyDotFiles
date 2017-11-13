@@ -3,6 +3,9 @@
 set nocompatible
 scriptencoding utf8
 let dotfilespath=fnamemodify(resolve($MYVIMRC),':h')
+
+" Fixing ctrl-q or s not reaching to vim which is: enable XON/XOFF flow control
+silent !stty -ixon > /dev/null 2>/dev/null
 " ================ General Config ====================
 
 set number								"Line numbers are good
@@ -253,6 +256,8 @@ nmap <F6> <esc>:set invnumber\|set relativenumber!<cr>
 nmap <F8> <esc>:call ToggleWrap(1)<cr>
 "save and close buffer"
 nnoremap <c-a> <esc>:exec "w \| bd" <cr>
+nmap <c-q> <esc>:bd<cr>
+
 "vim sudo trick
 nnoremap <c-o> <esc>:w !sudo tee % <cr>
 cmap w!! w !sudo tee > /dev/null %

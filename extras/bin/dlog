@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# nohup i3-dump-log -f > /tmp/i3.log &
+sudo lnav /var/log/auth.log \
+			 /var/log/kern.log  \
+			 /var/log/syslog \
+			 /var/log/Xorg.0.log \
+			 /tmp/i3.log \
+
+#killall i3-dump-log
