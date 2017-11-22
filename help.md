@@ -121,7 +121,7 @@ Commands
 | aliases                   | Desc                                                         |
 |-- ----------------------- | ---------------------------------------------------------- --|
 |                           |                                                              |
-| **Escape Sequences**     |                                                             |
+| **Escape Sequences**      |                                                             |
 | Esc-.(period)             | Insert the last argument of the previous command line.       |
 | .                         | Repeat to retrieve arguments from earlier lines.             |
 | man -k randr              | List all man pages that include a specific word.             |
@@ -170,3 +170,45 @@ Commands
 | map                    | Search Google maps for a specific term                       |
 | image                  | Search images.google.com for a specific term                 |
 
+zsh shortcuts
+
+| Shortcuts              | Desc                                                         |
+|------------------------|--------------------------------------------------------------|
+| ALT + h                | Display help(info) on the first word of the line             |
+|                        |                                                              |
+| ALT + .                | Cycle through previous parameter in history                  |
+| ALT + p                | Cycle through previous statements                            |
+| ALT + n                | Cycle through next statements                                |
+|                        |                                                              |
+| ALT + f                | Complete next word using previous statement/Jump to next wrd |
+| ALT + b                | Jump back one word                                           |
+| ALT + c                | [fzf] Show fzf dropdown for all files in the current path    |
+|                        |                                                              |
+| ALT + SHIFT + r        | Go to REPLACE mode                                           |
+| ALT + i                | Go to INSERT mode                                            |
+|                        |                                                              |
+| ALT + u                | Change next word to upper case                               |
+| ALT + l                | Change next word to lower case                               |
+|                        |                                                              |
+| ALT + d                | Delete next word                                             |
+| CTRL + w               | Delete pervious word                                         |
+| CTRL + k               | Delete from cursor pos to the end of the line                |
+| CTRL + u               | Delete the whole line                                        |
+|                        |                                                              |
+| CTRL + e               | Go to the end of the line                                    |
+| CTRL + a               | Go to the begining of the line                               |
+| CTRL + b               | Backward delete char                                         |
+| CTRL + h               | Backspace!                                                   |
+|                        |                                                              |
+| ALT + ?                | Replace and execute `which` for the current starting cv .g     |
+
+|                        |                                                              |
+|                        |                                                              |
+|                        |                                                              |
+|                        |                                                              |
+|                        |                                                              |
+|                        |                                                              |
+|                        |                                                              |
+
+
+/bin/o.vscode

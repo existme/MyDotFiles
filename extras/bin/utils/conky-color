@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# echo usage: conky-color {percentage} [h|l]
+# options:
+#           -u: upper gets the more intense color
+#           -l: lower gets the more intense color
+#           -h: show help
+# This script will produce a color based on how much big the supplied percentage is
+
+per=$1
+ #per=$( printf "%d\n" 20 )
+#((per=$per+1))
+# echo $per|hexdump
+# flag=$2
+# if [ ! $per ]; then
+#     flag="-h"
+# fi
+if [ "$flag" == "-l" ]; then
+    per=$(expr 100 - $per)
+elif [ "$flag" == "-h" ]; then
+    echo "usage: ${bW}conky-color ${bR}{percentage} ${bY}[h|l]$cZ"
+    echo "options:"
+    echo "          u: higher gets the more intense color [default]"
+    echo "          l: lower gets the more intense color"
+    echo "          h: show help"
+    exit
+fi
+echo \\$per
+echo $per|hexdump
+echo 38|hexdump
+
+if (( per < 50 )); then echo "\#cccccc"
+elif (( per < 80 )); then echo "\#ffff99"
+elif (( per < 90 )); then echo "\#ff9933"
+elif (( per >= 90 )); then echo "\#ff0000"
+else echo "Percentage Error"
+fi

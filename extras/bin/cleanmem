@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# The lower the value, the less you use swap space and the more data is cached to memory.
+sysctl vm.swappiness=200
+
+echo 1 > /proc/sys/vm/drop_caches
+echo 2 > /proc/sys/vm/drop_caches
+
+# Note, we are using "echo 3", but it is not recommended in production instead use "echo 1"
+echo 3 > /proc/sys/vm/drop_caches
+
+swapoff -a && swapon -a
+sync
+
+sysctl vm.swappiness=60
+# to enable it permanently
+# sudo sysctl -w vm.swappiness=10
+#cat /proc/meminfo
+# 
+# before this was set 50
+# sudo sysctl -w vm.vfs_cache_pressure=200

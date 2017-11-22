@@ -246,6 +246,7 @@ echo "$(date '+%D %T')";
 # predict-on
 CASE_SENSITIVE="false"
 zstyle ':completion:*' completer _complete
+
 bindkey '\t' expand-or-complete
 
 
@@ -348,6 +349,9 @@ fi
 
 autoload -Uz promptinit
 promptinit
+# enable automatic rehash
+zstyle ':completion:*' rehash true
+
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
@@ -396,3 +400,7 @@ fi
 # Adding autocomplete for aliases
 compdef s=sudo
 compdef dq=dpkg-reconfigure
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

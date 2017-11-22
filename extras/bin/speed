@@ -1,3 +1,15 @@
+#!/bin/bash
+
 rm ~/test500.zip
 rm ~/test500.zip.aria2
-aria2c -x 16 http://speedtest.wdc01.softlayer.com/downloads/test500.zip
+case "$1" in
+        c)
+            echo "cleaned"
+            ;;
+        *)
+            echo "use$cR speed c$cZ to clean later!"
+            aria2c -x 16 http://speedtest.wdc01.softlayer.com/downloads/test500.zip
+            exit 1
+ 
+esac
+
