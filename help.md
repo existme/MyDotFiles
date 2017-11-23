@@ -170,7 +170,7 @@ Commands
 | map                    | Search Google maps for a specific term                       |
 | image                  | Search images.google.com for a specific term                 |
 
-zsh shortcuts
+## 1.5. zsh shortcuts
 
 | Shortcuts              | Desc                                                         |
 |------------------------|--------------------------------------------------------------|
@@ -181,14 +181,20 @@ zsh shortcuts
 | ALT + n                | Cycle through next statements                                |
 |                        |                                                              |
 | ALT + f                | Complete next word using previous statement/Jump to next wrd |
-| ALT + b                | Jump back one word                                           |
+| ALT + b  (<alt>+b)     | Jump back one word                                           |
+| ESC + b  (\eb)         | Jump back one word                                           |
+| META + b (M-b)         | Jump back one word                                           |
 | ALT + c                | [fzf] Show fzf dropdown for all files in the current path    |
+| CTRL + x + b           | Match bracket                                                |
 |                        |                                                              |
 | ALT + SHIFT + r        | Go to REPLACE mode                                           |
 | ALT + i                | Go to INSERT mode                                            |
 |                        |                                                              |
 | ALT + u                | Change next word to upper case                               |
 | ALT + l                | Change next word to lower case                               |
+| ALT + SHIFT + m        | Insert return without executing                              |
+| ALT + '                | Quote line                                                   |
+| ALT + "                | Quote region ( from start to cursor pos )                    |
 |                        |                                                              |
 | ALT + d                | Delete next word                                             |
 | CTRL + w               | Delete pervious word                                         |
@@ -200,15 +206,41 @@ zsh shortcuts
 | CTRL + b               | Backward delete char                                         |
 | CTRL + h               | Backspace!                                                   |
 |                        |                                                              |
-| ALT + ?                | Replace and execute `which` for the current starting cv .g     |
-
-|                        |                                                              |
-|                        |                                                              |
-|                        |                                                              |
-|                        |                                                              |
-|                        |                                                              |
-|                        |                                                              |
+| ALT + ?                | Replace and execute `which` for the current starting cv .g   |
+| ALT + x                | execute-named-cmd  widget would be called                    |
+| CTRL + j               | Accept line                                                  |
+| CTRL + m               | Accept line                                                  |
 |                        |                                                              |
 
 
-/bin/o.vscode
+## 1.6. ZLE :
+
+| Commands               | Desc                                                         |
+|------------------------|--------------------------------------------------------------|
+| zle -la                | List all available widgets                                   |
+| bindkey                | List all key mappings                                        |
+| bindkey -M vicmd       | List all key mappings in vicmd mode                          |
+| bindkey -v             | V emulation mode                                             |
+| bindkey -e             | Emacs emulation mode                                         |
+|                        |                                                              |
+| bindkey '^m'           | Shows a keybinding for a keymap in this case CTRL + m        |
+| bindkey -M viins 'b'   | Shows a keybinding for Vi insert mode                        |
+| bindkey -M vicmd 'b'   | Shows a keybinding for Vi command line mode                  |
+| bindkey -M emacs 'b'   | Shows a keybinding for Emacs mode                            |
+|                        |                                                              |
+| '/e'                   | Stands for <ALT>                                             |
+| '^'                    | Stands for <ctrl>                                            |
+|                        |                                                              |
+|---------------------------------------------------------------------------------------|
+| bindkey -s '\eg' '^Ugit status^M'               |  bind alt+s to git status           |
+|---------------------------------------------------------------------------------------|
+
+
+## 1.x. Other
+
+| Commands               | Desc                                                         |
+|------------------------|--------------------------------------------------------------|
+|                        |                                                              |
+| help                   | Displays this help page.                                     |
+| h                      | Grep history for a specific keyword                          |
+| zdoc                   | Opens zsh pdf document.                                      |
