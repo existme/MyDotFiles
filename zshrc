@@ -168,7 +168,6 @@ alias cls='clear' # Good 'ol Clear Screen command
 alias localzsh="vim ~/zshrc.local.sh"
 alias dpk="grc dpkg-query --listfiles"
 alias pp="s grc ps -aux|grep "
-alias kk="s killall "
 alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 
 # mh is a shortcut for showing help.md in this repo
@@ -400,6 +399,7 @@ fi
 # Adding autocomplete for aliases
 compdef s=sudo
 compdef dq=dpkg-reconfigure
+compdef kk=pkill
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

@@ -1,0 +1,27 @@
+#!/bin/bash
+declare pp=$1
+echo "${bW}Searching for preocess: ${cB}[${bY}$pp${cB}]${cZ}"
+echo
+echo "  PID    User   CPU     Description"
+echo "------  ------ ------  ----------------"
+
+
+declare selected=$(sudo ps -aux| grep -v "bin.*kk "|grep -v "grep $pp"| grep $pp | awk 'BEGIN{} 
+{print $2,$1,$3 "'$cR'%", "| " $11 " " $12 " " $13 " " $14 " " $15 " " $16 " " $17 " " $18 " " $19} ' | smenu -n8 -tg -b -Cd2-5 -T )
+
+if [[ -z "${selected// }" ]]; then
+   echo
+   echo "Canceled"
+   exit
+elif ! [[ $selected =~ ^[0-9\ ]+$  ]]; then
+   echo
+   echo "${bW}Getting more process info: $cZ"
+   grc -es ps -aux|grep "$pp"|grep -F -- "$selected"
+   exit
+fi
+
+echo
+echo "${bW}Killing selected processes: ${cZ}"
+echo "sudo${bB} kill -s TERM ${bY}$selected${cZ}"
+
+sudo kill -s TERM $selected
