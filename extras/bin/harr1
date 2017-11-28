@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# rearrange workspaces to for home configuration
+echo "${bW}Rearranging workspaces for home configuration ${cZ}"
+
+i3-msg 

@@ -229,7 +229,7 @@ set hlsearch
 
 " =============   Mouse Options  ===============
 set mouse=v
-
+set ttymouse=xterm2
 " =============     Vimdiff      ===============
 set equalalways
 "set columns=80
@@ -261,13 +261,20 @@ nmap <c-q> <esc>:bd<cr>
 "vim sudo trick
 nnoremap <c-o> <esc>:w !sudo tee % <cr>
 cmap w!! w !sudo tee > /dev/null %
+
+"run current file
+map  <c-r> :w<cr>:!%:p<cr>
+imap  <c-r> <esc>:w<cr>:!%:p<cr>
+nnoremap  <leader>r :!%:p<cr>
+
+" ============ Final Settings =================
 set nowrap
 set novb
 set noeb
-set mouse=a
-set ttymouse=xterm2
 set nonumber
 "au BufNewFile,BufRead *.yaml,*.yml so dotfilespath/vim/bundle/syntax/YAML.vim
+
+" Quicky preivew and switch themes
 so ~/.vim/preview-scheme.vim
 
 let g:load_doxygen_syntax=1
