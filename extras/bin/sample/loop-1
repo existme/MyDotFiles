@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# works only for bash and zsh not with sh
+for ((n=0;n<5;n++))
+do
+    echo $n
+done
+
+# works with all 0 2 4 6 8 10
+seq 0 2 10 | xargs echo $1
+
+seq 1 5 | xargs -I{} date
+
+seq 1 5 | xargs -I{} sh -c "date && sleep 1"

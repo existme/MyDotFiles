@@ -1,0 +1,61 @@
+#!/bin/bash
+
+while test $# -ne 0; do
+  case $1 in
+    -c) ;;
+
+    -C) copy_on_change=true;;
+
+    -d) dir_arg=true;;
+
+    -g) chgrpcmd="$chgrpprog $2"
+        shift;;
+
+    --help) echo "$usage"; exit $?;;
+
+    -m) mode=$2
+        case $mode in
+          *' '* | *"$tab"* | *"$nl"* | *'*'* | *'?'* | *'['*)
+            echo "$0: invalid mode: $mode" >&2
+            exit 1;;
+        esac
+        shift;;
+
+    -o) chowncmd="$chownprog $2"
+        shift;;
+
+    -s) stripcmd=$stripprog;;
+
+    -t)
+        is_target_a_directory=always
+        dst_arg=$2
+        # Protect names problematic for 'test' and other utilities.
+        case $dst_arg in
+          -* | [=\(\)!]) dst_arg=./$dst_arg;;
+        esac
+        shift;;
+
+    -T) is_target_a_directory=never;;
+
+    --version) echo "$0 $scriptversion"; exit $?;;
+
+    --) shift
+        break;;
+
+    -*) echo "$0: invalid option: $1" >&2
+        exit 1;;
+
+    *)  break;;
+  esac
+  shift
+done
+
+# We allow the use of options -d and -T together, by making -d
+# take the precedence; this is for compatibility with GNU install.
+
+if test -n "$dir_arg"; then
+  if test -n "$dst_arg"; then
+    echo "$0: target directory not allowed when installing a directory." >&2
+    exit 1
+  fi
+fi

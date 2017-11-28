@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Parts taken from:
+#    https://github.com/cornerman/dotfiles/blob/master/zshrc
+
 #export TERM=xterm-256color
 
 # Path to your oh-my-zsh installation.
@@ -14,7 +17,7 @@ export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
 export HISTCONTROL=ignoreboth:erasedups
 #export XDG_RUNTIME_DIR=/run/user/0
-export STOW_DIR="/home/existme/local/stow"
+export STOW_DIR="$HOME/local/stow"
 export MANPATH=/usr/share/man
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CLICOLOR=true
@@ -209,7 +212,7 @@ if [ -f $HOME/zshrc.local.sh ]; then
 	source $HOME/zshrc.local.sh
 fi
 
-# Add completion path before oh-my-zsh starts cmpinit
+# Add completion path before oh-my-zsh starts compinit
 fpath=($SCRIPTPATH/zsh/completion $fpath)
 
 plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases)
@@ -217,7 +220,6 @@ source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/LESS_TERMCAP
 eval $( dircolors -b ~/.dircolors)
 # Load bundles
-#source $SCRIPTPATH/zsh/bundle/lesaint-mvn/lesaint-mvn.plugin.zsh
 
 # Load keyboard shortcuts
 source $SCRIPTPATH/zsh/keyinfo.sh
@@ -229,14 +231,6 @@ source $SCRIPTPATH/zsh/keyinfo.sh
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP
 
 # Cosmetics
-# if [ -f /usr/share/cowsay/cows/ ]; then 
-# 	fortune | cowsay -f $(ls /usr/share/cowsay/cows/ | shuf -n1)
-# elif [ -f /usr/local/share/cows/ ]; then 
-# 	fortune | cowsay -f $(ls /usr/local/share/cows/ | shuf -n1)
-# else
-# 	fortune | cowsay -f $(ls /usr/share/cowsay/cows | shuf -n1)
-# fi
-#echo "$(date '+%D %T' | toilet -f term -F border --gay)";
 echo $msgRGB
 echo "$(date '+%D %T')";
 #pal
@@ -319,7 +313,6 @@ alias h="history|grep"
 alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 
 function y(){
-
    if [[ $1 == "--help" || $# -eq 0 ]]; then
       echo "Usage: y i3"
       return
@@ -348,28 +341,53 @@ fi
 
 autoload -Uz promptinit
 promptinit
+
+
 # enable automatic rehash
 zstyle ':completion:*' rehash true
 
 zstyle ':completion:*' auto-description 'specify: %d'
 zstyle ':completion:*' completer _expand _complete _correct _approximate
 zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' menu yes=long-list
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*' menu select=2
 eval "$(dircolors -b)"
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
 zstyle ':completion:*' menu select=long
 zstyle ':completion:*' use-compctl false
 zstyle ':completion:*' verbose true
 
-zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")';
 
 # Fix default zstyle for tab completion
 zstyle ':completion:*' format ''
 zstyle ':completion:*' menu select auto
+#proper tabing for directorys ../ is niiice
+zstyle ':completion:*' special-dirs true
+
+#nice for killall
+zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd|grep --color=none -Eo "^[^ ]*"| grep --color=none -Eo "[^/]*$"|sed -e 1d'
+#
+##tabing for man pages
+zstyle ':completion:*:man:*' separate-sections true
+
+# completion
+# #if
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle ':completion:*' completer _expand _complete # _correct  _approximate
+zstyle ':completion:*:approximate:' max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/5 )) numeric )'
+zstyle ':completion:*' completions 1
+zstyle ':completion:*' file-sort name
+zstyle ':completion:*' glob 1
+zstyle ':completion:*' insert-unambiguous true
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+#cd into folder only
+zstyle ':completion:*:*:cd_wrapper:*:*' file-patterns '*(-/):directories'
+# automatic rehash on completion
+zstyle ":completion:*:commands" rehash 1
 
 source $SCRIPTPATH/zsh/completion/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #Other colors: man zshall search for fg=colour
@@ -378,7 +396,7 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
 source $SCRIPTPATH/bundle/zsh-256color/zsh-256color.plugin.zsh
 source $SCRIPTPATH/bundle/zaw/zaw.zsh
-# help is used for getting man page for built-in commands: 
+
 # usage: help read
 alias help=run-help
 alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg"
@@ -396,11 +414,21 @@ else
    alias lart="grc ls -lart"
 fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+wm=$(wmctrl -m|awk 'NR==1{print $2}')
+if [[ "$wm" == "i3" ]]; then
+   source $SCRIPTPATH/zsh/completion/i3_completion.sh
+   echo "Proudly using ${bR}i3${bG}wm${cZ}"
+fi
 # Adding autocomplete for aliases
 compdef s=sudo
 compdef dq=dpkg-reconfigure
 compdef kk=pkill
+# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+# zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+#parameter completions for programms that understand --hrlp
+compdef _gnu_generic df wc tar make date mv cp grep sed feh awk tail head watch unzip unrar ln ssh diff cdrecord nc strings objdump od
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+source $SCRIPTPATH/zsh/zaliases

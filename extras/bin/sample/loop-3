@@ -1,0 +1,8 @@
+#!/bin/bash
+MP4FILE=$(ls ~/Downloads |grep .zip)
+for filename in $MP4FILE
+do 
+    name=`echo "$filename" | sed -e "s/.zip$//g"`
+    echo $name \("$filename"\)
+    #ffmpeg -i ~/Music/$filename -b:a 192K -vn ~/Music/$name.mp3
+done

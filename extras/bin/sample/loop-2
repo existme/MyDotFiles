@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+# only works with zsh
+repeat 5 { date }
