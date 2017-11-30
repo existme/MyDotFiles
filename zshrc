@@ -341,7 +341,8 @@ fi
 
 autoload -Uz promptinit
 promptinit
-
+autoload -U bashcompinit
+bashcompinit
 
 # enable automatic rehash
 zstyle ':completion:*' rehash true
