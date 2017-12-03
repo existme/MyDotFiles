@@ -1,0 +1,25 @@
+#!/bin/bash
+PS3='Please enter your choice: '
+options=("List Processes" "Kill Processes" "Restart mysql" "Quit")
+select opt in "${options[@]}"
+do
+	case $opt in
+		 "List Processes")
+			echo "Listing all mysql processes"
+			sudo ps aux |grep mysql
+			;;
+		 "Kill Processes")
+			echo "Killing all mysql processes"
+			#sudo killall mysql
+			#sudo killall mysqld_safe
+			sudo kill `sudo cat /var/run/mysqld/mysqld.pid`
+			;;
+		  "Restart mysql")
+			sudo /etc/init.d/mysql restart
+			;;
+			"Quit")
+			break
+			;;
+		*) echo invalid option;;
+	esac
+done
