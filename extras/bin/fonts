@@ -1,0 +1,25 @@
+#!/bin/bash
+set -e
+declare format
+declare prompt
+
+case $1 in
+   i3)
+      format="font pango:%{family} %{style} 16"
+      prompt="i3"
+      ;;
+   x)
+      format="xft:%{family}:style=%{style}:size=16:antialias=true"
+      prompt="X"
+      ;;
+   *)
+      echo "Usage:"
+      echo "${bW}fonts ${bY}i3${cZ}|${bY}x${cZ}"
+      exit 1
+      ;;
+esac
+
+# declare selected=$(fc-list -f "%{fullname}"|tr '\n' '|')
+declare selected=$(fc-list -f "$format|")
+declare res=$(echo $selected | rofi -dmenu -sep '|' -p "Select the font to copy it in $prompt format: " -i -disable-history -levenshtein-sort -matching normal -e)
+echo $res|xclip

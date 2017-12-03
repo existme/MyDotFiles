@@ -163,7 +163,7 @@ alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lSahr"
 alias v="vim"
-alias s="sudo -E "
+alias s="sudo PATH=\"$PATH\" -E "
 alias dq="sudo dpkg-query --listfiles"
 alias iconf="code ~config/i3/config"
 alias reload!='. ~/.zshrc'
@@ -294,7 +294,7 @@ function git_prompt_info() {
 
 # remove ag alias because of conflict with silver searcher
 # .oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
-unalias ag
+unalias ag >> /dev/null 2>&1
 alias ap="sudo apt-get"
 
 # Allow zsh to expand star
@@ -403,7 +403,7 @@ alias help=run-help
 alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg"
 alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
 alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
-[[ -s "/etc/grc.zsh" ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
+[[ $(command -v grc) ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
 
 if [ `which exa` ]; then
    echo "$bR exa $cZ is installed, using it instead of $cB ls $cZ"
