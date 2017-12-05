@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# calculate time difference between two times
+
+
+#function toTime(time:seconds)
+tt(){
+   # Put a minus sign in front of time if the time duration is negative
+   local diff=$1
+   local fg=$2
+   local pSign=$3
+
+   if [[ $fg == "+" ]]; then 
+      unset fg
+      pSign=true
+   fi
+
+   if [ $pSign ]; then
+      if [[ diff -lt 0 ]]; then
+         echo -n "${bR}-${cZ}"
+         diff=$((-$diff))
+      else
+         echo -n "${bG}+${cZ}"
+      fi
+   fi 
+   # or +%T = +%H:%M:%S
+   echo ${fg}`date -ud@$diff +%H:%M`${cZ}
+}
+
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: ${bZ}td ${bY}{timeFrom} {timeTo}${cZ}"
+    echo
+    echo "example:"
+    echo "${bZ}td ${bY}14:02 16:01${cZ}"
+    exit
+fi
+
+d1=$(date -ud"1970-01-01 $1" +%s)
+d2=$(date -ud"1970-01-01 $2" +%s)
+diff=$(( d2-d1 ))
+
+if [[ diff -lt 0 ]]; then
+   echo "Usage: ${bZ}td ${bY}{timeFrom} {timeTo}${cZ}"
+   echo "${bR}Error${cZ}: ${bY}{timeTo}${cZ} should be greater than ${bY}{timeFrom}${cZ}"
+   exit
+fi
+
+workDay=8
+echo    "Period                : $(tt $d1 $bW) to $(tt $d2 $bW) ($(tt $diff $bW true))"
+echo -n "Worked period (-$workDay:00) : "
+wd=$(date -ud"1970-01-01 $workDay:00" +%s)
+diffWd=$((diff-wd))
+echo "$(tt $diffWd +) (hours)"
+
