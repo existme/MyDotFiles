@@ -4,8 +4,6 @@ set -e
 
 aur_user=$(grep 1000 /etc/passwd | awk --field-separator=':' '{print $1}')
 
-[[ -z "$aur_user" ]]  && echo "No user found for aur builds" && exit;
-
 [[ "$USER" != "root" ]] && echo "You must be root" && exit;
 
 apt update && apt -y full-upgrade
