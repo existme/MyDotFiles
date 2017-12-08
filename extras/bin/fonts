@@ -22,4 +22,5 @@ esac
 # declare selected=$(fc-list -f "%{fullname}"|tr '\n' '|')
 declare selected=$(fc-list -f "$format|")
 declare res=$(echo $selected | rofi -dmenu -sep '|' -p "Select the font to copy it in $prompt format: " -i -disable-history -levenshtein-sort -matching normal -e)
+echo $res
 echo $res|xclip
