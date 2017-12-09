@@ -104,7 +104,7 @@ use_color=true
 HIST_STAMPS="yyyy-mm-dd" # also: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 
 # General Paths
-export PATH=$HOME/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=$HOME/bin:$HOME/bin/git-scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export HISTSIZE=10000000
 export SAVEHIST=10000000

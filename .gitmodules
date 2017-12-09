@@ -88,3 +88,6 @@
 [submodule "zsh/completion/plugins/fzf"]
 	path = zsh/completion/plugins/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "extras/bin/git-scripts"]
+	path = extras/bin/git-scripts
+	url = https://github.com/jwiegley/git-scripts.git
