@@ -103,9 +103,6 @@ user=`whoami`
 use_color=true
 HIST_STAMPS="yyyy-mm-dd" # also: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 
-# General Paths
-export PATH=$HOME/bin:$HOME/bin/git-scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export HISTSIZE=10000000
 export SAVEHIST=10000000
 export HISTFILE=~/.history
@@ -141,58 +138,10 @@ SCRIPTPATH=$(dirname "$SCRIPT")
 # add scripts folder to path variable to use commands like cleanmem
 export PATH=$SCRIPTPATH/extras/scripts:$PATH
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias zshlocal="vim ~/zshrc.local.sh"
-alias ohmyzsh="vim ~/.oh-my-zsh"
-alias ls="ls -GF --color"
-alias zdoc="xdg-open /usr/share/doc/zsh/doc/zsh.pdf >> /dev/null 2>&1 &"
-#alias cat="grc cat"
-alias ds="du -hd 1| sort -h"
-alias k="k -h"
-alias hd="head -n 40 "
-alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
-alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
-alias jq="jq '.' "
-alias ex="chmod u+x "
-alias idea='. $SCRIPTPATH/extras/scripts/idea'
-alias ll="ls -lSahr"
-alias v="vim"
-alias s="sudo PATH=\"$PATH\" -E "
-alias dq="sudo dpkg-query --listfiles"
-alias iconf="code ~config/i3/config"
-alias reload!='. ~/.zshrc'
-alias cls='clear' # Good 'ol Clear Screen command
-alias localzsh="vim ~/zshrc.local.sh"
-alias dpk="grc dpkg-query --listfiles"
-alias pp="s grc ps -aux|grep "
-alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
-
-# mh is a shortcut for showing help.md in this repo
-# every 34 line the text should break with --- inorder to 
-# be represented as a slide
-alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
-# these are mappings for frequently used folder, type for example:
-#hash -d memo=~/Dropbox/Memo
-hash -d MyDotFiles=$SCRIPTPATH
-hash -d mydotfiles=$SCRIPTPATH
-hash -d vim=$SCRIPTPATH
-hash -d download=~/Downloads
-hash -d config=~/.config
-hash -d desktop=~/Desktop
-hash -d git=~/git
-hash -d bin=~/bin
-hash -d notes=~/notes
-hash -d sample=~/bin/sample
-hash -d wiki=~/wiki
-hash -d pictures=~/pictures
-hash -d apps=/usr/share/applications
-hash -d lapps=~/.local/share/applications/
+# General Paths
+export PATH=$HOME/bin:$HOME/bin/git-scripts:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH="$PATH:$HOME/local/stow" # Add RVM to PATH for scripting
 
 # automatically cd to directory when using ~
 setopt auto_cd
@@ -233,92 +182,7 @@ source $SCRIPTPATH/zsh/keyinfo.sh
 # Cosmetics
 echo $msgRGB
 echo "$(date '+%D %T')";
-#pal
 
-# autoload predict-on
-# predict-on
-CASE_SENSITIVE="false"
-zstyle ':completion:*' completer _complete
-
-bindkey '\t' expand-or-complete
-
-
-bindkey '\e.' insert-last-word
-compinit -u
-cdUndoKey() {
-  popd      > /dev/null
-  zle       reset-prompt
-  echo
-  ls
-  echo
-}
-
-cdParentKey() {
-  pushd .. > /dev/null
-  zle      reset-prompt
-  echo
-  ls
-  echo
-}
-
-zle -N                 cdParentKey
-zle -N                 cdUndoKey
-bindkey '^[[1;3A'      cdParentKey
-bindkey '^[[1;3D'      cdUndoKey
-
-
-# Bind Escape to vi-cmd-mode
-bindkey "\e" vi-cmd-mode
-
-export PATH="$PATH:$HOME/local/stow" # Add RVM to PATH for scripting
-#Return “yes” if the repository is on an “nfs” mount
-function __is_slow_storage() {
-   export STAT_OPT='-L --file-system --format="%T"'
-   if [ $OSTYPE == "Darwin" ]; then
-      STAT_OPT='-L -f "%HT"'
-   fi
-   RES=$(stat `echo $STAT_OPT` `echo $1`)
-
-   if [[ $RES == "nfs" || $RES == "cifs" ]]; then
-      echo "yes"
-   else
-      echo "no"
-   fi
-}
-# Fix  oh-myzsh git prompt slowness issue for some repos
-function git_prompt_info() {
-  local ref
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
-}
-
-# remove ag alias because of conflict with silver searcher
-# .oh-my-zsh/plugins/ubuntu/ubuntu.plugin.zsh
-unalias ag >> /dev/null 2>&1
-alias ap="sudo apt-get"
-
-# Allow zsh to expand star
-unsetopt no_match
-# Allow caseincensitive globing
-setopt nocaseglob
-
-
-alias h="history|grep"
-# function hh(){
-#    # var=("${(f@)$(cat)}")
-#    # echo Searching history for \"$var\"
-#    #history | grep  | less
-#    echo !!
-# }
-alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
-
-function y(){
-   if [[ $1 == "--help" || $# -eq 0 ]]; then
-      echo "Usage: y i3"
-      return
-   fi
-   yelp man:$1 &
-}
 # The TOOLBOX variable should be set in zshrc.local.sh to something like this: 
 # TOOLBOX=/Users/(uid)/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0
 # or in Linux:
@@ -330,65 +194,21 @@ if [ $TOOLBOX ]; then
    # IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea
    export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
 fi
-# additional
-# alias ll=exa -la --color=always
-# alias ls=exa --color=always
 
 
 if [ -f $HOME/zshrc.local.post ]; then
 	source $HOME/zshrc.local.post
 fi
 
-autoload -Uz promptinit
-promptinit
-autoload -U bashcompinit
-bashcompinit
+source $SCRIPTPATH/zsh/functions.sh
+source $SCRIPTPATH/zsh/compinit.sh
 
-# enable automatic rehash
-zstyle ':completion:*' rehash true
-
-zstyle ':completion:*' auto-description 'specify: %d'
-zstyle ':completion:*' completer _expand _complete _correct _approximate
-zstyle ':completion:*' format 'Completing %d'
-zstyle ':completion:*' menu yes=long-list
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*' menu select=2
-eval "$(dircolors -b)"
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
-zstyle ':completion:*' menu select=long
-zstyle ':completion:*' use-compctl false
-zstyle ':completion:*' verbose true
-
-zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)(?)*==02=01}:${(s.:.)LS_COLORS}")';
-
-# Fix default zstyle for tab completion
-zstyle ':completion:*' format ''
-zstyle ':completion:*' menu select auto
-#proper tabing for directorys ../ is niiice
-zstyle ':completion:*' special-dirs true
-
-#nice for killall
-zstyle ':completion:*:killall:*' command 'ps -u $USER -o cmd|grep --color=none -Eo "^[^ ]*"| grep --color=none -Eo "[^/]*$"|sed -e 1d'
-#
-##tabing for man pages
-zstyle ':completion:*:man:*' separate-sections true
-
-# completion
-# #if
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*' completer _expand _complete # _correct  _approximate
-zstyle ':completion:*:approximate:' max-errors 'reply=( $((($#PREFIX+$#SUFFIX)/5 )) numeric )'
-zstyle ':completion:*' completions 1
-zstyle ':completion:*' file-sort name
-zstyle ':completion:*' glob 1
-zstyle ':completion:*' insert-unambiguous true
-zstyle ':completion:*' list-colors ''
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-#cd into folder only
-zstyle ':completion:*:*:cd_wrapper:*:*' file-patterns '*(-/):directories'
-# automatic rehash on completion
-zstyle ":completion:*:commands" rehash 1
+zle -N                 cdParentKey
+zle -N                 cdUndoKey
+bindkey '^[[1;3A'      cdParentKey
+bindkey '^[[1;3D'      cdUndoKey
+# Bind Escape to vi-cmd-mode
+bindkey "\e" vi-cmd-mode
 
 source $SCRIPTPATH/zsh/completion/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 #Other colors: man zshall search for fg=colour
@@ -398,38 +218,10 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 source $SCRIPTPATH/bundle/zsh-256color/zsh-256color.plugin.zsh
 source $SCRIPTPATH/bundle/zaw/zaw.zsh
 
-# usage: help read
-alias help=run-help
-alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg"
-alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
-alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 [[ $(command -v grc) ]] || echo "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
-
-if [ `which exa` ]; then
-   echo "$bR exa $cZ is installed, using it instead of $cB ls $cZ"
-   alias ls="exa -F --time-style long-iso --color=always --color-scale --group-directories-first"
-   alias ll="exa -lgaF --time-style long-iso --color=always --color-scale --group-directories-first"
-   alias lart="exa -lgaF@ -s modified --time-style long-iso --color=always --color-scale"
-else
-   echo "$cB exa $cZ is not installed, using normal $cR ls $cZ"
-   alias lart="grc ls -lart"
-fi
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-wm=$(wmctrl -m|awk 'NR==1{print $2}')
-if [[ "$wm" == "i3" ]]; then
-   source $SCRIPTPATH/zsh/completion/i3_completion.sh
-   echo "Proudly using ${bR}i3${bG}wm${cZ}"
-fi
-# Adding autocomplete for aliases
-compdef s=sudo
-compdef dq=dpkg-reconfigure
-compdef kk=pkill
-# zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
-# zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
-#parameter completions for programms that understand --hrlp
-compdef _gnu_generic df wc tar make date mv cp grep sed feh awk tail head watch unzip unrar ln ssh diff cdrecord nc strings objdump od
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source $SCRIPTPATH/zsh/zaliases
+

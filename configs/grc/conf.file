@@ -1,0 +1,23 @@
+# Path
+regexp=^(\/\S+)
+colours=bold yellow
+-
+# script
+regexp=(shell script)
+colours=unchanged,bright_green
+-
+# binary
+regexp=(ELF 64-bit)
+colours=unchanged,red
+-
+# ALL
+regexp=\*
+colours=bold red
+-
+# Options
+regexp=\(([\w,]+)\)
+colours=default,cyan
+-
+# Server
+regexp=for\s([^:]+):$
+colours=default,bold yellow

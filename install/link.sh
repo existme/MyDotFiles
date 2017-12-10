@@ -37,6 +37,9 @@ ln -s $DOTPATH/extras/bin ~/
 rm -rf ~/.fzf.zsh
 ln -s $DOTPATH/fzf.zsh ~/.fzf.zsh
 
+rm -rf ~/.grc
+ln -s $DOTPATH/configs/grc ~/.grc
+
 touch ~/.stCommitMsg
 cp $DOTPATH/gitconfig.user ~/.gitconfig.user
 
