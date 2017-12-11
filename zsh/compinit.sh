@@ -81,3 +81,6 @@ zstyle ':completion:*:*:vf:*:_path_commands' list-colors '=(#b) #([0-9]#)*=0=01;
 # zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 #parameter completions for programms that understand --hrlp
 compdef _gnu_generic df wc tar make date mv cp grep sed feh awk tail head watch unzip unrar ln ssh diff cdrecord nc strings objdump od
+
+# ctrl+h for help file
+bindkey -s '^h' '^Uvim ~mydotfiles/help.md^M'

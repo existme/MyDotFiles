@@ -91,3 +91,15 @@
 [submodule "extras/bin/git-scripts"]
 	path = extras/bin/git-scripts
 	url = https://github.com/jwiegley/git-scripts.git
+[submodule "vim/bundle/vim-sneak"]
+	path = vim/bundle/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
+[submodule "vim/bundle/neocomplete"]
+	path = vim/bundle/neocomplete
+	url = https://github.com/Shougo/neocomplete.vim.git
+[submodule "vim/neosnippets"]
+	path = vim/neosnippets
+	url = https://github.com/Shougo/neosnippet-snippets
+[submodule "vim/bundle/neosnippet"]
+	path = vim/bundle/neosnippet
+	url = https://github.com/Shougo/neosnippet.vim.git

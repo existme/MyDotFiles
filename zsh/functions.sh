@@ -62,13 +62,28 @@ function p(){
 # Auto 
 function vf(){
     declare local filepath=$(p $1)    
-    if [[ $filepath =~ (not found)$ ]]; then
-      echo "File: ${bY}$1${cZ} ${bR}not found${cZ} in path!"
+    if [[ $filepath =~ (not found)$ ]]; then      
       (
-      for p in ${PATH//:/$'\n'}; do
-        echo "$p"
-        echo
-      done
+        # It should be done like this otherwise IFS doesn't work        
+        IFS=: declare -a local arr=($=PATH)
+        # Add home to path
+        arr+=("$HOME")
+        local file
+        for p in $arr; do
+          file=$p/$1
+          if [ -f "$file" ]; then
+            grc file $file
+            ll $file
+            read -k 1 -r "pr?Do you want to edit it?(${bG}y${cZ}/${bW}N${cZ})?" 
+            echo
+            if [[ ! $pr =~ ^[Yy]$ ]]; then
+              exit
+            fi
+            vim $file
+            exit
+          fi
+        done
+        echo "File: ${bY}$1${cZ} ${bR}not found${cZ} in path!"
       )
       return
     else
@@ -76,7 +91,7 @@ function vf(){
       ll $filepath
     fi
     
-    if  [ ! $(file $filepath|grep ASCII) ]; then
+    if  [ -z "$(file $filepath|grep ASCII)" ]; then
         echo "${vR}Binary$cZ file."
         return
     fi

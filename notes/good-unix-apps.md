@@ -27,6 +27,13 @@ pip install mdv
 
 mdv notes/test.md
 ```
+---
+- [patat][patat]
+Terminal-based presentations using Pandoc
+
+```bash
+s apt install patat
+```
 
 ---
 - [CommonMark-py][cmpy]
@@ -45,7 +52,13 @@ Kupfer a dmenu replacement
 s apt install kupfer
 
 ```
-Either use it in python scripts or use the cli by `cmark`
+---
+- [XFCE app finder][appfinder]
+XFCE App finder replacing start menu
+```bash
+s apt install xfce4-appfinder
+```
+
 
 [cmdfu]: http://www.commandlinefu.com/commands/view/6663/pretend-to-be-busy-in-office-to-enjoy-a-cup-of-coffee
 [shellcheck]: https://www.cyberciti.biz/programming/improve-your-bashsh-shell-script-with-shellcheck-lint-script-analysis-tool/
@@ -53,5 +66,7 @@ Either use it in python scripts or use the cli by `cmark`
 [mdv]: https://github.com/axiros/terminal_markdown_viewer
 [cmpy]: https://github.com/rtfd/CommonMark-py
 [kupfer]: https://github.com/kupferlauncher/kupfer
+[appfinder]: http://docs.xfce.org/xfce/xfce4-appfinder/usage
+[patat]: https://github.com/jaspervdj/patat
 -----------------------------------------
 2017-11-07 01:18:46
