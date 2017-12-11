@@ -267,6 +267,47 @@ map  <c-r> :w<cr>:!%:p<cr>
 imap  <c-r> <esc>:w<cr>:!%:p<cr>
 nnoremap  <leader>r :!%:p<cr>
 
+" sneak clever mode on
+let g:sneak#s_next = 1
+
+" Help in vertical mode
+" :cabbrev h vert h                    " This is an alternate solution
+autocmd FileType help wincmd L         " Open h/help vertically
+autocmd FileType h    wincmd L
+
+" Enable neocomplete
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 3
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+" neosnippet
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+let g:neosnippet#snippets_directory='~/.vim/snippets'
+
 " ============ Final Settings =================
 set nowrap
 set novb
@@ -283,6 +324,7 @@ let doxygen_my_rendering=1
 
 " We need to reload airline theme manually after colorscheme change
 autocmd FileType symbol colorscheme babymate256 | call airline#load_theme()
+
 
 " set t_ks=
 " set t_ti=
