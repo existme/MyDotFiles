@@ -267,6 +267,9 @@ map  <c-r> :w<cr>:!%:p<cr>
 imap  <c-r> <esc>:w<cr>:!%:p<cr>
 nnoremap  <leader>r :!%:p<cr>
 
+"Save current file
+map  <c-s> :w<cr>
+
 " sneak clever mode on
 let g:sneak#s_next = 1
 
@@ -307,7 +310,7 @@ if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
 let g:neosnippet#snippets_directory='~/.vim/snippets'
-
+let g:neosnippet#disable_runtime_snippets= { '_' : 1, }
 " ============ Final Settings =================
 set nowrap
 set novb

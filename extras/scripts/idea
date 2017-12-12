@@ -10,7 +10,8 @@ absfile=`$SCRIPTPATH/extras/scripts/abspath $1`
 
 echo "Runnning: "
 echo ""
-echo "$IDEAPATH/\e[31m$IDEA_VERSION\e[39m/$IDEA_POSTIFIX \e[95m$absfile"
+#echo "$IDEA_PATH/\e[31m$IDEA_VERSION\e[39m/$IDEA_POSTIFIX \e[95m$absfile"
+echo "$IDEA_PATH \e[95m$absfile"
 
 if [[ $2 -eq "--log" ]]; then
    `$IDEA_PATH $absfile` & 

@@ -74,9 +74,9 @@ function vf(){
           if [ -f "$file" ]; then
             grc file $file
             ll $file
-            read -k 1 -r "pr?Do you want to edit it?(${bG}y${cZ}/${bW}N${cZ})?" 
+            read -k 1 -r "pr?Do you want to edit it?(${bG}Y${cZ}/${bW}n${cZ})?" 
             echo
-            if [[ ! $pr =~ ^[Yy]$ ]]; then
+            if [[ $pr =~ ^[Nn]$ ]]; then
               exit
             fi
             vim $file
