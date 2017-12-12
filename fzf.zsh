@@ -29,9 +29,18 @@ local color0C='#8ec07c'
 local color0D='#83a598'
 local color0E='#d3869b'
 local color0F='#d65d0e'
+export FZF_DEFAULT_COMMAND="fd --hidden --exclude .git"
 export FZF_DEFAULT_OPTS="
   --height 40% --border
   --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
   --color=fg:$color07,header:$color0D,info:$color0A,pointer:$color0C
   --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color08
+  --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'
+  --bind 'f2:execute(vim -)+abort'
 "
+# see man page: https://www.mankier.com/1/fzf#Key_Bindings
+#fzf --bind 'f2:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'
+# FZF configuration                                                              
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+#export FZF_CTRL_T_OPTS="--select-1 --exit-0"                                    
+export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'" 

@@ -225,8 +225,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 source $SCRIPTPATH/zsh/zaliases
-
-# FZF configuration 
-export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
-#export FZF_CTRL_T_OPTS="--select-1 --exit-0"
-export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
