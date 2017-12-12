@@ -84,3 +84,5 @@ compdef _gnu_generic df wc tar make date mv cp grep sed feh awk tail head watch 
 
 # ctrl+h for help file
 bindkey -s '^h' '^Uvim ~mydotfiles/help.md^M'
+
+compdef "_fzf_path_completion ~/notes/$1" takenote
