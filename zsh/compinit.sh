@@ -75,6 +75,8 @@ fi
 compdef s=sudo
 compdef dq=dpkg-reconfigure
 compdef kk=pkill
+compdef _path_commands mank
+compdef _path_commands mann
 compdef _path_commands vf
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:*:vf:*:_path_commands' list-colors '=(#b) #([0-9]#)*=0=01;31'
