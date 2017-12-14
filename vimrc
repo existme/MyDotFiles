@@ -267,8 +267,9 @@ map  <c-r> :w<cr>:!%:p<cr>
 imap  <c-r> <esc>:w<cr>:!%:p<cr>
 nnoremap  <leader>r :!%:p<cr>
 
-"Save current file
-map  <c-s> :w<cr>
+" Save current file there might be some overlaps with vim-sorround
+nmap  <c-s> <esc>:w<cr>
+imap  <c-s> <esc>:w<cr>
 
 " sneak clever mode on
 let g:sneak#s_next = 1
