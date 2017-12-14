@@ -14,7 +14,7 @@ echo ""
 echo "$IDEA_PATH \e[95m$absfile"
 
 if [[ $2 -eq "--log" ]]; then
-   `$IDEA_PATH $absfile` & 
+   `$IDEA_PATH $absfile &` 
 else
-   `$IDEA_PATH $absfile >> /dev/null 2>&1`  & 
+   `$IDEA_PATH $absfile >> /dev/null 2>&1 &` 
 fi
