@@ -104,3 +104,15 @@ pathadd() {
         export PATH="${PATH:+"$PATH:"}$1"                                        
     fi                                                                           
 } 
+
+mann() {
+   local man="https://www.manned.org/$1"
+   echo "${bY}Opening ${bW}$man${cZ} for {$bB}'$1'${cZ} command."
+   xdg-open $man > /dev/null 2>&1
+}
+
+mank() {
+   local man="https://www.mankier.com/1/$1"
+   echo "${bY}Opening ${bW}$man${cZ} for {$bB}'$1'${cZ} command."
+   xdg-open $man > /dev/null 2>&1
+}
