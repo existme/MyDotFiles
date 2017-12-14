@@ -75,9 +75,7 @@ alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 # alias ll=exa -la --color=always
 # alias ls=exa --color=always
 
-
-
-
+alias rm=trash-put
 
 # these are mappings for frequently used folder, type for example:
 #hash -d memo=~/Dropbox/Memo
