@@ -1,3 +1,20 @@
+echoMe $0
+
+stackMsg(){
+  stack+=( $1 )
+  export stack
+}
+
+echoMsgs(){
+  echo  
+  echo "${bW}╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌${cZ}"  
+  for s in $stack
+  do
+    echo $s
+  done
+  unset stack
+}
+
 cdUndoKey() {
   popd      > /dev/null
   zle       reset-prompt
@@ -13,6 +30,43 @@ cdParentKey() {
   ls
   echo
 }
+
+deleteLine(){
+ 	zle     	kill-whole-line 
+   zle      reset-prompt
+}
+deleteToStart(){
+ 	zle   	backward-kill-line 
+   zle      reset-prompt
+}
+
+
+function rgrep(){ grep --color=always -R -i "$1" * | less;}
+
+function rfind(){ 
+   if [[ $1 == "--help" || $# -eq 0 ]]; then
+      echo "Usage: rfind readme ~/git/MyDotFiles"
+      return
+   fi
+   find $2 -iname "*$1*"|grep -i "$1" --color=always
+} 
+# A macro to see the contents of a jar or war file
+function lessj(){ 
+	if [[ -z $1 ]]; then
+		jar tvf *.jar|pygmentize -f "terminal" -l sv -f terminal256 -s|less
+	else
+		jar tvf $1|pygmentize -f "terminal" -l sv -f terminal256 -s|less
+	fi
+}
+# easy archive extraction either use extract x.tar or extract x.tar "/your/destination
+function extract(){
+	if [[ -z ${2+x} ]]; then
+		tar xf $1;
+	else
+		tar xf $1 -C $2;
+	fi
+} 
+
 
 #Return “yes” if the repository is on an “nfs” mount
 function __is_slow_storage() {

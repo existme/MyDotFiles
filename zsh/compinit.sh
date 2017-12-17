@@ -1,3 +1,4 @@
+echoMe $0
 # Allow zsh to expand star
 unsetopt no_match
 # Allow caseincensitive globing
@@ -66,10 +67,11 @@ zstyle ":completion:*:commands" rehash 1
 # Adding autocomplete for aliases
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 wm=$(wmctrl -m|awk 'NR==1{print $2}')
 if [[ "$wm" == "i3" ]]; then
    source $SCRIPTPATH/zsh/completion/i3_completion.sh
-   echo "Proudly using ${bR}i3${bG}wm${cZ}"
+   APPS+="$APP_SEP ${bW}i3${cZ} "
 fi
 
 compdef s=sudo

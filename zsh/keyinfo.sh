@@ -1,3 +1,4 @@
+echoMe $0
 # If you dont't know what is the code for a key combination, use <ctrl-v> followed by the key sequence
 # Enable vi-mode 
 if [[ $EDITOR == 'enablevim' ]]; then
@@ -30,36 +31,12 @@ fi
 # 		http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 #
 
-cdUndoKey() {
-  popd      > /dev/null
-  zle       reset-prompt
-  echo
-  ls
-  echo
-}
-
-cdParentKey() {
-  pushd .. > /dev/null
-  zle      reset-prompt
-  echo
-  ls
-  echo
-}
-
-deleteLine(){
- 	zle     	kill-whole-line 
-   zle      reset-prompt
-}
-deleteToStart(){
- 	zle   	backward-kill-line 
-   zle      reset-prompt
-}
 zle -N                 cdParentKey
 zle -N                 cdUndoKey
 zle -N                 deleteLine
 zle -N                 deleteToStart
 bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
-bindkey '^[[3;5~'  	  deleteLine
-bindkey '^_'  	  		  deleteToStart 
-
+bindkey '^[[3;5~'      deleteLine
+bindkey '^_'           deleteToStart 
+bindkey "\e"           vi-cmd-mode      # Bind Escape to vi-cmd-mode

@@ -1,3 +1,4 @@
+echoMe $0
 #
 # This shell prompt config file was created by promptline.vim
 #

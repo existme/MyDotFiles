@@ -1,4 +1,4 @@
-echo "Loading Windows-specific configuration..."
+echoMe $0
 
 # Setting up environment specific paths
 
