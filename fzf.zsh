@@ -54,9 +54,11 @@ export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'"
 # bindkey '^E' fzf-history-widget
 
 fzf-find-widget() {
-  _fzf_complete '+m' "$@" < <(
+  _fzf_complete '+m' "$2" < <(
     ag "$dir"
   )
 }
 zle      -N    fzf-find-widget
 bindkey '^F'   fzf-find-widget
+
+

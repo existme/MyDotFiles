@@ -10,7 +10,7 @@ for fn in $* ; do
       echo `pwd`"/"`basename $fn`
     fi
   else
-    echo "Don't know how to process $fn" 1>&2
+    echo "Don't know how to process $fn or it doesn't exists" 1>&2
     exit 1
   fi
   cd $ORIG_DIR

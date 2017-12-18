@@ -99,6 +99,10 @@ function git_prompt_info() {
 #    echo !!
 # }
 
+function as(){
+   apt show $(apt-cache search . |fzf -e -x --algo=v2 +m --cycle --print-query| cut -d' ' -f1)   
+}
+
 function y(){
    if [[ $1 == "--help" || $# -eq 0 ]]; then
       echo "Usage: y i3"
