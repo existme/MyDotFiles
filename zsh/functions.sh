@@ -41,13 +41,16 @@ deleteToStart(){
 }
 
 
-function rgrep(){ grep --color=always -R -i "$1" * | less;}
+function rgrep(){ 
+  grep --color=always -R -i "$1" *;
+}
 
 function rfind(){ 
    if [[ $1 == "--help" || $# -eq 0 ]]; then
       echo "Usage: rfind readme ~/git/MyDotFiles"
       return
    fi
+   echo "find $2 -iname \"*$1*\"|grep -i \"$1\" --color=always"
    find $2 -iname "*$1*"|grep -i "$1" --color=always
 } 
 # A macro to see the contents of a jar or war file

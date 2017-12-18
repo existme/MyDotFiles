@@ -37,6 +37,7 @@ export FZF_DEFAULT_OPTS="
   --color=marker:$color0C,fg+:$color06,prompt:$color0A,hl+:$color08
   --preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'
   --bind 'f2:execute(vim -)+abort'
+  --ansi
 "
 # see man page: https://www.mankier.com/1/fzf#Key_Bindings
 #fzf --bind 'f2:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'
@@ -44,3 +45,18 @@ export FZF_DEFAULT_OPTS="
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 #export FZF_CTRL_T_OPTS="--select-1 --exit-0"                                    
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'" 
+
+# fzf-history-widget() {
+#   LBUFFER=$(fc -l 1 | fzf +s +m -n2..,.. | sed "s/ *[0-9*]* *//")
+#   zle redisplay
+# }
+# zle     -N   fzf-history-widget
+# bindkey '^E' fzf-history-widget
+
+fzf-find-widget() {
+  _fzf_complete '+m' "$@" < <(
+    ag "$dir"
+  )
+}
+zle      -N    fzf-find-widget
+bindkey '^F'   fzf-find-widget
