@@ -134,7 +134,7 @@ function vf(){
           file=$p/$1
           if [ -f "$file" ]; then
             grc file $file
-            ll $file
+            grc ls -la $file
             read -k 1 -r "pr?Do you want to edit it?(${bG}Y${cZ}/${bW}n${cZ})?" 
             echo
             if [[ $pr =~ ^[Nn]$ ]]; then
@@ -149,7 +149,7 @@ function vf(){
       return
     else
       grc file $filepath
-      ll $filepath
+      grc ls -la $filepath
     fi
     
     if  [ -z "$(file $filepath|grep ASCII)" ]; then

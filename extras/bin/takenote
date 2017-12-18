@@ -1,31 +1,40 @@
 #!/bin/zsh
 
-set -e
+# set -e
 
 ARG1=$1
-echo $ARG1
+# echo $ARG1
 [[ $ARG1 == "-p" ]] && shift;
 
 ARG=$@
 TITLE="${(C)ARG}"
 ARG=${ARG// /-}
 
-echo $ARG
+# echo $ARG
 
 NOTESDIR=~/notes
-[ ! -z $ARG ] && NOTE="$ARG.md"
 
 if [[ $ARG1 == "-p" ]]; then
    echo "Private note";
    NOTESDIR=~/notes/private
 fi
 
+NOTE=$ARG
+FILE="$NOTESDIR/$NOTE"
+EXT="${NOTE##*.}"
+[[ ! $EXT -eq "md" ]] && echo "NOt [$FILE]"
+[[ ! $EXT -eq "md" ]] && NOTE="$ARG.md" && FILE="$FILE.md"
+echo "---> $FILE - $NOTE"
 [ ! -d "$NOTESDIR" ] && mkdir $NOTESDIR
 
 cd $NOTESDIR
 
-if [[ -f $NOTE ]]; then
-   vim -c 'set statusline="hello dear"' $NOTE +6 
+EXT="${NOTE##*.}"
+NOTE=$(basename "$NOTE")
+echo $EXT-$NOTE-$NOTESDIR/$NOTE-$FILE
+NOTE="${NOTE%.*}"
+if [[ -f $FILE ]]; then
+   vim -c 'set statusline="hello dear"' $FILE +6 
    exit
 fi
 
@@ -44,8 +53,14 @@ cat << EOD >> $NOTE
 $DATE
 EOD
 
-vim $NOTE +6
+vim $NOTE +6 
+res=$?
+if [[ $res == 1 ]]; then
+   rm $NOTE
+   echo "Note [${bR}$NOTESDIR/$NOTE${cZ}] not saved"
+else
+   echo "Your note was saved in [${bG}$NOTESDIR/$NOTE${cZ}]"
+fi
 
-echo "your note was saved in [$NOTESDIR/$NOTE]"
 
-exit 0
+exit $ret

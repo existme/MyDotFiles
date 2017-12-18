@@ -92,14 +92,12 @@ function __fdnote(){
    zle-line-init
    zle-line-finish
    local dir
-   dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
+   dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux -m ) 
    #LBUFFER=$(echo $dir)
-   TRAPWINCH() {
-           zle && { zle reset-prompt; zle -R }
-             }
-   zle -N zle-line-init
-   zle redisplay
-   zle accept-and-menu-complete
+   # zle -N zle-line-init
+   # zle redisplay
+   compadd -P '' -p '' $dir
+   # zle accept-and-menu-complete
    #echo $dir
 }
 zle -N _fdnote

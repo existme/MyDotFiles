@@ -118,11 +118,12 @@ vmap ,mc						!boxes -d shell -a hcvc<CR>
 nmap ,xc						!!boxes -d shell -a hcvc -r<CR>
 vmap ,xc						!boxes -d shell -a hcvc -r<CR>
 
-nmap qq						:qa<CR>
-nmap QQ						:qa!<CR>
-vmap qq						<ESC>:qa<CR>
-vmap QQ						<ESC>:qa!<CR>
-
+nnoremap qq						:cq<CR>
+nnoremap QQ						:cq!<CR>
+vnoremap qq						<ESC>:cq<CR>
+vnoremap QQ						<ESC>:cq!<CR>
+cnoremap q!                 cq!
+cnoremap Q!                 cq!
 " ============= Function Keys Mappings ===========
 set		pastetoggle=<F2>										"Toggle paste with F2
 map		<F3>				<ESC>:NERDTreeToggle<CR>		"Toggle nerd tree  F3

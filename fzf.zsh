@@ -29,7 +29,7 @@ local color0C='#8ec07c'
 local color0D='#83a598'
 local color0E='#d3869b'
 local color0F='#d65d0e'
-export FZF_DEFAULT_COMMAND="fd --hidden --exclude .git"
+export FZF_DEFAULT_COMMAND="find . -type d \( -path '*/\.*' -path $HOME/mnt -path ./.git \)  -prune -o -print 2> /dev/null"
 export FZF_DEFAULT_OPTS="
   --height 40% --border
   --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
@@ -42,6 +42,7 @@ export FZF_DEFAULT_OPTS="
 # see man page: https://www.mankier.com/1/fzf#Key_Bindings
 #fzf --bind 'f2:execute(less -f {}),ctrl-y:execute-silent(echo {} | pbcopy)+abort'
 # FZF configuration                                                              
+export FZF_CTRL_T_COMMAND='ag --hidden -g "" --path-to-ignore ~/.hgignore'
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 #export FZF_CTRL_T_OPTS="--select-1 --exit-0"                                    
 export FZF_ALT_C_OPTS="--preview 'tree -C {} | head -200'" 
@@ -58,7 +59,14 @@ fzf-find-widget() {
     ag "$dir"
   )
 }
-zle      -N    fzf-find-widget
-bindkey '^F'   fzf-find-widget
+
+fzz(){
+  _fzf_complete '+m' "$1" < <(
+     find -L "$HOME/notes/" 
+  )
+}
+zle      -N    fzz
+bindkey '^F'   fzz
+#compdef fzz takenote
 
 

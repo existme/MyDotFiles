@@ -52,7 +52,7 @@ set softtabstop=3
 set tabstop=3
 set expandtab
 "set noexpandtab
-
+"filetype on
 filetype plugin on
 filetype indent on
 
