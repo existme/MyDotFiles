@@ -88,7 +88,24 @@ compdef _gnu_generic df wc tar make date mv cp grep sed feh awk tail head watch 
 
 # ctrl+h for help file
 bindkey -s '^h' '^Uvim ~mydotfiles/help.md^M'
+function __fdnote(){
+   zle-line-init
+   zle-line-finish
+   local dir
+   dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
+   #LBUFFER=$(echo $dir)
+   TRAPWINCH() {
+           zle && { zle reset-prompt; zle -R }
+             }
+   zle -N zle-line-init
+   zle redisplay
+   zle accept-and-menu-complete
+   #echo $dir
+}
+zle -N _fdnote
+autoload -Uz __fdnote 
+bindkey '^e' __fdnote 
+#compdef "_fzf_path_completion ~/notes/$@" takenote
 
-compdef "_fzf_path_completion ~/notes/$@" takenote
-
+compdef __fdnote takenote
 bindkey -s '\es' '^Ugit status^M'
