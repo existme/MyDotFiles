@@ -4,35 +4,37 @@
 
 ARG1=$1
 # echo $ARG1
-[[ $ARG1 == "-p" ]] && shift;
-
-ARG=$@
-TITLE="${(C)ARG}"
-ARG=${ARG// /-}
-
-# echo $ARG
-
 NOTESDIR=~/notes
-
 if [[ $ARG1 == "-p" ]]; then
    echo "Private note";
    NOTESDIR=~/notes/private
 fi
+[[ $ARG1 == "-p" ]] && shift;
+
+ARG=$@
+ARG=${ARG// /-}
 
 NOTE=$ARG
-FILE="$NOTESDIR/$NOTE"
+NOTE=$(basename "$NOTE")
 EXT="${NOTE##*.}"
-[[ ! $EXT -eq "md" ]] && echo "NOt [$FILE]"
-[[ ! $EXT -eq "md" ]] && NOTE="$ARG.md" && FILE="$FILE.md"
-echo "---> $FILE - $NOTE"
+FILE="$NOTESDIR/$NOTE"
+
+if [[ -f $ARG ]]; then
+   FILE=$ARG
+else
+   [[ ! "$EXT" == "md" ]] && [[ ! -f $FILE ]] && NOTE="$NOTE.md" 
+   FILE="$NOTESDIR/$NOTE"
+fi
+
+TITLE="${(C)NOTE}"
+
+# echo $ARG
+
+
 [ ! -d "$NOTESDIR" ] && mkdir $NOTESDIR
 
 cd $NOTESDIR
 
-EXT="${NOTE##*.}"
-NOTE=$(basename "$NOTE")
-echo $EXT-$NOTE-$NOTESDIR/$NOTE-$FILE
-NOTE="${NOTE%.*}"
 if [[ -f $FILE ]]; then
    vim -c 'set statusline="hello dear"' $FILE +6 
    exit

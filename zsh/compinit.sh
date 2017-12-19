@@ -86,21 +86,29 @@ zstyle ':completion:*:*:vf:*:_path_commands' list-colors '=(#b) #([0-9]#)*=0=01;
 #parameter completions for programms that understand --hrlp
 compdef _gnu_generic df wc tar make date mv cp grep sed feh awk tail head watch unzip unrar ln ssh diff cdrecord nc strings objdump od
 
+TRAPWINCH() {
+  zle && { zle reset-prompt; zle -R }
+}
 # ctrl+h for help file
 bindkey -s '^h' '^Uvim ~mydotfiles/help.md^M'
-function __fdnote(){
-   zle-line-init
-   zle-line-finish
+unfunction __fdnote 
+__fdnote(){
+   # zle-line-init
+   # zle-line-finish
    local dir
-   dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux -m ) 
+   dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
    #LBUFFER=$(echo $dir)
    # zle -N zle-line-init
-   # zle redisplay
-   compadd -P '' -p '' $dir
+   # zle -N zle-line-init
+   # compadd -P '' -p '' $dir
+   #zle reset-prompt 
+   # _alternative "directories:user directory:($dir)" "options:comma-separated opt: _values -s , $dir"
+   # builtin zle redisplay 
+	compadd  "$dir" 
    # zle accept-and-menu-complete
    #echo $dir
 }
-zle -N _fdnote
+zle -N __fdnote
 autoload -Uz __fdnote 
 bindkey '^e' __fdnote 
 #compdef "_fzf_path_completion ~/notes/$@" takenote
