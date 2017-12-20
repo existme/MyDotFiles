@@ -40,8 +40,15 @@ setopt INC_APPEND_HISTORY        # Append incrementally instead of waiting until
 setopt HIST_REDUCE_BLANKS
 setopt complete_aliases          # Do not expand aliases _before_ completion has finished
 setopt AUTO_LIST                 # Automatically list choices on an ambiguous completion
-setopt MENU_COMPLETE             # In case of ambiguous completion, insert the first one immediately 
+#setopt MENU_COMPLETE             # In case of ambiguous completion, insert the first one immediately 
 setopt AUTO_CD
+setopt cdablevarS
+setopt extended_glob
+setopt globdots
+setopt CSH_NULL_GLOB
+setopt complete_in_word
+setopt transient_rprompt
+setopt nolistbeep
 
 # todo: use .oh-my-zsh/lib/spectrum.zsh instead
 export cZ=$(echo -en '\033[0m')				# RESET
