@@ -73,7 +73,7 @@ msgRGB=${cR}R${cG}G${cY}Y${cB}B${cP}P${cC}C${cW}W${cZ}Z${bR}R${bG}G${bY}Y${bB}B$
 export OTERM=$TERM
 export CLICOLOR=true
 export GREP_OPTIONS="--color=always"
-export LESS='-R'
+export LESS='-r'
 export LESSOPEN='|~/.lessfilter %s'
 export PYG_STYLE=terminal				# or you can set to terminal256 if it works
 export HISTSIZE=10000000
