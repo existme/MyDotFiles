@@ -264,10 +264,15 @@ nnoremap <c-o> <esc>:w !sudo tee % <cr>
 cmap w!! w !sudo tee > /dev/null %
 
 "run current file
-map  <c-r> :w<cr>:!%:p<cr>
-imap  <c-r> <esc>:w<cr>:!%:p<cr>
-nnoremap  <leader>r :!%:p<cr>
+map      <c-r>       :w<cr>:!%:p<cr>
+imap     <c-r> <esc> :w<cr>:!%:p<cr>
+nnoremap <leader>r   :!%:p<cr>
+xmap     <leader>r   :!%:p<cr>
 
+"Search and replace with
+" Use * to highligh all the words then press <c-n> then type
+" the new word and press enter
+nnoremap <c-n>       :%s///g<left><left>
 " Save current file there might be some overlaps with vim-sorround
 nmap  <c-s> <esc>:w<cr>
 imap  <c-s> <esc>:w<cr>

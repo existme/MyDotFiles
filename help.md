@@ -54,6 +54,9 @@ Commands
 ║                              ║                                                                     ║
 ╠════╣ search & replace ╠══════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
+║ :%s//new-string/g            ║ First use * to highlight the words, then run this for replacing all ║
+║ <c-n>                        ║ This is a shortcut for the above one liner                                                                    ║
+║                              ║                                                                     ║
 ║ :%s/foo/bar/g                ║ replaces foo with bar in all lines                                  ║
 ║ :s/foo/bar/g                 ║ replaces foo with bar only in current line                          ║
 ║ :%s/foo/bar/gc               ║ replaces all foos with bar but asks each time                       ║

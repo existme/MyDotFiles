@@ -99,8 +99,16 @@ function git_prompt_info() {
 #    echo !!
 # }
 
+# Search for all installed packages
 function as(){
    local p=$(apt-cache search . |fzf -e -x --algo=v2 +m --cycle --print-query -q "$1" |tail -n 1|cut -d' ' -f 1)
+   echo $p
+   { apt show $p ; echo "--------[ files ]-------" ; dpkg-query --listfiles $p } | vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' -R -
+}
+
+# Search through all installed files via packages
+function asf(){
+   local p=$(dpkg -S "*"|fzf -e -x --algo=v2 +m --cycle --print-query -q "$1" --prompt "Executable name:" |tail -n 1|cut -d':' -f 1)
    echo $p
    { apt show $p ; echo "--------[ files ]-------" ; dpkg-query --listfiles $p } | vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' -R -
 }

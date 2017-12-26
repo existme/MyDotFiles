@@ -40,9 +40,8 @@ if [[ -f $FILE ]]; then
    exit
 fi
 
-touch $NOTE
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
-cat << EOD >> $NOTE 
+vim - -c "set ft=markdown" -c "f $NOTE" +7 << EOD 
 # $TITLE
 
 ----------------------------------------- 
@@ -55,10 +54,8 @@ cat << EOD >> $NOTE
 $DATE
 EOD
 
-vim $NOTE +6 
 res=$?
 if [[ $res == 1 ]]; then
-   rm $NOTE
    echo "Note [${bR}$NOTESDIR/$NOTE${cZ}] not saved"
 else
    echo "Your note was saved in [${bG}$NOTESDIR/$NOTE${cZ}]"

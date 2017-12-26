@@ -31,6 +31,7 @@ local color0E='#d3869b'
 local color0F='#d65d0e'
 export FZF_DEFAULT_COMMAND="find . -type d \( -path '*/\.*' -path $HOME/mnt -path ./.git \)  -prune -o -print 2> /dev/null"
 export FZF_DEFAULT_OPTS="
+   -e -x --algo=v2 +m --cycle
   --height 40% --border
   --color=bg+:$color01,bg:$color00,spinner:$color0C,hl:$color0D
   --color=fg:$color07,header:$color0D,info:$color0A,pointer:$color0C
