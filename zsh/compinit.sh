@@ -15,7 +15,7 @@ bindkey '\e.' insert-last-word
 
 autoload -Uz   promptinit && promptinit
 autoload -U    bashcompinit && bashcompinit
-autload  -U    compinit && compinit u
+autoload -U    compinit && compinit u
 zmodload -i    zsh/complist
 # enable automatic rehash
 zstyle ':completion:*' rehash true
@@ -131,6 +131,6 @@ zle -N __fdnote
 bindkey '^e' __fdnote 
 #compdef "_fzf_path_completion ~/notes/$@" takenote
 
-compdef __fdnote takenote
+# compdef __fdnote takenote
 bindkey '\ed' __fdnote
 bindkey -s '\es' '^Ugit status^M'

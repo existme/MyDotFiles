@@ -1,0 +1,4 @@
+#!/bin/zsh
+
+$HOME/bini3/notify.sh "Notification from $@" "Date $('date')"
+

@@ -1,3 +1,5 @@
+# vim: set filetype=markdown 
+
 # 1. My dot files 
 templates. To view markdown file the alias uses a terminal markdown viewer
 This guide goes through what aliases are available by using the provided
@@ -9,15 +11,15 @@ called mdp (https://github.com/visit1985/mdp).
 ## 1.1. vim
 to open several files in split mode use:
 
-vim -O *.txt
+`vim -O *.txt`
 
 or
 
-vim -O ~/.zshrc ~/zshrc.local.sh
+`vim -O ~/.zshrc ~/zshrc.local.sh`
 
 to enable plugin docs (help), you need to run
 
-:helptags ALL
+`:helptags ALL`
 
 Commands
 
@@ -45,7 +47,7 @@ Commands
 ║                              ║                                                                     ║
 ║                              ║                                                                     ║
 ║ :bn                          ║ next buffer                                                         ║
-║ :Ctrl+w                      ║ set width (ex. 50<C═w>_)                                            ║
+║ :Ctrl+w                      ║ set width (ex. `50<C-w>_`)                                          ║
 ║ :Ctrl+w =                    ║ equalize width and height of all windows                            ║
 ║ :help CTRL═W                 ║ See also                                                            ║
 ║ ,q                           ║ delete current buffer and move on                                   ║
@@ -97,7 +99,7 @@ Commands
 ╠══╣     vim-sneak        ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║ sab                          ║ Type sab to move the cursor to next instance of "ab"                ║
-║ ;                            ║ Go to the next match (or s agin if s_next is enabled)               ║
+║ ;                            ║ Go to the next match (or s agin if s_next is enabled)                ║
 ║ ``                           ║ `` Go back to the starting point or jump back                       ║
 ║                              ║                                                                     ║
 ╠══╣     vim-neosnippets  ╠════╬═════════════════════════════════════════════════════════════════════╣
@@ -136,10 +138,15 @@ Commands
 ║                              ║                                                                     ║
 ╠═════╣ miscellaneous ╠════════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
+║ <ctrl>/                      ║ Toggle comment for the selected text or block                       ║
 ║ gc                           ║ Toggle comment for the selected text or block                       ║
 ║ g>                           ║ Toggle comment for the selected text or block                       ║
+║                              ║                                                                     ║
 ║ set nonumber                 ║ Hide line numbers                                                   ║
 ║ set number                   ║ Show line numbers                                                   ║
+║ set tm=0                     ║ Set timeout to 0, causes faster response and no waiting             ║
+║ set tm=1000                  ║ Set timeout to 1000, good for cases that leader shortcuts dont work ║
+║                              ║                                                                     ║
 ║ .                            ║ Auto compilation                                                    ║
 ║ :w!!                         ║ Vim sudo trick or :w !sudo tee > /dev/null %                        ║
 ║ <ctrl>o                      ║ Vim sudo trick or :w !sudo tee > /dev/null %                        ║
@@ -169,7 +176,7 @@ Commands
 ║ aliases                   ║ Desc                                                         ║
 ╠═══════════════════════════╬══════════════════════════════════════════════════════════════╣
 ║                           ║                                                              ║
-║ **Escape Sequences**      ║                                                              ║
+║ **Escape Sequences**          ║                                                              ║
 ║ Esc-.(period)             ║ Insert the last argument of the previous command line.       ║
 ║ .                         ║ Repeat to retrieve arguments from earlier lines.             ║
 ║ man -k randr              ║ List all man pages that include a specific word.             ║
@@ -189,32 +196,32 @@ Commands
 ╔════════════════════════╦══════════════════════════════════════════════════════════════╗
 ║ aliases                ║ Desc                                                         ║
 ╠════════════════════════╬══════════════════════════════════════════════════════════════╣
-║ **Help Pages**         ║                                                              ║
+║ **Help Pages**             ║                                                              ║
 ║ help                   ║ Displays this help page.                                     ║
 ║ h                      ║ Grep history for a specific keyword                          ║
 ║ zdoc                   ║ Opens zsh pdf document.                                      ║
-║ **App Openers**        ║                                                              ║
+║ **App Openers**            ║                                                              ║
 ║ idea                   ║ Opens a file or folder in IntelliJ Idea                      ║
 ║ subl                   ║ Opens a file or folder in sublime texteditor                 ║
 ║ atom                   ║ Opens a file or folder in atom texteditor                    ║
-║ **Operations**         ║                                                              ║
+║ **Operations**             ║                                                              ║
 ║ ds                     ║ Calculates subfolder sizes in a directory                    ║
-║ .                      ║ **EQ:**  to 'du ═hd 1'                                       ║
+║ .                      ║ **EQ:**  to 'du ═hd 1'                                           ║
 ║ Make a file executable ║                                                              ║
-║ .                      ║ **EQ:** eq. to `chmod u+x`                                   ║
+║ .                      ║ **EQ:** eq. to `chmod u+x`                                       ║
 ║ rgrep                  ║ Search current folder for a specific keyword                 ║
 ║ .                      ║ including all subfolders                                     ║
-║ .                      ║ **Usage:** $ rgrep alias                                     ║
-║ .                      ║ **EQ:** `grep ══color=always ═R ═i "$1" ‖ less;`             ║
+║ .                      ║ **Usage:** $ rgrep alias                                         ║
+║ .                      ║ **EQ:** `grep ══color=always ═R ═i "$1" ‖ less;`                 ║
 ║ rfind                  ║                                                              ║
-║ .                      ║ **Usage:** `$ rfind mac.sh`                                  ║
-║ .                      ║ **EQ:** `find . ═iname "*$1*" ‖ grep ═i "$1" ══color=always` ║
+║ .                      ║ **Usage:** `$ rfind mac.sh`                                      ║
+║ .                      ║ **EQ:** `find . ═iname "*$1*" ‖ grep ═i "$1" ══color=always`     ║
 ║ dq                     ║ query installed packages and list their files                ║
-║ **Usage:** $ dq ls     ║                                                              ║
+║ **Usage:** $ dq ls         ║                                                              ║
 ║ extract                ║ extracts a file into the destination folder using `tar`      ║
-║ .                      ║ **Usage:** `$ extract x.tar "/your/destination"`             ║
-║ .                      ║ **EQ:Usage:** `tar xf $1 ═C $2;`                             ║
-║ **Web Search**         ║                                                              ║
+║ .                      ║ **Usage:** `$ extract x.tar "/your/destination"`                 ║
+║ .                      ║ **EQ:Usage:** `tar xf $1 ═C $2;`                                 ║
+║ **Web Search**             ║                                                              ║
 ║ google                 ║ Search Google for a specific term                            ║
 ║ ddg                    ║ Search DuckDuckGo for a specific term                        ║
 ║ ducky                  ║ Search DuckDuckGo for a specific term (I'm feeling lucky)    ║

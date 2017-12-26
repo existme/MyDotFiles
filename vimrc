@@ -1,5 +1,6 @@
 " Use Vim settings, rather then Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
+set tm=500
 set nocompatible
 scriptencoding utf8
 let dotfilespath=fnamemodify(resolve($MYVIMRC),':h')
@@ -299,12 +300,17 @@ endif
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 " SuperTab like snippets behavior.
 " Note: It must be "imap" and "smap".  It uses <Plug> mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" TComment 
+"
+" map ctrl+/ for toggle/untoggle comments
+nmap <C-_>     <Plug>TComment_gcc
+vmap <C-_>     <Plug>TComment_gc
 
 " For conceal markers.
 if has('conceal')
@@ -338,4 +344,5 @@ autocmd FileType symbol colorscheme babymate256 | call airline#load_theme()
 " let &t_8f="\<Esc>[38:2:%lu:%lu:%lum"                                  
 "let &t_Co=256
 "let &t_AB="[48;5;%dm"
-"let &t_AF="[38;5;%dm"
+"let &t_AF="[38;5;%dm
+

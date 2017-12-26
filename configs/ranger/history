@@ -1,0 +1,50 @@
+h copy
+help copy
+h keymap
+help keymap
+map <space> yt
+map <space> <esc>yt
+map <space> <escape>yt
+map
+map list
+search 
+h map
+map <space> :copy add<enter>
+copy add
+nmap <space> :copy add<enter>
+cmap <space> 
+cmap <space> ""
+cmap <space> :copy add<enter>
+help map
+map <space> copy
+map <space> copy add
+map <space> copy toggle
+cd ~/sounds
+mkdir effects
+shell -w printf %c
+cd -
+cd ~/sounds/effects
+cd ~/Downloads/sounds
+cd /home/existme/Downloads/
+touch 
+dD
+shell -w printf %c |echo
+clear
+!clear
+shell -w printf %c |echo {}
+shell -c printf %c X echo {}
+shell -c clear
+shell -w printf %c X echo {}
+shell -w printf %d X echo {}
+delete
+delet %c
+delete %c
+copy %c
+shell -w printf %c | echo
+shell -w printf %c | cat
+shell -w printf "%c" | cat
+shell -w cp "%c" ~/sounds/effects
+shell -w cp "%c" ~/sounds/effects/
+shell -w cp "%c" -d ~/sounds/effects/
+
+shell -w cp %c -d ~/sounds/effects/
