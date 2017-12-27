@@ -23,7 +23,7 @@ grc rsync -avz -avhe ssh ~/.fonts $DEST:~/
 echo "$cZ"
 
 ssh $DEST 'bash -s' << 'ENDSSH'
-	sudo apt install -y zsh grc git tig language-pack-en lnav 
+	sudo apt install -y zsh grc git tig language-pack-en lnav coreutils
 	sudo chsh `whoami` -s `which zsh`
 	sudo rm -rf ~/.vim
 	sudo rm ~/.viminfo

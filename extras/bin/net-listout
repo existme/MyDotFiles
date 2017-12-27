@@ -1,0 +1,2 @@
+#/bin/bash
+sudo netstat -nap |sed "1,2 d"| tr -s ' '|cut -f5 -d' '|sed -n -e '/[1-9]/{p;n;}'|sed 's/:.*//g' |sort --unique| xargs -i{} host {}
