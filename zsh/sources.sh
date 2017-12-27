@@ -74,6 +74,6 @@ source $SCRIPTPATH/zsh/zaliases
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases)
+plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases fancy-ctrl-z)
 
 source $SCRIPTPATH/zsh/messages.sh
