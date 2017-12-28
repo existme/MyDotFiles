@@ -102,8 +102,7 @@ hash -d apps=/usr/share/applications
 hash -d lapps=~/.local/share/applications/
 
 # Conditional aliases
-
-if [ `which exa` ]; then
+if [ -x "$(command -v exa)" ]; then
    APPS+="$APP_SEP ${bW}exa$cZ "
    alias ls="exa -F --time-style long-iso --color=always --color-scale --group-directories-first"
    alias ll="exa -lgaF --time-style long-iso --color=always --color-scale --group-directories-first"

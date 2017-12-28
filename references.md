@@ -5,3 +5,4 @@
 
 - [Zsh Reference Card](http://www.bash2zsh.com/zsh_refcard/refcard.pdf)
 - [Zsh expansion and subsitution (mann zshexpn)](https://manned.org/zshexpn)
+- [BaBE - Bash By Examples](http://www.linuxintro.org/wiki/Babe#empty_strings)

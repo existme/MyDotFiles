@@ -1,4 +1,19 @@
+# vim: set filetype=zsh 
+
 echoMe $0
+
+isSSH(){
+   export SESSION_TYPE=""
+   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+     export SESSION_TYPE=ssh
+   # many other tests omitted
+   else
+     case $(ps -o comm= -p $PPID) in
+       sshd|*/sshd) export SESSION_TYPE=ssh;;
+     esac
+   fi
+   [ "$SESSION_TYPE" = "ssh" ] && return 0 || return 1
+}
 
 stackMsg(){
   stack+=( $1 )

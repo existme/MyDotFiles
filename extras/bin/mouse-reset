@@ -1,0 +1,13 @@
+#!/bin/bash
+
+echo "killed ${bY}i3-mousemon${cZ} and ${bY}xbindkeys${cZ}... waiting 2 seconds..."
+/usr/bin/killall i3-mousemon
+/usr/bin/killall xbindkeys
+
+sleep 2
+echo "Releasing ${bY}mouse modifiers${cZ}... waiting 2 seconds..."
+xdotool click --clearmodifiers 2
+sleep 2
+
+i3-mousemon&
+xbindkeys 

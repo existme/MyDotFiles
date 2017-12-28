@@ -18,3 +18,4 @@ cow*
 /extras/bin/.vscode
 note.md
 configs/ranger/bookmarks
+configs/ranger/history

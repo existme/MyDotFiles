@@ -6,12 +6,17 @@ echoP(){
     [[ $((counter%3)) -eq 0 ]] && tput tbc && echo
 }
 echoMe() {  
-  local me=`realpath --relative-to=$SCRIPTPATH $1`
+  # local me=`realpath --relative-to=$SCRIPTPATH $1`
+  local relRepo=${SCRIPTPATH//$HOME\//}/
+  local me=${1//$HOME\//'~/'}
+  me=${me//'~\/'$relRepo/  }
   echoP $me
 }
-local plugin="${bB}${bY} "
+local plugin="${bY}  ${bB}${bY} "
 echoMe $0
 source $SCRIPTPATH/zsh/functions.sh
+isSSH && stackMsg "${bG}Remote connection through ssh${cZ}"||
+         stackMsg "${bW}Local connection${cZ}"
 # Load OS spesific envoronments
 platform='unknown'
 unamestr=`uname`
