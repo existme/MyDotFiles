@@ -6,6 +6,7 @@ References
 1 - [A User's guide to the Z-Shell][zsh1] 
 2 - [A User's guide to the Z-Shell][zsh2] 
 3 - help zshzle
+4 = [mann zshcompwid][zsh3]
 
 The completion scripts are locate in:
 
@@ -34,6 +35,7 @@ Then you can bind it to a key for example: (ctrl+x)
 [zsh0]: https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org
 [zsh1]: http://zsh.sourceforge.net/Guide/zshguide04.html#l103
 [zsh2]: http://zsh.sourceforge.net/Guide/zshguide06.html
+[zsh3]: https://manned.org/zshcompwid 
 
 # Local Variables:
 # mode: Shell-Script

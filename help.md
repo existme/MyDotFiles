@@ -301,8 +301,11 @@ Commands
 ║                        ║                                                              ║
 ╠════════════════════════╩════════════════════════╦═════════════════════════════════════╣
 ║ bindkey -s '\es' '^Ugit status^M'               ║  bind alt+s to git status           ║
+║ bindkey "^X^E" edit-command-line                ║  bind c-x x-e to edit by vim (emacs)║
+║ bindkey "^X^E" edit-command-line                ║  bind c-x x-e to edit by vim (emacs)║
+║ bindkey -M vicmd v edit-command-line            ║  bind Esc-v to edit by vim (vimode) ║
 ╠════════════════════════╦════════════════════════╩═════════════════════════════════════╣
-║                        ║                                                              ║
+║ Esc-:                  ║ Shows execute named command prompt and you can run widgets   ║
 ╠════════════════════════╬══════════════════════════════════════════════════════════════╣
 ║                        ║                                                              ║
 ╚════════════════════════╩══════════════════════════════════════════════════════════════╝

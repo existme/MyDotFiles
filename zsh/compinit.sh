@@ -123,10 +123,10 @@ __fdnote(){
    # zle accept-and-menu-complete
    #echo $dir
 }
+zle -N __fdnote
 zle -C note_complete 'menu-select'  __fdnote
 autoload -Uz expand-or-complete-with-dots
 complete-history () { compgen -d 0 '' }
-zle -N __fdnote
 
 bindkey '^e' __fdnote 
 #compdef "_fzf_path_completion ~/notes/$@" takenote
@@ -134,3 +134,7 @@ bindkey '^e' __fdnote
 # compdef __fdnote takenote
 bindkey '\ed' __fdnote
 bindkey -s '\es' '^Ugit status^M'
+autoload edit-command-line; zle -N edit-command-line
+# Use either c-x c-e or Esc-v to edit the current line in vim 
+bindkey -M vicmd v edit-command-line
+bindkey "^X^E" edit-command-line

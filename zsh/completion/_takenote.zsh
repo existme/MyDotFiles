@@ -28,26 +28,29 @@
 # }
 #
 # complete -F _takenote takenote
-
+zstyle ':completion:*' verbose yes
 local curcontext="$curcontext" line state ret=1
 local all=$(find -L "$HOME/notes/" -print 2> /dev/null)
 local dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
 SUFFIX=$dir
 # emulate -L zsh
-_message Reza     #works!
+# _message Reza     #works!
 comp=$dir
 # local id=10
 # _description $dir id 'action'
 # _describe -t values value dir
 eval "$_comp_setup"
+zle -R "takenote "
 # echo -n -e "${bR}Editing${bW}... $BUFFER$cZ "
 REPLY=$dir
 nmatches=1
-# zle -R "takenote "
 compstate[insert]=3
 compstate[match]=$dir
 # echo $compstate
 _lastcomp=( $dir 0 $dir 1 ) 
-RBUFFER=$dir
+# RBUFFER=$dir
 # compadd $dir 
-return ret
+words[2]=$dir
+# compadd  $dir
+compadd -U -i "$IPREFIX" -I "$ISUFFIX" -f -Q - $dir
+return 1

@@ -12,6 +12,7 @@ export LANGUAGE=en_US.UTF-8
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export KEYTIMEOUT=1
+export VISUAL=vim
 # Uncomment the following line to enable vi mode
 export EDITOR='vim'
 export SSH_KEY_PATH="~/.ssh/dsa_id"
