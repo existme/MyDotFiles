@@ -72,7 +72,7 @@ bindkey '^F'   fzz
 
 # This is the same functionality as fzf's ctrl-t, except that the file or
 # directory selected is now automatically cd'ed or opened, respectively.
-unfunction fzf-open-file-or-dir
+unfunction fzf-open-file-or-dir null
 fzf-open-file-or-dir() {
   local cmd="command find -L . \
     \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \

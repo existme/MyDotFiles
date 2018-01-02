@@ -17,5 +17,7 @@ Others are:
 1. qtconfig-qt4
 1. xfce4-appearance-settings
 
+## Changing cursor
+All the programs should be restarted for cursor to be effective
 -----------------------------------------
 2017-12-26 09:53:49
