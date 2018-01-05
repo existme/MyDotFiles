@@ -4,11 +4,13 @@ start="8:00 AM"
 end="4:00 PM"
 while [ 1 ]
 do
-   echo "${bW}----------------------------${cZ}"
-   read -e -i "$start" -p "${bY}>$cZ Start ${bY}:$bC   $bG" start
-   read -e -i "$end"   -p "${bY}>$cZ End   ${bY}:$bB   $bG" end
-   echo $cZ
-   td "$start" "$end"
-   echo
+   echo "${bW}╔══════════════════════════════════════════════════════════╗"
+   echo "║"
+   read -e -i "$start" -p "${bW}║ ${bY}>$cZ Start ${bY}:$bC   $bG" start
+   read -e -i "$end"   -p "${bW}║ ${bY}>$cZ End   ${bY}:$bB   $bG" end
+   echo "${bW}║"
+   td "$start" "$end" "${bW}║ ${cZ}"
+   echo "${bW}║"
+   echo "${bW}╚══════════════════════════════════════════════════════════╝"
    echo
 done

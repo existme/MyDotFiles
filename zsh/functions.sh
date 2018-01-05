@@ -22,7 +22,13 @@ stackMsg(){
 
 echoMsgs(){
   echo  
-  echo "${bW}╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌${cZ}"  
+  echo "${cW}░▒▓   ${cZ}"  
+  local bar="${bgColorBorder}║${reset_color}"
+  echo "${cW}╔══════╦══════╦══════╦══════╦══════╗${cZ}"  
+  echo ${bar====bar}
+  echo "${bgColorBorder}╚══════╩══════╩══════╩══════╩══════╝${reset_color}"
+  # local line="${bgColorBorder}╠══════╬══════╬══════╬══════╬══════╣${reset_color}"
+ 
   for s in $stack
   do
     echo $s

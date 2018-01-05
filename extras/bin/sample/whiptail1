@@ -1,4 +1,5 @@
-#! /bin/bash
+#!/bin/bash
+
 # http://archives.seul.org/seul/project/Feb-1998/msg00069.html
 if (whiptail --title "PPP Configuration" --backtitle "Welcome to SEUL" --yesno "
 Do you want to configure your PPP connection?"  10 40 )

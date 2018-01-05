@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+#
+# Dictionary object for saving/loading data
+# =========================================
+#   This script provide basic functionality for dynamically storing and reading data in a
+#   configuration file. The configuration would be saved as json in `~/.conig/dic.json`
+#
+#   Usage:
+#
+#   dic {get/set/toggle} {key} {default_value/value}
+#   dic set maxvolume 70
+#   dic get maxvolume 100  <--- default value is 100
+#   dic toggle loudchrome true  <--- default value is true
+#
+import json
+import os
+from sys import argv
+
+
+def usage():
+    print("Wrong usage! possible usecases:")
+    print("")
+    print("$ dic toggle {dic_key} {default_value}")
+    print("$ dic get    {dic_key} {default_value}")
+    print("$ dic set    {dic_key} {value}")
+    return
+
+
+def toggle(value):
+    value = value.lower()
+    if value == "true":
+        value = "false"
+    elif value == "false":
+        value = "true"
+    else:
+        print("Wrong value type, when you want to toggle a variable it should be exactly 'true'/'false'")
+        exit(1)
+    return value
+
+
+len = argv.__len__()
+script = argv[0]
+
+if len != 4:
+    usage()
+    exit(1)
+
+cmd = argv[1].lower()
+added = False
+
+if cmd != "get" and cmd != "set" and cmd != "toggle":
+    print("Unknown command: ", cmd)
+    usage()
+    exit(1)
+
+key = argv[2].lower()
+_default = argv[3]
+
+filename = os.path.join(os.path.expanduser('~'), ".config/dic.json")
+
+if os.path.exists(filename):
+    with open(filename, 'r') as handle:
+        dic = json.load(handle)
+else:
+    dic = {}
+
+if dic.get(key):
+    val = dic[key]
+else:
+    val = dic[key] = _default
+    added = True
+
+if cmd == "get":
+    print(val)
+    exit(0)
+
+if cmd == "toggle":
+    val = toggle(val)
+    if added:
+        val = toggle(val)
+
+if cmd == "set":
+    val = _default
+
+dic[key] = val
+print(dic[key])
+
+json.dump(dic, open(filename, 'w'))

@@ -13,27 +13,32 @@
 # }
 # echo $dir
 # vared fzf-file-widget
-
-# _takenote()
-# {
-#       local cur dir
-#       COMPREPLY=()
-#       cur="${COMP_WORDS[COMP_CWORD]}"
-#       dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
-#       local opts="$dir"
-#       COMPREPLY=( $(compgen -f  -- ${cur}) )
-#       # zle-line-finish
-#  
-#       return 0
-# }
+setopt localoptions norcexpandparam extendedglob
+autoload -U _tt
+function _tt()
+{
+   
+      zle reset-prompt 
+      local cur dir
+      COMPREPLY=()
+      cur="${COMP_WORDS[COMP_CWORD]}"
+      dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
+      local opts="$dir"
+      # COMPREPLY=( $(compgen -f  -- ${cur}) )
+      COMPREPLY=$dir
+      # zle-line-finish
+      return 1
+}
 #
+zle -N _tt
+bindkey '^@' _tt
 # complete -F _takenote takenote
 zstyle ':completion:*' verbose yes
 local curcontext="$curcontext" line state ret=1
 local all=$(find -L "$HOME/notes/" -print 2> /dev/null)
 local dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
 SUFFIX=$dir
-# emulate -L zsh
+emulate -LR zsh
 # _message Reza     #works!
 comp=$dir
 # local id=10
@@ -52,5 +57,18 @@ _lastcomp=( $dir 0 $dir 1 )
 # compadd $dir 
 words[2]=$dir
 # compadd  $dir
+echo -n "\e[39m"
+# autoload -Uz _widgets
+# zle execute-named-cmd _tt
+local res
+res=${dir}
+# compset -P '*,'
+zle -R ""
+zle -M ""
+# _values -s , '_tt' '_tt'
+bindkey '^T' complete-man
+zle -C complete_man expand-or-complete _tt
 compadd -U -i "$IPREFIX" -I "$ISUFFIX" -f -Q - $dir
+#         '_tt' \ 
+# compctl -x _tt
 return 1

@@ -1,0 +1,3 @@
+#!/bin/zsh 
+# Upgrade all python 3.6 packages
+pip list --outdated --format=legacy| cut -d' ' -f1 | xargs sudo -H pip install --upgrade

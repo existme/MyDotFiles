@@ -1,8 +1,5 @@
 #!/bin/bash
 
-#! /bin/bash
-
-
 while [ $# -gt 0 ]; do    # Until you run out of parameters . . .
   case "$1" in
     -d|--debug)

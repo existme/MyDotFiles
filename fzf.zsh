@@ -29,7 +29,8 @@ local color0C='#8ec07c'
 local color0D='#83a598'
 local color0E='#d3869b'
 local color0F='#d65d0e'
-export FZF_DEFAULT_COMMAND="find . -type d \( -path '*/\.*' -path $HOME/mnt -path ./.git \)  -prune -o -print 2> /dev/null"
+# export FZF_DEFAULT_COMMAND="find . -type d \( -path '*/\.*' -path $HOME/mnt -path ./.git \)  -prune -o -print 2> /dev/null"
+export FZF_DEFAULT_COMMAND="ag --hidden -g '' --path-to-ignore ~/.hgignore"
 export FZF_DEFAULT_OPTS="
    -e -x --algo=v2 +m --cycle
   --height 40% --border
@@ -72,7 +73,7 @@ bindkey '^F'   fzz
 
 # This is the same functionality as fzf's ctrl-t, except that the file or
 # directory selected is now automatically cd'ed or opened, respectively.
-unfunction fzf-open-file-or-dir null
+unfunction fzf-open-file-or-dir nul
 fzf-open-file-or-dir() {
   local cmd="command find -L . \
     \\( -path '*/\\.*' -o -fstype 'dev' -o -fstype 'proc' \\) -prune \

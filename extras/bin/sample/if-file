@@ -8,4 +8,3 @@ fi
 
 if ! [ -e "$@" ]; then
     echo "file does not exists"
-file

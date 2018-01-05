@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 echo "An exceptionally clever use of 'case' involves testing for command-line parameters."
 echo
 

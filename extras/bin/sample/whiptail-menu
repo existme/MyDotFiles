@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 # This program is just an example of how to make a whiptail menu and some basic commands.
 # Copyright (C) 2016  Baljit Singh Sarai

@@ -32,7 +32,9 @@ alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
 alias ll="ls -lSahr"
 alias l="/bin/ls -1"
-alias v="vim"
+alias v='vim '
+alias vm='vim "$(fzf -m)"'
+alias -s md=vim
 alias s="sudo PATH=\"$PATH\" -E "
 alias dq="sudo dpkg-query --listfiles"
 alias iconf="code ~config/i3/config"
@@ -49,22 +51,6 @@ alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e
 alias mh="sed '0~34 s/$/\n\n---\n\n/g' $SCRIPTPATH/help.md | mdp"
 alias archive='tar -pczvf'
 
-alias -g G="| grep"
-alias -g H="| head"
-alias -g T="| tail"
-alias -g X="| xargs -I{}"
-# Strip ansi codes from stream and feed it in for XS
-alias -g XS="| perl -pe 's/\e\[?.*?[\@-~]//g' | xargs -I{} "
-alias -g L='| less -MNr'
-# Pipe to vim in readonly mode and let fast exiting by pressing `q`
-alias -g V="| vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf sh' -R -"
-# Pipe to vim but make it ansi enabled good for colored output
-alias -g VA="| vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' +'AnsiEsc' -R -"
-alias -g N="\"\$(\\/bin\/ls -tp | grep -v '\/$' | head -1)\""
-alias -g C="| xclip"
-alias -g nul="> /dev/null 2>&1"
-alias -g nerr="2> /dev/null"
-alias oo="o N"
 alias on='ping -c 1 8.8.8.8 && echo ":)" || echo ":("'
 alias va="vim ~/.zaliases"
 alias vv="vim ~/.vimrc"

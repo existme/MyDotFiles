@@ -6,12 +6,13 @@ References
 1 - [A User's guide to the Z-Shell][zsh1] 
 2 - [A User's guide to the Z-Shell][zsh2] 
 3 - help zshzle
-4 = [mann zshcompwid][zsh3]
+4 - [mann zshcompwid][zsh3]
+4 - [zshexpn - zsh expansion and substitution][zshexpn]
 
 The completion scripts are locate in:
 
 ```bash
-cd /usr/share/zsh/functions/Completion/Unix
+  cd /usr/share/zsh/functions/Completion/Unix
 ```
 
 You can list the existing widgets by using `zle -l` although often `zle -lL` is 
@@ -36,6 +37,7 @@ Then you can bind it to a key for example: (ctrl+x)
 [zsh1]: http://zsh.sourceforge.net/Guide/zshguide04.html#l103
 [zsh2]: http://zsh.sourceforge.net/Guide/zshguide06.html
 [zsh3]: https://manned.org/zshcompwid 
+[zshexpn]: https://manned.org/zshexpn
 
 # Local Variables:
 # mode: Shell-Script
