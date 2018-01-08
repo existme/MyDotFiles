@@ -41,7 +41,7 @@ if [[ -f $FILE ]]; then
 fi
 
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
-vim - -c "set ft=markdown" -c "f $NOTE" +7 << EOD 
+vim -c "set ft=markdown" -c "f $NOTE" - +6 << EOD 
 # $TITLE
 
 ----------------------------------------- 

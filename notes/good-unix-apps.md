@@ -4,6 +4,13 @@
 
 ## Here are some good unix apps:
 
+- [awesome-cli-apps][awsome-cli]
+A curated list of command line apps.
+
+```bash
+See what's available at https://github.com/agarrharr/awesome-cli-apps
+```
+---
 - [ShellCheck][shellcheck]
 lint tool for shell scripts
 ```bash
@@ -59,7 +66,7 @@ XFCE App finder replacing start menu
 s apt install xfce4-appfinder
 ```
 
-
+[awsome=cli]: https://github.com/agarrharr/awesome-cli-apps
 [cmdfu]: http://www.commandlinefu.com/commands/view/6663/pretend-to-be-busy-in-office-to-enjoy-a-cup-of-coffee
 [shellcheck]: https://www.cyberciti.biz/programming/improve-your-bashsh-shell-script-with-shellcheck-lint-script-analysis-tool/
 [hollywood]: http://blog.dustinkirkland.com/2014/12/hollywood-technodrama.html

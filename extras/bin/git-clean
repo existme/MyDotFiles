@@ -1,0 +1,7 @@
+#!/bin/zsh
+git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch unwanted_folder' --prune-empty -f
+git fsck --strict
+git fsck --full
+git gc --aggressive --prune
+
+

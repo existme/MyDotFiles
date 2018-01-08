@@ -1,3 +1,4 @@
+#!/bin/zsh
 echoP(){
     let counter++;
     export counter
