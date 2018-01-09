@@ -166,7 +166,19 @@ set background=dark
 set listchars=tab:▸\ ,eol:¬
 "set showbreak=…
 
-
+" ========= Export all keymappings =======
+function ExportMap()
+   redir! > /tmp/vim_maps.txt
+   echomsg "# vim: set filetype=xkb :tw=14"
+   silent map
+   echomsg "# =================================================="
+   echomsg "# =================================================="
+   echomsg "# =================================================="
+   silent map!
+   normal q
+   redir END
+   e /tmp/vim_maps.txt
+endfunction 
 " ========= Configuring Fonts for gvim =======
 if has("gui_running")
 	if has("gui_gtk2")			" Linux
