@@ -8,24 +8,25 @@ Grabbed from [Ten Things I Wish I’d Known About bash][1]
 
 These two operators do the same thing. Compare these two lines:
 
+```bash
 $ echo \`ls\`
 $ echo $(ls)
+```
 
 Why these two forms existed confused me for a long time.
 
 If you don’t know, both forms substitute the output of the command contained within it into the command.
-
 The principal difference is that nesting is simpler.
 
 Which of these is easier to read (and write)?
 ```bash
-    $ echo `echo \`echo \\\`echo inside\\\`\``
+$ echo `echo \`echo \\\`echo inside\\\`\``
 ```
 
 or:
 
 ```bash
- $ echo $(echo $(echo $(echo inside)))
+$ echo $(echo $(echo $(echo inside)))
 ```
 
 If you’re interested in going deeper, see [here](http://mywiki.wooledge.org/BashFAQ/082) or [here](https://stackoverflow.com/questions/4708549/what-is-the-difference-between-command-and-command-in-shell-programming).

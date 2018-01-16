@@ -1,0 +1,123 @@
+#compdef takenote 
+local ret=1
+local curcontext="$curcontext" line state ret=1
+local all=$(find -L "$HOME/notes/" -print 2> /dev/null)
+local dir=$( echo $all | fzf-tmux +m ) 
+SUFFIX=$dir
+# emulate -L zsh
+# _message Reza${comp_hasarg}     #works!
+comp=$dir
+# local id=10
+# _description $dir id 'action'
+# _describe -t values value dir
+# eval "$_comp_setup"
+echo -n -e "${bR}Editing${bW}... $BUFFER$cZ "
+_arguments -A $(echo $all | xargs -I{} echo ":{}:{}") && ret=0
+
+# _wanted $all expl $dir compadd -a - ws $dir;
+return 0
+
+
+local curcontext="$curcontext" line state ret=1 matched
+typeset -A opt_args
+local files
+files=`find -L ~/notes/ -print 2> /dev/null`
+
+function _tt()
+{   
+      # zle reset-prompt 
+      local cur dir
+      COMPREPLY=()
+      cur="${COMP_WORDS[COMP_CWORD]}"
+      dir=$( find -L ~/notes/ -print | fzf-tmux +m ) 
+      local opts="$dir"
+      # COMPREPLY=( $(compgen -f  -- ${cur}) )
+      COMPREPLY=( $dir )
+      matched=$dir
+      compstate["mynotes"]=$dir
+      # zle-line-finish $dir
+      # compadd -qlx $dir
+      _wanted "1:mynotes:$dir" expl "1:mynotes:$dir" compadd -a - ws
+      _ret=$dir
+      # _complete_tag "REZA"
+      return 0
+}
+zle -N _tt
+# _tt
+# _call_function _tt
+
+_arguments -n \
+      "1:mynotes:_tt" \
+      && ret=0
+
+return ret
+# _arguments -C \
+#       ':*.*:_tt():_tt' && ret=0
+      # '(-s -l 1)-n[specify signal number]:signal number' \
+      # '(-n -s -l)1::signal:_signals -p -s' \
+      
+      # '*:files:->files' && ret=0
+# echo "state[$state]"
+# echo "opt_args[$opt_args]"
+case "$state" in
+#       local pgrp="files:: $files "
+#       pgrp+="_tt expl $files compadd - 0" 
+#       # echo $pgrp
+#       _alternative 'files:: _tt -t ' $pgrp \
+#       && ret=0
+      (notes)
+            local generators; generators=(
+                  'what:: _tt'
+            )
+            files=_fzf_compgen_path ~/notes/
+            # _describe -t 'note' $files && ret=0
+            _alternative "note:: _tt compadd - $COMPREPLY" && ret=0
+      ;;
+esac
+
+return 1
+
+setopt localoptions norcexpandparam extendedglob
+#
+zle -N _tt
+bindkey '^@' _tt
+# complete -F _takenote takenote
+zstyle ':completion:*' verbose yes
+local curcontext="$curcontext" line state ret=1
+local all=$(find -L "$HOME/notes/" -print 2> /dev/null)
+local dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ) 
+SUFFIX=$dir
+emulate -LR zsh
+# _message Reza     #works!
+comp=$dir
+# local id=10
+# _description $dir id 'action'
+# _describe -t values value dir
+eval "$_comp_setup"
+zle -R "takenote "
+# echo -n -e "${bR}Editing${bW}... $BUFFER$cZ "
+REPLY=$dir
+nmatches=1
+compstate[insert]=3
+compstate[match]=$dir
+# echo $compstate
+_lastcomp=( $dir 0 $dir 1 ) 
+# RBUFFER=$dir
+# compadd $dir 
+words[2]=$dir
+# compadd  $dir
+echo -n "\e[39m"
+# autoload -Uz _widgets
+# zle execute-named-cmd _tt
+local res
+res=${dir}
+# compset -P '*,'
+zle -R ""
+zle -M ""
+# _values -s , '_tt' '_tt'
+bindkey '^T' complete-man
+zle -C complete_man expand-or-complete _tt
+compadd -U -i "$IPREFIX" -I "$ISUFFIX" -f -Q - $dir
+#         '_tt' \ 
+# compctl -x _tt
+return 1

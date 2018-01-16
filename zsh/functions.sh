@@ -183,7 +183,7 @@ function vf(){
       grc ls -la $filepath
     fi
     
-    if  [ -z "$(file $filepath|grep ASCII)" ]; then
+    if  [ -z "$(file $filepath|grep -E 'ASCII|UTF')" ]; then
         echo "${vR}Binary$cZ file."
         return
     fi

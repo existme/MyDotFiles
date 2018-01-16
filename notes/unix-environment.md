@@ -16,6 +16,22 @@
    Order: 
 
 	/etc/zsh/[zshenv, zprofile, zshrc, zlogin]
+
+## From (man zsh):
+```bash
+FILES
+       $ZDOTDIR/.zshenv
+       $ZDOTDIR/.zprofile
+       $ZDOTDIR/.zshrc
+       $ZDOTDIR/.zlogin
+       $ZDOTDIR/.zlogout
+       ${TMPPREFIX}*   (default is /tmp/zsh*)
+       /etc/zsh/zshenv
+       /etc/zsh/zprofile
+       /etc/zsh/zshrc
+       /etc/zsh/zlogin
+       /etc/zsh/zlogout    (installation-specific - /etc is the default)
+```
 	
 ## PATH
 For convenience create a file in `/etc/zsh/mypath` containing:

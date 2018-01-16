@@ -100,6 +100,8 @@ source $SCRIPTPATH/zsh/sources.sh
 #Other colors: man zshall search for fg=colour
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 
+#Fix for "Chrome failing to launch GPU process"
+export BROWSER=google-chrome
 
 export NVM_DIR="$HOME/.nvm"
 stackMsg $APPS

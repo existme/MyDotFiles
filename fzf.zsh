@@ -1,13 +1,27 @@
 # Setup fzf
 # ---------
-export FZF_COMPLETION_TRIGGER='~~'
+_fzf_complete_t2() {
+  _fzf_complete "--multi --reverse --header-lines=3" "$@" < <(
+    ls -al
+  )
+}
+
+_fzf_complete_t2_post() {
+  awk '{print $NF}'
+}
+
+[ -n "$BASH" ] && complete -F _fzf_complete_t2 -o default -o bashdefault t2
+
+
+export FZF_COMPLETION_TRIGGER='-'
 if [[ ! "$PATH" == *$SCRIPTPATH/zsh/completion/plugins/fzf/bin* ]]; then
   export PATH="$PATH:$SCRIPTPATH/zsh/completion/plugins/fzf/bin"
 fi
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "$SCRIPTPATH/zsh/completion/plugins/fzf/shell/completion.zsh" 2> /dev/null
+# [[ $- == *i* ]] && 
+source "$SCRIPTPATH/zsh/completion/plugins/fzf/shell/completion.zsh" #2> /dev/null
 
 # Key bindings
 # ------------
@@ -81,8 +95,8 @@ fzf-open-file-or-dir() {
     -o -type d -print \
     -o -type l -print 2> /dev/null | sed 1d | cut -b3-"
   local out=$(eval $cmd | fzf-tmux --exit-0)
-   zle .accept-line
-   BUFFER='Ha ha!'
+  zle .accept-line
+  BUFFER=$out
   if [ -f "$out" ]; then
     $EDITOR "$out" < /dev/tty
   elif [ -d "$out" ]; then
@@ -93,3 +107,15 @@ fzf-open-file-or-dir() {
 zle     -N   fzf-open-file-or-dir
 bindkey '^P' fzf-open-file-or-dir
 # zle -A fzf-open-file-or-dir takenote 
+
+_fzf_complete_t2() {
+  _fzf_complete "--multi --reverse --header-lines=3" "$@" < <(
+    ls -al
+  )
+}
+
+_fzf_complete_t2_post() {
+  awk '{print $NF}'
+}
+
+[ -n "$BASH" ] && complete -F _fzf_complete_t2 -o default -o bashdefault t2

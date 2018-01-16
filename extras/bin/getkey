@@ -1,0 +1,41 @@
+#!/usr/bin/python
+import keyring
+import sys
+import os
+
+cmd='get'
+password=''
+args=sys.argv[0:]
+
+bW=os.environ["bW"]
+cZ=os.environ["cZ"]
+bR=os.environ["bR"]
+bG=os.environ["bG"]
+
+
+if len(args)<3:
+    print "Usage: \n"
+    print "getkey {system} {key}"
+    print "getkey --set {password} {system} {key}"
+    print "\nExample: \n"
+    print "getkey %smail gmail %s" % (bW,cZ)
+    print "getkey %s--set %sPa$$w0rd %smail gmail%s" % (bR,bG,bW,cZ)
+    sys.exit(0)
+
+if args[1] == '--set':
+    cmd='set'
+    password=args[2]
+    option=args[1]
+    args=args[2:] # shift 2
+
+# args=args[1:] # shift
+
+system=args[1]
+key=args[2]
+
+if cmd=='set':
+    keyring.set_password(system,key,password)
+elif cmd=='get':
+    print keyring.get_password(system,key).strip()
+
+

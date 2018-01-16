@@ -24,4 +24,4 @@ echo
 echo "${bW}Killing selected processes: ${cZ}"
 echo "sudo${bB} kill -s TERM ${bY}$selected${cZ}"
 
-sudo kill -s TERM $selected
+sudo kill -s SIGKILL $selected
