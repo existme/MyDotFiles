@@ -25,7 +25,14 @@ stackMsg "${bW}${dist[2]}-${dist[4]} ${dist[5]}${cZ} - Kernel: ${bW}`uname --ker
 unset dist
 
 if [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' || $OTERM == 'rxvt-256color' || $OTERM == 'screen-256color' ]] && ! isSSH ; then
-	source $SCRIPTPATH/zsh/shell-prompt.sh
+	# source $SCRIPTPATH/zsh/shell-prompt.sh
+	POWERLEVEL9K_MODE='nerdfont-complete'
+	# POWERLEVEL9K_MODE='powerline'
+	POWERLEVEL9K_PROMPT_ON_NEWLINE=false
+	POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(dir vcs)
+	POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+	# POWERLEVEL9K_COLOR_SCHEME='light'
+	source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 	# echo "--- Shell prompt loaded ---"

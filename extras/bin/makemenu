@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-#set -x
+set -x
 
 DMENU=$(which rofi)
 PROMPT="?"
@@ -46,18 +46,27 @@ do
     esac
 done
 
+run_prompt() {
+    $DMENU -matching fuzzy -font "$FONT" "$@"
+}
+
 echo mode=$mode, message=$message, prompt=$PROMPT, font=$FONT, lines=$LINES, width=$width, height=$height
-exit
 
 if [[ "$mode" = "dmenu" ]]
 then
-    $DMENU -dmenu -p "$PROMPT"
+   run_prompt -dmenu -p "$PROMPT"
+elif [[ "$mode" = "prompt" ]]
+then
+   run_prompt -separator-style none -dmenu -i -mesg "$PROMPT" -p '> '
 elif [[ "$mode" = "run" ]]
 then
-    $DMENU -modi combi -show combi -combi-modi "window,run,drun" -fuzzy
+   run_prompt -show "run" -display-run "$PROMPT"
 elif [[ "$mode" = "spotlight" ]]
 then
-    $DMENU -modi combi -show combi -combi-modi "window,drun" -fuzzy
+   run_prompt -modi drun -show drun -display-drun "$PROMPT"
+elif [[ "$mode" = "window" ]]
+then
+   run_prompt -modi window -show window -display-window "$PROMPT"
 else
-    $DMENU -dmenu -e "$message" -separator-style none
+   run_prompt -e "$message" -separator-style none  
 fi

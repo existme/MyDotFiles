@@ -103,3 +103,6 @@
 [submodule "vim/bundle/neosnippet"]
 	path = vim/bundle/neosnippet
 	url = https://github.com/Shougo/neosnippet.vim.git
+[submodule "zsh/bundle/powerlevel9k"]
+	path = zsh/bundle/powerlevel9k
+	url = https://github.com/bhilburn/powerlevel9k.git

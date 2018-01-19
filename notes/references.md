@@ -15,6 +15,11 @@
 1. [xcolors.net](http://www.xcolors.net/)
 1. [dotshare.it](http://dotshare.it/category/fms/ranger/)
 
+#Color
+1. [Materialk Color Tool](https://material.io/color)
+
+1. [Top seven free color contrast checkers](https://axesslab.com/top-color-contrast-checkers/)
+
 #Theming
 1. [xterm 256 color guidline](http://www.futurile.net/2016/06/15/xterm-256color-themes-molokai-terminal-theme/)
 
