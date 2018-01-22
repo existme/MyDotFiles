@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec ~/bin/,chromium-presentation --app=https://twitter.com/
