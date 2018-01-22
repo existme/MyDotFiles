@@ -1,0 +1,3 @@
+#!/bin/sh
+
+exec ~/bin/,chromium-presentation --app=http://agile-dev.se.axis.com/project/karojoh-csi/backlog

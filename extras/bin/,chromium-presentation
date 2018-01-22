@@ -1,5 +1,5 @@
 #!/bin/bash
 
 exec chromium-browser --enable-webgl \
-     --user-data-dir="$HOME"/.config/chromium-presentation --force-app-mode  \
-     --force-device-scale-factor=1.5 --force-app-mode --use-skia-renderer http://localhost:80/
+     --user-data-dir="$HOME"/.config/chromium-presentation \
+     --force-device-scale-factor=1.5 --use-skia-renderer --app $@ 2>/dev/null &
