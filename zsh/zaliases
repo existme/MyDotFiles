@@ -66,6 +66,8 @@ alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 alias ap="sudo apt-get"
 alias h="history|grep"
 alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
+alias -g ,1='2>&1'
+alias -g ,2='2>/dev/null'
 
 alias rm=trash-put
 

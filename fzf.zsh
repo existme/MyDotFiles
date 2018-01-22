@@ -13,7 +13,7 @@ _fzf_complete_t2_post() {
 [ -n "$BASH" ] && complete -F _fzf_complete_t2 -o default -o bashdefault t2
 
 
-export FZF_COMPLETION_TRIGGER='-'
+export FZF_COMPLETION_TRIGGER='~~'
 if [[ ! "$PATH" == *$SCRIPTPATH/zsh/completion/plugins/fzf/bin* ]]; then
   export PATH="$PATH:$SCRIPTPATH/zsh/completion/plugins/fzf/bin"
 fi

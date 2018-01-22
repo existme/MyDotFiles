@@ -1,4 +1,8 @@
 #!/bin/zsh
+# SCRIPTPATH="$HOME/git/MyDotFiles"
+# source $SCRIPTPATH/zsh/powerthemes/reza                                       
+# source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme 
+# return
 
 # Parts taken from:
 #    https://github.com/cornerman/dotfiles/blob/master/zshrc
@@ -23,7 +27,8 @@ export MANPATH=/usr/share/man
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CLICOLOR=true
 
-setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+# setopt BANG_HIST               # Treat the '!' character specially during expansion.
+unsetopt BANG_HIST               # Prevent "!" characters from being special on the command line
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt SHARE_HISTORY             # Share history between all sessions.
@@ -77,8 +82,8 @@ export GREP_OPTIONS="--color=always"
 export LESS='-r'
 export LESSOPEN='|~/.lessfilter %s'
 export PYG_STYLE=terminal				# or you can set to terminal256 if it works
-export HISTSIZE=10000000
-export SAVEHIST=10000000
+export HISTSIZE=999999999
+export SAVEHIST=$HISTSIZE
 export HISTFILE=~/.history
 
 ENABLE_CORRECTION="false"

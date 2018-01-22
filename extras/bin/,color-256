@@ -1,0 +1,12 @@
+#!/bin/zsh
+str="    Load 0.04\%    21.01.2018    Linux %f%K{0}%F{7}%b "
+if [ "$1" = "-f" ];then 
+   for code ({000..255}) print -P -- "$code: %b%F{$2}%K{$code}$str : %B%F{$2}%K{$code}$str"
+elif [ "$1" = "-b" ];then
+   for code ({000..255}) print -P -- "$code: %b%K{$2}%F{$code}$str : %B%K{$2}%F{$code}$str"
+else
+   for code ({000..255}) print -P -- "$code: %b%F{$code}$str : %B%F{$code}$str"
+fi
+
+echo "Usage: ,color-256 -f {color 000..255}  # foreground will be fixed"
+echo "       ,color-256 -b {color 000..255}  # background will be fixed"

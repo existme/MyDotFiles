@@ -276,10 +276,15 @@ nnoremap <c-o> <esc>:w !sudo tee % <cr>
 cmap w!! w !sudo tee > /dev/null %
 
 "run current file
-map      <c-r>       :w<cr>:!%:p<cr>
-imap     <c-r> <esc> :w<cr>:!%:p<cr>
+map      <c-F5>       :w<cr>:!%:p<cr>
+imap     <c-F4> <esc> :w<cr>:!%:p<cr>
 nnoremap <leader>r   :!%:p<cr>
 xmap     <leader>r   :!%:p<cr>
+
+"reload current file
+map      <c-r>       :e<cr>
+map      <c-s-r>     :e!<cr>
+imap     <c-r> <esc> :e<cr>
 
 "Search and replace with
 " Use * to highligh all the words then press <c-n> then type

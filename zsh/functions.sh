@@ -166,8 +166,9 @@ function vf(){
           if [ -f "$file" ]; then
             grc file $file
             grc ls -la $file
-            read -k 1 -r "pr?Do you want to edit it?(${bG}Y${cZ}/${bW}n${cZ})?" 
-            echo
+            # removed -q because then the deault will always be n
+            read -k 1 -rs "pr?Do you want to edit it? (${bG}Y${cZ}/${bW}n${cZ})" 
+            echo 
             if [[ $pr =~ ^[Nn]$ ]]; then
               exit
             fi

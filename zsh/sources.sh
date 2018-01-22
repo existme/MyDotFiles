@@ -47,13 +47,6 @@ if [[ "$unamestr" == 'Linux' ]]; then
 elif [[ "$unamestr" == 'Darwin' ]]; then
    export platform='mac'
 fi
-if [[ $platform == 'linux' ]]; then
-	source $SCRIPTPATH/zsh/linux.sh
-elif [[ $platform == 'mac' ]]; then
-	source $SCRIPTPATH/zsh/mac.sh
-else
-	source $SCRIPTPATH/zsh/win.sh
-fi
 
 
 [[ -f $HOME/zshrc.local.sh ]] &&	source $HOME/zshrc.local.sh
@@ -63,6 +56,14 @@ fpath=($SCRIPTPATH/zsh/completion $fpath)
 
 echoP "${plugin}oh-my-zsh.sh"
 source $ZSH/oh-my-zsh.sh                        #
+
+if [[ $platform == 'linux' ]]; then
+	source $SCRIPTPATH/zsh/linux.sh
+elif [[ $platform == 'mac' ]]; then
+	source $SCRIPTPATH/zsh/mac.sh
+else
+	source $SCRIPTPATH/zsh/win.sh
+fi
 
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Use colors for less, man, etc.
 

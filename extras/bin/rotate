@@ -1,0 +1,20 @@
+#!/bin/zsh
+if [ ! -n $1 ]; then
+   echo "Usage:"
+   echo "rotate {filename}"
+fi
+
+beep&
+read -k 1 -rsq "pr?Are you sure about ${bR}CLEARING${cZ} the file '${bW}$1${cZ}'? (${bG}y${cZ}/${bW}N${cZ})"
+echo
+if [[ "$pr" =~ ^[Nn]$ ]]; then
+  echo "Declined!"
+  grc ls -la $1
+  exit 0
+fi
+
+echo "${bY}Before${bW}:${cZ}"
+grc ls -la $1
+: > $1
+echo "\n${bY}After${bW}:${cZ}"
+grc ls -la $1

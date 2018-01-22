@@ -42,6 +42,7 @@ Commands
 ║ :set splitright              ║ set files to open in right                                          ║
 ║ :vsp#2                       ║ vertical split                                                      ║
 ║ :h tag                       ║ open help page for tag vertically                                   ║
+║ :e!                          ║ reload current file                                                 ║
 ║                              ║                                                                     ║
 ╠══╣ Buffer manipulation ╠═════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
@@ -102,7 +103,7 @@ Commands
 ╠══╣     vim-sneak        ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║ sab                          ║ Type sab to move the cursor to next instance of "ab"                ║
-║ ;                            ║ Go to the next match (or s agin if s_next is enabled)                ║
+║ ;                            ║ Go to the next match (or s agin if s_next is enabled)               ║
 ║ ``                           ║ `` Go back to the starting point or jump back                       ║
 ║                              ║                                                                     ║
 ╠══╣     vim-neosnippets  ╠════╬═════════════════════════════════════════════════════════════════════╣
@@ -111,35 +112,34 @@ Commands
 ║ tab                          ║ Move to the next field of the snippet                               ║
 ║ ctrl + p                     ║ Previous item in neocomplete list                                   ║
 ║ ctrl + n                     ║ Next     item in neocomplete list                                   ║
-║                              ║                                                                     ║
-╠══╣     vim-sorround     ╠════╬═════════════════════════════════════════════════════════════════════╣
-║                              ║                                                                     ║
-║ cs'"                         ║ Change Sorround ' -> "  (do it inside 'test')                       ║
-║ cs' then <q>                 ║ Change Sorround ' -> <q> (do it inside 'test')                      ║
-║ ds'                          ║ Remove delimiter sorrounding of ' (do it inside 'test')             ║
-║ di'                          ║ Remove inside sorrounfing of ' (do it inside 'test')                ║
-║ vllllllls'                   ║ Sorround virtual selection with ' (go to V then 4left and s)        ║
-║ ysiw(                        ║ Sorround word with (         ex:  ( sneak )                         ║
-║ ysiW(                        ║ Sorround whole word with (   ex:  ( g:sneak#s-next = 1 )            ║
-║ ysw**(                         ║ Sorround word with (         ex:  ( sneak )                         ║
-║ ysW(                         ║ Sorround whole word with (   ex:  ( g:sneak#s-next = 1 )            ║
-║                              ║                                                                     ║
-║                              ║   The difference between ysiw and ysw is that with i(nner text)     ║
-║                              ║   the whole word would be modified however without it from the      ║
-║                              ║   cursor position to the end of the word will be sorrounded         ║
-║                              ║                                                                     ║
-║ yss                          ║ yss operates on the current line ignoring the leading space         ║
-║ yssB                         ║ Sorround current line with block: {Hello world!}                    ║
-║ yssb                         ║ Sorround current line with parantesis: (Hello world!)               ║
-║                              ║                                                                     ║
-║ ySS                          ║ Sorrounds the current line but puts delimters in separate lines     ║
-║                              ║ and idents the current line                                         ║
-║                              ║                                                                     ║
-║ <c-g>                        ║ In insert mode starts writing in a block                            ║
-║                              ║                                                                     ║
-║ vS                           ║ In visual mode a capital S will result in sorrounding lines         ║
-║                              ║                                                                     ║
-╠═════╣ miscellaneous ╠════════╬═════════════════════════════════════════════════════════════════════╣
+╠══╣     vim-sorround     ╠════╬═══╦═════════════════════════════════════════════════════════════════╣
+║                              ║   ║                                                                 ║
+║ cs'"                         ║   ║ Change Sorround ' -> "  (do it inside 'test')                   ║
+║ cs' then <q>                 ║   ║ Change Sorround ' -> <q> (do it inside 'test')                  ║
+║ ds'                          ║   ║ Remove delimiter sorrounding of ' (do it inside 'test')         ║
+║ di'                          ║   ║ Remove inside sorrounfing of ' (do it inside 'test')            ║
+║ vllllllls'                   ║   ║ Sorround virtual selection with ' (go to V then 4left and s)    ║
+║ ysiw(                        ║   ║ Sorround word with (         ex:  ( sneak )                     ║
+║ ysiW(                        ║   ║ Sorround whole word with (   ex:  ( g:sneak#s-next = 1 )        ║
+║ ysw(                         ║   ║ Sorround word with (         ex:  ( sneak )                     ║
+║ ysW(                         ║   ║ Sorround whole word with (   ex:  ( g:sneak#s-next = 1 )        ║
+║                              ║   ║                                                                 ║
+║                              ║   ║   The difference between ysiw and ysw is that with i(nner text) ║
+║                              ║   ║   the whole word would be modified however without it from the  ║
+║                              ║   ║   cursor position to the end of the word will be sorrounded     ║
+║                              ║   ║                                                                 ║
+║ yss                          ║   ║ yss operates on the current line ignoring the leading space     ║
+║ yssB                         ║   ║ Sorround current line with block: {Hello world!}                ║
+║ yssb                         ║   ║ Sorround current line with parantesis: (Hello world!)           ║
+║                              ║   ║                                                                 ║
+║ ySS                          ║   ║ Sorrounds the current line but puts delimters in separate lines ║
+║                              ║   ║ and idents the current line                                     ║
+║                              ║   ║                                                                 ║
+║ <c-g>                        ║   ║ In insert mode starts writing in a block                        ║
+║                              ║   ║                                                                 ║
+║ vS                           ║   ║ In visual mode a capital S will result in sorrounding lines     ║
+║ vS"                          ║   ║ Sorround selection with "                                       ║
+╠═════╣ miscellaneous ╠════════╬═══╩═════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║ <ctrl>/                      ║ Toggle comment for the selected text or block                       ║
 ║ gc                           ║ Toggle comment for the selected text or block                       ║
@@ -154,7 +154,8 @@ Commands
 ║ :w!!                         ║ Vim sudo trick or :w !sudo tee > /dev/null %                        ║
 ║ <ctrl>o                      ║ Vim sudo trick or :w !sudo tee > /dev/null %                        ║
 ║ :red                         ║ Redo                                                                ║
-║ <ctrl>r                      ║ Redo                                                                ║
+║ <ctrl>r                      ║ Reload (notifies if file has been changed)                          ║
+║ <ctrl-shift>r                ║ Force reload :e!<CR>                                                ║
 ║                              ║                                                                     ║
 ╚══════════════════════════════╩═════════════════════════════════════════════════════════════════════╝
 
@@ -179,7 +180,7 @@ Commands
 ║ aliases                   ║ Desc                                                         ║
 ╠═══════════════════════════╬══════════════════════════════════════════════════════════════╣
 ║                           ║                                                              ║
-║ **Escape Sequences**          ║                                                              ║
+║ **Escape Sequences**      ║                                                              ║
 ║ Esc-.(period)             ║ Insert the last argument of the previous command line.       ║
 ║ .                         ║ Repeat to retrieve arguments from earlier lines.             ║
 ║ man -k randr              ║ List all man pages that include a specific word.             ║
@@ -253,6 +254,10 @@ Commands
 ║ META + b (M-b)         ║ Jump back one word                                           ║
 ║ ALT + c                ║ [fzf] Show fzf dropdown for all files in the current path    ║
 ║ CTRL + x + b           ║ Match bracket                                                ║
+║                        ║                                                              ║
+║ Esc  + v               ║ Edit command line with vim ( Esacape then v )                ║
+║ CTRL + x + e           ║ Edit command line with vim ( ctrl + x then e )               ║
+║ CTRL + grave           ║ Edit command line with vim ( ctrl + `)                   `   ║
 ║                        ║                                                              ║
 ║ ALT + SHIFT + r        ║ Go to REPLACE mode                                           ║
 ║ ALT + i                ║ Go to INSERT mode                                            ║

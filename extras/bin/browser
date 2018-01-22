@@ -1,0 +1,4 @@
+#!/bin/bash
+# Credit goes to: https://github.com/brandon-rhodes/homedir/blob/master/bin/browser
+
+exec python -m webbrowser -t "$@"

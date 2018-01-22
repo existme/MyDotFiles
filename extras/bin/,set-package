@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+# Creates a package json to comply with powerlevel9k
+if [ -z $1 ]; then
+   echo "Package name is required."
+
+   echo "Example:"
+   echo "   ,set-package My_Package"
+   exit 0
+fi
+
+echo "
+__package_name_generated_for_powerlevel9k__
+
+{
+  \"name\": \"$1\"
+}
+" > package.json
