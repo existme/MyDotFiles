@@ -1,14 +1,27 @@
-- there is a section in gitconfig that could be used for local setup
-	- it is located in [include] section
-	- extract user information from general config to there
-- Fix shift tab in vim so it could unident a line
-- See how to have a fuller vim on command line
-- See how to have vim mode activated automatically at the begining
-- Add spell checking help to help.md
-- configure mergetool alternative to use kdiff3
-- Find out how to change color pallete in less independent of terminal?
+# don't put time on it
 
-Get the list of all xfce4 shortcuts:
-	xfconf-query -c xfce4-keyboard-shortcuts -l -v
+1. takenote + fzf problem
+2. markdown viewer
+3. ranger image preview
 
+# remaining important tasks
+
+1. ranger:
+	1. preview column not refreshed
+		- try using ,vp for pictures
+
+	1. preview scroll
+   2. shortcuts
+2. xinitrc:
+   1. make it be loaded at startup
+3. i3bar:
+   1. animated volume and wireless
+4. dunst
+   1. dunst progress
+5. i3:
+   1. workspace names
+6. neomut:
+	1. move config to repo
+7. powerlevel:
+	1. change git section
 
