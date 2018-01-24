@@ -1,3 +1,0 @@
-#!/bin/sh
-
-exec ~/bin/,chromium-presentation --app=http://localhost:80
