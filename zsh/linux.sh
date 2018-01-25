@@ -27,10 +27,10 @@ unset dist
 if [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' || $OTERM == 'rxvt-256color' || $OTERM == 'screen-256color' ]] && ! isSSH ; then
 	# source $SCRIPTPATH/zsh/shell-prompt.sh
    source $SCRIPTPATH/zsh/powerthemes/reza
-	source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme
 	add-zsh-hook -Uz precmd xterm_title_precmd
 	add-zsh-hook -Uz preexec xterm_title_preexec
 	# echo "--- Shell prompt loaded ---"
 else
 	export ZSH_THEME="agnoster"
 fi
+
