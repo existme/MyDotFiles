@@ -56,6 +56,19 @@ s apt install xfce4-appfinder
 1. [libsixel](https://github.com/saitoha/libsixel)
 1. [w3mimgdisplay](/usr/lib/w3m/w3mimgdisplay)
 
+# Font previewers
+
+1. [Fontmatix]: see `install-fontmatrix.md` for installation
+
+1. [Linux font preview applications](https://cweiske.de/tagebuch/Linux%20font%20preview%20applications.htm)
+
+# Notification Daemons
+
+1. [dunst]
+1. [twmn]
+1. [eventd](https://www.eventd.org/)
+1. [State of the art](https://www.eventd.org/state-art.html)
+
 # Terminal Markdown Viewer
 
 1. [patat][patat]: Terminal-based presentations using Pandoc
