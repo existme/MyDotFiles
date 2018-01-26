@@ -1,0 +1,23 @@
+# put all paths in the same place
+pathadd() {
+    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+        export PATH="${PATH:+"$PATH:"}$1"
+    fi
+}
+pathadd "/usr/local/bin"
+pathadd "/usr/bin"
+pathadd "/bin"
+pathadd "/usr/games"
+pathadd "/home/existme/bin"
+pathadd "/home/existme/bini3/compiled"
+pathadd "/home/existme/git/MyDotFiles/extras/bin"
+pathadd "/home/existme/bini3"
+pathadd "/home/existme/.cargo/bin"
+pathadd "/snap/bin" 
+pathadd "/home/existme/git/MyDotFiles/zsh/completion/plugins/fzf/bin"
+pathadd "$HOME/Android/Sdk/platform-tools"
+pathadd "$HOME/.local/bin"
+pathadd "$HOME/.cargo/bin"
+pathadd "/usr/local/lib/python3.5"
+pathadd "/usr/lib/python3.5/site-packages"
+pathadd "/usr/local/lib/python3.5/dist-packages"
