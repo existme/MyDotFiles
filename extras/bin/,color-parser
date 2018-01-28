@@ -8,7 +8,7 @@
 
 # Color directory
 CD="$HOME/.colors/solarized.light"
-
+CD="$1"
 # Fetch the Colors
 BG=`cat ${CD} | grep -i background: | tail -c 8`
 FG=`cat ${CD} | grep -i foreground: | tail -c 8`

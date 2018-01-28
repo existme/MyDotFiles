@@ -28,7 +28,10 @@ F9/F10         scroll buffer's title
 
 /key bind meta-n /bar toggle nicklist
 
-
+/msg alis list *python*
+/msg alis list * -topic *python*
+/msg alis help list
+/list -re <regex>
 ```
 -----------------------------------------
 2018-01-27 01:18:18

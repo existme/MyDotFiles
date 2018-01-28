@@ -1,0 +1,3 @@
+#!/bin/sh
+# Default 100% volume should 65538 this is for boosting the volume up 115536 
+exec paplay --volume=47777 ~/sounds/corsica-s__ding.wav &

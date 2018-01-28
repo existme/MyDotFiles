@@ -11,26 +11,26 @@
 #
 # toggle-loudness Chrome 170  # will elevate chrome volume to 170%
 #
-if [ ! $# -eq 2 ]; then
+if [ ! $# -eq 3 ]; then
    echo "${cR}  Not enough${cZ} parameters, ${bW}usage:"
    echo ""
-   echo "${bW}    toggle-loudness ${bY}{app} {elevated_volume}$cZ"
+   echo "${bW}    toggle-loudness ${bY}{app} {elevated_volume} {notify:true/false}$cZ"
    echo ""
    echo "  Example:"
    echo ""
-   echo "${bW}    toggle-loudness Chrome 170  ${cZ}# will elevate chrome volume to 170%"
+   echo "${bW}    toggle-loudness Chrome 170 true ${cZ}# will elevate chrome volume to 170% and show notification"
    exit 1
 fi
 
 declare app=$1
 declare loudness=$2
-
+declare notify=$3
 declare elevated=$(dic toggle "loudness.$app" true)
 if [ "$elevated" = "true" ]; then
-   notify.sh "Toggle Loudness" "$app - Loud volume ($loudness%)"
+   [ $notify = "true" ] && notify.sh "Toggle Loudness" "$app -     Loud volume (<span foreground='#FF0000FF'>$loudness%</span>)" "audio-volume-high" " " "loudness"
    pa_volume $app $loudness
 else
-   notify.sh "Toggle Loudness" "$app - Standard volume (100%)"
+   [ $notify = "true" ] && notify.sh "Toggle Loudness" "$app - Standard volume (<span foreground='#00FF00CC'>100%</span>)" "audio-volume-low" " " "loudness"
    pa_volume $app 100
 fi
 echo $state

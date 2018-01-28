@@ -1,6 +1,6 @@
 # Good Unix Apps
 
------------------------------------------ 
+-----------------------------------------
 
 ## Here are some good unix apps:
 
@@ -9,6 +9,19 @@ A curated list of command line apps.
 
 ```bash
 See what's available at https://github.com/agarrharr/awesome-cli-apps
+```
+
+- [Awesome Linux Software][awsome-linux]
+A list of awesome applications, software, tools and other materials for Linux distros.
+
+```bash
+See what's available at https://github.com/LewisVo/Awesome-Linux-Software
+```
+
+- [ArchLinux - List of applications](https://wiki.archlinux.org/index.php/List_of_applications)
+
+```bash
+See what's available at https://wiki.archlinux.org/index.php/List_of_applications
 ```
 ---
 - [ShellCheck][shellcheck]
@@ -24,7 +37,7 @@ s apt install hollywood wallstreet
 
 
 ```
-also have a look at [Command Line Fu][cmdfu] site. 
+also have a look at [Command Line Fu][cmdfu] site.
 
 ---
 - [CommonMark-py][cmpy]
@@ -72,13 +85,13 @@ s apt install xfce4-appfinder
 # Terminal Markdown Viewer
 
 1. [patat][patat]: Terminal-based presentations using Pandoc
-   
-   resentations Atop The ANSI Terminal   
+
+   resentations Atop The ANSI Terminal
 
    ```bash
    s apt install patat
    ```
-   
+
 1. [mdv][mdv]: Markdown viewer
 
    ```bash
@@ -91,9 +104,9 @@ s apt install xfce4-appfinder
    s gem install mdless
    ```
 
-1. [mdp](): Markdown presentations tool 
+1. [mdp](): Markdown presentations tool
 
-1. [CommonMark-py][cmpy]   
+1. [CommonMark-py][cmpy]
 
    Python markdown parser and renderer
    ```bash
@@ -102,7 +115,8 @@ s apt install xfce4-appfinder
    ```
    Either use it in python scripts or use the cli by `cmark`
 
-[awsome=cli]: https://github.com/agarrharr/awesome-cli-apps
+[awsome-linux]: https://github.com/LewisVo/Awesome-Linux-Software
+[awsome-cli]: https://github.com/agarrharr/awesome-cli-apps
 [cmdfu]: http://www.commandlinefu.com/commands/view/6663/pretend-to-be-busy-in-office-to-enjoy-a-cup-of-coffee
 [shellcheck]: https://www.cyberciti.biz/programming/improve-your-bashsh-shell-script-with-shellcheck-lint-script-analysis-tool/
 [hollywood]: http://blog.dustinkirkland.com/2014/12/hollywood-technodrama.html

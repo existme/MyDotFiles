@@ -1,0 +1,52 @@
+<span background='#eeeeee7f'>
+This is Pango (Παν語)
+
+This is a list of ways to say hello in various languages.
+Its purpose is to illustrate a number of scripts.
+<span lang="fa">
+Farsi	   سلام دوست عزیز
+</span>
+<span>
+   let's<sup> try</sup> <big>fallback</big>:
+   																		
+   <span fallback='false'>
+   																		
+   </span>
+   the<sub> above</sub> doesn't work! because
+   <tt> fallback='false'</tt> is used
+   now let's try differrent letter spacing:
+   This is normal | <span letter_spacing='2048'>this is with letter_spacing='2048'</span>
+    <b>gravity_hint</b>
+   This is normal | <span gravity_hint='strong' gravity='south'>gravity_hint='strong'</span>
+    <b>font_variant</b>
+   CAPITALization | <span font_variant='smallcaps'>CAPITALization</span>
+   Use "<tt>,fonts i3</tt>" to see available alternatives
+   <b>font</b>
+   Normal font | <span font='Ubuntu Nerd Font Bold 16'>Ubuntu Nerd Font Bold 16</span>
+   Normal font | <span font='Ubuntu Nerd Font Bold 16' font_weight='ultralight'>Ubuntu Nerd Font Bold 16 -> ultralight</span>
+   Normal font | <span font='Ubuntu Nerd Font Bold 16' font_weight='light'>Ubuntu Nerd Font Bold 16 -> light</span>
+   Normal font | <span font='Ubuntu Nerd Font Bold 16' font_weight='normal'>Ubuntu Nerd Font Bold 16 -> normal</span>
+   Normal font | <span font='Ubuntu Nerd Font Bold 16' font_weight='bold'>Ubuntu Nerd Font Bold 16 -> bold</span>
+   Normal font | <span font='Ubuntu Nerd Font Bold 16' font_weight='ultrabold'>Ubuntu Nerd Font Bold 16 -> ultrabold</span>
+   Normal font | <span font='Ubuntu Nerd Font Bold 16' font_weight='heavy'>Ubuntu Nerd Font Bold 16 -> ultrabold</span>
+   Normal font | <span font='Inconsolata-g for Powerline g 10'>Inconsolata-g for Powerline g 10</span>
+   Normal font | <span font='FantasqueSansMono Nerd Font Italic 16'>FantasqueSansMono Nerd Font Italic 16</span>
+   Normal font | <span font='FantasqueSansMono Nerd Font Regular 16'>FantasqueSansMono Nerd Font Regular 16</span>
+&lt;big&gt;<big>big</big>&lt;/big&gt;
+&lt;normal&gt;normal&lt;/normal&gt;
+   <span font="Inconsolata Nerd Font Medium 16">
+      Using Inconsolata Nerd Font Medium 16 - big/normal/bold
+      <big>sample</big>|sample|<b>sample</b>
+   </span>
+</span>
+<span font_desc="DejaVu Sans" strikethrough_color='#FF0000' >
+Russian:	<span lang="ru">б</span>
+Serbian:	<span lang="sr">б</span>
+<span >
+   use <s>depricated</s> the <span rise='1000'>way</span> you like.
+   Let try different <span background='#00FF007F'>background</span>
+   and a foreground <span background='#00FF007F' foreground='#FF00007f'>color</span>
+   and bold <b><span background='#00FF007F' foreground='#FF00007f'>color</span></b>
+</span>
+</span>
+</span>

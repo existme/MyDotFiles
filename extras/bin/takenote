@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-# set -e
+set -ex
 
 ARG1=$1
 # echo $ARG1
@@ -41,7 +41,7 @@ if [[ -f $FILE ]]; then
 fi
 
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
-vim -c "set ft=markdown" -c "f $NOTE" - +6 << EOD 
+vim +6 -c "set ft=markdown" -c "f $NOTE" - << EOD 
 # $TITLE
 
 ----------------------------------------- 
