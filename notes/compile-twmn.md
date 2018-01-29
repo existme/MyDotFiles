@@ -1,9 +1,12 @@
 # Compile-Twmn.Md
 
 ----------------------------------------- 
+The binaries are included in bin folder, but inorder them to be runnable
+we need to install the following libraries.
 
 ```bash
 s apt install libboost-dev libboost-program-options-dev libboost-system-dev
+
 s vim /usr/include/c++/7/cmath
    change #include_next <math.h> to #include <math.h>
 

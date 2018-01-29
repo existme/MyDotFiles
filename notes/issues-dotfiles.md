@@ -21,12 +21,14 @@ legends (,,)
 		 - fix i3-startup.sh problems
 			 - improve error reporting
 		 - fix .xinitrc loading
+		 - make authentication happen at the begining and automatic (xsession)
 	1. session-management
 		 - how to avoid mate-appearance interfering with background
 	1. twmn
 		 - add some icons
 		 - fix language layout change message (used dunst instead)
 		 - use ids for layout
+		 - include config in repo
 	1. dunst
 		- see how youtube notifications are sent to dunst
 			- images are stored in temp folder, actions are used to
@@ -43,6 +45,9 @@ legends (,,)
 		 - how to copy the pass of current file?
 
 1. vim
+
+1. IntelliJ
+		 - fix markdown copy of sql tables
 
 1. weechat
 
