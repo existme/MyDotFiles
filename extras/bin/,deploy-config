@@ -7,23 +7,23 @@ ssh $DEST 'bash -s' << 'ENDSSH'
 ENDSSH
 
 echo "Copying ~/.oh-my-zsh/$cG $DEST:$cZ"
-grc rsync --exclude='.git/' -avz -avhe ssh ~/.oh-my-zsh $DEST:
+grc rsync -q --info=progress2 --exclude='.git/' -avz -avhe ssh ~/.oh-my-zsh $DEST: | pv
 echo "$cZ"
 
 echo "Copying ~/git/MyDotFiles to$cG $DEST:$cZ"
-grc rsync --exclude='.git/' -avz -avhe ssh ~/git/MyDotFiles $DEST:~/git/
+grc rsync -q --info=progress2 -v --exclude='.git/' --exclude="vim/backups/**" -avz -avhe ssh ~/git/MyDotFiles $DEST:~/git/ | pv 
 echo "$cZ"
 
 echo "Copying ~/.lnav to$cG $DEST:$cZ"
-grc rsync --exclude='.git/' -avz -avhe ssh ~/.lnav $DEST:~/
+grc rsync -q --info=progress2 --info=progress2 --exclude='.git/' --exclude="view-info-*.json" -avz -avhe ssh ~/.lnav $DEST:~/
 echo "$cZ"
 
 echo "Copying ~/.fonts to$cG $DEST:$cZ"
-grc rsync --exclude='.git/' -avz -avhe ssh ~/.fonts $DEST:~/
+grc rsync  -q --info=progress2 --info=progress2 --exclude='.git/' -avz -avhe ssh ~/.fonts $DEST:~/
 echo "$cZ"
 
 ssh $DEST 'bash -s' << 'ENDSSH'
-	sudo apt install -y zsh grc git tig  lnav coreutils trash-cli
+	sudo apt install -y zsh grc git tig  lnav coreutils trash-cli highlight
    #language-pack-en
 	sudo chsh `whoami` -s `which zsh`
 	sudo rm -rf ~/.vim

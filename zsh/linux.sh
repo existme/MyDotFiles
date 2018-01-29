@@ -31,6 +31,8 @@ if [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' || $OTERM == 'rxvt-256colo
 	add-zsh-hook -Uz preexec xterm_title_preexec
 	# echo "--- Shell prompt loaded ---"
 else
-	export ZSH_THEME="agnoster"
+	# export ZSH_THEME="agnoster"
+   source $SCRIPTPATH/zsh/powerthemes/xengine
+   source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme
 fi
 

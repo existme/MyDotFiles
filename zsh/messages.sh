@@ -15,7 +15,7 @@ if [ $TOOLBOX ]; then
    export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX
    APPS+="$APP_SEP ${bB} ${bW}IDEA$cZ v${bW}$IDEA_VERSION${cZ} "
 fi
-[[ $(command -v grc) ]] || stackMsg "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
-[[ $(command -v highlight) ]] || stackMsg "Package$bR highlight$cZ is not installed:$bW sudo apt install highlight$cZ"
+[ $(command -v grc) ] || stackMsg "Package$bR grc$cZ is not installed:$bW sudo apt install grc$cZ"
+[ $(command -v highlight) ] || stackMsg "Package$bR highlight$cZ is not installed:$bW sudo apt install highlight$cZ"
 
 
