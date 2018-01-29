@@ -34,6 +34,9 @@ legends (,,)
 		 - use rofi for action menu
 		 - find a good design for keyboard layout change
 		 - change action menu shortcut
+	1. misc
+		 - Write a tester for quickly testing out different configurations
+			(bini3/i3-test -> meta+p)
 
 1. ranger
 		 - how to move/copy between to place?
