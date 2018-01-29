@@ -58,6 +58,8 @@ legends (,,)
 1. ubuntu
 	 - disable and document crash report (added a link to pinboard)
 
+1. dotfiles
+	 - clean git repos
 1. tryout (https://github.com/LewisVo/Awesome-Linux-Software)
 	 - spacemacs (editor)
 	 - polybar (statusbar)
