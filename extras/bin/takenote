@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-set -ex
+# set -ex
 
 ARG1=$1
 # echo $ARG1

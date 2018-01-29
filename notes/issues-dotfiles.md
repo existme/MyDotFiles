@@ -12,7 +12,7 @@ legends (,,)
 
 1. zsh
 	1. powerlevel9k
-		 - fix vcs_info showing bad prompt when stashing
+		 - fix vcs_info showing bad prompt when stashing
 		 - fix theme color for right prompt
 	1. greeting
 		 - add greeting message for available shortcuts
@@ -32,6 +32,7 @@ legends (,,)
 			- images are stored in temp folder, actions are used to
 			  activate a link <ctrl+shift+.>
 		 - use rofi for action menu
+		 - find a good design for keyboard layout change
 		 - change action menu shortcut
 
 1. ranger

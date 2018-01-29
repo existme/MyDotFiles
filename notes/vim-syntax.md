@@ -1,8 +1,7 @@
-# vim: set filetype=markdown :tw=14
+# vim: set filetype=markdown :tw=14 
 # Vim-Syntax.Md
 
 ----------------------------------------- 
-
 ## Location of existing mappings:
 ```bash
 vim /usr/share/vim/vim80/filetype.vim
@@ -35,6 +34,45 @@ if you are reading from stdin you can use the following:
 ```bash
 ls -la | vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' -R -
 ```
+## Vim modeline
+```bash
+// vim: noai:ts=4:sw=4
+
+or
+
+or
+
+/* vim: noai:ts=4:sw=4
+*/
+
+or
+
+# vim: noai:ts=4:sw=4
+
+or
+
+/* vim: set noai ts=4 sw=4: */
+
+or
+
+/* vim: set fdm=expr fde=getline(v\:lnum)=~'{'?'>1'\:'1': */
+```
+
+With "set", the modeline ends at the first colon not following a backslash. 
+Without "set", no text can follow the options, so for example, the following is invalid:
+
+```
+Error E518: Unknown option: */
+/* vim: noai:ts=4:sw=4 */
+```
+## correct modeline with tabstops
+The following modline is a tested one which correctly sets:
+filetype=cfg, textwidth=75 and tabstops to 4
+
+```vim
+# vim: ft=cfg tw=75 ts=4 sw=4 et sts=4 shiftwidth=4 
+```
+
 -----------------------------------------
 
 ## All vim filetypes:
