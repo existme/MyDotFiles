@@ -1,7 +1,6 @@
 #!/bin/zsh
 res=$(/bin/ls $SCRIPTPATH/zsh/powerthemes|fzf)
-. "$SCRIPTPATH/zsh/powerthemes/$res"
-echo $res
+source "$SCRIPTPATH/zsh/powerthemes/$res"
 export  POWERLEVEL9K_ALWAYS_SHOW_CONTEXT \
         POWERLEVEL9K_ALWAYS_SHOW_USER \
         POWERLEVEL9K_BACKGROUND_JOBS_ICON \
@@ -105,3 +104,4 @@ export  POWERLEVEL9K_ALWAYS_SHOW_CONTEXT \
         OWERLEVEL9K_DIR_HOME_FOREGROUND \
         OWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND \
         POWERLEVEL9K_DIR_HOME_SUBFOLDE 
+echo "Theme switched to $res"
