@@ -53,6 +53,9 @@ legends (,,)
 
 1. profanity
 
+1. alacritty
+		 - config
+
 1. configuration maintanance
 	 - Move Geany config to dotfiles
 	 - Move weechat config to dotfiles

@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+# coding=utf-8
+
+import os
+
+def echo(msg):
+    os.system('echo -n "' + str(msg) + '"')
+
+for green in {0..6}:
+    echo (green)
