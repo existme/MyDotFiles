@@ -1,5 +1,5 @@
 echoMe $0
-export DISPLAY=:0.0
+# export DISPLAY=:0.0
 
 #export ZSH_THEME="blinks"
 export ZSH_THEME="agnoster"

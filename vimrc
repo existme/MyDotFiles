@@ -368,3 +368,7 @@ autocmd FileType symbol colorscheme babymate256 | call airline#load_theme()
 "let &t_AB="[48;5;%dm"
 "let &t_AF="[38;5;%dm
 
+" Enable clipboard copy on remote sessions
+" Remember to turn on X-Forwarding in /etc/ssh/ssh_config
+" ForwardX11 yes
+vmap "+y :!xclip -f -sel cl<cr>
