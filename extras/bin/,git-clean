@@ -1,8 +1,14 @@
 #!/bin/zsh
+echo ${bY}Before${cZ}:
+git count-objects -v
+echo "--------------"
 git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch unwanted_folder' --prune-empty -f
 git fsck --strict
 git fsck --full
 git gc --aggressive --prune
 git reflog expire --expire-unreachable=now --all
 git gc --prune=now
+
+echo ${bY}After${cZ}:
+git count-objects -v
 
