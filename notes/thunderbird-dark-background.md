@@ -14,8 +14,8 @@ vim userContent.css
 
 add the following lines to the css:
 
-~~~css
 =============[ userContent.css ]=================
+```css
 * {
    color: white !important; 
    background-color: #282C39 !important;
@@ -37,13 +37,13 @@ td {color: #282C39; background-color: white}
 @-moz-document url-prefix(mailbox:) {                                            
   /* all the other rules go here */                                              
 }
-~~~
+```
 
 Also to modify elements in the ui itself create the
 following file:
 
-```css
 ============[ userChrome.css ]====================
+```css
 :link, .link, .textWrap, :textWrap { 
    color: #F17700 !important;
 }

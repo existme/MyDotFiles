@@ -1,0 +1,8 @@
+#!/bin/zsh
+clear
+if vared -c -p "${bY}rename${cZ} to: ${bR}" newname && [[ -n $newname && $newname != $1 ]]; then
+   command echo "${cZ}ranaming to [$newname]..."
+else
+   echo "${cZ}Some error occured"; return 1
+fi
+

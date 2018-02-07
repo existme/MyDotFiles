@@ -134,6 +134,33 @@ function asf(){
    { apt show $p ; echo "--------[ files ]-------" ; dpkg-query --listfiles $p } | vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' -R -
 }
 
+# ex open file
+# Opens a binary using $1 supplying 
+#
+# ex: alias gg="_ex '/usr/bin/geany' '&>/dev/null &' "
+function _ex(){
+   unsetopt multios
+   cmd=$1                                          # The actual command to be executed
+   postcmd=$2                                      # could be used for silencing and forking like '&>/dev/null &' 
+   param=${3:-}                                    # Filename or any prameter
+
+   echo "\n${bP}AliasRunner${cZ}: ${bR}$cmd ${bW}$param ${bB}$postcmd${cZ}"
+   (eval "$cmd $param $postcmd")                   # using subshell to hide job information
+} 
+
+# Gamma handling for future use
+# function increase_gamma() {
+#     GAMMA_TEMP=$GAMMA_CURRENT
+#     (( GAMMA_CURRENT=$GAMMA_TEMP+0.1 ))
+#     xrandr --output $DP0 --gamma $GAMMA_CURRENT:$GAMMA_CURRENT:$GAMMA_CURRENT
+# }
+#
+# function decrease_gamma() {
+#     GAMMA_TEMP=$GAMMA_CURRENT
+#     (( GAMMA_CURRENT=$GAMMA_TEMP-0.1 ))
+#     xrandr --output $DP0 --gamma $GAMMA_CURRENT:$GAMMA_CURRENT:$GAMMA_CURRENT
+# }
+
 function y(){
    if [[ $1 == "--help" || $# -eq 0 ]]; then
       echo "Usage: y i3"

@@ -57,6 +57,9 @@ setopt transient_rprompt
 setopt nolistbeep
 
 # todo: use .oh-my-zsh/lib/spectrum.zsh instead
+# See: man terminfo
+# run: infocmp -f       # for listing term capabilities
+
 export cZ=$(echo -en '\033[0m')				# RESET
 export cR=$(echo -en '\033[00;31m')			# red
 export cG=$(echo -en '\033[00;32m')			# green
@@ -74,6 +77,14 @@ export bM=$(echo -en '\033[01;35m')			# bold magenta
 export bP=$(echo -en '\033[01;35m')			# bold purple
 export bC=$(echo -en '\033[01;36m')			# bold cyan
 export bW=$(echo -en '\033[01;37m')			# bold white
+export sD=`tput dim`                      # Set dim
+export sU=`tput smul`                     # Set underline mode
+export rU=`tput rmul`                     # Reset underline mode
+export sR=`tput rev`                      # Set reverse mode
+export rR=`tput rmso`                     # Reset reverse mode (uses rmso: reset standout mode)
+export sS=`tput smso`                     # Set standout mode
+export rS=`tput rmso`                     # Reset standout mode
+
 
 msgRGB=${cR}R${cG}G${cY}Y${cB}B${cP}P${cC}C${cW}W${cZ}Z${bR}R${bG}G${bY}Y${bB}B${bP}P${bC}C${bW}W${cZ}
 export OTERM=$TERM
