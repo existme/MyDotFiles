@@ -1,0 +1,54 @@
+#!/bin/zsh
+source $SCRIPTPATH/zsh/functions.sh
+
+clear
+git gc &> /dev/null
+git count-objects -v
+objs=($(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -10|col1))
+
+# tabs -3
+echo "Sha                                       filename                             size     firstuse (ff)"
+echo "----------------------------------------  -----------------------------------  -------  -------------"
+EOL=""
+for a in $objs; do
+   fileinfo=$(git rev-list --objects --all | grep $a)
+   file=$(echo $fileinfo|col2)
+   sha=$(echo $fileinfo|col1)
+   size=`echo $(/bin/ls -sh $file 2>/dev/null||echo "${bR}Removed${cZ}")|col1`
+   ff=`git log --oneline --branches -- $file|tail -1`
+   # size=$(echo $(/bin/ls -sh $file||"${rB}Removed${cZ})"|col1)
+   printf "$sha  $file";
+   tput cr;tput cuf 80;
+   printf "$size"
+   tput cr;tput cuf 88;
+   printf "$ff\n"
+   b+="$EOL$ff|$size|$file|"
+   EOL="@#"
+done
+t1="Sha                                       filename                             size     firstuse (ff)"
+
+res=$(echo $b|smenu -n 20 -t 3 -g -L $EOL -W '|' -C 3)
+
+echo -e "Executing:\n"
+echo -e "git log --oneline --branches -- ${bY}$res$cZ\n\n------"
+
+git log --oneline --branches -- $res
+ff=`git log --oneline --branches -- $res|tail -1|col1`
+
+echo -e "\nLet's prune now by running: \n"
+
+echo -e "git filter-branch --index-filter 'git rm --ignore-unmatch --cached ${sR}$res${cZ}' -- ${sR}$ff${cZ}~..\n\n"
+read -k 1 -r "pr?Ok to prune (${cY}y${cZ}/${bW}N${cZ})?"
+echo
+if [[ ! $pr =~ ^[Yy]$ ]]; then
+   exit
+fi
+
+git filter-branch --index-filter "git rm --ignore-unmatch --cached $res" -- $ff~..
+rm -Rf .git/refs/original
+rm -Rf .git/logs/
+git gc
+git count-objects -v
+
+echo ${bY}Done!${cZ}
+# echo $b | smenu -L '|' -n20 -c -w -d -q -I '/([^ ]+) (.*)/* \2/v' -e '^#' -E '/(^#)+(.*)$/ \2/v'

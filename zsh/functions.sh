@@ -370,6 +370,22 @@ function y(){
    yelp man:$1 &
 }
 
+# simple yes no function, sample usage:
+#
+# [[ $(yesno "${bR}smenu${cZ} is cool") ]] && echo "OK" || echo "NO"
+function yesno(){
+   local msg
+   [[ -z $1 ]] && msg="Please confirm your choice:" || msg=$1
+   echo "Result: "
+   # local RES=echo "YES" "NO" "CANCEL" | smenu -2 "^Y" -1 "^N" -3 "^C" -s "/^N" -m $msg 
+   echo "Result: $RES"
+   if [[ "$RES" = "YES" ]]; then
+      echo "${bR}Canceling{$bW}...${cZ}"
+      return 0
+   fi
+   return 1
+}
+
 # return file path
 #
 # Auto 
