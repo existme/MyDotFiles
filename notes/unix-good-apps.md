@@ -86,6 +86,43 @@ Here are some good unix apps:
 1. [libsixel](https://github.com/saitoha/libsixel)
 1. [w3mimgdisplay](/usr/lib/w3m/w3mimgdisplay)
 
+
+# Video players
+
+## YouTube players
+Youtube can be played by any of these programs:
+mplayer, mpv, vlc, and mpsyt(mps-youtube)
+     
+### mpsyt
+
+```bash
+s apt install mps-youtube
+```
+
+then `mpsyt playurl <url>`
+
+### vlc
+
+Use `cvlc --no-video <URL>` or `cvlc --vout none <URL>`
+
+### mplayer and mpv [see ref][audio-youtube]
+`yturl` gets direct media URLs to YouTube media, freeing you having to view them in your browser.
+First install `yturl` using:
+
+```bash
+s pip install -U yturl
+
+# Or for installing latest github version:
+
+s pip install -U git+https://github.com/cdown/yturl.git@develop
+```
+then you can use `<your-preferred-player> "$(yturl 'http://www.youtube.com/watch?v=8TCxE0bWQeQ')"`
+
+**mplayer**:
+`mplayer -novideo "$(yturl <url>)"`
+**mpv**:
+`mpv --no-video "$(yturl <url>)"`
+
 # Font previewers
 
 1. [Fontmatix]: see `install-fontmatrix.md` for installation
@@ -158,7 +195,7 @@ Here are some good unix apps:
    ![](https://i.github-camo.com/f3321d2404e853746ba2bc978bc13537feb14634/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f646c646c2f737068696e782d707265766965772f6d61737465722f646f63732f64656d6f2e676966)
 
 
-
+[audio-youtube]: https://unix.stackexchange.com/questions/229787/audio-only-youtube-player
 [awsome-linux]: https://github.com/LewisVo/Awesome-Linux-Software
 [awsome-cli]: https://github.com/agarrharr/awesome-cli-apps
 [cmdfu]: http://www.commandlinefu.com/commands/view/6663/pretend-to-be-busy-in-office-to-enjoy-a-cup-of-coffee

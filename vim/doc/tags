@@ -5,6 +5,7 @@ AnsiEsc-copyright	AnsiEsc.txt	/*AnsiEsc-copyright*
 AnsiEsc-history	AnsiEsc.txt	/*AnsiEsc-history*
 AnsiEsc-manual	AnsiEsc.txt	/*AnsiEsc-manual*
 AnsiEsc.txt	AnsiEsc.txt	/*AnsiEsc.txt*
+ZoomWin.txt	ZoomWin.txt	/*ZoomWin.txt*
 drawit	DrawIt.txt	/*drawit*
 drawit-a	DrawIt.txt	/*drawit-a*
 drawit-b	DrawIt.txt	/*drawit-b*
@@ -32,8 +33,17 @@ drawit-stop	DrawIt.txt	/*drawit-stop*
 drawit-usage	DrawIt.txt	/*drawit-usage*
 drawit-visblock	DrawIt.txt	/*drawit-visblock*
 drawit.txt	DrawIt.txt	/*drawit.txt*
+g:ZoomWin_funcref	ZoomWin.txt	/*g:ZoomWin_funcref*
 g:ansiBold	AnsiEsc.txt	/*g:ansiBold*
 g:ansiItalic	AnsiEsc.txt	/*g:ansiItalic*
 g:ansiNone	AnsiEsc.txt	/*g:ansiNone*
 g:ansiUnderline	AnsiEsc.txt	/*g:ansiUnderline*
 g:drawit_insertmode	DrawIt.txt	/*g:drawit_insertmode*
+g:zoomwin_preserve_taglist	ZoomWin.txt	/*g:zoomwin_preserve_taglist*
+g:zoomwin_preserve_winmanager	ZoomWin.txt	/*g:zoomwin_preserve_winmanager*
+zoomwin	ZoomWin.txt	/*zoomwin*
+zoomwin-copyright	ZoomWin.txt	/*zoomwin-copyright*
+zoomwin-history	ZoomWin.txt	/*zoomwin-history*
+zoomwin-options	ZoomWin.txt	/*zoomwin-options*
+zoomwin-setup	ZoomWin.txt	/*zoomwin-setup*
+zoomwin-usage	ZoomWin.txt	/*zoomwin-usage*

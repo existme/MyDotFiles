@@ -48,15 +48,35 @@ Commands
 ║                              ║                                                                     ║
 ║                              ║                                                                     ║
 ║ :bn                          ║ next buffer                                                         ║
-║ :Ctrl+w                      ║ set width (ex. `50<C-w>_`)                                          ║
-║ :Ctrl+w =                    ║ equalize width and height of all windows                            ║
-║ :help CTRL═W                 ║ See also                                                            ║
 ║ ,q                           ║ delete current buffer and move on                                   ║
+║                              ║                                                                     ║
+║                              ║                                                                     ║
+╠══╣ **Window manipulation** ╠═════╬═════════════════════════════════════════════════════════════════════╣
+║                              ║                                                                     ║
+║ :help CTRL-W                 ║ see also                                                            ║
+║ :help opening-window         ║                                                                     ║
+║                              ║                                                                     ║
+║                              ║                                                                     ║
+║ CTRL-W n         :new        ║ edit a new buffer                                                   ║
+║ CTRL-W s         :sp         ║ split buffer                                                        ║
+║ CTRL-W v         :vsp        ║ split vertically                                                    ║
+║ CTRL-W o         :only       ║ only this window                                                    ║
+║ CTRL-W c         :close      ║ close window ( close cannot close last window )                     ║
+║ CTRL-W q         :quit       ║ quit window  ( quit can also close last window )                    ║
+║ CTRL+W H,J,K, or L           ║ will move the current window to the far left, bottom, top, or right ║
+║ CTRL+W h,j,k, or l           ║ will focus instead of moving the windows                            ║
+║ CTRL+W v                     ║ split current window                                                ║
+║                              ║                                                                     ║
+║ #N <c-w>\_                   ║ set height to #N (ex. `50<C-w>_`)                                   ║
+║ #N <c-w>|___                    ║ set width  to #N (ex. `50<C-w>|`)                                   ║
+║ <c-w> =                      ║ equalize width and height of all windows                            ║
+║                              ║                                                                     ║
+║ <c-e> <c-e>                  ║ Toggle single mode through ZoomWin plugin (second toggle is slow)   ║
 ║                              ║                                                                     ║
 ╠════╣ search & replace ╠══════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║ :%s//new-string/g            ║ First use * to highlight the words, then run this for replacing all ║
-║ <c-n>                        ║ This is a shortcut for the above one liner                                                                    ║
+║ <c-n>                        ║ This is a shortcut for the above one liner                          ║
 ║                              ║                                                                     ║
 ║ :%s/foo/bar/g                ║ replaces foo with bar in all lines                                  ║
 ║ :s/foo/bar/g                 ║ replaces foo with bar only in current line                          ║
@@ -69,9 +89,10 @@ Commands
 ╠═══════╣ Key mapping ╠════════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║                              ║                                                                     ║
-║ :verbose imap <tab>          ║ Show where the kepmap is defined and in which file/plugin           ║
+║ :verbose imap <tab>          ║ Show where the keymap is defined and in which file/plugin           ║
 ║ :scripts                     ║ Shows all effective scripts                                         ║
-║                              ║                                                                     ║
+║ :map                         ║ Show all keymaps                                                    ║
+║ F9        :call ExportMap()  ║ Exports all keymapping to /tmp/vi_maps.txt and opens it in vim      ║
 ║                              ║                                                                     ║
 ╠═══╣ Syntax Highlighter ╠═════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
@@ -112,6 +133,7 @@ Commands
 ║ tab                          ║ Move to the next field of the snippet                               ║
 ║ ctrl + p                     ║ Previous item in neocomplete list                                   ║
 ║ ctrl + n                     ║ Next     item in neocomplete list                                   ║
+║                              ║                                                                     ║
 ╠══╣     vim-sorround     ╠════╬═══╦═════════════════════════════════════════════════════════════════╣
 ║                              ║   ║                                                                 ║
 ║ cs'"                         ║   ║ Change Sorround ' -> "  (do it inside 'test')                   ║
@@ -180,7 +202,7 @@ Commands
 ║ aliases                   ║ Desc                                                         ║
 ╠═══════════════════════════╬══════════════════════════════════════════════════════════════╣
 ║                           ║                                                              ║
-║ **Escape Sequences**      ║                                                              ║
+║ **Escape Sequences**          ║                                                              ║
 ║ Esc-.(period)             ║ Insert the last argument of the previous command line.       ║
 ║ .                         ║ Repeat to retrieve arguments from earlier lines.             ║
 ║ man -k randr              ║ List all man pages that include a specific word.             ║

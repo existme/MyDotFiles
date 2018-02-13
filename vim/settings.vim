@@ -1,4 +1,3 @@
-
 let mapleader=","				"Change the leader to comma
 let maplocalleader = "\\"			"Change localleader to backslash
 
@@ -112,6 +111,11 @@ inoremap <C-k>				<Esc>:m .-2<CR>==gi
 vnoremap <C-j>				:m '>+1<CR>gv=gv
 vnoremap <C-k>				:m '<-2<CR>gv=gv
 
+" Duplicate current line
+nnoremap <C-d>          yyp
+inoremap <C-d>          <ESC>yyp
+vnoremap <C-d>          ygv<ESC>p
+
 " boxes shortcuts
 nmap ,mc						!!boxes -d shell -a hcvc<CR>
 vmap ,mc						!boxes -d shell -a hcvc<CR>
@@ -124,8 +128,66 @@ vnoremap qq						<ESC>:cq<CR>
 vnoremap QQ						<ESC>:cq!<CR>
 cnoremap q!                 cq!
 cnoremap Q!                 cq!
-" ============= Function Keys Mappings ===========
-set		pastetoggle=<F2>										"Toggle paste with F2
+" ====== Corrections for common mistakes  ======
+
+command! W w
+command! Q q
+command! Wq wq
+
+" help
+nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
+
+"save and close buffer"
+nnoremap <c-a> <esc>:exec "w \| bd" <cr>
+nmap <c-q> <esc>:bd<cr>
+
+"vim sudo trick
+nnoremap <c-o> <esc>:w !sudo tee % <cr>
+cmap w!! w !sudo tee > /dev/null %
+
+"run current file
+nnoremap <leader>r   :!%:p<cr>
+xmap     <leader>r   :!%:p<cr>
+
+"reload current file
+map      <c-r>       :e<cr>
+map      <c-s-r>     :e!<cr>
+imap     <c-r> <esc> :e<cr>
+
+"Search and replace with
+" Use * to highligh all the words then press <c-n> then type
+" the new word and press enter
+nnoremap <c-n>       :%s///g<left><left>
+
+" Save current file there might be some overlaps with vim-sorround
+nmap  <c-s> <esc>:w<cr>
+imap  <c-s> <esc>:w<cr>
+
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║           Toggle vertical/horizontal orientation            ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #tvh
+nnoremap <silent> <c-w><s-Right> <c-w>L
+nnoremap <silent> <c-w><s-Left> <c-w>H
+nnoremap <silent> <c-w><s-Up> <c-w>K
+nnoremap <silent> <c-w><s-Down> <c-w>J
+nnoremap <silent> <c-e><c-e> :set lz<CR>:silent call ZoomWin#ZoomWin()<CR> 
+
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║               function keys keyboard bindings               ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #fkb
+map      <F1>           <esc>:execute "e ".dotfilespath."/help.md"<enter>
+set		   pastetoggle=<F2>									"Toggle paste with F2
 map		<F3>				<ESC>:NERDTreeToggle<CR>		"Toggle nerd tree  F3
 noremap	<F4>				:set hlsearch! hlsearch?<CR>	"Toggle highlight  F4
+imap     <c-F4>         <esc> :w<cr>:!%:p<cr>         "Save and run current file
+map      <c-F5>         :w<cr>:!%:p<cr>               "Save and run current file
 noremap	<F5>				:set invlist<CR>					"Toggle highlight  F5
+nmap     <F6>           <esc>:set invnumber\|set relativenumber!<cr>
+nmap     <F8>           <esc>:call ToggleWrap(1)<c-r> "Toggle wrap
+map      <F9>           <ESC>:call ExportMap()<cr><cr> "Show all keybindings

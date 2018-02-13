@@ -1,2 +1,0 @@
-DrawIt.vba: call delete('/home/existme/.vim/plugin/DrawItPlugin.vim')|call delete('/home/existme/.vim/plugin/cecutil.vim')|call delete('/home/existme/.vim/autoload/DrawIt.vim')|call delete('/home/existme/.vim/doc/DrawIt.txt')
-AnsiEsc.vba: call delete('/home/existme/.vim/plugin/AnsiEscPlugin.vim')|call delete('/home/existme/.vim/autoload/AnsiEsc.vim')|call delete('/home/existme/.vim/plugin/cecutil.vim')|call delete('/home/existme/.vim/doc/AnsiEsc.txt')

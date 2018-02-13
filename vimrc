@@ -67,7 +67,12 @@ set foldmethod=indent	"fold based on indent
 set foldnestmax=3			"deepest fold is 3 levels
 set nofoldenable			"dont fold by default
 
-" ================ Completion =======================
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                          Completion                         ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #cl
 
 set wildchar=<Tab>            " Key used to start command-line completion.
 set wildmode=full             "make cmdline tab completion similar to bash
@@ -90,12 +95,16 @@ set wildignore+=*.hi        " Ignore Haskell interface files.
 set wildignore+=*.pyc       " Ignore Python byte-code.
 " ================ Scrolling ========================
 
-set scrolloff=8			"Start scrolling when we're 8 lines away from margins
+set scrolloff=8			    "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-
-" ================ Custom Settings ========================
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                        Custom Settings                      ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #cs
 execute pathogen#infect()
 "Helptags
 
@@ -166,7 +175,12 @@ set background=dark
 set listchars=tab:▸\ ,eol:¬
 "set showbreak=…
 
-" ========= Export all keymappings =======
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                      Export all keymappings                 ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #ek
 function ExportMap()
    redir! > /tmp/vim_maps.txt
    echomsg "# vim: set filetype=xkb :tw=14"
@@ -179,6 +193,7 @@ function ExportMap()
    redir END
    e /tmp/vim_maps.txt
 endfunction 
+
 " ========= Configuring Fonts for gvim =======
 if has("gui_running")
 	if has("gui_gtk2")			" Linux
@@ -192,8 +207,12 @@ else
 	let g:AutoClosePreservDotReg = 0
 endif
 
-" =========== Extending wrap functionality ========= 
-
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                  Extending wrap functionality               ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #tw
 function ToggleWrap(show)
 	if &wrap
 		setlocal nowrap
@@ -234,6 +253,8 @@ function ToggleWrap(show)
 	endif
 endfunction
 
+
+" echomsg "# vim: set filetype=xkb :tw=14"
 noremap <silent> <Leader>w :call ToggleWrap(1)<CR>
 "call ToggleWrap(0)
 "call ToggleWrap(0)
@@ -254,45 +275,16 @@ set equalalways
 " =============  Split Options   ===============
 set splitright
 
-" ====== Corrections for common mistakes  ======
 
-command! W w
-command! Q q
-command! Wq wq
-
-" =============  Final Mappings  ===============
-
-"open the help file
-nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
-nmap <F1> <esc>:execute "e ".dotfilespath."/help.md"<enter>
-nmap <F6> <esc>:set invnumber\|set relativenumber!<cr>
-nmap <F8> <esc>:call ToggleWrap(1)<cr>
-"save and close buffer"
-nnoremap <c-a> <esc>:exec "w \| bd" <cr>
-nmap <c-q> <esc>:bd<cr>
-
-"vim sudo trick
-nnoremap <c-o> <esc>:w !sudo tee % <cr>
-cmap w!! w !sudo tee > /dev/null %
-
-"run current file
-map      <c-F5>       :w<cr>:!%:p<cr>
-imap     <c-F4> <esc> :w<cr>:!%:p<cr>
-nnoremap <leader>r   :!%:p<cr>
-xmap     <leader>r   :!%:p<cr>
-
-"reload current file
-map      <c-r>       :e<cr>
-map      <c-s-r>     :e!<cr>
-imap     <c-r> <esc> :e<cr>
-
-"Search and replace with
-" Use * to highligh all the words then press <c-n> then type
-" the new word and press enter
-nnoremap <c-n>       :%s///g<left><left>
-" Save current file there might be some overlaps with vim-sorround
-nmap  <c-s> <esc>:w<cr>
-imap  <c-s> <esc>:w<cr>
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                  Final and custom mappings                  ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+"
+"     ** Don't do it here add it to ~/.vim/settings.vim **
+"
+" ═════════════════════════════════════════════════════════════
 
 " sneak clever mode on
 let g:sneak#s_next = 1
@@ -301,6 +293,12 @@ let g:sneak#s_next = 1
 " :cabbrev h vert h                    " This is an alternate solution
 autocmd FileType help wincmd L         " Open h/help vertically
 autocmd FileType h    wincmd L
+
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                neocomplete and neosnippet                   ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
 
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
@@ -328,7 +326,29 @@ imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ?  "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-" TComment 
+
+
+
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                        vim-plug                             ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #vp
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+" Plug 'vim-scripts/ZoomWin'
+" Plug 'szw/vim-maximizer'
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+call plug#end()
+
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                        TComment                             ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #tc
 "
 " map ctrl+/ for toggle/untoggle comments
 nmap <C-_>     <Plug>TComment_gcc

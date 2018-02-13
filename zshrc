@@ -123,3 +123,5 @@ export NVM_DIR="$HOME/.nvm"
 stackMsg $APPS
 unset APPS APP_SEP
 echoMsgs
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
