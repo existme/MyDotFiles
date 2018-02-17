@@ -71,7 +71,7 @@ alias -g ,1='2>&1 '
 alias -g ,2='2>/dev/null '
 alias -g ,3='&>/dev/null '
 
-alias rm=trash-put
+command -v "trash-put" && alias rm=trash-put
 
 # these are mappings for frequently used folder, type for example:
 #hash -d memo=~/Dropbox/Memo
