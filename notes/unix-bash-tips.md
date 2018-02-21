@@ -284,6 +284,11 @@ For fun, I once wrote a [script](https://github.com/ianmiell/cheapci/blob/master
 
 The code [here](https://github.com/ianmiell/cheapci/blob/master/cheapci#L70-L96) implements the reading of the [two required, and 14 non-required arguments](https://github.com/ianmiell/cheapci/blob/master/cheapci#L33-L51). Better to learn this than to build up a bunch of bespoke code that can get very messy pretty quickly as your utility grows.
 
+11) printf
+--------------------
+See the following reference: [Bash Hackers Wiki - The printf command](http://wiki.bash-hackers.org/commands/builtin/printf)
+
+
 * * *
 
 **This is based on some of the contents of my book** [Learn Bash the Hard Way](https://leanpub.com/learnbashthehardway), available at [$5](https://leanpub.com/learnbashthehardway):
