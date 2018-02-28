@@ -268,18 +268,25 @@ function git_prompt_info() {
 
 # simple yes no function, sample usage:
 #
-# [[ $(yesno "${bR}smenu${cZ} is cool") ]] && echo "OK" || echo "NO"
+# yesno "delete me?"&&echo delete||echo canceled
+unfunc yesno
 function yesno(){
    local msg
-   [[ -z $1 ]] && msg="Please confirm your choice:" || msg=$1
-   echo "Result: "
-   # local RES=echo "YES" "NO" "CANCEL" | smenu -2 "^Y" -1 "^N" -3 "^C" -s "/^N" -m $msg
-   echo "Result: $RES"
+   [[ -z "$1" ]] && msg="Please confirm your choice:" || msg=$1
+   local RES=$(echo "YES" "NO" "CANCEL" | smenu -2 "^Y" -1 "^N" -3 "^C" -s "/^N" -m $msg)
+   # echo "Result: $RES"
    if [[ "$RES" = "YES" ]]; then
-      echo "${bR}Canceling{$bW}...${cZ}"
+      # echo "${bR}Canceling{$bW}...${cZ}"
       return 0
    fi
    return 1
+}
+
+unfunc elocate
+elocate() {
+   [[ -z "$1" ]] && { echo "elocate searches for executable files\n\nUsage: ${bW}elocate${bB} filename$cZ"; return 0;} 
+   echo "Searching for [${bY}$1${cZ}] in locate database:\n"
+   locate -b "\\$1" | xargs -ri find {} -prune -type f -executable
 }
 
 unfunc mann

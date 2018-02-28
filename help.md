@@ -118,7 +118,7 @@ Commands
 ║ F3                           ║ Toggle nerd tree                                                    ║
 ║ F4                           ║ Toggle highlight                                                    ║
 ║ F5                           ║ Toggle list invisible characters like tabs                          ║
-║ F6                           ║ Toggle showing the line numbers                                     ║
+║ F6                           ║ Toggle showing the line numbers (set norelativenumber for absolute) ║
 ║ F8                           ║ Toggle wrap and its indicator                                       ║
 ║                              ║                                                                     ║
 ╠══╣     vim-sneak        ╠════╬═════════════════════════════════════════════════════════════════════╣
