@@ -1,6 +1,6 @@
 #!/bin/zsh
 # SCRIPTPATH="$HOME/git/MyDotFiles"
-# source $SCRIPTPATH/zsh/powerthemes/reza                                       
+# source $SCRIPTPATH/zsh/powerthemes/reza
 # source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme 
 # return
 

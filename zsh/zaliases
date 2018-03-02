@@ -71,7 +71,9 @@ alias -g ,1='2>&1 '
 alias -g ,2='2>/dev/null '
 alias -g ,3='&>/dev/null '
 
-command -v "trash-put" && alias rm=trash-put
+if [ -x "$(command -v trash-put)" ]; then
+   alias rm=trash-put
+fi
 
 # these are mappings for frequently used folder, type for example:
 #hash -d memo=~/Dropbox/Memo
@@ -100,7 +102,7 @@ if [ -x "$(command -v exa)" ]; then
    alias ll="exa -lgaF --time-style long-iso --color=always --color-scale --group-directories-first"
    alias lart="exa -lgaF@ -s modified --time-style long-iso --color=always --color-scale"
 else
-   echo "${cB}exa $cZ is not installed, using normal $cR ls $cZ"
+   stackMsg "${cB}exa $cZ is not installed, using normal $cR ls $cZ"
    alias lart="grc ls -lart"
 fi
 

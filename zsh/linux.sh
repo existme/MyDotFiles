@@ -24,11 +24,17 @@ dist=($(lsb_release -a 2>&1 |sed "1d;"| cut -d':' -f2))
 stackMsg "${bW}${dist[2]}-${dist[4]} ${dist[5]}${cZ} - Kernel: ${bW}`uname --kernel-release`${cZ}, $OTERM"
 unset dist
 
-if [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' || $OTERM == 'rxvt-256color' || $OTERM == 'screen-256color' ]] && ! isSSH ; then
+if [ -n "$NO_ZSH_THEME" ]; then
+   # kafeitu bira gentoo kafeitu lukerandall michelebologna obraun
+   # mortalscumbag ys 
+	export ZSH_THEME="bira"
+   echoP "${bR}Not using any theme${cZ}"
+   source $ZSH/oh-my-zsh.sh   
+elif [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' || $OTERM == 'rxvt-256color' || $OTERM == 'screen-256color' ]] && ! isSSH ; then
 	# source $SCRIPTPATH/zsh/shell-prompt.sh
    source $SCRIPTPATH/zsh/powerthemes/reza-min
-	add-zsh-hook -Uz precmd xterm_title_precmd
-	add-zsh-hook -Uz preexec xterm_title_preexec
+   add-zsh-hook -Uz precmd xterm_title_precmd
+   add-zsh-hook -Uz preexec xterm_title_preexec
 	# echo "--- Shell prompt loaded ---"
 else
 	# export ZSH_THEME="agnoster"

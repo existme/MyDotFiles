@@ -49,7 +49,7 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
 fi
 
 
-[[ -f $HOME/zshrc.local.sh ]] &&	source $HOME/zshrc.local.sh
+[[ -f $HOME/zshrc.local.sh ]] &&	source $HOME/zshrc.local.sh && echoP "${bB}~/zshrc.local.sh${cZ}"
 
 # Add completion path before oh-my-zsh starts compinit
 fpath=($SCRIPTPATH/zsh/completion $fpath)
@@ -75,7 +75,7 @@ source $SCRIPTPATH/zsh/keyinfo.sh               # Load keyboard shortcuts
 echoP "${plugin}z.sh"
 . $SCRIPTPATH/bundle/z/z.sh
 
-[[ -f $HOME/zshrc.local.post ]] && source $HOME/zshrc.local.post
+[[ -f $HOME/zshrc.local.post ]] && source $HOME/zshrc.local.post && echoP "${bB}~/zshrc.local.post${cZ}"
 
 source $SCRIPTPATH/zsh/allpath.sh
 source $SCRIPTPATH/zsh/compinit.sh

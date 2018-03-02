@@ -34,6 +34,7 @@
 COMPREPLY=()
 
 query=`echo "$words "|cut -f 2- -d' '`
+echo $query
 query="${cur%% }"
 [ -n "$cur" ] && query="-q ${cur}"
 local all=$(find -L "$HOME/notes/" -print 2> /dev/null)
@@ -46,6 +47,7 @@ local dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m ${query} )
 # _description $dir id 'action'
 # _describe -t values value dir
 eval "$_comp_setup"
+# eval "stty werase \^a"
 echo -n -e "${bR}Editing${bW}... $BUFFER$cZ "
 # REPLY=$dir
 # nmatches=1
@@ -55,7 +57,6 @@ echo -n -e "${bR}Editing${bW}... $BUFFER$cZ "
 # echo $compstate
 # _lastcomp=( $dir 0 $dir 1 ) 
 # _lastcomp=( $dir 0 ) 
-stty werase \^a
 echo $dir
 COMPREPLY=( $(compgen -f  -- ${dir}) )
 words=( ${(f)dir} )
