@@ -9,7 +9,8 @@ applications.
 stty -a
 
 
-stty -onlcr    # set output new line carriage return
+stty -onlcr    # removes "set output new line carriage return"
+stty onlcr     # adds    "set output new line carriage return"
 
 ```
 
