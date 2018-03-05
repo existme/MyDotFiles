@@ -127,6 +127,18 @@ Commands
 ║ ;                            ║ Go to the next match (or s agin if s_next is enabled)               ║
 ║ ``                           ║ `` Go back to the starting point or jump back                       ║
 ║                              ║                                                                     ║
+╠══╣  visual block mode   ╠════╬═════════════════════════════════════════════════════════════════════╣
+║                              ║                                                                     ║
+║ ctrl + v                     ║ By pressing ctrl+v you can enter visual block mode, when you are in ║
+║ ════════╕                    ║ visual block mode you can do the following actions:                 ║
+║         │                    ║                                                                     ║
+║         ├─ shift+i           ║ goto insert mode. Any character typed will be inserted at top       ║
+║         │                    ║ of the selection and when pressing <esc> it would be applied to all ║
+║         │                    ║                                                                     ║
+║         ├─ c                 ║ change the selected area                                            ║
+║         ├─ r                 ║ change the current character                                        ║
+║         ├─ o                 ║ move to the begining of the selected box                            ║
+║                              ║                                                                     ║
 ╠══╣     vim-neosnippets  ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║ ctrl + k                     ║ Choose snippet                                                      ║
