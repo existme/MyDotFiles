@@ -12,5 +12,12 @@
 1- save and reboot, remove the `init=/bin/sh` from `cmdline.txt`
 1- reboot
 
+## Mount problem
+
+```bash
+sudo vim /etc/fstab
+
+/dev/sda1 /media/pi/My\040Book auto defaults,nofail,x-systemd.device-timeout=1 0 2
+```
 -----------------------------------------
 2018-03-04 18:02:25
