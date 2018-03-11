@@ -72,7 +72,9 @@ case "$res" in
             git submodule init
             git submodule update
             autoreconf --install
-            sudo apt-get install bison flex xutils-dev libxcb-ewmh-dev librsvg-2.0
+            sudo apt-get install bison flex xutils-dev libxcb-ewmh-dev
+            sudo apt-get install librsvg2-dev
+            sudo apt-get install
             pip install easybuild
             configure
             sudo make install
