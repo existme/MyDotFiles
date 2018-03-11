@@ -1,0 +1,86 @@
+#!/bin/zsh
+# !! It's important to use bash or zsh otherwise reads doesn't work
+#
+declare selected=$(cat <<EOF
+i3
+i3-gaps
+vim
+rofi
+quit
+EOF
+)
+function gitPull(){
+    local prj=$1
+    echo "Compiling ${bY}$prj${cZ}"
+    echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
+    read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?"
+    echo
+    cd ~/git/$prj
+
+    if [[ $pr =~ ^[Yy]$ ]]; then
+        git pull
+    else
+        echo "${bR}Nothing pulled${cZ}!"
+    fi
+}
+function okToBuild(){
+    read -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?"
+    echo
+    if [[ ! $pr =~ ^[Yy]$ ]]; then
+        echo "${bR}Build Cancled${cZ}!"
+        return 1
+    fi
+    echo "${bG}Building${cZ} ..."
+    return 0
+}
+declare res=$(
+    echo $selected|tr '\n' '|'|
+    rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
+    )
+case "$res" in
+    i3)
+        prj=i3
+        gitPull $prj
+        if okToBuild; then
+            autoreconf -fi
+            rm -rf ~/git/$prj/build
+            mkdir ~/git/$prj/build
+            cd ~/git/$prj/build
+            grc ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+            grc make -j8
+            grc sudo make install
+        fi
+    ;;
+    i3-gaps)
+        prj=i3-gaps
+        gitPull $prj
+    ;;
+    vim)
+        prj=vim
+        gitPull $prj
+
+        if okToBuild; then
+            sudo make VIMRUNTIMEDIR=/usr/share/vim/vim80/
+            sudo apt install checkinstall
+            sudo checkinstall
+        fi
+    ;;
+    rofi)
+        prj=rofi
+        gitPull $prj
+        if okToBuild; then
+            git submodule init
+            git submodule update
+            autoreconf --install
+            sudo apt-get install bison flex xutils-dev libxcb-ewmh-dev librsvg-2.0
+            pip install easybuild
+            configure
+            sudo make install
+        fi
+    ;;
+    quit)
+        echo "${bB}Canceled$cZ"
+        return
+    ;;
+esac
+echo "${bB}Build script finished.$cZ"
