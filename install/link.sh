@@ -43,6 +43,8 @@ ln -s $DOTPATH/configs/grc ~/.grc
 touch ~/.stCommitMsg
 cp $DOTPATH/gitconfig.user ~/.gitconfig.user
 
-touch ~/zshrc.local.sh
+cat >> ~/zshrc.local.sh << EOF
+NO_ZSH_THEME
+EOF
 
 

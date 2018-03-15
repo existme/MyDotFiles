@@ -1,6 +1,9 @@
 # Compile-Vim.Md
 
 ----------------------------------------- 
+## Alternative for installation
+s apt install vim-gtk
+s apt install vim-nox
 ## How to compile vim with most features
 
 This will install vim with most features enabled including lua

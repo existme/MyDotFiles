@@ -33,10 +33,15 @@ function okToBuild(){
     echo "${bG}Building${cZ} ..."
     return 0
 }
-declare res=$(
-    echo $selected|tr '\n' '|'|
-    rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
-    )
+if [ -z "$1" ]; then
+   declare res=$(
+       echo $selected|tr '\n' '|'|
+       rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
+       )
+else
+   res=$1
+fi
+
 case "$res" in
     i3)
         prj=i3
@@ -60,14 +65,14 @@ case "$res" in
         gitPull $prj
 
         if okToBuild; then
-            sudo apt-get remove --purge vim vim-runtime vim-gnome vim-tiny vim-common vim-gui-common
-            sudo apt-get build-dep vim-gnome
-            sudo apt-get install build-essential liblua5.3-0 liblua5.3-dev python-dev ruby-dev libperl-dev libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
+            sudo apt-get -qy remove --purge vim vim-runtime vim-gnome vim-tiny vim-common vim-gui-common
+            sudo apt-get -qy build-dep vim-gnome
+            sudo apt-get install -qy build-essential liblua5.3-0 liblua5.3-dev python-dev ruby-dev libperl-dev libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
             sudo rm -rf /usr/local/share/vim /usr/bin/vim /usr/local/bin/vim
-            sudo mkdir /usr/include/lua5.2/{include,lib}
-            sudo cp /usr/include/lua5.2/*.h /usr/include/lua5.2/include/
-            sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.2.so /usr/include/lua5.2/lib/liblua.so
-            sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.2.a /usr/include/lua5.2/lib/liblua.a
+            sudo mkdir /usr/include/lua5.3/{include,lib}
+            sudo cp /usr/include/lua5.3/*.h /usr/include/lua5.3/include/
+            sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/include/lua5.3/lib/liblua.so
+            sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.a /usr/include/lua5.3/lib/liblua.a
             sudo make distclean
             ./configure --with-features=huge \
                --enable-rubyinterp \
@@ -79,7 +84,7 @@ case "$res" in
                --enable-luainterp \
                --enable-gui=auto \
                --enable-fail-if-missing \
-               --with-lua-prefix=/usr/include/lua5.2 \
+               --with-lua-prefix=/usr/include/lua5.3 \
                --enable-cscope \
                --enable-multibyte
             sudo make

@@ -238,6 +238,6 @@
 [commit]
 	template = ~/.stCommitMsg
 # move this part to '~/.gitconfig.user'
-# [user]
-# 	email = existme@gmail.com
-# 	name = Reza Shams Amiri
+[user]
+ 	email = rezasa@axis.com
+ 	name = Reza Shams Amiri
