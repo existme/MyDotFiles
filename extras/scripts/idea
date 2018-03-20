@@ -11,10 +11,10 @@ absfile=`$SCRIPTPATH/extras/scripts/abspath $1`
 echo "Runnning: "
 echo ""
 #echo "$IDEA_PATH/\e[31m$IDEA_VERSION\e[39m/$IDEA_POSTIFIX \e[95m$absfile"
-echo " $IDEA_PATH \e[95m$absfile"
+echo " ${IDEA_PATH}bin/idea.sh \e[95m$absfile"
 
 if [[ $2 -eq "--log" ]]; then
-   `$IDEA_PATH $absfile &` 
+   `${IDEA_PATH}bin/idea.sh $absfile &` 
 else
-   `$IDEA_PATH $absfile >> /dev/null 2>&1 &` 
+   `${IDEA_PATH}bin/idea.sh $absfile >> /dev/null 2>&1 &` 
 fi

@@ -37,3 +37,5 @@ sudo gem install github-markdown
 /home/rezasa/.rvm/gems/ruby-2.4.1/gems/omniauth-ldap-2.0.0/lib/omniauth/strategies/ldap.rb
 /home/rezasa/.rvm/gems/ruby-2.4.1/gems/omniauth-ldap-2.0.0/lib/omniauth-ldap/adaptor.rb
 
+/home/rezasa/.rvm/gems/ruby-2.4.1/gems/omnigollum-0.1.5/lib/omnigollum.rb
+@name = hash['info']['first_name']+" "+ hash['info']['last_name'] 
