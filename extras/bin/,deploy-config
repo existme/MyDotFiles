@@ -23,7 +23,7 @@ grc rsync  -q --info=progress2 --info=progress2 --exclude='.git/' -avz -avhe ssh
 echo "$cZ"
 
 ssh $DEST 'bash -s' << 'ENDSSH'
-	sudo apt install -y zsh grc git tig  lnav coreutils trash-cli highlight xclip language-pack-en
+	sudo apt install -y zsh grc git tig  lnav coreutils trash-cli highlight xclip 
   	sudo chsh `whoami` -s `which zsh`
 	sudo rm -rf ~/.vim
 	sudo rm ~/.viminfo
@@ -31,4 +31,5 @@ ssh $DEST 'bash -s' << 'ENDSSH'
    rm -rf ~/.lnav/formats/https___github_com_hagfelsh_lnav_formats_git
    rm -rf ~/.lnav/formats/https___github_com_PaulWay_lnav_formats_git
    rm -rf ~/.lnav/formats/https___github_com_aspiers_lnav_formats_git
+   sudo apt install language-pack-en
 ENDSSH

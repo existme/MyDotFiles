@@ -21,7 +21,11 @@ depending on the ruby version installed:
 sudo apt-get install ruby2.1-dev
 s apt install zlib1g-dev
 apt-get install libicu-dev
+s gem install bundle
+bundle install
+bundle exec bin/gollum
 
+or
 	
 sudo gem install gollum
 
