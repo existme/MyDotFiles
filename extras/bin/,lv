@@ -1,0 +1,15 @@
+#!/bin/zsh
+
+arg=$1
+if [ -z "$1" ]; then
+   echo "Usage: ,lv {partial file name}"
+   exit
+fi
+
+declare res=$(locate $arg|smenu -n8 -L $'\n' -c -T -m "Select the file you want to edit")
+# smenu -n8 -tg -b -Cd2-5 -T
+if [ -z "$res" ]; then
+   echo "${cR}No result found for [${bW}$arg${cR}]"
+   exit
+fi
+vim $res
