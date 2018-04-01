@@ -12,4 +12,7 @@ if [ -z "$res" ]; then
    echo "${cR}No result found for [${bW}$arg${cR}]"
    exit
 fi
+echo
+echo "${bW}vim ${cY}$res${cZ}"
+echo
 vim $res
