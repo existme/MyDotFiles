@@ -1,3 +1,20 @@
+# Install ubuntu
+
+``` bash
+sudo apt-get install ruby ruby-dev make zlib1g-dev libicu-dev build-essential git cmake
+sudo gem install gollum --no-ri
+sudo gem install github-markdown -p http://wwwproxy.axis.com:3128
+sudo gem install awesome_print
+sudo gem install oj
+s gem install omnigollum
+
+
+s apt install libssl-dev
+s gem install pkg-config
+s gem install gollum-rugged_adapter
+s gem install omniauth-ldap
+
+```
 
 # Install latest version of ruby
 ```
