@@ -16,3 +16,5 @@ echo
 echo "${bW}vim ${cY}$res${cZ}"
 echo
 vim $res
+# xdotool type "vim $res"
+# (sleep 1&& echo -n "vim $res" 1>&2)&
