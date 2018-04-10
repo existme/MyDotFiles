@@ -1,5 +1,5 @@
 #!/bin/sh
-#Generated with love at Thu Apr 5 07:32:07 2018 by JetBrains Toolbox 1.8.3678 (Mar 15 2018)
+#Generated with love at Mon Apr 9 10:01:08 2018 by JetBrains Toolbox 1.8.3678 (Mar 15 2018)
 
 "/home/rezasa/.local/share/JetBrains/Toolbox/apps/IDEA-U/ch-0/181.4445.20/bin/idea.sh" "$@"
 
