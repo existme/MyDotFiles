@@ -6,6 +6,9 @@ i3
 i3-gaps
 vim
 rofi
+albert
+xkb-switch
+compton
 quit
 EOF
 )
@@ -19,6 +22,7 @@ function gitPull(){
 
     if [[ $pr =~ ^[Yy]$ ]]; then
         git pull
+        git submodule foreach git pull
     else
         echo "${bR}Nothing pulled${cZ}!"
     fi
@@ -109,6 +113,46 @@ case "$res" in
             sudo configure
             sudo make install
         fi
+    ;;
+    albert)
+       prj=albert
+       gitPull $prj
+       if okToBuild; then
+         sudo apt-get install libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev
+         rm -rf albert-build
+         mkdir albert-build
+         cd albert-build
+         cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DBUILD_VIRTUALBOX=OFF
+         make
+         sudo make install
+         echo "${bY}Warning:${cZ} be sure that you have cloned the repo recursively otherwise you might ran into strange problems"
+         echo "${bB}git clone https://github.com/albertlauncher/albert.git --recursive ${cZ}"
+         echo "${bY}Warning-2:${cZ} if you have problems with qalculate plugin you need to compile it from source"
+       fi
+    ;;
+    xkb-switch)
+       prj=xkb-switch
+       gitPull $prj
+
+       if okToBuild; then
+          sudo apt install libxkbfile-dev 
+          mkdir build 
+          cd build
+    		 cmake ..
+    		 make
+    		 sudo make install
+       fi
+    ;;
+    compton)
+       prj=compton
+       gitPull $prj
+
+       if okToBuild; then
+          sudo apt install libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-composite-dev x11-utils libpcre3-dev libconfig-dev libdrm-dev asciidoc libdbus-1-dev
+    		 make 
+    		 make docs
+    		 sudo make install
+       fi
     ;;
     quit)
         echo "${bB}Canceled$cZ"
