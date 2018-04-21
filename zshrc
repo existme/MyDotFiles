@@ -125,3 +125,6 @@ unset APPS APP_SEP
 echoMsgs
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fix for overwritted: zsh/bundle/powerlevel9k/functions/icons.zsh:167> local LC_ALL='' LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
