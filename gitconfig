@@ -243,3 +243,5 @@
  	name = Reza Shams Amiri
 [fsck]
 	zeroPaddedFilemode = warn
+[url "https://github.com/"]
+	insteadOf = git://github.com/
