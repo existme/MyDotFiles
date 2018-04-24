@@ -1,1 +1,0 @@
-/Users/rezasa/Dropbox/Apps/todotxttdi/todo.sh
