@@ -1,0 +1,37 @@
+#!/bin/zsh
+# this script will toggle the notification daemon to stop/start notifications
+#
+
+# See https://stackoverflow.com/a/20564208/161312
+# Close STDOUT file descriptor
+exec 1<&-
+# Close STDERR FD
+exec 2<&-
+
+declare cmd=$1
+declare toggle
+
+if [[ "$cmd" = 'set' ]]; then
+   toggle=$(dic get "i3.notification" "true")
+elif [[ "$cmd" = '' || "$cmd" = 'toggle' ]]; then
+   toggle=$(dic toggle "i3.notification" "true")
+else
+   echo "Invalid parameter"
+   exit 1
+fi
+
+service=/usr/share/dbus-1/services/org.freedesktop.Notifications.service
+dunst=/usr/bin/dunst
+
+if [ "$toggle" = "true" ]; then
+   # sudo mv /usr/share/dbus-1/services/org.freedesktop.Notifications.service.disabled /usr/share/dbus-1/services/org.freedesktop.Notifications.service
+   sed -e "s|Exec=.*|Exec=$dunst|" $service | sudo tee $service 
+   notify.sh "Notifications are enabled"
+else
+   beep
+   # sudo mv /usr/share/dbus-1/services/org.freedesktop.Notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service.disabled
+   sed -e "s|Exec=.*|Exec=${dunst}-disabled|" $service | sudo tee $service
+   killall dunst
+   notify.sh "Notification is disabled" 
+fi
+

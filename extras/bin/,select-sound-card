@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+declare selected=$(cat /proc/asound/card*/id)
+
+if [ -z "$1" ]; then
+   declare res=$(
+       echo $selected|tr '\n' '|'|
+       rofi -dmenu -sep '|' -p "What card should the sound be redirected to ? " -i -disable-history -levenshtein-sort -matching normal -e
+       )
+else
+   res=$1
+fi
+
+# pacmd list-sinks | awk '/.*index:/{print $2}' \
+pacmd list-sink-inputs | awk '/.*index:/{print $2}' \
+   | xargs -r -I{} echo "[{}]"
+
+
+return
+newSink="$1"
+
+pactl list short sink-inputs|while read stream; do
+    streamId=$(echo $stream|cut '-d ' -f1)
+    echo "moving stream $streamId"
+    pactl move-sink-input "$streamId" "$newSink"
+done

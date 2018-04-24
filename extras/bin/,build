@@ -158,7 +158,7 @@ case "$res" in
     ;;
     dunst)
        prj=dunst
-       # git clone https://github.com/dunst-project/dunst.git
+       # git clone https://github.com/PandorasFox/i3lock-color
        # https://wiki.archlinux.org/index.php/Desktop_notifications
        gitPull $prj
 
