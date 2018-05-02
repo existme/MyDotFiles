@@ -1,26 +1,38 @@
 #!/bin/zsh
 
-declare selected=$(cat /proc/asound/card*/id)
+declare listName=($(pacmd list-sinks | egrep 'name:' | grep -oP '<.*\.\K(.*)(?=>)'))
+declare listIndex=($(pacmd list-sinks | egrep 'index:' | grep -oP '(.*index: )\K(.*)'))
+declare cnt=0
+declare selection=""
+
+for i in $listName;
+do
+   ((cnt++))
+   selection="$selection$i|"
+   # echo $listIndex[$cnt]
+done
+
+# remove last | character
+selection=${selection[1,-2]}
 
 if [ -z "$1" ]; then
    declare res=$(
-       echo $selected|tr '\n' '|'|
-       rofi -dmenu -sep '|' -p "What card should the sound be redirected to ? " -i -disable-history -levenshtein-sort -matching normal -e
+       echo $selection|
+       rofi -dmenu -sep '|' -p "What card should the sound be redirected to ? " -i -disable-history -levenshtein-sort -matching normal -e -format i
        )
+   # to fetch listIndex array the base is not zero base
+   ((res++))
+   # map res to listIndex ( this could be unnecessary )
+   res=$listIndex[$res]
 else
    res=$1
 fi
 
-# pacmd list-sinks | awk '/.*index:/{print $2}' \
-pacmd list-sink-inputs | awk '/.*index:/{print $2}' \
-   | xargs -r -I{} echo "[{}]"
-
-
-return
-newSink="$1"
+newSink="$res"
 
 pactl list short sink-inputs|while read stream; do
     streamId=$(echo $stream|cut '-d ' -f1)
-    echo "moving stream $streamId"
+    echo "moving stream $streamId to $newSink"
+    pactl set-default-sink "$newSink"
     pactl move-sink-input "$streamId" "$newSink"
 done

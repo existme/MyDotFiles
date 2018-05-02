@@ -10,6 +10,7 @@ stackMsg "${bW}$(date '+%D %T')${cZ}";
 # TOOLBOX=/opt/JetBrains/Toolbox/apps/IDEA-U/ch-0
 if [ $TOOLBOX ]; then   
    export IDEA_VERSION=$(/bin/ls -ltx $TOOLBOX|awk '{print $NF}'|head -n 1)
+   echo "IDEA_VERSION = $IDEA_VERSION"
    # IDEA_POSTIFIX should also be set in zshrc.local.sh ex:
    # IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea
    export IDEA_PATH=$TOOLBOX/$IDEA_VERSION/$IDEA_POSTIFIX

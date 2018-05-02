@@ -317,6 +317,9 @@ Commands
 ║ CTRL + j               ║ Accept line                                                  ║
 ║ CTRL + m               ║ Accept line                                                  ║
 ║                        ║                                                              ║
+║ ALT  + s               ║ Git status for the current folder                            ║
+║ ALT  + w               ║ Switch to different theme                                    ║
+║                        ║                                                              ║
 ╚════════════════════════╩══════════════════════════════════════════════════════════════╝
 
 ## 1.6. ZLE :

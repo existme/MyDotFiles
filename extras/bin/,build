@@ -11,6 +11,8 @@ xkb-switch
 compton
 dunst
 i3lock-color
+cmus
+anbox
 quit
 EOF
 )
@@ -27,6 +29,15 @@ function gitPull(){
         git submodule foreach git pull
     else
         echo "${bR}Nothing pulled${cZ}!"
+    fi
+}
+function clone(){
+    local prj=$1
+    local prjPath="$HOME/git/$1"
+    local repo=$2
+    if [[ ! -d $prjPath ]]; then
+      echo "Cloning ${bW}$repo${cZ} to ${bY}$prjPath${cZ}"
+      git clone $repo $prjPath
     fi
 }
 function okToBuild(){
@@ -182,6 +193,40 @@ case "$res" in
           autoreconf -i && ./configure && make
           sudo make install
        fi
+    ;;
+    cmus)
+       prj=cmus 
+       clone $prj https://github.com/cmus/cmus.git
+       gitPull $prj
+       
+       if okToBuild; then
+          sudo apt install libncursesw5-dev libmad0-dev 
+          sudo apt remove cmus
+
+          # to list all features use:
+          # ./configure --help
+
+          ./configure && make clean && make
+          sudo make install
+       fi
+    ;;
+    anbox)
+       prj=anbox-ps
+       set -e
+
+       clone $prj https://github.com/geeks-r-us/anbox-playstore-installer.git
+       gitPull $prj
+
+       # if okToBuild; then
+          # sudo apt install qt5-default qttools5-dev-tools libqt5webkit5 libqt5webkit5-dev libqt5svg5 libqt5svg5-dev qttools5-dev-tools libqtwebkit-qmlwebkitplugin
+          # sudo apt remove cmus
+      sudo apt install 
+          # to list all features use:
+          # ./configure --help
+          # ./configure --prefix /usr
+          # make clean && make
+          # sudo make install
+       # fi
     ;;
     quit)
         echo "${bB}Canceled$cZ"
