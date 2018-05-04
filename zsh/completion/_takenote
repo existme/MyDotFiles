@@ -1,18 +1,5 @@
 #compdef takenote 
 # vim: set filetype=zsh :tw=14
-
-local curcontext="$curcontext" line state ret=1
-local all=$(find -L "$HOME/notes/" -print 2> /dev/null)
-local dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m )
-SUFFIX=$dir
-comp=$dir
-eval "$_comp_setup"
-echo -n -e "${bR}Editing${bW}... $BUFFER$cZ "
-REPLY=$dir
-nmatches=1
-compstate[insert]=3
-compstate[match]=$dir
-_lastcomp=( $dir 0 $dir 1 )
-
-compadd $dir
-return ret
+local file=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m )
+compadd $file
+return 0
