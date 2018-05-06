@@ -1,5 +1,24 @@
 #compdef takenote 
 # vim: set filetype=zsh :tw=14
-local file=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m )
-compadd $file
-return 0
+
+# echo "state 1-> $# $BUFFER - $LASTSEARCH - $RBUFFER - $PREDISPLAY - $POSTDISPLAY" >> /tmp/out.txt
+# echo "state 2-> $WIDGETFUNC - $CONTEXT - $CURSOR - $CUTBUFFER" >> /tmp/out.txt
+
+local CMD=$(echo "$BUFFER" | egrep -o "^[[:space:]]*[^[:space:]]*")        # the first word of buffer, here it should be takenote
+local PARAM=${BUFFER:$(expr $(echo "$CMD" | wc -c) - 1)}                   # the rest of the buffer, parameters supplied
+
+# Use fzf to search ~notes folder
+local file=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m --query="$PARAM" --select-1 --exit-0 --print-query)
+
+local arr=("${(@f)$(echo $file)}")           # put the resulta into $arr separated by '\n'
+local query=$(echo $arr[1]|awk '{$1=$1};1')  # trim white space
+query=${query// /-}                          # replace space with dash
+local selected=$arr[2]
+
+if [[ -z $selected ]]; then                  # if no choice was available, use the entered filename
+   compadd "$query"
+else                                         # if user selected one of the choices
+   compadd $selected
+fi
+
+return 1

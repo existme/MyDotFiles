@@ -3,8 +3,8 @@
 # set -ex
 
 ARG1=$1
-# echo $ARG1
 NOTESDIR=~/notes
+# private folder should be ignored by git
 if [[ $ARG1 == "-p" ]]; then
    echo "Private note";
    NOTESDIR=~/notes/private
@@ -28,9 +28,6 @@ fi
 
 TITLE="${(C)NOTE}"
 
-# echo $ARG
-
-
 [ ! -d "$NOTESDIR" ] && mkdir $NOTESDIR
 
 cd $NOTESDIR
@@ -46,7 +43,7 @@ vim +6 -c "set ft=markdown" -c "f $NOTE" - << EOD
 
 ----------------------------------------- 
 
-\`\`\`bash
+\`\`\` bash
 
 \`\`\`
 
