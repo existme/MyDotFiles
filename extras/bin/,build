@@ -12,7 +12,7 @@ compton
 dunst
 i3lock-color
 cmus
-anbox
+check
 quit
 EOF
 )
@@ -79,6 +79,7 @@ case "$res" in
     ;;
     vim)
         prj=vim
+        clone $prj https://github.com/vim/vim.git
         gitPull $prj
 
         if okToBuild; then
@@ -112,6 +113,7 @@ case "$res" in
     ;;
     rofi)
         prj=rofi
+        clone $prj https://github.com/DaveDavenport/rofi.git
         gitPull $prj
         if okToBuild; then
             git submodule init
@@ -123,6 +125,10 @@ case "$res" in
             # sudo pip install easybuild
             # Install latest version of check
             # https://github.com/libcheck/check.git
+            rm -rf build
+            mkdir build && cd build
+            ../configure
+
             sudo configure
             sudo make install
         fi
@@ -169,6 +175,7 @@ case "$res" in
     ;;
     dunst)
        prj=dunst
+       clone $prj https://github.com/dunst-project/dunst.git
        # git clone https://github.com/PandorasFox/i3lock-color
        # https://wiki.archlinux.org/index.php/Desktop_notifications
        gitPull $prj
@@ -210,23 +217,19 @@ case "$res" in
           sudo make install
        fi
     ;;
-    anbox)
-       prj=anbox-ps
+    check)
+       prj=check
        set -e
 
-       clone $prj https://github.com/geeks-r-us/anbox-playstore-installer.git
+       clone $prj https://github.com/libcheck/check
        gitPull $prj
 
-       # if okToBuild; then
-          # sudo apt install qt5-default qttools5-dev-tools libqt5webkit5 libqt5webkit5-dev libqt5svg5 libqt5svg5-dev qttools5-dev-tools libqtwebkit-qmlwebkitplugin
-          # sudo apt remove cmus
-      sudo apt install 
-          # to list all features use:
-          # ./configure --help
-          # ./configure --prefix /usr
-          # make clean && make
-          # sudo make install
-       # fi
+       if okToBuild; then
+          autoreconf --install
+          ./configure
+          make
+          sudo make install
+       fi
     ;;
     quit)
         echo "${bB}Canceled$cZ"
