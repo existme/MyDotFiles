@@ -1,0 +1,62 @@
+#!/bin/zsh
+
+word='hello - world - how - are - you'
+
+echo "======================================="
+echo "Expansions \n"
+echo "\$word=$word\n"
+# Substring matching
+# see http://tim.vanwerkhoven.org/post/2012/10/28/ZSH/Bash-string-manipulation
+echo '${word%how*}' 
+echo ${word%how*} # 'hello - world - '
+echo
+echo '${word%o*}'  
+echo ${word%o*}   # == 'hello - world - how - are - y'
+echo
+echo '${word%%o*}'
+echo ${word%%o*}  # == 'hell'
+echo
+echo '${word#* - }'
+echo ${word#* - } # = 'world - how - are - you'
+echo
+echo '${word##* - }'
+echo ${word##* - }   # = 'you'
+echo
+
+file=helloworld.multiple.dots.jpg
+FILE=$file
+
+echo "======================================="
+echo "Expansion for filename and extensions\n"
+echo "\$file=$file\n"
+
+echo '${file##*\.}'       # == jpg
+echo ${file##*\.}       # == jpg
+echo
+echo '${file%\.*}'        # == helloworld.multiple.dots
+echo ${file%\.*}        # == helloworld.multiple.dots
+echo
+
+echo "======================================="
+echo "Expansion using flags\n"
+echo "\$FILE=$FILE\n"
+
+echo '${FILE:e}' 
+echo ${FILE:e}          #
+echo
+echo '${FILE:t}'
+echo ${FILE:t}
+echo
+echo '${FILE:r}'
+echo ${FILE:r}
+echo
+echo '${FILE:h}'
+echo ${FILE:h}
+echo
+echo '${FILE:h:h}'
+echo ${FILE:h:h}
+echo
+echo '${FILE:t:r}'
+echo ${FILE:t:r}
+echo
+

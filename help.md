@@ -354,7 +354,7 @@ Commands
 ║                                                                                       ║
 ╚═══════════════════════════════════════════════════════════════════════════════════════╝
 
-## 1.x. Other
+## 1.10.1 Other
 
 ╔════════════════════════╦══════════════════════════════════════════════════════════════╗
 ║ Commands               ║ Desc                                                         ║
@@ -363,6 +363,17 @@ Commands
 ║ help                   ║ Displays this help page.                                     ║
 ║ h                      ║ Grep history for a specific keyword                          ║
 ║ zdoc                   ║ Opens zsh pdf document.                                      ║
+║ mann <command>         ║ Opens https://manned.org manual page for the command         ║
+║ mank <command>         ║ Opens https://www.mankier.com manual page for the command    ║
+╚════════════════════════╩══════════════════════════════════════════════════════════════╝
+
+## 1.10.2 Useful manual pages
+
+╔════════════════════════╦══════════════════════════════════════════════════════════════╗
+║ Commands               ║ Desc                                                         ║
+╠════════════════════════╬══════════════════════════════════════════════════════════════╣
+║                        ║                                                              ║
+║ mann zshexpn           ║ Manual page for zsh expansions                               ║
 ╚════════════════════════╩══════════════════════════════════════════════════════════════╝
 
 
