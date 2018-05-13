@@ -45,6 +45,9 @@ alias dpk="grc dpkg-query --listfiles"
 alias pp="s grc ps -aux|grep -v -E 'grep|vim|PATH='|grep "
 alias gg="_ex '/usr/bin/geany' '&>/dev/null &' "
 alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
+alias pbselect="xclip -selection primary -o"
 
 # mh is a shortcut for showing help.md in this repo
 # every 34 line the text should break with --- inorder to 

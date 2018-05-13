@@ -13,6 +13,7 @@ dunst
 i3lock-color
 cmus
 check
+sshuttle
 quit
 EOF
 )
@@ -182,7 +183,7 @@ case "$res" in
 
        if okToBuild; then
           sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk2.0-dev libxdg-basedir-dev
-          sudo apt install libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev 
+          sudo apt install libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev 
     		 make -j5
     		 sudo make install
        fi
@@ -229,6 +230,18 @@ case "$res" in
           ./configure
           make
           sudo make install
+       fi
+    ;;
+    sshuttle)
+       prj=sshuttle
+       set -e
+
+       clone $prj https://github.com/sshuttle/sshuttle
+       gitPull $prj
+
+       if okToBuild; then
+          sudo apt remove sshuttle
+          sudo ./setup.py install
        fi
     ;;
     quit)

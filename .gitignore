@@ -21,3 +21,4 @@ configs/ranger/bookmarks
 configs/ranger/history
 /snippets
 vim/.VimballRecord
+extras/bin/idea

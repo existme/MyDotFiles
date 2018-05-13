@@ -391,4 +391,4 @@ autocmd FileType symbol colorscheme babymate256 | call airline#load_theme()
 " Enable clipboard copy on remote sessions
 " Remember to turn on X-Forwarding in /etc/ssh/ssh_config
 " ForwardX11 yes
-vmap "+y :!xclip -f -sel cl<cr>
+vmap "+y :!xclip -f -selection c<cr>

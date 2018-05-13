@@ -13,13 +13,32 @@ map <S-Right>		<ESC>:bn<CR>
 map <S-Left>		<ESC>:bp<CR>
 
 " ===========  Copy/Paste Mapping ================
-noremap <leader>y "*y
-noremap <leader>yy "*Y
+
+function Xcopy()
+   " The writefile function needs a list so we need to split the visual
+   " selection into a list
+   let as = split(@*, "\n")
+   " write to file to avoid problems sending several lines from vim to shell
+   call writefile(as, "/tmp/vimclip")
+   echo system("xclip -selection clipboard -in /tmp/vimclip")
+   " Silently notify about what has been copied
+   silent echo system("notify-send 'VIM COPIED TO CLIPBOARD' \"$(cat /tmp/vimclip)\" &>/dev/null")
+   echo system("rm /tmp/vimclip")
+   echom "Copied ". len(as). " lines to clipboard"
+endfunction
+
+noremap <leader>y "+y
+noremap <leader>yy "+Y
 noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>"
 
 " disabling paste in favor of visual block mode
-"map <C-V> "+p
-map <C-C> "+y
+" map <C-V> :-1r !xclip -o -sel clip<CR>
+" imap <C-V> <ESC>:-1r !xclip -o -sel clip<CR>
+" vmap <C-> c<ESC>:-1r !xclip -o -sel clip<CR>
+" map <C-C> "+y
+
+" <c-u> is called to clean range in visual mode
+map <C-C> :<c-u>call Xcopy()<CR>
 " "map up/down arrow keys to unimpaired commands
 " nmap <Up> [e
 " nmap <Down> ]e
@@ -191,3 +210,6 @@ noremap	<F5>				:set invlist<CR>					"Toggle highlight  F5
 nmap     <F6>           <esc>:set invnumber\|set relativenumber!<cr>
 nmap     <F8>           <esc>:call ToggleWrap(1)<c-r> "Toggle wrap
 map      <F9>           <ESC>:call ExportMap()<cr><cr> "Show all keybindings
+
+" When pressing <leader>cd switch to the directory of the open buffer
+map <leader>cd :cd %:p:h<CR>
