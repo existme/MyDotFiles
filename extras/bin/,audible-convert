@@ -1,0 +1,36 @@
+#!/bin/zsh
+# This script will convert an aa file to mp3 and archives it.
+FILE=$1
+FILENAME=${FILE:t}
+FILENAME=${FILENAME%%_*}
+EXT=${FILE:e}
+if [[ "$EXT" != "aa" ]]; then
+   echo "Only *.aa files are accepted"
+   exit
+fi
+
+echo FILENAME=\"$FILENAME\"
+echo EXT=\"$EXT\"
+
+echo "Converting to mp3..."
+res=$(ffmpeg -i $FILE -codec copy /tmp/$FILENAME.mp3)
+if ! [[ -e /tmp/$FILENAME.mp3 ]]; then
+   exit
+fi
+echo "Moving /tmp/$FILENAME.mp3 to DropBox folder..."
+mv /tmp/$FILENAME.mp3 ~/Dropbox/purchased-music/audible/
+echo "Done!"
+echo "Converted file is: ${cY}~/Dropbox/purchased-music/audible/$FILENAME.mp3${cZ}"
+echo "playing the converted file"
+nvlc ~/Dropbox/purchased-music/audible/$FILENAME.mp3
+
+echo "Do you want to delete the original file: $bR $FILE$cZ?"
+read -k 1 -r "pr?Ok to delete (${cY}y${cZ}/${bW}N${cZ})?"
+echo
+if [[ $pr =~ ^[Yy]$ ]]; then
+   rm $FILE
+   echo "$FILE removed!"
+else
+  echo "${bR}Nothing deleted${cZ}!"
+fi
+echo "Script is finished!"

@@ -20,7 +20,7 @@ alias zshconfig="vim ~/.zshrc"
 alias zshlocal="vim ~/zshrc.local.sh"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
-alias zdoc="xdg-open /usr/share/doc/zsh/doc/zsh.pdf >> /dev/null 2>&1 &"
+alias zdoc="xdg-open /usr/share/doc/zsh/doc/zsh.pdf >> /dev/null 2>&1 &"                  # requires `sudo apt install zsh-doc`
 #alias cat="grc cat"
 alias ds="du -hd 1| sort -h"
 alias k="k -h"
@@ -45,6 +45,9 @@ alias dpk="grc dpkg-query --listfiles"
 alias pp="s grc ps -aux|grep -v -E 'grep|vim|PATH='|grep "
 alias gg="_ex '/usr/bin/geany' '&>/dev/null &' "
 alias getip="curl -s checkip.dyndns.org | sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
+alias pbcopy="xclip -selection clipboard"
+alias pbpaste="xclip -selection clipboard -o"
+alias pbselect="xclip -selection primary -o"
 
 # mh is a shortcut for showing help.md in this repo
 # every 34 line the text should break with --- inorder to 
@@ -106,3 +109,42 @@ else
    alias lart="grc ls -lart"
 fi
 
+# power completion / abbreviation expansion / buffer expansion
+# see http://zshwiki.org/home/examples/zleiab for details
+typeset -Ag abbreviations
+abbreviations=(
+  "Im"    "| more"
+  "Ia"    "| awk"
+  "Ig"    "| grep"
+  "Ieg"   "| egrep"
+  "Iag"   "| agrep"
+  "Igr"   "| groff -s -p -t -e -Tlatin1 -mandoc"
+  "Ip"    "| $PAGER"
+  "Ih"    "| head"
+  "Ik"    "| keep"
+  "It"    "| tail"
+  "Is"    "| sort"
+  "Iv"    "| ${VISUAL:-${EDITOR}}"
+  "Iw"    "| wc"
+  "Ix"    "| xargs"
+  "I1"    "2>&1"
+  "I2"    "2>/dev/null"
+  "I3"    "&>/dev/null"
+)
+
+magic-abbrev-expand() {
+    local MATCH
+    LBUFFER=${LBUFFER%%(#m)[_a-zA-Z0-9]#}
+    LBUFFER+=${abbreviations[$MATCH]:-$MATCH}
+    zle self-insert
+}
+
+no-magic-abbrev-expand() {
+  LBUFFER+=' '
+}
+
+zle -N magic-abbrev-expand
+zle -N no-magic-abbrev-expand
+bindkey " " magic-abbrev-expand
+bindkey "^x " no-magic-abbrev-expand
+bindkey -M isearch " " self-insert

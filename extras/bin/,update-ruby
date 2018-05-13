@@ -1,0 +1,6 @@
+#!/bin/zsh
+echo "gem: --no-rdoc --no-ri --no-document" > ~/.gemrc 
+sudo gem install rubygems-update --no-document
+sudo update_rubygems --no-document
+sudo gem update --system
+sudo gem update
