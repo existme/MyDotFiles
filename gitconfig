@@ -1,5 +1,5 @@
 # set your user tokens as environment variables, such as ~/.secrets
-# See the README for examples.
+# See https://git-scm.com/docs/git-config
 [color]
 	ui = true
 	interactive = always
@@ -15,11 +15,14 @@
 	new = green bold
 	whitespace = red reverse
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
-	header = normal blink
+   # normal, black, red, green, yellow, blue, magenta, cyan and white 
+   # italic, strike, bold, dim, ul, blink and reverse
+   # negate: no-bold, no-italic, ...
+	header = white normal dim italic no-bold
+	added = bold yellow
 	updated = green reverse
+	changed = blue bold
+	untracked = bold cyan 
 	nobranch = red white bold
 [alias]
 
@@ -245,3 +248,5 @@
 	zeroPaddedFilemode = warn
 [url "https://github.com/"]
 	insteadOf = git://github.com/
+[status]
+	submoduleSummary = 1
