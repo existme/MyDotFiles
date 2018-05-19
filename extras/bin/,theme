@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+declare themes=$(/bin/ls /usr/share/themes)
+
+if [ -z "$1" ]; then
+   declare THEME=$( \
+       echo $themes|tr '\n' '|'| \
+       rofi -dmenu -sep '|' -p "Choose theme set:" -i -disable-history -levenshtein-sort -matching normal -e\
+       )
+else
+   THEME=$1
+fi
+
+gsettings set org.gnome.desktop.interface gtk-theme "$THEME"
+gsettings set org.mate.interface gtk-theme "$THEME"
+
+
+gsettings list-recursively | grep gtk-theme
+lxappearance &>/dev/null  &
+
+

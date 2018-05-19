@@ -191,6 +191,18 @@ Commands
 ║ <ctrl>r                      ║ Reload (notifies if file has been changed)                          ║
 ║ <ctrl-shift>r                ║ Force reload :e!<CR>                                                ║
 ║                              ║                                                                     ║
+╠════╣ installing plugins ╠════╬═════════════════════════════════════════════════════════════════════╣
+║                              ║                                                                     ║
+║ vim ~/.vimrc                 ║ edit vimrc and in the section which begins with: (circa 338)        ║
+║                              ║    call plug#begin('~/.vim/plugged')                                ║
+║                              ║    -->    Plug 'https://github.com/PotatoesMaster/i3-vim-syntax.git'║
+║                              ║ or -->    Plug 'PotatoesMaster/i3-vim-syntax.git'  					  ║
+║                              ║                                                                     ║
+║                              ║ then inside vim run:                                                ║
+║                              ║                                                                     ║
+║                              ║    :PlugInstall                              or                     ║
+║                              ║    :PlugUpdate                                                      ║
+║                              ║                                                                     ║
 ╚══════════════════════════════╩═════════════════════════════════════════════════════════════════════╝
 
 ## 1.2. Vifm

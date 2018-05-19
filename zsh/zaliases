@@ -71,6 +71,7 @@ alias ap="sudo apt-get"
 alias h="history|grep"
 alias -g grep='grep  --color=always --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias -g ,1='2>&1 '
+alias -g ERR='2>&1 '
 alias -g ,2='2>/dev/null '
 alias -g ,3='&>/dev/null '
 

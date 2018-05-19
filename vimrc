@@ -337,6 +337,7 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 " #vp
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-sensible'
+Plug 'https://github.com/PotatoesMaster/i3-vim-syntax.git'
 " Plug 'vim-scripts/ZoomWin'
 " Plug 'szw/vim-maximizer'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command

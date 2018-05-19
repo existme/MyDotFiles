@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+declare icons=$(/bin/ls ~/.icons)
+echo $icons
+if [ -z "$1" ]; then
+   declare ICON=$( \
+       echo $icons|tr '\n' '|'| \
+       rofi -dmenu -sep '|' -p "Choose icon set:" -i -disable-history -levenshtein-sort -matching normal -e\
+       )
+else
+   ICON=$1
+fi
+
+gsettings set org.gnome.desktop.interface icon-theme "$ICON"
+gsettings set com.canonical.unity-greeter icon-theme-name "$ICON"
+gsettings set org.mate.file-views icon-theme "$ICON"
+gsettings set org.mate.interface icon-theme "$ICON"
+
+
+gsettings list-recursively | grep icon-theme
+
+
