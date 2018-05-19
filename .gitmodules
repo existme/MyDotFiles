@@ -1,27 +1,3 @@
-[submodule "vim/bundle/vim-airline"]
-	path = vim/bundle/vim-airline
-	url = https://github.com/bling/vim-airline.git
-	ignore = dirty
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized
-	ignore = dirty
-[submodule "vim/bundle/tcomment_vim"]
-	path = vim/bundle/tcomment_vim
-	url = https://github.com/tomtom/tcomment_vim.git
-	ignore = dirty
-[submodule "vim/bundle/vim-unimpaired"]
-	path = vim/bundle/vim-unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
-	ignore = dirty
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-	ignore = dirty
-[submodule "vim/bundle/colorschemes"]
-	path = vim/bundle/colorschemes
-	url = https://github.com/flazz/vim-colorschemes.git
-	ignore = dirty
 [submodule "bundle/colorschemes"]
 	path = bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
@@ -29,10 +5,6 @@
 [submodule "extras/fonts"]
 	path = extras/fonts
 	url = https://github.com/powerline/fonts.git
-	ignore = dirty
-[submodule "vim/bundle/bbye"]
-	path = vim/bundle/bbye
-	url = https://github.com/moll/vim-bbye.git
 	ignore = dirty
 [submodule "zsh/bundle/lesaint-mvn"]
 	path = zsh/bundle/lesaint-mvn
@@ -58,9 +30,6 @@
 	path = tmux/plugins/tmux-sensible
 	url = https://github.com/tmux-plugins/tmux-sensible.git
 	ignore = dirty
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
 [submodule "bundle/z"]
 	path = bundle/z
 	url = https://github.com/rupa/z.git
@@ -73,15 +42,9 @@
 [submodule "bundle/zsh-256color"]
 	path = bundle/zsh-256color
 	url = https://github.com/chrissicool/zsh-256color.git
-[submodule "bundle/zaw"]
-	path = bundle/zaw
-	url = https://github.com/zsh-users/zaw.git
 [submodule "zsh/bundle/powerline"]
 	path = zsh/bundle/powerline
 	url = https://github.com/banga/powerline-shell.git
-[submodule "vim/bundle/vim-airline-themes"]
-	path = vim/bundle/vim-airline-themes
-	url = https://github.com/vim-airline/vim-airline-themes.git
 [submodule "zsh/completion/plugins/zsh-autosuggestions"]
 	path = zsh/completion/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
@@ -91,18 +54,6 @@
 [submodule "extras/bin/git-scripts"]
 	path = extras/bin/git-scripts
 	url = https://github.com/jwiegley/git-scripts.git
-[submodule "vim/bundle/vim-sneak"]
-	path = vim/bundle/vim-sneak
-	url = https://github.com/justinmk/vim-sneak.git
-[submodule "vim/bundle/neocomplete"]
-	path = vim/bundle/neocomplete
-	url = https://github.com/Shougo/neocomplete.vim.git
-[submodule "vim/neosnippets"]
-	path = vim/neosnippets
-	url = https://github.com/Shougo/neosnippet-snippets
-[submodule "vim/bundle/neosnippet"]
-	path = vim/bundle/neosnippet
-	url = https://github.com/Shougo/neosnippet.vim.git
 [submodule "zsh/bundle/powerlevel9k"]
 	path = zsh/bundle/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git

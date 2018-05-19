@@ -5,6 +5,38 @@ set nocompatible
 scriptencoding utf8
 let dotfilespath=fnamemodify(resolve($MYVIMRC),':h')
 
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
+" ║                        vim-plug                             ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+" #vp
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'https://github.com/PotatoesMaster/i3-vim-syntax.git'
+Plug 'scrooloose/nerdtree'
+Plug 'flazz/vim-colorschemes'
+Plug 'moll/vim-bbye'
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'tomtom/tcomment_vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+" Plug 'vim-scripts/ZoomWin'
+" Plug 'szw/vim-maximizer'
+" NERD tree will be loaded on the first invocation of NERDTreeToggle command
+" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+call plug#end()
+
+
+
+
 " Fixing ctrl-q or s not reaching to vim which is: enable XON/XOFF flow control
 silent !stty -ixon > /dev/null 2>/dev/null
 " ================ General Config ====================
@@ -329,20 +361,6 @@ smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expan
 
 
 
-" ╔═════════════════════════════════════════════════════════════╗
-" ║                                                             ║
-" ║                        vim-plug                             ║
-" ║                                                             ║
-" ╚═════════════════════════════════════════════════════════════╝
-" #vp
-call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-sensible'
-Plug 'https://github.com/PotatoesMaster/i3-vim-syntax.git'
-" Plug 'vim-scripts/ZoomWin'
-" Plug 'szw/vim-maximizer'
-" NERD tree will be loaded on the first invocation of NERDTreeToggle command
-" Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-call plug#end()
 
 " ╔═════════════════════════════════════════════════════════════╗
 " ║                                                             ║

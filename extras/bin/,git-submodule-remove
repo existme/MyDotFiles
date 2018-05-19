@@ -1,0 +1,7 @@
+#!/bin/zsh
+
+module=$1
+
+git submodule deinit -f $module
+rm -rf .git/modules/$module
+git rm -f $module
