@@ -198,6 +198,28 @@ then you can use `<your-preferred-player> "$(yturl 'http://www.youtube.com/watch
 
    ![](https://i.github-camo.com/f3321d2404e853746ba2bc978bc13537feb14634/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f646c646c2f737068696e782d707265766965772f6d61737465722f646f63732f64656d6f2e676966)
 
+# Keyboard - keycode
+
+## finding symbols definition
+
+``` sh
+/usr/include/X11/XF86keysym.h
+/usr/include/xkbcommon/xkbcommon-keysyms.h                  <== good for i3
+```
+
+## finding keycode by pressing them
+1. screenkey: shows on screen what keys have been pressed
+1. xev:
+   - xev -input keyboard
+   - xev | awk -F'[ )]+' '/^KeyPress/ { a[NR+2] } NR in a { printf "%-3s %s\n", $5, $8 }'
+1. showkey:
+   - showkey -a
+1. xinput:
+   - xinput list  # then using the ids
+     xinput test 14
+1. sudo evtest # lists all your devices
+1. xmodmap -pke # list all keycodes
+
 
 [audio-youtube]: https://unix.stackexchange.com/questions/229787/audio-only-youtube-player
 [awsome-linux]: https://github.com/LewisVo/Awesome-Linux-Software
