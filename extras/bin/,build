@@ -38,7 +38,7 @@ function clone(){
     local repo=$2
     if [[ ! -d $prjPath ]]; then
       echo "Cloning ${bW}$repo${cZ} to ${bY}$prjPath${cZ}"
-      git clone $repo $prjPath
+      git clone $repo $prjPath --recursive 
     fi
 }
 function okToBuild(){
@@ -136,6 +136,7 @@ case "$res" in
     ;;
     albert)
        prj=albert
+       clone $prj https://github.com/albertlauncher/albert.git
        gitPull $prj
        if okToBuild; then
          sudo apt-get install libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev
