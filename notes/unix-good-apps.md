@@ -198,6 +198,10 @@ then you can use `<your-preferred-player> "$(yturl 'http://www.youtube.com/watch
 
    ![](https://i.github-camo.com/f3321d2404e853746ba2bc978bc13537feb14634/68747470733a2f2f7261772e67697468756275736572636f6e74656e742e636f6d2f646c646c2f737068696e782d707265766965772f6d61737465722f646f63732f64656d6f2e676966)
 
+# Download manager
+
+1. uget
+
 # Keyboard - keycode
 
 ## finding symbols definition

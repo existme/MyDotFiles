@@ -87,9 +87,6 @@ source $SCRIPTPATH/zsh/completion/plugins/zsh-autosuggestions/zsh-autosuggestion
 echoP "${plugin}zsh-256color.plugin.zsh"
 source $SCRIPTPATH/bundle/zsh-256color/zsh-256color.plugin.zsh
 
-echoP "${plugin}zaw.zsh"
-source $SCRIPTPATH/bundle/zaw/zaw.zsh
-
 source $SCRIPTPATH/zsh/zaliases
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

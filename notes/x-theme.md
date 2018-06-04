@@ -33,6 +33,13 @@ To change theme use:
 gsettings set org.gnome.desktop.interface gtk-theme "custom-desktop-theme"
 ```
 
+## Control Center
+
+To trick gnome and bring control center up in i3:
+``` bash
+env XDG_CURRENT_DESKTOP=GNOME gnome-control-center
+```
+
 ### Folders:
 
 System wide: `/usr/share/icons`
