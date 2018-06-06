@@ -292,20 +292,42 @@ elocate() {
 unfunc mann
 mann() {
    local man="https://www.manned.org/$1"
-   echo "${bY}Opening ${bW}$man${cZ} for {$bB}'$1'${cZ} command."
+   echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
    xdg-open $man > /dev/null 2>&1
 }
 
 unfunc mank
 mank() {
    local man="https://www.mankier.com/1/$1"
-   echo "${bY}Opening ${bW}$man${cZ} for {$bB}'$1'${cZ} command."
+   echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
+   xdg-open $man > /dev/null 2>&1
+}
+
+unfunc manm
+manm() {
+   page=$2
+   if [[ -z "$page" ]]; then
+      page=1
+   fi
+   local man="https://manpages.org/$1/$page"
+   echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
+   xdg-open $man > /dev/null 2>&1
+}
+
+unfunc manc
+manc() {
+   page=$2
+   if [[ -z "$page" ]]; then
+      page=1
+   fi
+   local man="https://linux.cn/man$page/$1.$page.html"
+   echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
    xdg-open $man > /dev/null 2>&1
 }
 
 unfunc mann
 mann() {
    local man="https://www.manned.org/$1"
-   echo "${bY}Opening ${bW}$man${cZ} for {$bB}'$1'${cZ} command."
+   echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
    xdg-open $man > /dev/null 2>&1
 }

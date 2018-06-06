@@ -14,6 +14,7 @@ i3lock-color
 cmus
 check
 sshuttle
+tig
 quit
 EOF
 )
@@ -243,6 +244,20 @@ case "$res" in
        if okToBuild; then
           sudo apt remove sshuttle
           sudo ./setup.py install
+       fi
+    ;;
+    tig)
+       prj=tig
+       set -e
+
+       clone $prj https://github.com/jonas/tig.git
+       gitPull $prj
+
+       if okToBuild; then
+          sudo apt remove tig
+          make prefix=/usr/local
+          sudo make install prefix=/usr/local
+          sudo make install-doc
        fi
     ;;
     quit)

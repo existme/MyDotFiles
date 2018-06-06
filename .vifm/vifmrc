@@ -1,4 +1,4 @@
-" vim: filetype=vifm :
+" vim: filetype=vim :
 " Sample configuration file for vifm (last updated: 24 Oct, 2014)
 " You can edit this file by hand.
 " The " character at the beginning of a line comments out the line.
@@ -437,6 +437,11 @@ nmap yp :clone <cr>
 
 " Sync panes together
 nnoremap <left> :sync<cr>
+" map <esc>[1;5D <c-left>
+" map <esc>[1;5C <c-right>
+
+nnoremap <c-t> :sync %c<cr><tab>
+nnoremap zo :sync %c<cr><tab>
 
 " Map insert to select file and then go to next file
 nnoremap <insert> t<down>

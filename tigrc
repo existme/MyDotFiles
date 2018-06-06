@@ -1,0 +1,74 @@
+# vim: set filetype=bash
+#
+# Synopsis:
+# set <variable> = <value>
+# bind <keymap> <key> <action>
+# color <area> <fgcolor> <bgcolor> [attributes]
+# source <path>
+
+bind generic g ?sh -c "git %(prompt git )"
+# if you are using older versions of tig change >git to !git
+# bind generic <F4> >bash -c "echo git difftool -y %(commit) %(commit)~1 %(file); git difftool -y %(commit) %(commit)~1 %(file)"
+bind generic <F4> >git difftool -y %(commit) %(file)
+bind main <F4> >git difftool -d %(commit)^!
+bind status s >git add .
+bind status u >git unstage
+bind status c >git commit -av
+bind status a >git ammend
+bind status P !git commit-preview
+bind main C >bash -c "echo %(commit)| tr -d '\n'|xclip -selection clipboard"
+
+bind generic <Up> move-up
+bind generic <Down> move-down
+
+
+bind status A @git commit --amend --reuse-message=HEAD
+
+#######################################
+# Visualization
+#######################################
+
+set id-width = 14
+set blame-options = -C -C -C
+set horizontal-scroll = 33%
+set show-notes = yes
+set show-changes = yes
+set vertical-split = yes
+set split-view-height = 70%
+set split-view-width = 70%
+set tab-size = 2
+set ignore-space = all
+set commit-order = topo
+set ignore-case = no
+set wrap-lines = no
+set focus-child = yes
+set main-options = --exclude=refs/stash --all
+set status-show-untracked-files = yes
+
+# set main-view = id date:relative-compact author commit-title:graph=v2,refs=yes
+set blame-view	= date:default author:full file-name:auto id:yes,color line-number:no,interval=5 text
+set grep-view	= file-name:no line-number:yes,interval=1 text
+set main-view	= line-number:no,interval=5 id:yes date:default author:full commit-title:yes,graph,refs,overflow=no
+set refs-view	= date:default author:full ref commit-title
+set stash-view	= line-number:no,interval=5 id:no date:default author:full commit-title
+set status-view	= line-number:no,interval=5 status:short file-name
+set tree-view	= line-number:no,interval=5 mode author:full file-size date:default id:no file-name
+
+set diff-options = -m --first-parent
+#######################################
+# Color Settings
+#######################################
+
+color default white black
+color cursor default magenta
+color date cyan default
+color delimiter cyan default
+color line-number yellow default
+color diff-header yellow default
+color diff-index blue default
+color diff-chunk magenta default
+color "Reported-by:" green default
+color graph-commit cyan default
+
+
+

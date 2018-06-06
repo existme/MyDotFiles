@@ -123,6 +123,14 @@ then you can use `<your-preferred-player> "$(yturl 'http://www.youtube.com/watch
 **mpv**:
 `mpv --no-video "$(yturl <url>)"`
 
+# Utilities
+
+1. peco : quickly filter the output of commands. Consider it to be the interactive version of grep
+1. ncdu : terminal storage analyzer 
+1. hub  : [hub](https://hub.github.com/) Avoid going to GitHub for pull requests and forks! Perform most of GitHub’s operations from the comfort of the command line.
+1. tldr : Simplified man pages. Usage: `tldr wget`
+
+
 # Font previewers
 
 1. [Fontmatix]: see `install-fontmatrix.md` for installation
