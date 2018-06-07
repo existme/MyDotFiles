@@ -192,7 +192,8 @@ case "$res" in
     ;;
     i3lock-color)
        prj=i3lock-color
-       # git clone https://github.com/meskarune/i3lock-color.git
+       # clone $prj https://github.com/PandorasFox/i3lock-color.git
+       clone $prj https://github.com/meskarune/i3lock-color.git
        gitPull $prj
 
        if okToBuild; then
@@ -200,6 +201,7 @@ case "$res" in
           sudo apt install libxcb-dpms0-dev libpam0g-dev libxcb-dpms0 libpam-dev libcairo-dev libx11-dev libx11-xcb-dev libxcb-composite0-dev libjpeg-dev
           sudo apt remove i3lock
 
+          # export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3.0.0
           autoreconf -i && ./configure && make
           sudo make install
        fi
