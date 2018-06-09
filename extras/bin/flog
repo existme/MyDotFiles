@@ -1,0 +1,54 @@
+#!/bin/zsh
+
+LOGFILE="/var/log/myzsh.log"
+if ! [[ -e $LOGFILE ]]; then
+   sudo touch $LOGFILE
+   sudo chown $USER $LOGFILE
+fi
+
+case $1 in
+   -l)
+      lnav $LOGFILE
+      exit
+      ;;
+   -ll)
+      tail -f -n 100 $LOGFILE
+      exit
+      ;;
+   -less)
+      less $LOGFILE
+      exit
+      ;;
+   -c)
+      echo "" > $LOGFILE
+      exit
+      ;;
+   *)
+esac
+
+date=$(date '+%Y-%m-%d %H:%M')
+INDENT="                "
+case $1 in
+   -st)
+      shift
+      LINE+="$INDENT ║\n"
+      LINE+="$date ╬════════════════╣ ST: $@ ╠═══════════════════\n"
+      LINE+="$INDENT ║"
+      ;;
+   -se)
+      shift
+      LINE+="$INDENT ║\n"
+      LINE+="$date ╣             ╠══╣ EN: $@ ╠═╣\n"
+      LINE+="$INDENT ║"
+      ;;
+   -hr)
+      LINE+="$date ╬════════════════════════════════════════════════"
+      ;;
+   -e)
+      LINE+="$INDENT ║"
+      ;;
+   *)
+      LINE+="$date ╣ $@"
+      ;;
+esac
+echo  $LINE >> $LOGFILE

@@ -16,6 +16,7 @@ bind status u >git unstage
 bind status c >git commit -av
 bind status a >git ammend
 bind status P !git commit-preview
+bind status O >?git checkout %(file)
 bind main C >bash -c "echo %(commit)| tr -d '\n'|xclip -selection clipboard"
 
 bind generic <Up> move-up
