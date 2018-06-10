@@ -38,7 +38,7 @@ case $1 in
    -se)
       shift
       LINE+="$INDENT ║\n"
-      LINE+="$date ╣             ╠══╣ EN: $@ ╠═╣\n"
+      LINE+="$date ╟────────────────┤ EN: $@ \n"
       LINE+="$INDENT ║"
       ;;
    -hr)
