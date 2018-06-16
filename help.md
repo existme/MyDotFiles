@@ -119,6 +119,7 @@ Commands
 ║ F4                           ║ Toggle highlight                                                    ║
 ║ F5                           ║ Toggle list invisible characters like tabs                          ║
 ║ F6                           ║ Toggle showing the line numbers (set norelativenumber for absolute) ║
+║ F7                           ║ Toggle showing undo tree                                            ║
 ║ F8                           ║ Toggle wrap and its indicator                                       ║
 ║                              ║                                                                     ║
 ╠══╣     vim-sneak        ╠════╬═════════════════════════════════════════════════════════════════════╣

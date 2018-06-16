@@ -4,7 +4,6 @@ set tm=500
 set nocompatible
 scriptencoding utf8
 let dotfilespath=fnamemodify(resolve($MYVIMRC),':h')
-
 " ╔═════════════════════════════════════════════════════════════╗
 " ║                                                             ║
 " ║                        vim-plug                             ║
@@ -28,6 +27,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
+Plug 'https://github.com/mbbill/undotree.git'
 " Plug 'vim-scripts/ZoomWin'
 " Plug 'szw/vim-maximizer'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
@@ -328,6 +328,20 @@ autocmd FileType h    wincmd L
 
 " ╔═════════════════════════════════════════════════════════════╗
 " ║                                                             ║
+" ║                undotree configuration                       ║
+" ║                                                             ║
+" ╚═════════════════════════════════════════════════════════════╝
+
+let g:undotree_WindowLayout = 2
+let g:undotree_SplitWidth = 30
+let g:undotree_DiffpanelHeight = 10
+let g:undotree_SetFocusWhenToggle = 1
+let g:undotree_TreeNodeShape = ''
+let g:undotree_DiffCommand = "diff -u"
+
+
+" ╔═════════════════════════════════════════════════════════════╗
+" ║                                                             ║
 " ║                neocomplete and neosnippet                   ║
 " ║                                                             ║
 " ╚═════════════════════════════════════════════════════════════╝
@@ -377,6 +391,10 @@ vmap <C-_>     <Plug>TComment_gc
 if has('conceal')
   set conceallevel=2 concealcursor=niv
 endif
+
+" disable conceallevel for json filetypes
+autocmd FileType json set conceallevel=0
+
 let g:neosnippet#snippets_directory='~/.vim/snippets'
 let g:neosnippet#disable_runtime_snippets= { '_' : 1, }
 " ============ Final Settings =================
@@ -384,6 +402,8 @@ set nowrap
 set novb
 set noeb
 set nonumber
+" change color formatting of line numbers
+highlight LineNr ctermfg=DarkGrey ctermbg=NONE guifg=Grey70 guibg=Grey22 cterm=bold
 "au BufNewFile,BufRead *.yaml,*.yml so dotfilespath/vim/bundle/syntax/YAML.vim
 
 " Quicky preivew and switch themes
@@ -411,3 +431,4 @@ autocmd FileType symbol colorscheme babymate256 | call airline#load_theme()
 " Remember to turn on X-Forwarding in /etc/ssh/ssh_config
 " ForwardX11 yes
 vmap "+y :!xclip -f -selection c<cr>
+

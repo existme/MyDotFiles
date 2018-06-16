@@ -207,7 +207,8 @@ noremap	<F4>				:set hlsearch! hlsearch?<CR>	"Toggle highlight  F4
 imap     <c-F4>         <esc> :w<cr>:!%:p<cr>         "Save and run current file
 map      <c-F5>         :w<cr>:!%:p<cr>               "Save and run current file
 noremap	<F5>				:set invlist<CR>					"Toggle highlight  F5
-nmap     <F6>           <esc>:set invnumber\|set relativenumber!<cr>
+nmap     <F6>           <esc>:set invnumber<cr>
+nmap     <F7>           <esc>:UndotreeToggle<cr>
 nmap     <F8>           <esc>:call ToggleWrap(1)<c-r> "Toggle wrap
 map      <F9>           <ESC>:call ExportMap()<cr><cr> "Show all keybindings
 
