@@ -1,0 +1,9 @@
+#/bin/zsh
+
+dir=$(realpath $1)
+echo "${bW}Opening project  ${bY}${sU}${dir}${cZ} in IDEA ${bB}${cZ}"
+if [ -d $dir ]; then
+   ,o3 idea $dir/ > /dev/null
+else
+   echo "${bR}File/Folder doesn't exists${cZ}"
+fi

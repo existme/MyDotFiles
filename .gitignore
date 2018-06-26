@@ -23,3 +23,4 @@ configs/ranger/history
 vim/.VimballRecord
 vim/plugged/
 extras/bin/idea
+stale_outputs_checked
