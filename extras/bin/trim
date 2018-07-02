@@ -1,0 +1,16 @@
+#!/bin/bash
+# usage:
+#     cat <file> | trim
+#     trim -f <file>
+if [ "$1" = "-f" ]; then
+   file="$2"
+   echo "${bY}Trimming${cZ} $file ..." 
+   cat $file
+   echo "Done"
+elif [ -z "$1" ]; then
+   awk '{$1=$1};1'
+else
+   echo "${bY}Usage:${cZ}"
+   echo "    cat <file> | trim"
+   echo "    trim -f <file>"
+fi
