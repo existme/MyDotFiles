@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 DOTPATH=~/git/MyDotFiles
 
 # Create local zhrc config
@@ -43,8 +43,23 @@ ln -s $DOTPATH/configs/grc ~/.grc
 touch ~/.stCommitMsg
 cp $DOTPATH/gitconfig.user ~/.gitconfig.user
 
+# Only add NO_ZSH_THEME to zshrc.local.sh if it hasn't been added before
+if [ "$(grep "NO_ZSH_THEME" ~/zshrc.local.sh|wc -c)" == "0" ]; then
+   echo "${bG}adding${cZ} NO_ZSH_THEME to ~/zshrc.local.sh"
 cat >> ~/zshrc.local.sh << EOF
-NO_ZSH_THEME
+export NO_ZSH_THEME=true
 EOF
+fi
 
+# Add proxy if proxy env is present
+if [ -n $http_proxy ]; then 
+   # only add it once
+   if [ "$(grep "http_proxy" ~/zshrc.local.sh|wc -c)" == "0" ]; then
+      echo "${bG}adding${cZ} http_proxy to ~/zshrc.local.sh"
+cat >> ~/zshrc.local.sh << EOF
+export http_proxy="$http_proxy"
+export https_proxy="$https_proxy"
+EOF
+   fi 
+fi
 

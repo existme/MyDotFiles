@@ -22,7 +22,7 @@ echo "Copying ~/.fonts to$cG $DEST:$cZ"
 grc rsync  -q --info=progress2 --info=progress2 --exclude='.git/' -avz -avhe ssh ~/.fonts $DEST:~/
 echo "$cZ"
 
-ssh $DEST 'bash -s' << 'ENDSSH'
+ssh $DEST "http_proxy=$http_proxy https_proxy=$https_proxy bash -s" << 'ENDSSH'
 	sudo apt install -y zsh grc git tig  lnav coreutils trash-cli highlight xclip 
   	sudo chsh `whoami` -s `which zsh`
 	sudo rm -rf ~/.vim
