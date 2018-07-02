@@ -121,6 +121,7 @@ Commands
 ║ F6                           ║ Toggle showing the line numbers (set norelativenumber for absolute) ║
 ║ F7                           ║ Toggle showing undo tree                                            ║
 ║ F8                           ║ Toggle wrap and its indicator                                       ║
+║ ctrl + l                     ║ Preview markdown page using `bat`                                   ║
 ║                              ║                                                                     ║
 ╠══╣     vim-sneak        ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║

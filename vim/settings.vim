@@ -214,3 +214,9 @@ map      <F9>           <ESC>:call ExportMap()<cr><cr> "Show all keybindings
 
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<CR>
+
+" Use Silent to fix redraw problem when calling external program
+command! -nargs=+ Silent execute 'silent <args>' | redraw!
+
+" Map ctrl+l to markdown previewer 
+nmap  <silent> <c-l> <esc>:Silent !bat %<cr>
