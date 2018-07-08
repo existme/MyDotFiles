@@ -47,7 +47,7 @@ cp $DOTPATH/gitconfig.user ~/.gitconfig.user
 if [ "$(grep "NO_ZSH_THEME" ~/zshrc.local.sh|wc -c)" == "0" ]; then
    echo "${bG}adding${cZ} NO_ZSH_THEME to ~/zshrc.local.sh"
 cat >> ~/zshrc.local.sh << EOF
-export NO_ZSH_THEME=true
+# export NO_ZSH_THEME=true
 EOF
 fi
 

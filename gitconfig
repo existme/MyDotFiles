@@ -18,7 +18,7 @@
    # normal, black, red, green, yellow, blue, magenta, cyan and white 
    # italic, strike, bold, dim, ul, blink and reverse
    # negate: no-bold, no-italic, ...
-	header = white normal dim italic no-bold
+	header = white normal dim 
 	added = bold yellow
 	updated = green reverse
 	changed = blue bold

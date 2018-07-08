@@ -6,12 +6,18 @@ ssh $DEST 'bash -s' << 'ENDSSH'
    mkdir -p ~/git/
 ENDSSH
 
+echo "Removing ~/git/MyDotFiles"
+ssh $DEST "bash -s" << 'ENDSSH'
+   rm -rf ~/git/MyDotFiles
+ENDSSH
+
 echo "Copying ~/.oh-my-zsh/$cG $DEST:$cZ"
 grc rsync -q --info=progress2 --exclude='.git/' -avz -avhe ssh ~/.oh-my-zsh $DEST: | pv
 echo "$cZ"
 
 echo "Copying ~/git/MyDotFiles to$cG $DEST:$cZ"
 grc rsync -q --info=progress2 -v --exclude='.git/' --exclude="vim/backups/**" -avz -avhe ssh ~/git/MyDotFiles $DEST:~/git/ | pv 
+grc rsync -q --info=progress2 -v --exclude='.git/' -avz -avhe ssh ~/git/MyDotFiles/vim/plugged/ $DEST:~/git/MyDotFiles/vim/plugged/ | pv 
 echo "$cZ"
 
 echo "Copying ~/.lnav to$cG $DEST:$cZ"
@@ -31,5 +37,5 @@ ssh $DEST "http_proxy=$http_proxy https_proxy=$https_proxy bash -s" << 'ENDSSH'
    rm -rf ~/.lnav/formats/https___github_com_hagfelsh_lnav_formats_git
    rm -rf ~/.lnav/formats/https___github_com_PaulWay_lnav_formats_git
    rm -rf ~/.lnav/formats/https___github_com_aspiers_lnav_formats_git
-   sudo apt install language-pack-en
+   sudo apt install -y language-pack-en
 ENDSSH
