@@ -141,3 +141,5 @@ if is-at-least 5.0.3; then
         fi
     }
 fi
+
+~/bin/,c-logo
