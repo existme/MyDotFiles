@@ -33,7 +33,8 @@ TITLE="${(C)NOTE}"
 cd $NOTESDIR
 
 if [[ -f $FILE ]]; then
-   vim -c 'set statusline="hello dear"' $FILE +6 
+   # vim -c 'set statusline="hello dear"' $FILE +6 
+   code $FILE  
    exit
 fi
 

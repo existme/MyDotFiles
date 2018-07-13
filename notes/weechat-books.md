@@ -1,6 +1,6 @@
 # Weechat-Books.Md
 
------------------------------------------ 
+-----------------------------------------
 ## 1- Add server and start searching
 ``` bash
 /server add chway irc.irchighway.net
@@ -8,6 +8,10 @@
 /list -re books
 /join #ebooks
 @search 12 rules
+
+/server add undernet irc.undernet.org
+/connect undernet
+/join #bookz
 ```
 ## 2- Switch to search window
 1. you can use alt+<win number>
@@ -28,5 +32,13 @@
 
 
 for additional info see [here](https://bit.ly/2MWlUkG)
+for getting more info about the channel see [here](https://bit.ly/2NAv5Z9)
+for finding some new good books see [here](https://bit.ly/2MZm6j7)
+
+## 4- further reading:
+1. [habr.com][habr.com]
+
+[habr.com]: https://habr.com/post/318400/
+
 -----------------------------------------
 2018-07-08 19:11:21
