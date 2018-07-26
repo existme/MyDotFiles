@@ -113,6 +113,7 @@
 
 	# pull
 	pl = pull                         # pull
+   rpull = pull --rebase --autostash # git stash && git pull && git pop
 
 	# push
 	ps = push                         # push
