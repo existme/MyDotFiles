@@ -216,7 +216,7 @@ map      <F9>           <ESC>:call ExportMap()<cr><cr>   "Show all keybindings
 map <leader>cd :cd %:p:h<CR>
 
 " Use Silent to fix redraw problem when calling external program
-command! -nargs=+ Silent execute 'silent <args>' | execute 'redraw!'
+command! -nargs=+ Silent execute 'silent <args>' |:redraw!
 
 " Map ctrl+l to markdown previewer 
-nmap  <silent> <c-l> <esc>:Silent !bat %<cr>
+nmap  <silent> <c-l> <esc>:Silent !bat %&& read -q "REPLY?Press any key to continue ..." <cr>

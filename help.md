@@ -164,7 +164,7 @@ Commands
 ║ vllllllls'                   ║  Sorround virtual selection with ' (go to V then 4left and s)       ║
 ║                              ║                                                                     ║
 ╠══╣ insert mode              ═╬═                                                                   ═╣
-║                              ║                                                                     ║
+║                              ║  #sorround                                                          ║
 ║ ysiw(                        ║  Sorround word with (         ex:  ( sneak )                        ║
 ║ ysiW(                        ║  Sorround whole word with (   ex:  ( g:sneak#s-next = 1 )           ║
 ║ ysw(                         ║  Sorround word with (         ex:  ( sneak )                        ║
@@ -187,21 +187,23 @@ Commands
 ║ vS"                          ║  Sorround selection with "                                          ║
 ╠═════╣ miscellaneous ╠════════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
-║ <ctrl>/                      ║ Toggle comment for the selected text or block                       ║
+║ <ctrl>/                      ║ Toggle comment for the selected text or block  #comment #toggle     ║
 ║ gc                           ║ Toggle comment for the selected text or block                       ║
 ║ g>                           ║ Toggle comment for the selected text or block                       ║
 ║                              ║                                                                     ║
-║ set nonumber                 ║ Hide line numbers                                                   ║
+║ set nonumber                 ║ Hide line numbers   #hide #line #lineno                             ║
 ║ set number                   ║ Show line numbers                                                   ║
 ║ set tm=0                     ║ Set timeout to 0, causes faster response and no waiting             ║
 ║ set tm=1000                  ║ Set timeout to 1000, good for cases that leader shortcuts dont work ║
 ║                              ║                                                                     ║
 ║ .                            ║ Auto compilation                                                    ║
 ║ :w!!                         ║ Vim sudo trick or :w !sudo tee > /dev/null %                        ║
-║ <ctrl>o                      ║ Vim sudo trick or :w !sudo tee > /dev/null %                        ║
-║ :red                         ║ Redo                                                                ║
-║ <ctrl>r                      ║ Reload (notifies if file has been changed)                          ║
-║ <ctrl-shift>r                ║ Force reload :e!<CR>                                                ║
+║ <ctrl>o                      ║ Vim sudo trick or :w !sudo tee > /dev/null %   #force #write        ║
+║ :red                         ║ Redo #redo                                                          ║
+║ <ctrl>r                      ║ Reload (notifies if file has been changed) #reload                  ║
+║ <ctrl-shift>r                ║ Force reload :e!<CR> #force #reload                                 ║
+║ gx                           ║ In normal mode, if you stand on a link and enter `g` then `x`       ║
+║                              ║    the link will be opened in a browser window #browser #link       ║
 ║                              ║                                                                     ║
 ╠════╣ installing plugins ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
