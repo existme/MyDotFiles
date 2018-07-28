@@ -15,6 +15,7 @@ cmus
 check
 sshuttle
 tig
+xrectsel
 quit
 EOF
 )
@@ -260,6 +261,20 @@ case "$res" in
           make prefix=/usr/local
           sudo make install prefix=/usr/local
           sudo make install-doc
+       fi
+    ;;
+    xrectsel)
+       prj=xrectsel
+       set -e
+
+       clone $prj https://github.com/lolilolicon/xrectsel.git
+       gitPull $prj
+
+       if okToBuild; then
+          ./bootstrap
+          ./configure --prefix /usr/local
+          make prefix=/usr/local
+          sudo make install prefix=/usr/local
        fi
     ;;
     quit)
