@@ -12,7 +12,7 @@ bind generic g ?sh -c "git %(prompt git )"
 bind generic <F4> >git difftool -y %(commit) %(file)
 bind main <F4> >git difftool -d %(commit)^!
 bind status s >git add .
-bind status u >git reset %(file)
+bind status u >git reset HEAD %(file)
 bind status <Ctrl-u> >git unstage
 bind status c >git commit -av
 bind status a >git add %(file)
