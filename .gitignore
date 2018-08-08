@@ -24,3 +24,4 @@ vim/.VimballRecord
 vim/plugged/
 extras/bin/idea
 stale_outputs_checked
+vim/autoload/plug.vim.old

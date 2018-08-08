@@ -25,8 +25,6 @@ alias zdoc="xdg-open /usr/share/doc/zsh/doc/zsh.pdf >> /dev/null 2>&1 &"        
 alias ds="du -hd 1| sort -h"
 alias k="k -h"
 alias hd="head -n 40 "
-alias t='$HOME/Dropbox/Apps/todotxttdi/todo.sh -d $HOME/Dropbox/Apps/todotxttdi/todo.cfg'
-alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
 # alias jq="jq '.' "
 alias ex="chmod u+x "
 alias idea='. $SCRIPTPATH/extras/scripts/idea'
@@ -64,8 +62,11 @@ alias vz="vim ~/.zshrc"
 alias vzl="vim ~/.zshrc.local"
 # usage: help read
 alias help=run-help
+
 alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg"
 alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
+alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
+
 alias lw="xdg-open http://localhost/?c=0-Notes/private\&p=log.md"
 alias ap="sudo apt-get"
 alias h="history|grep"
