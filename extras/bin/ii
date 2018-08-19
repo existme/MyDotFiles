@@ -4,7 +4,7 @@ dir=$(realpath $1)
 echo "${bW}Opening project  ${bY}${sU}${dir}${cZ} in IDEA ${bB}${cZ}"
 W3=$(xgetres i3.w3)
 title="IDEA: $dir *****"
-i3-msg "workspace $W3; layout tabbed; append_layout $HOME/bini3/layout/w3-idea.json; "
+# i3-msg "workspace $W3; layout tabbed; append_layout $HOME/bini3/layout/w3-idea.json; "
 if [ -d $dir ]; then
    ,o3 idea $dir/ > /dev/null
 else
