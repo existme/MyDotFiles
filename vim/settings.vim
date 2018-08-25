@@ -204,13 +204,13 @@ map      <F1>           <esc>:execute "e ".dotfilespath."/help.md"<enter>
 set      pastetoggle=<F2>                                "Toggle paste with F2
 map      <F3>           <ESC>:NERDTreeToggle<CR>         "Toggle nerd tree  F3
 noremap  <F4>           :set hlsearch! hlsearch?<CR>     "Toggle highlight  F4
-imap     <c-F4>         <esc> :w<cr>:!%:p<cr>            "Save and run current file
-map      <c-F5>         :w<cr>:!%:p<cr>                  "Save and run current file
+map      <c-F5>         <esc>:w<cr>:!%:p<cr>            "Save and run current file
 noremap  <F5>           :set invlist<CR>                 "Toggle highlight  F5
 nmap     <F6>           <esc>:set invnumber<cr>
 nmap     <F7>           <esc>:UndotreeToggle<cr>
 nmap     <F8>           <esc>:call ToggleWrap(1)<c-r>    "Toggle wrap
 map      <F9>           <ESC>:call ExportMap()<cr><cr>   "Show all keybindings
+nnoremap <F10>          <ESC>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>    "Trim all whitespaces
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<CR>
 

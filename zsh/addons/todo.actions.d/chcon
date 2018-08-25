@@ -1,0 +1,22 @@
+# TODO.TXT CLI chcon add-on
+# Copyright (C) 2015 Data King Ltd
+# See LICENSE file for license details
+
+
+USAGE="chcon ITEM# [@context]"
+
+if [ $1 = usage ]; then
+	cat <<EOF
+    $USAGE
+      Changes or removes the context of a task.
+
+EOF
+fi
+
+[ $# -lt 2 ] && die "usage: $TODO_SH $USAGE"
+TASK=$2
+shift 2
+
+exec $TODO_SH replace $TASK \
+	"`sed -E "${TASK}s/^(\\([A-Z]\\) )?(([^@]|[^ ]@)+)( @.*)?$/\\2/;t;d" \
+		$TODO_FILE`${1:+ $*}"

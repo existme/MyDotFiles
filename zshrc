@@ -26,6 +26,7 @@ export STOW_DIR="$HOME/local/stow"
 export MANPATH=/usr/share/man
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CLICOLOR=true
+export GUI_EDITOR=code
 
 # setopt BANG_HIST               # Treat the '!' character specially during expansion.
 unsetopt BANG_HIST               # Prevent "!" characters from being special on the command line

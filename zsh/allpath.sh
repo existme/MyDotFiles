@@ -14,3 +14,6 @@ pathadd $HOME/local/stow
 if [ "${PATH#*$HOME/bini3}" = "${PATH}" ]; then
     pathadd $HOME/bini3
 fi
+if [ -e $HOME/Dropbox/Apps/todotxttdi/todo_completion ]; then
+   pathadd $HOME/Dropbox/Apps/todotxttdi/
+fi

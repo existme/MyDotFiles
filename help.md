@@ -121,7 +121,10 @@ Commands
 ║ F6                           ║ Toggle showing the line numbers (set norelativenumber for absolute) ║
 ║ F7                           ║ Toggle showing undo tree                                            ║
 ║ F8                           ║ Toggle wrap and its indicator                                       ║
+║ F9                           ║ Show all keybindings                                                ║
+║ F10                          ║ Trim all white spaces in the current file                           ║
 ║ ctrl + l                     ║ Preview markdown page using `bat`                                   ║
+║ ctrl + F5                    ║ Save and run the current file                                       ║
 ║                              ║                                                                     ║
 ╠══╣     vim-sneak        ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║

@@ -63,7 +63,7 @@ alias vzl="vim ~/.zshrc.local"
 # usage: help read
 alias help=run-help
 
-alias t="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/Dropbox/Apps/todotxttdi/todo.cfg"
+alias t="~/Dropbox/Apps/todotxttdi/todo.sh"
 alias w="~/Dropbox/Apps/todotxttdi/todo.sh -d ~/.config/todo.cfg"
 alias todo="vim ~/Dropbox/Apps/todotxttdi/todo.txt"
 
