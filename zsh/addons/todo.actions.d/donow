@@ -89,6 +89,8 @@ do_now()
     echo "Working on: ${SUMMARY} "
     elog "start: ${SUMMARY}"
 
+    signal "${SUMMARY}" "Started !"
+
     while true; do
         sleep $ONE_MINUTE
 

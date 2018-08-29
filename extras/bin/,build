@@ -257,6 +257,7 @@ case "$res" in
        gitPull $prj
 
        if okToBuild; then
+          sudo apt install asciidoc
           sudo apt remove tig
           make prefix=/usr/local
           sudo make install prefix=/usr/local
