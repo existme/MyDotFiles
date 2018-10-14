@@ -15,9 +15,12 @@ ARG=$@
 ARG=${ARG// /-}
 
 NOTE=$ARG
-NOTE=$(basename "$NOTE")
+NOTEFILE=$(basename "$NOTE")
 EXT="${NOTE##*.}"
 FILE="$NOTESDIR/$NOTE"
+
+DIR=$(dirname $FILE)
+mkdir -p $DIR
 
 if [[ -f $ARG ]]; then
    FILE=$ARG
@@ -39,17 +42,19 @@ if [[ -f $FILE ]]; then
 fi
 
 DATE=$(date '+%Y-%m-%d %H:%M:%S')
-vim +6 -c "set ft=markdown" -c "f $NOTE" - << EOD 
+vim +6 -c "set ft=markdown" -c "f $FILE" - << EOD 
+_Written by: $(git config --global user.name)_
 # $TITLE
 
------------------------------------------ 
+Start your content here...
 
-\`\`\` bash
-
+\`\`\` sh
+code placeholder
 \`\`\`
 
------------------------------------------
-$DATE
+
+* * *
+Creation date: _$(echo $DATE)_
 EOD
 
 res=$?

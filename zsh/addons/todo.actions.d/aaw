@@ -1,0 +1,47 @@
+#!/bin/zsh
+action=$1
+
+# this is required to get to authorization header
+source ~/zshrc.local.sh
+
+# `ghi` gem is a prerequisite for this script
+[ `gem list ghi -i` != "true" ] && sudo gem install ghi
+
+
+shift
+[ "$action" = "usage" ] && {
+  echo "  aaw is an alias to add an issue to existme/gollum wiki both in github and in the todolist"
+  echo "  example:"
+  echo "    todo.sh aaw +wiki 'add smart placement of links when using url picker :enhancement:' "
+  echo ""
+  exit
+}
+MSG=$@
+#extract any label
+LABEL=$(echo $MSG|sed 's/.*:\(.*\):.*/\1/')
+if [ "$LABEL" != "$MSG" ]; then
+    #replace labels as empty
+    MSG=$(echo $MSG|sed 's/ :.*://g')
+    ISSUE=`ghi open -L $LABEL -m $MSG -- existme/gollum`
+else
+    $LABEL=""
+    ISSUE=`ghi open -m $MSG -- existme/gollum`
+fi
+
+# Sample output from the command
+# ISSUE="#54: testing 3
+# @existme opened this issue 0 seconds ago.  [open]
+
+
+# Opened on existme/gollum."
+
+ISSUE=`echo $ISSUE | head -1`
+# skip everything after the first : to extract issue number with hashtag
+ISSUENO=`echo $ISSUE|sed 's/:.*//'`
+# call back to the main script to add
+if [ "$LABEL" = "" ]; then
+    "$TODO_SH" -t addp p A "$ISSUENO: $MSG"
+else
+    "$TODO_SH" -t addp p A "$ISSUENO: $MSG ::$LABEL"
+fi
+ghi list -- existme/gollum
