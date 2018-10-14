@@ -104,3 +104,6 @@ plugins=(git git-extras sudo history history-substring-search last-working-dir c
 
 source $ZSH/oh-my-zsh.sh
 source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme
+#                      
+export OS_ICON=''
+
