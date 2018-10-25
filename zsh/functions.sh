@@ -284,7 +284,7 @@ function yesno(){
 
 unfunc elocate
 elocate() {
-   [[ -z "$1" ]] && { echo "elocate searches for executable files\n\nUsage: ${bW}elocate${bB} filename$cZ"; return 0;} 
+   [[ -z "$1" ]] && { echo "elocate searches for executable files\n\nUsage: ${bW}elocate${bB} filename$cZ"; return 0;}
    echo "Searching for [${bY}$1${cZ}] in locate database:\n"
    locate -b "\\$1" | xargs -ri find {} -prune -type f -executable
 }

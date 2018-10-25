@@ -6,7 +6,7 @@ echoP(){
     tput hpa $(((counter%3)*35))
     [[ $((counter%3)) -eq 0 ]] && tput tbc && echo
 }
-echoMe() {  
+echoMe() {
   # local me=`realpath --relative-to=$SCRIPTPATH $1`
   local relRepo=${SCRIPTPATH//$HOME\//}/
   local me=${1//$HOME\//'~/'}
@@ -17,7 +17,7 @@ local plugin="${bY}  ${bB}${bY} "
 echoMe $0
 
 # **********************************************************************
-# ********** Specific aliases that might be used in functions ********** 
+# ********** Specific aliases that might be used in functions **********
 # **********************************************************************
 alias -g G="| grep"
 alias -g H="| head"
@@ -52,8 +52,14 @@ fi
 [[ -f $HOME/zshrc.local.sh ]] &&	source $HOME/zshrc.local.sh && echoP "${bB}~/zshrc.local.sh${cZ}"
 
 # Add completion path before oh-my-zsh starts compinit
-fpath=($SCRIPTPATH/zsh/completion $fpath)
+export fpath=($SCRIPTPATH/zsh/completion $SCRIPTPATH/zsh/functions $fpath)
 
+
+
+export F_PATH=$SCRIPTPATH/zsh/functions         # This variable is exported to be used inside other scripts ex: ,tilix
+                                                # inside script use: source ~/bin/,autoload
+
+autoload -Uz okPrompt
 echoP "${plugin}oh-my-zsh.sh"
 source $ZSH/oh-my-zsh.sh                        #
 
@@ -68,7 +74,7 @@ fi
 [[ -f ~/.LESS_TERMCAP ]] && . ~/.LESS_TERMCAP   # Use colors for less, man, etc.
 
 source $SCRIPTPATH/zsh/LESS_TERMCAP             #
-eval $( dircolors -b ~/.dircolors) 
+eval $( dircolors -b ~/.dircolors)
 
 source $SCRIPTPATH/zsh/keyinfo.sh               # Load keyboard shortcuts
 

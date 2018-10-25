@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+export fpath=($F_PATH $fpath)
+# autoload -Uz okPrompt
+for d in $F_PATH
+   do autoload -Uz `ls $d`
+done
+

@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+function okPrompt(){
+  MSG=$1
+  ACTION=$2
+  if [[ -z $MSG ]]; then
+    echo "something"
+  fi
+
+  read -k 1 -r "pr?$1 (${cY}y${cZ}/${bW}N${cZ})?"
+  echo
+  if [[ ! $pr =~ ^[Yy]$ ]]; then
+      echo "${bR}$ACTION Cancled${cZ}!"
+      return 1
+  fi
+  echo "${bG}${ACTION}ing${cZ} ..."
+  return 0
+}
