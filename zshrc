@@ -56,7 +56,7 @@ setopt CSH_NULL_GLOB
 setopt complete_in_word
 setopt transient_rprompt
 setopt nolistbeep
-
+setopt completealiases
 # todo: use .oh-my-zsh/lib/spectrum.zsh instead
 # See: man terminfo
 # run: infocmp -f       # for listing term capabilities

@@ -289,13 +289,6 @@ elocate() {
    locate -b "\\$1" | xargs -ri find {} -prune -type f -executable
 }
 
-unfunc mann
-mann() {
-   local man="https://www.manned.org/$1"
-   echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
-   xdg-open $man > /dev/null 2>&1
-}
-
 unfunc mank
 mank() {
    local man="https://www.mankier.com/1/$1"
@@ -330,4 +323,37 @@ mann() {
    local man="https://www.manned.org/$1"
    echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
    xdg-open $man > /dev/null 2>&1
+}
+
+
+#
+# Registers a compdef for $1 that calls $apt_pref with the commands $2
+# To do that it creates a new completion function called _apt_pref_$2
+#
+# sample : apt_pref_compdef ai  "install"
+apt_pref='apt-get'
+apt_pref='aptitude'
+apt_upgr='safe-upgrade'
+
+unfunc apt_pref_compdef
+apt_pref_compdef() {
+    local f fb
+    f="_apt_pref_${2}"
+
+    eval "function ${f}() {
+        shift words;
+        service=\"\$apt_pref\";
+        words=(\"\$apt_pref\" '$2' \$words);
+        ((CURRENT++));
+        test \"\${apt_pref}\" = 'aptitude' && _aptitude || _apt
+    }"
+    compdef "$f" "$1"
+}
+
+unfunc pkg_install
+function pkg_install(){
+  service='apt-get';
+  words=('apt-get' 'install');
+  ((CURRENT++))  # this is increasing the level of service!
+  _apt
 }

@@ -275,7 +275,7 @@ Commands
 ║ ds                     ║ Calculates subfolder sizes in a directory                    ║
 ║ .                      ║ **EQ:**  to 'du ═hd 1'                                           ║
 ║ Make a file executable ║                                                              ║
-║ .                      ║ **EQ:** eq. to `chmod u+x`                                       ║
+║ ex                     ║ **EQ:** eq. to `chmod u+x`                                       ║
 ║ rgrep                  ║ Search current folder for a specific keyword                 ║
 ║ .                      ║ including all subfolders                                     ║
 ║ .                      ║ **Usage:** $ rgrep alias                                         ║

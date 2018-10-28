@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+# note you need to source this file to execute it otherwise it will fail
+for k in "${(@k)_comps}"; do
+  echo "$k -> $_comps[$k]"
+done
