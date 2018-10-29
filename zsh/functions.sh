@@ -140,8 +140,8 @@ function git_prompt_info() {
 # }
 
 # Search for all installed packages
-unfunc as
-function as(){
+unfunc aps
+function aps(){
    local p=$(apt-cache search . |fzf -e -x --algo=v2 +m --cycle --print-query -q "$1" |tail -n 1|cut -d' ' -f 1)
    [ -n "$p" ] && \
       { apt show $p ; echo "--------[ files ]-------" ; dpkg-query --listfiles $p } | vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' -R -

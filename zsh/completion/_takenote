@@ -1,4 +1,4 @@
-#compdef takenote 
+#compdef takenote
 # vim: set filetype=zsh :tw=14
 
 # echo "state 1-> $# $BUFFER - $LASTSEARCH - $RBUFFER - $PREDISPLAY - $POSTDISPLAY" >> /tmp/out.txt
@@ -16,9 +16,9 @@ query=${query// /-}                          # replace space with dash
 local selected=$arr[2]
 
 if [[ -z $selected ]]; then                  # if no choice was available, use the entered filename
-   compadd "$query"
+   compadd -U -- "$query"
 else                                         # if user selected one of the choices
-   compadd $selected
+   compadd -U -- "$selected"
 fi
 
-return 1
+return 0

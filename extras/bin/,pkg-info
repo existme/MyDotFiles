@@ -1,0 +1,6 @@
+#! /bin/zsh
+PKG=$1
+if [ -z "$PKG" ]; then
+   PKG=$(apt-cache search . |fzf -e -x --algo=v2 +m --cycle --print-query -q "$1" |tail -n 1|cut -d' ' -f 1)
+fi
+aptitude show $PKG

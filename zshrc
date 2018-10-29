@@ -1,7 +1,7 @@
 #!/bin/zsh
 # SCRIPTPATH="$HOME/git/MyDotFiles"
 # source $SCRIPTPATH/zsh/powerthemes/reza
-# source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme 
+# source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme
 # return
 
 # Parts taken from:
@@ -47,7 +47,7 @@ setopt INC_APPEND_HISTORY        # Append incrementally instead of waiting until
 setopt HIST_REDUCE_BLANKS
 setopt complete_aliases          # Do not expand aliases _before_ completion has finished
 setopt AUTO_LIST                 # Automatically list choices on an ambiguous completion
-#setopt MENU_COMPLETE             # In case of ambiguous completion, insert the first one immediately 
+#setopt MENU_COMPLETE             # In case of ambiguous completion, insert the first one immediately
 setopt AUTO_CD
 setopt cdablevarS
 setopt extended_glob
@@ -136,7 +136,7 @@ if is-at-least 5.0.3; then
     TRAPALRM() {
         if [[ "$WIDGET" =~ ^(complete-word|fzf-completion)$ ]]; then
             # limit the reset-prompt functionality to the `takenote` script
-            if [[ "$LBUFFER" == "takenote "* ]]; then
+            if [[ "$LBUFFER" =~ ^(takenote\ |,.*\ )*$ ]]; then
                 zle reset-prompt
             fi
         fi
