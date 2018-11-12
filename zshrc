@@ -143,4 +143,5 @@ if is-at-least 5.0.3; then
     }
 fi
 
-~/bin/,c-logo
+# ~/bin/,c-logo
+neofetch
