@@ -251,3 +251,5 @@
 	insteadOf = git://github.com/
 [status]
 	submoduleSummary = 1
+[cola]
+	spellcheck = false

@@ -1,0 +1,5 @@
+#!/bin/bash
+sudo systemctl restart wiki-private.service
+sudo journalctl -u wiki-private.service
+sudo systemctl restart wiki-notes.service
+sudo journalctl -u wiki-notes.service

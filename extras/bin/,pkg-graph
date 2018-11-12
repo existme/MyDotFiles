@@ -1,6 +1,6 @@
 #! /bin/zsh
-echo "This script requires that 'xdot' and 'graphviz' are installed beforehand"
-echo "run ${bW}sudo apt install graphviz xdot${cZ}"
+echo "This script requires that 'xdot', 'apt-rdepends', and 'graphviz' are installed beforehand"
+echo "run ${bW}sudo apt install graphviz xdot apt-rdepends${cZ}"
 PKG=$1
 TMP=/tmp/temp.dot
 apt-rdepends -d $PKG | dot> $TMP && xdot $TMP
