@@ -8,6 +8,7 @@
 #    https://github.com/cornerman/dotfiles/blob/master/zshrc
 
 # Path to your oh-my-zsh installation.
+export ZSH_DISABLE_COMPFIX=true
 export APPS=""
 export APP_SEP=" "
 export CDPATH=$HOME
