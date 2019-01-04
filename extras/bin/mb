@@ -1,0 +1,9 @@
+#!/bin/zsh
+echo "${bB}Making a request for: ${bG}curl ${bW}cht.sh/${bY}$@${cZ}"
+selected=$(curl cht.sh/:list)
+declare res=$(                                                                
+      echo $selected|tr '\n' '|'|                                               
+      rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
+   )
+echo $res
+curl cht.sh/$res

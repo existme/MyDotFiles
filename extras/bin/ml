@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "${bB}Making a request for: ${bG}curl ${bW}cht.sh/$@${bY}/:list${cZ}"
+curl cht.sh/$@/:list

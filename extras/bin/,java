@@ -1,0 +1,16 @@
+#!/bin/bash
+file=$(basename -- "$1")
+filename="${file%.*}"
+printf "\033c"
+echo "${bW}------ ${bB}compiling $filename.java ${bW}------${cZ}"
+rm /tmp/$filename.class &> /dev/null
+javac $filename.java -d /tmp/ 
+cd /tmp
+if [ -e "$filename.class" ]; then
+   echo "${bW}------ ${bG}running $filename.class  ${bW}------${cZ}"
+   java $filename
+else
+   echo "${bR}Compile Error${cZ}"
+fi
+
+echo "${bW}------  ${bY}Compile and run finished ${bW}--------${cZ}"

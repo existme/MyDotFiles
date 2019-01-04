@@ -51,7 +51,8 @@ function okToBuild(){
         echo "${bR}Build Cancled${cZ}!"
         return 1
     fi
-    echo "${bG}Building${cZ} ..."
+    # echo "${bG}Building${cZ} ..."
+    toilet "Building..." -f future
     return 0
 }
 if [ -z "$1" ]; then
@@ -187,9 +188,13 @@ case "$res" in
 
        if okToBuild; then
           sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk2.0-dev libxdg-basedir-dev
-          sudo apt install libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev 
-    		 make -j5
+          sudo apt install libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev libnotify-dev
+          sudo make clean
+    		 sudo make -j5
+    		 sudo make dunstify
     		 sudo make install
+          sudo killall dunst
+          dunst -config ~/.config/dunst/dunstrc &
        fi
     ;;
     i3lock-color)
@@ -292,4 +297,5 @@ case "$res" in
         return
     ;;
 esac
-echo "${bB}Build script finished.$cZ"
+# echo "${bB}Build script finished.$cZ"
+toilet "Build script finished." -f future
