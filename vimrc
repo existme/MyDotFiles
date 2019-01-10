@@ -28,6 +28,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 Plug 'https://github.com/mbbill/undotree.git'
+Plug 'https://github.com/dbeniamine/cheat.sh-vim.git'
 " Plug 'vim-scripts/ZoomWin'
 " Plug 'szw/vim-maximizer'
 " NERD tree will be loaded on the first invocation of NERDTreeToggle command
