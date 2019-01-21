@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-declare units=$(journalctl --field _SYSTEMD_UNIT)
+declare units=$(journalctl --field _SYSTEMD_UNIT -q)
 declare actions=$(cat <<EOF
 lnav
 vim
@@ -19,11 +19,15 @@ fi
 echo "Selected servuce: ${bW}$service${cZ}"
 
 
-declare action=$(
-   echo $actions|tr '\n' '|'|
-   rofi -dmenu -sep '|' -p "What do to do with [$service] ?" -i -disable-history -levenshtein-sort -matching normal -e
-)
-echo "Selected action: ${bW}$action${cZ}"
+if [ -z "$2" ]; then
+   declare action=$(
+      echo $actions|tr '\n' '|'|
+      rofi -dmenu -sep '|' -p "What do to do with [$service] ?" -i -disable-history -levenshtein-sort -matching normal -e
+   )
+   echo "Selected action: ${bW}$action${cZ}"
+else
+   declare action=$2
+fi
 
 case "$action" in
    lnav)
