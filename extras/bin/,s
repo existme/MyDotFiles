@@ -1,0 +1,45 @@
+#!/bin/zsh
+
+declare units=$(journalctl --field _SYSTEMD_UNIT)
+declare actions=$(cat <<EOF
+lnav
+vim
+flushAll
+EOF
+)
+
+if [ -z "$1" ]; then
+   declare service=$(
+         echo $units|tr '\n' '|'|
+         rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
+         )
+else
+   declare service=$1
+fi
+echo "Selected servuce: ${bW}$service${cZ}"
+
+
+declare action=$(
+   echo $actions|tr '\n' '|'|
+   rofi -dmenu -sep '|' -p "What do to do with [$service] ?" -i -disable-history -levenshtein-sort -matching normal -e
+)
+echo "Selected action: ${bW}$action${cZ}"
+
+case "$action" in
+   lnav)
+      sudo journalctl -f -u $service --no-pager -a -n 10000 -e | lnav
+   ;;
+   vim)
+      sudo journalctl -u $service --no-pager > /tmp/journaltemp
+      vim /tmp/journaltemp
+   ;;
+   flushAll)
+      sudo journalctl --flush
+      sudo journalctl --vacuum-time=1seconds
+   ;;
+   *)
+      echo "Unkown option!"
+   ;;
+esac
+
+echo "${bW}done${cZ}"
