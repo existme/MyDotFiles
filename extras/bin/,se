@@ -1,0 +1,3 @@
+#!/bin/sh
+
+surf "https://translate.google.com/?hl=en#view=home&op=translate&sl=sv&tl=en&text=$1"&
