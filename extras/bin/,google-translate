@@ -47,6 +47,7 @@ class String
     url = URI.escape("http://translate.google.com/translate_a/t?client=j&text=#{self}&sl=#{from}&tl=#{to}")
     response = open(url, 'User-Agent' => 'Mozilla/5.0', 'Accept-Charset' => 'utf-8').read
 
+     puts JSON.parse(response) 
     return JSON.parse(response)
   end
 end

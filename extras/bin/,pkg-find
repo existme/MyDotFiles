@@ -1,0 +1,6 @@
+#! /bin/zsh
+FILE=$1
+if [ -z "$FILE" ]; then
+   FILE=$(apt-file search . |fzf -e -x --algo=v2 +m --cycle --print-query -q "$FILE" |tail -n 1|cut -d' ' -f 1)
+fi
+apt-file search $FILE

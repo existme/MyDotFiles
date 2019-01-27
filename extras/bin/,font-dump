@@ -1,5 +1,6 @@
 #!/bin/bash
 # This script dumps all characters which are present in a font
+# requires otf-trace: sudo apt install otf-trace
 if ! [ -e "$@" ]; then
     echo "${bW}Usage: dump-font {font-file-path}$cZ"
     echo "Example:"

@@ -6,7 +6,7 @@ if [ -z "$1" ]; then
    exit
 fi
 
-declare res=$(locate $arg|smenu -n8 -L $'\n' -c -T -m "Select the file you want to edit")
+declare res=$(sudo locate $arg|smenu -n8 -L $'\n' -c -T -m "Select the file you want to edit")
 # smenu -n8 -tg -b -Cd2-5 -T
 if [ -z "$res" ]; then
    echo "${cR}No result found for [${bW}$arg${cR}]"

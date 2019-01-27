@@ -16,7 +16,7 @@ if [ -z "$1" ]; then
 else
    declare service=$1
 fi
-echo "Selected servuce: ${bW}$service${cZ}"
+echo "Selected service: ${bW}$service${cZ}"
 
 
 if [ -z "$2" ]; then
