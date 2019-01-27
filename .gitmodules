@@ -57,3 +57,6 @@
 [submodule "zsh/bundle/powerlevel9k"]
 	path = zsh/bundle/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "zsh/addons/todo.actions.d/graph"]
+	path = zsh/addons/todo.actions.d/graph
+	url = https://github.com/timpulver/todo.txt-graph.git
