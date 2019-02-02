@@ -214,8 +214,12 @@ case "$res" in
           sudo apt install libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev libnotify-dev
           sudo make clean
     		 sudo make -j5
-    		 sudo make clean install dunstify
+          sudo make clean-dunsitify
+    		 sudo make dunstify
+          cp dunstify ~/bin/
     		 sudo make clean install
+          sudo make install-service
+          sudo make install-service-dbus
           sudo killall dunst
           dunst -config ~/.config/dunst/dunstrc &
        fi
