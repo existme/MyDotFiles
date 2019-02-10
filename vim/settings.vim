@@ -221,6 +221,7 @@ map      <F9>           <ESC>:call ExportMap()<cr><cr>
 nnoremap <F10>          <ESC>:let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " When pressing <leader>cd switch to the directory of the open buffer
 map <leader>cd :cd %:p:h<CR>
+map <leader>x <ESC>@:
 
 " Use Silent to fix redraw problem when calling external program
 command! -nargs=+ Silent execute 'silent <args>' |:redraw!

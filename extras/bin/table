@@ -1,0 +1,100 @@
+#!/usr/bin/python
+# vim:filetype=python
+# Generate markdown table based on output
+# Example:
+#           docker ps | table
+import argparse
+import sys
+import re
+
+parser = argparse.ArgumentParser(description='Webscraper')
+parser.add_argument('-r', '--regex', metavar='REGEX', help='regexpression for separating lines', default="[ ][ ]+")
+# parser.add_argument('-s', '--scrap', metavar='NAME:XPATH', help='Scraping pattern', required=True, nargs='+')
+parser.add_argument("-a", "--adjust", help="adjust field widths", action="count")
+parser.add_argument("-v", "--verbose", help="increase output verbosity", action="count", default=0)
+
+args = parser.parse_args()
+
+
+def adjust(content, char, length, do_adjust):
+    if args.verbose > 0:
+        print(length, content, len(content), length - len(content), (char * (length - len(content))))
+
+    if do_adjust:
+        return content + (char * (length - len(content)))
+    else:
+        return content
+
+
+max_col = 0
+regex = args.regex
+ansi_escape = re.compile(r'\x1B\[[0-?]*[ -/]*[@-~]')
+lines = []
+
+for line in sys.stdin:
+    l = line.replace('\n', '')
+    l = re.sub(regex, '|', l)
+    l = ansi_escape.sub('', l)
+    lines.append(l)
+    # lines.append(re.sub(r'[ ][ ]+', '|', line))
+    fields = l.split("|")
+    cols = len(fields)
+    if cols > max_col:
+        max_col = cols
+
+if args.verbose:
+    print("Max columns detected: ", max_col)
+
+field_len = []
+for i in range(0, max_col):
+    field_len.append(0)
+
+index = 0
+for line in lines:
+    fields = line.split("|")
+
+    if args.verbose > 1:
+        print(line)
+
+    f_index = 0
+    for field in fields:
+        if args.verbose > 1:
+            print("Field[", f_index, "]: ", field)
+        if field_len[f_index] < len(field):
+            field_len[f_index] = len(field)
+        f_index += 1
+    index += 1
+
+if args.verbose > 0:
+    f_index = 0
+    for field in field_len:
+        print("MaxFieldSize[", f_index, "]: ", field)
+        f_index += 1
+
+index = 0
+for line in lines:
+    fields = line.split("|")
+    sout = "|"
+    f_index = 0
+    for field in fields:
+        sout += " " + adjust(field, ' ', field_len[f_index], args.adjust) + " |"
+        f_index += 1
+
+    for i in range(f_index, max_col):
+        sout += " " + adjust('', ' ', field_len[f_index], args.adjust) + " |"
+        f_index += 1
+
+    print(sout)
+    if index == 0:
+        f_index = 0
+        sout = "|"
+        for i in range(0, max_col):
+            sout += " " + adjust("", "-", field_len[f_index], args.adjust) + " |"
+            f_index += 1
+        print(sout)
+    index += 1
+
+if args.verbose > 0:
+    print("Max fields:", max_col)
+
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4

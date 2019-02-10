@@ -1,0 +1,5 @@
+#!/bin/bash
+FILE=`basename $1|sed 's/.aa$/.mp3/'`
+ffmpeg -i $1 -codec copy ~/Dropbox/purchased-music/audible/$FILE
+ls -la ~/Dropbox/purchased-music/audible/$FILE
+rm $1
