@@ -89,7 +89,7 @@ for line in lines:
         f_index = 0
         sout = "|"
         for i in range(0, max_col):
-            sout += " " + adjust("", "-", field_len[f_index], args.adjust) + " |"
+            sout += " " + adjust("", "-", (3, field_len[f_index])[args.adjust == True], True) + " |"
             f_index += 1
         print(sout)
     index += 1
