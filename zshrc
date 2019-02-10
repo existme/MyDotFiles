@@ -132,6 +132,7 @@ echoMsgs
 export LC_ALL=en_US.UTF-8
 
 # Fix for referencing $WIDGET with zsh prior to 5.0.3
+autoload -U is-at-least
 if is-at-least 5.0.3; then
     TMOUT=1
     TRAPALRM() {
@@ -153,3 +154,7 @@ neofetch
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
 [[ -f /usr/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+
+# fix terminal insanity! because we fiddled with tabstop in echoP
+stty sane
+tabs -8 # tput tbc;tput cup 39 1;tput hts;
