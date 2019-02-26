@@ -4,6 +4,7 @@
 declare selected=$(cat <<EOF
 i3
 i3-gaps
+sway
 surf
 tabbed
 vim
@@ -79,6 +80,19 @@ case "$res" in
             grc make -j8
             grc sudo make install
         fi
+    ;;
+    sway)
+       prj=sway
+       clone $prj https://github.com/swaywm/sway.git
+       gitPull $prj
+
+       if okToBuild; then
+          sudo apt-get install meson
+          meson build
+          ninja -C build
+          sudo ninja -C build install
+          sudo chmod a+s /usr/local/bin/sway
+       fi
     ;;
     surf)
       prj=surf
@@ -326,3 +340,4 @@ case "$res" in
 esac
 # echo "${bB}Build script finished.$cZ"
 toilet "Build script finished." -f future
+echo "Build done" | pv -qL 10
