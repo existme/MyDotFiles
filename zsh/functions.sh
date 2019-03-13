@@ -296,6 +296,13 @@ mank() {
    xdg-open $man > /dev/null 2>&1
 }
 
+unfunc mand
+mand() {
+   local man="https://manpages.debian.org/jump?q=$1"
+   echo "${bY}Opening ${bW}$man${cZ} for ${bB}'$1'${cZ} command."
+   xdg-open $man > /dev/null 2>&1
+}
+
 unfunc manm
 manm() {
    page=$2
