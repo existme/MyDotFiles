@@ -14,12 +14,12 @@ bG=os.environ["bG"]
 
 
 if len(args)<3:
-    print "Usage: \n"
-    print "getkey {system} {key}"
-    print "getkey --set {password} {system} {key}"
-    print "\nExample: \n"
-    print "getkey %smail gmail %s" % (bW,cZ)
-    print "getkey %s--set %sPa$$w0rd %smail gmail%s" % (bR,bG,bW,cZ)
+    print("Usage: \n")
+    print("getkey {system} {key}")
+    print("getkey --set {password} {system} {key}")
+    print("\nExample: \n")
+    print("getkey %smail gmail %s" % (bW,cZ))
+    print("getkey %s--set %sPa$$w0rd %smail gmail%s" % (bR,bG,bW,cZ))
     sys.exit(0)
 
 if args[1] == '--set':
@@ -36,6 +36,6 @@ key=args[2]
 if cmd=='set':
     keyring.set_password(system,key,password)
 elif cmd=='get':
-    print keyring.get_password(system,key).strip()
+    print(keyring.get_password(system,key).strip())
 
 

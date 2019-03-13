@@ -15,8 +15,8 @@ if __name__ == "__main__":
         if len(sys.argv) == 3:
             fg = sys.argv[2]
 
-print "using bgcolor : " + bg
-print "using fgcolor : " + fg
+print("using bgcolor : " + bg)
+print("using fgcolor : " + fg)
 
 def echo(msg):
     os.system('echo -n "' + str(msg) + '"')

@@ -158,3 +158,7 @@ neofetch
 # fix terminal insanity! because we fiddled with tabstop in echoP
 stty sane
 tabs -8 # tput tbc;tput cup 39 1;tput hts;
+
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /home/existme/git/hoarder-p/node_modules/tabtab/.completions/slss.zsh ]] && . /home/existme/git/hoarder-p/node_modules/tabtab/.completions/slss.zsh

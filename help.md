@@ -399,6 +399,7 @@ Commands
 ║ zdoc                   ║ Opens zsh pdf document.                                      ║
 ║ mann <command>         ║ Opens https://manned.org manual page for the command         ║
 ║ mank <command>         ║ Opens https://www.mankier.com manual page for the command    ║
+║ mand <command>         ║ Opens https://manpages.debian.org manual page for the command║
 ╚════════════════════════╩══════════════════════════════════════════════════════════════╝
 
 ## 1.10.2 Useful manual pages
