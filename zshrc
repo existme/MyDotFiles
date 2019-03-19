@@ -28,6 +28,7 @@ export MANPATH=/usr/share/man
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CLICOLOR=true
 export GUI_EDITOR=code
+export DEFAUL_MAIL="gmail"       # Default mail account used with neomutt
 
 # setopt BANG_HIST               # Treat the '!' character specially during expansion.
 unsetopt BANG_HIST               # Prevent "!" characters from being special on the command line
