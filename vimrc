@@ -453,3 +453,6 @@ autocmd FileType symbol colorscheme babymate256 | call airline#load_theme()
 " ForwardX11 yes
 vmap "+y :!xclip -f -selection c<cr>
 
+hi SpellBad cterm=undercurl,underline ctermfg=LightMagenta 
+" setlocal spell spelllang=en_us
+
