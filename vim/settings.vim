@@ -65,6 +65,10 @@ nnoremap <Tab>k <C-w>k
 " =========  Toggle spell checker ===========
 nmap <silent>		<leader>s :set spell!<CR>
 
+" =====  Get email from mutt aliases  =======
+inoremap <C-F>		<esc>:set virtualedit=onemore<cr>l:let @a=substitute(system('~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l'),"\n","","g")<CR>i<c-r>a<esc>:set virtualedit=<cr>a
+
+
 " =========  Toggle list			 ===========
 nmap <leader>l		:set list!<CR>
 
@@ -168,10 +172,11 @@ cmap w!! w !sudo tee > /dev/null %
 nnoremap <leader>r   :!%:p<cr>
 xmap     <leader>r   :!%:p<cr>
 
-"reload current file
-map      <c-r>       :e<cr>
-map      <c-s-r>     :e!<cr>
-imap     <c-r> <esc> :e<cr>
+"reload current file (todo: this was a bad binding because it blocked register
+"paste so I removed it for now)
+" map      <c-r>       :e<cr>
+" map      <c-s-r>     :e!<cr>
+" imap     <c-r> <esc> :e<cr>
 
 "Search and replace with
 " Use * to highligh all the words then press <c-n> then type
