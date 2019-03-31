@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Query the current display width
+# the results from xrandr looks like this:
+#     DP-0 connected 1920x1080+1920+0 (normal left inverted right x axis y axis) 509mm x 286mm
+#
+# DP-0 will be taken care with `,query-current-display`
+# grep -oE  will separate WIDTHxHEIGHT section
+# ${DISPLAY_PARAMS//x/ } will delimit the result by x
+DISPLAY_PARAMS=$(xrandr 2>/dev/null | grep $(,query-current-display)| grep -oE "[0-9]+x[0-9]+")
+DISPLAY_PARAMS=(${DISPLAY_PARAMS//x/ })
+echo ${DISPLAY_PARAMS[0]}
+
+# vim: set ft=sh: #

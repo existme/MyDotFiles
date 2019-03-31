@@ -1,0 +1,22 @@
+#!/bin/bash
+wikiurl="http://localhost:8091"
+wikiediturl="http://localhost:8091/edit"
+MESG=$(cat <<-END
+   """Use <span foreground='yellow'><b>Alt-e</b></span> for editing or <b>Enter</b> to view the document
+   """
+END
+)
+
+res=$(find $HOME/notes -name '*.md' | sed "s|${HOME}/notes/||" | $HOME/bini3/rmenu "Select document to view" row -format s -kb-custom-1 "Alt-e" -mesg $MESG)
+RTR=$?
+
+[ $RTR = "10" ] && wikiurl=$wikiediturl
+[ $RTR = "1" ] && exit 1
+
+# res="${res/${HOME}\/notes\//${wikiurl}}"
+# echo $res
+res=${wikiurl}/$res
+res="${res/\.md/}"
+# netsurf-fb --scale 100 --fb_toolbar_size 1 --fb_furniture_size 0 -w 1915 -h 1000 -b 32 $res
+,chromium-presentation "--force-device-scale-factor=1 --app=$res" 2> /dev/null
+# echo $res

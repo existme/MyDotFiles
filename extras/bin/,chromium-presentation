@@ -2,4 +2,4 @@
 
 exec chromium-browser --enable-webgl \
      --user-data-dir="$HOME"/.config/chromium-presentation \
-     --force-device-scale-factor=1.5 --use-skia-renderer --app $@ &
+     --force-device-scale-factor=1.5 --app $@ &

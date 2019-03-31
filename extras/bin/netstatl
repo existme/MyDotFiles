@@ -1,0 +1,13 @@
+#!/bin/dash
+# sdothum - 2016 (c) wtfpl
+
+# Network
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ...................................................................... Monitor
+
+# network statistics
+echo "netstat -tnpl $1"
+sudo /bin/netstat -tnpl $1
+
+# vim: set ft=sh: #

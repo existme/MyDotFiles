@@ -1,0 +1,6 @@
+#!/bin/dash
+# Get current display width by asking i3 wm about the currently focused display
+CURRENT=$(i3-msg -t get_workspaces|jq '.[] | select(.focused==true).output')
+CURRENT=${CURRENT%\"}
+CURRENT=${CURRENT#\"}
+echo $CURRENT
