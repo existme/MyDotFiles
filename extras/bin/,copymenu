@@ -1,0 +1,22 @@
+#!/bin/zsh
+
+declare -i n
+n=1
+len=$(copyq count)
+item=$(copyq read $n)
+req=""
+while [ $n -ne $len ]; do
+   [ "$req" != "" ] && req+="\n"
+   item=$(copyq read $n)
+   size=${#item}
+   line1=`echo $item|head -n 1`
+   # echo "$n- [$size] - $line1"
+   req+="$(printf "<span foreground='#bbbbbb'>%6d bytes</span> <span foreground='yellow'>-</span>" $size) $line1"
+   n=$((n+1))
+done
+sel=$(echo $req|rmenu "choose" -format i)
+res=$@
+
+sel=$((sel+1))
+item=$(copyq read $sel)
+echo $item

@@ -1,0 +1,35 @@
+#!/bin/zsh
+# services state change script
+#
+# This is mainly used for batch disabling or starting heavy services
+
+VERB=$1
+function disable(){
+   local SERVICE=$1
+   echo "${bW}Stoping and disabling ${bY}$SERVICE${cZ}"
+   sudo service $SERVICE stop
+   sudo systemctl mask $SERVICE 
+   sudo service $SERVICE status
+}
+function enable(){
+   local SERVICE=$1
+   echo "${bW}Enabling and starting ${bY}$SERVICE${cZ}"
+   sudo systemctl unmask $SERVICE 
+   sudo service $SERVICE start
+   sudo service $SERVICE status
+}
+case $VERB in
+   start|enable)
+      enable mysql
+      enable idsvr
+      enable apache2
+      ;;
+   stop|disable)
+      disable mysql
+      disable idsvr
+      disable apache2
+      ;;
+   *)
+      echo "use either start/stop/enable/disable"
+esac
+
