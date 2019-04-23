@@ -1,0 +1,121 @@
+#!/usr/bin/python3
+"""
+Usage:
+   ,pgit <FILENAME> [-i|-m] [-t]
+
+Options:
+   -i, --i     diff using IntelliJ
+   -m, --m     diff using Meld
+   -t, --t     diff against top
+"""
+import sh
+import glob
+import os
+from docopt import docopt
+arguments = docopt(__doc__, version='1.0.0rc2')
+argAgainstTop = arguments['--t']
+argUseMeld = arguments['--m']
+argUseIdea = arguments['--i']
+
+originalFilename = glob.glob(arguments['<FILENAME>'])[0]
+filename = os.path.realpath(originalFilename)
+
+_gitFolder = str(sh.Command(',git-getworkingfolder')(filename)).strip()+"/"
+_name, _ext = os.path.splitext(filename)
+filename = filename.replace(_gitFolder, '')
+display = sh.Command(",query-current-display")().strip()
+rofi = sh.rofi.bake('-dmenu', '-i', '-format', 'i', '-monitor', display, '-width', 80)
+
+git = sh.git.bake('--no-pager', _cwd=_gitFolder)
+idea = sh.idea.bake()
+meld = sh.meld.bake()
+vimdiff = sh.vimdiff.bake()
+shas = list(git.log('--no-color', "--format=format:%h", filename))
+# ┊
+revs = list(git.log('--no-color', "--pretty=format:%h | %cr | %s | %ae", "--date=short", filename))
+
+
+# Todo: make the format constant!
+def adjust_format(unAdjustedList):
+   MAX_COL_WIDTH = 55
+   my_list_f = ""
+   max_col_no = 0
+   col_maxs = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+   for row in unAdjustedList:
+      cols = row.split('|')
+      max_col_no = len(cols)
+      for i in range(0, max_col_no):
+         lencol = len(cols[i])
+         if col_maxs[i] < lencol:
+            col_maxs[i] = lencol if lencol < MAX_COL_WIDTH else MAX_COL_WIDTH
+
+   formatString = ""
+   for i in range(0, max_col_no):
+      if formatString != "":
+         formatString += "}┊"
+      formatString += "{:<"+str(col_maxs[i])+"."+str(col_maxs[i])
+   formatString += "}"
+
+   adjustedList = []
+   for row in unAdjustedList:
+      cols = row.strip().split('|')
+      adjustedList.append(formatString.format(*cols))
+
+   return adjustedList
+
+
+adjustList = adjust_format(revs)
+revs_f = '\n'.join(adjustList)
+
+
+def showdiff(selectedIndex):
+   res = None
+   try:
+      res = rofi('-selected-row', f"{selectedIndex}", _in=revs_f)
+   except:
+      # canceled
+      return -1
+
+   selectedIndex = int(res.strip())
+   index = selectedIndex
+
+   prev = index+1 if index+1 < len(shas) else index
+
+   if argAgainstTop:
+      prev = index
+      index = 0
+
+   f1 = "%s:%s" % (shas[index].strip(), filename)
+   f2 = "%s:%s" % (shas[prev].strip(), filename)
+   out1 = '/tmp/newer version%s' % _ext
+   out2 = '/tmp/older version%s' % _ext
+
+   if index == 0:
+      out1 = originalFilename
+   else:
+      git.show(f1, _out=out1)
+
+   git.show(f2, _out=out2)
+
+   try:
+      if argUseIdea:
+         out = idea('diff', out1, out2)
+      elif argUseMeld:
+         out = meld(out1, out2)
+      else:
+         out = vimdiff(out1, out2, _fg=True)
+   except sh.ErrorReturnCode:
+      print("")
+
+   if out1.startswith("/tmp/"):
+      os.remove(out1)
+   if out2.startswith("/tmp/"):
+      os.remove(out2)
+
+   return -1 if len(shas) == 1 or argUseIdea else selectedIndex
+
+
+selectedRow = 0
+while(selectedRow != -1):
+   selectedRow = showdiff(selectedRow)

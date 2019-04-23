@@ -1,12 +1,12 @@
-#/bin/zsh
+#!/bin/zsh
 
 dir=$(realpath $1)
 echo "${bW}Opening project  ${bY}${sU}${dir}${cZ} in IDEA ${bB}${cZ}"
 W3=$(xgetres i3.w3)
 title="IDEA: $dir *****"
 # i3-msg "workspace $W3; layout tabbed; append_layout $HOME/bini3/layout/w3-idea.json; "
-if [ -d $dir ]; then
-   ,o3 idea $dir/ > /dev/null
+if [ -e $dir ]; then
+   ,o3 $SCRIPTPATH/extras/scripts/idea-old $dir #> /dev/null
 else
    echo "${bR}File/Folder doesn't exists${cZ}"
 fi

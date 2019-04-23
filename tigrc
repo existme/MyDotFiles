@@ -45,7 +45,7 @@ set commit-order = topo
 set ignore-case = no
 set wrap-lines = no
 set focus-child = yes
-set main-options = --exclude=refs/stash --all
+set main-options = --exclude=refs/stash
 set status-show-untracked-files = yes
 
 # set main-view = id date:relative-compact author commit-title:graph=v2,refs=yes

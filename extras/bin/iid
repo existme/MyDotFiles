@@ -1,0 +1,43 @@
+#!/bin/bash
+
+f1=$1
+shift
+f2=""
+while [ $# -gt 0 ]; do    # Until you run out of parameters . . .
+   case "$1" in
+      "-h")
+         shift
+         HEAD="$1"
+         EXT="${f1#*.}"
+         f2="/tmp/iid-temp.$EXT"
+         revs=($(git log --format=format:%h $f1))
+         git log --format="format:%h %s" $f1
+         COUNT=${#revs[@]}
+         echo "The file has changed ${bY}$COUNT${cZ} times, you requested ${bG}#$HEAD${cZ} change"
+         if [[ $HEAD -gt $COUNT ]]; then
+            echo "${bR}Requesting $HEAD change is not possible since there exists only $COUNT changes"
+            exit
+         fi
+         COMMIT=${revs[$HEAD]}
+         echo $COMMIT
+         echo "git show HEAD~$HEAD:$f1"
+         git show "$COMMIT:$f1" > $f2
+         cat $f2
+         ;;
+      *)
+         f2=$(realpath $1)
+         shift
+         ;;
+   esac
+   shift
+done
+
+
+echo $f1
+f1=$(realpath $f1)
+echo "${bW}Diffing files  ${bY}${sU}${f1}${cZ} and   ${bY}${sU}${f2}${cZ} in IDEA ${bB}${cZ}"
+W3=$(xgetres i3.w3)
+title="IDEA: $dir *****"
+
+which idea
+idea diff $f1 $f2 > /dev/null
