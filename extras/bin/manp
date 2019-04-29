@@ -1,0 +1,8 @@
+#!/bin/bash
+
+cmd="$1"
+if [ -Z $cmd ]; then
+   cmd=$(man -k . | rmenu "select the man page you want to view" | awk '{print $1}')
+fi
+
+man -Tpdf $cmd| zathura -
