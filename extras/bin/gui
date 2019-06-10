@@ -6,6 +6,7 @@
 
 # ......................................................................... Xorg
 
-pstat startx
+#Check for startx or i3 as an indication of a gui interface being present
+pstat startx || pstat i3
 
 # vim: set ft=sh: #

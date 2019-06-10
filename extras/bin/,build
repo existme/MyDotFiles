@@ -339,5 +339,6 @@ case "$res" in
     ;;
 esac
 # echo "${bB}Build script finished.$cZ"
+dunstify -p ",Build" "<span color='#FF8888' weight='heavy'>... Finished</span>" -i "done-38"
 toilet "Build script finished." -f future
 echo "Build done" | pv -qL 10

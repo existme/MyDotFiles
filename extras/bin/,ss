@@ -3,7 +3,11 @@
 #
 # This is mainly used for batch disabling or starting heavy services
 
+# Other annoying services:
+#
+#  teamviewerd
 VERB=$1
+SVC=$2
 function disable(){
    local SERVICE=$1
    echo "${bW}Stoping and disabling ${bY}$SERVICE${cZ}"
@@ -20,16 +24,27 @@ function enable(){
 }
 case $VERB in
    start|enable)
-      enable mysql
-      enable idsvr
-      enable apache2
+      if [[ "$SVC" == "" ]]; then
+         enable mysql
+         enable idsvr
+         enable apache2
+      else
+         enable $SVC
+      fi
       ;;
    stop|disable)
-      disable mysql
-      disable idsvr
-      disable apache2
+      if [[ "$SVC" == "" ]]; then
+         disable mysql
+         disable idsvr
+         disable apache2
+      else
+         disable $SVC
+      fi
       ;;
    *)
-      echo "use either start/stop/enable/disable"
+      echo "Use either start/stop/enable/disable to stop/start mysql,idsvr,apache2"
+      echo "   example: ${cY},ss stop${cZ}"
+      echo "Or use either start/stop/enable/disable <service>"
+      echo "   example: ${cY},ss stop mysql${cZ}"
 esac
 
