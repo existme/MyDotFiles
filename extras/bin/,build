@@ -18,6 +18,7 @@ cmus
 check
 sshuttle
 tig
+lnav
 xrectsel
 bumblebee-status
 quit
@@ -25,6 +26,7 @@ EOF
 )
 function gitPull(){
     local prj=$1
+    local nosubmodule=$2
     echo "Compiling ${bY}$prj${cZ}"
     echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
     read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?"
@@ -33,7 +35,9 @@ function gitPull(){
 
     if [[ $pr =~ ^[Yy]$ ]]; then
         git pull
-        git submodule foreach git pull
+        if [[ "$nosubmodule" != "false" ]]; then
+           git submodule foreach git pull
+        fi
     else
         echo "${bR}Nothing pulled${cZ}!"
     fi
@@ -309,6 +313,20 @@ case "$res" in
           make prefix=/usr/local
           sudo make install prefix=/usr/local
           sudo make install-doc
+       fi
+    ;;
+    lnav)
+       prj=lnav
+       set -e
+
+       clone $prj https://github.com/tstack/lnav.git
+       gitPull $prj false
+
+       if okToBuild; then
+          ./autogen.sh
+          ./configure
+          make
+          sudo make install
        fi
     ;;
     xrectsel)
