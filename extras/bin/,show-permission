@@ -1,0 +1,9 @@
+#!/bin/zsh
+if [ -z $1 ]; then
+   echo "Use this script to show access rights of a file/folder in the octal value format (numerical chmod permissions)"
+   echo "Example:"
+   echo ""
+   echo "  ${cY},show-permission ${cB}/bin/zsh${cZ}"
+   exit
+fi
+stat -c '%a %A %G %n' $1

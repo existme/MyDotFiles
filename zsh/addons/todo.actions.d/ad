@@ -3,9 +3,22 @@
 action=$1
 shift
 [ "$action" = "usage" ] && {
-  echo "  ad is alias for addp p D ..."
+  echo "  ad is alias for adding with prepending the date automatically ..."
+  echo "  example:"
+  echo "    todo.sh ad +queue 'the date would be prepended automatically to this item'"
   echo ""
   exit
 }
+
 # call back to the main script to add
-"$TODO_SH" -t addp p D "$@"
+FIRST=$1
+shift
+REST=$@
+
+# move the group to the end of todo item
+if [[ $FIRST == \+* ]]; then
+   "$TODO_SH" -t add "$REST $FIRST" 
+else
+   # "$TODO_SH" -t add "$$REST" 
+   echo "Todo item should start with a +tag"
+fi
