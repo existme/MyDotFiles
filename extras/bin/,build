@@ -244,7 +244,8 @@ case "$res" in
     ;;
     i3lock-color)
        prj=i3lock-color
-       clone $prj https://github.com/PandorasFox/i3lock-color.git
+       # clone $prj https://github.com/PandorasFox/i3lock-color.git
+       clone $prj https://github.com/chrjguill/i3lock-color.git
        # clone $prj https://github.com/meskarune/i3lock-color.git
        gitPull $prj
 
