@@ -21,6 +21,7 @@ tig
 lnav
 xrectsel
 bumblebee-status
+zathura
 quit
 EOF
 )
@@ -240,6 +241,19 @@ case "$res" in
           sudo make install-service-dbus
           sudo killall dunst
           dunst -config ~/.config/dunst/dunstrc &
+       fi
+    ;;
+    zathura)
+       prj=zathura
+       clone $prj https://git.pwmt.org/pwmt/zathura.git 
+       gitPull $prj
+
+       if okToBuild; then
+          sudo apt install libgirara-dev
+          meson build
+          cd build
+          ninja
+          sudo ninja install
        fi
     ;;
     i3lock-color)
