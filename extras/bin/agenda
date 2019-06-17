@@ -1,0 +1,60 @@
+#!/usr/bin/python3
+"""agenda: display agenda using dunstify
+Usage:
+    agenda
+    agenda -e
+    agenda -r
+
+Options:
+    -e      edit agenda
+    -r      removes agenda and doesn't display anything
+"""
+import os
+import sys
+
+import sh
+from docopt import docopt
+from subprocess import call
+
+id = sh.Command('id').bake('-u')
+# XDG_RUNTIME_DIR should be properly set in order for sound to work
+os.environ['XDG_RUNTIME_DIR'] = '/run/user/' + str(id()).strip()
+
+agenda_path = os.path.expanduser('~/agenda.dat')
+
+arguments = docopt(__doc__, version='1.0.0rc2')
+
+# edit agenda with vim
+if arguments['-e']:
+    call(['vim', agenda_path])
+    sys.exit()
+
+# remove agenda and don't display further messages
+if arguments['-r']:
+    with open(agenda_path, 'w') as f:
+        f.write('')
+    print(f'Agendas removed from ${agenda_path}')
+    sys.exit()
+
+
+def expand(cmd):
+    return os.path.expanduser(cmd)
+
+
+dunstify = sh.Command(expand('~/bin/dunstify'))
+dunstify = dunstify.bake('-i', 'done-38')
+
+# If file doesn't exists create it with initial text
+if not os.path.exists(agenda_path):
+    with open(agenda_path, 'w') as f:
+        f.write(f'edit this file: {agenda_path} with your agenda')
+
+f = open(agenda_path, "r")
+agenda = f.read()
+
+# if agenda is empty just exit the app
+if len(agenda.strip()) == 0:
+    sys.exit()
+
+dunstify('-p', agenda)
+call([expand('~/bin/,ding')])

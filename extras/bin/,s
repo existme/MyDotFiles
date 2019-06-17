@@ -11,7 +11,7 @@ EOF
 if [ -z "$1" ]; then
    declare service=$(
          echo $units|tr '\n' '|'|
-         rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
+         rofi -dmenu -sep '|' -p "What service you want to see the logs for? " -i -disable-history -levenshtein-sort -matching normal -e
          )
 else
    declare service=$1
