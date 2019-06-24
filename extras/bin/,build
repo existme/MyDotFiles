@@ -1,6 +1,17 @@
 #!/bin/zsh
 # !! It's important to use bash or zsh otherwise reads doesn't work
-#
+# Usage:
+#     ,build
+#     ,build i3
+#     ,build i3 -y     # user will not be prompted at all
+
+declare NOPROMPT=false
+if [[ "$2" == "-y" ]]; then
+   NOPROMPT=true
+fi
+
+$NOPROMPT && echo "${bW}NOPROMPT${cZ} detected, assuming all questions to be true"
+
 declare selected=$(cat <<EOF
 i3
 i3-gaps
@@ -26,22 +37,27 @@ quit
 EOF
 )
 function gitPull(){
-    local prj=$1
-    local nosubmodule=$2
-    echo "Compiling ${bY}$prj${cZ}"
-    echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
-    read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?"
-    echo
-    cd ~/git/$prj
+   local prj=$1
+   local nosubmodule=$2
+   echo "Compiling ${bY}$prj${cZ}"
+   echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
+  
+   if [[ $NOPROMPT ]]; then
+      pr="y"
+   else
+      read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?"
+   fi
+   echo
+   cd ~/git/$prj
 
-    if [[ $pr =~ ^[Yy]$ ]]; then
-        git pull
-        if [[ "$nosubmodule" != "false" ]]; then
-           git submodule foreach git pull
-        fi
-    else
-        echo "${bR}Nothing pulled${cZ}!"
-    fi
+   if [[ $pr =~ ^[Yy]$ ]]; then
+      git pull
+      if [[ "$nosubmodule" != "false" ]]; then
+         git submodule foreach git pull
+      fi
+   else
+      echo "${bR}Nothing pulled${cZ}!"
+   fi
 }
 function clone(){
     local prj=$1
@@ -53,15 +69,19 @@ function clone(){
     fi
 }
 function okToBuild(){
-    read -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?"
-    echo
-    if [[ ! $pr =~ ^[Yy]$ ]]; then
-        echo "${bR}Build Cancled${cZ}!"
-        return 1
-    fi
-    # echo "${bG}Building${cZ} ..."
-    toilet "Building..." -f future
-    return 0
+   if [[ $NOPROMPT ]]; then
+      pr="y"
+   else
+      read -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?"
+   fi
+   echo
+   if [[ ! $pr =~ ^[Yy]$ ]]; then
+      echo "${bR}Build Cancled${cZ}!"
+      return 1
+   fi
+   # echo "${bG}Building${cZ} ..."
+   toilet "Building..." -f future
+   return 0
 }
 if [ -z "$1" ]; then
    declare res=$(
