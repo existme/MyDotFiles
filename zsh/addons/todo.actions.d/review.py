@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python2
 # encoding: utf-8
 """
 review.py
@@ -32,8 +32,8 @@ def print_file(todofile):
 	projects = {}
 	contexts = {}
 	
-	print ""
-	print mdown.h1(os.path.basename(todofile).replace(".txt", "").capitalize())
+	print ("")
+	print (mdown.h1(os.path.basename(todofile).replace(".txt", "").capitalize()))
 	
 	for line in open(todofile, "r").readlines():
 		t = Todo(line)
@@ -47,24 +47,24 @@ def print_file(todofile):
 			
 		contexts[t.context].append(t)
 	
-	print ""
-	print mdown.h2("By project:")
+	print ("")
+	print (mdown.h2("By project:"))
 	for prj in projects.keys():
 		
 		if prj == "":
-			print mdown.h3("No project assigned")
+			print (mdown.h3("No project assigned"))
 		else:
-			print mdown.h3("%s" % prj.replace("+", ""))
-		print mdown.li(projects[prj])
+			print (mdown.h3("%s" % prj.replace("+", "")))
+		print (mdown.li(projects[prj]))
 
 	print ""
 	print mdown.h2("By context:")
 	for ctx in contexts.keys():
 		if ctx == "":
-			print mdown.h3("No context assigned")
+			print (mdown.h3("No context assigned"))
 		else:
-			print mdown.h3("%s" % ctx)
-		print mdown.li(contexts[ctx])
+			print (mdown.h3("%s" % ctx))
+		print (mdown.li(contexts[ctx]))
 
 
 def main(directory):
@@ -88,19 +88,19 @@ def main(directory):
 	done = [x for x in done if x.completed and x.completed >= cutoff]
 	
 	
-	print mdown.h1("Statistics")
-	print "* %d tasks completed since %s (last week)" % (len(done), str(cutoff))
-	print "* Averaging %0.1f tasks per day" % (float(len(done)) / CUTOFFDAYS ) 
-	print "* %d tasks completed since the beginning of time" % overall 
+	print (mdown.h1("Statistics"))
+	print ("* %d tasks completed since %s (last week)" % (len(done), str(cutoff)))
+	print ("* Averaging %0.1f tasks per day" % (float(len(done)) / CUTOFFDAYS ) )
+	print ("* %d tasks completed since the beginning of time" % overall )
 
 if __name__ == '__main__':
 	if len(sys.argv) is not 2:
-		print "Usage: review.py [TODO_DIR]"
+		print ("Usage: review.py [TODO_DIR]")
 		sys.exit(1)
 	
 	if os.path.isdir(sys.argv[1]):
 		main(sys.argv[1])
 	else:
-		print "Error: %s is not a directory" % sys.argv[1]
+		print ("Error: %s is not a directory" % sys.argv[1])
 		sys.exit(1)
 

@@ -21,7 +21,7 @@ grc rsync -q --info=progress2 -v --exclude='.git/' -avz -avhe ssh ~/git/MyDotFil
 echo "$cZ"
 
 echo "Copying ~/.lnav to$cG $DEST:$cZ"
-grc rsync -q --info=progress2 --info=progress2 --exclude='.git/' --exclude="view-info-*.json" -avz -avhe ssh ~/.lnav $DEST:~/
+grc rsync -q --info=progress2 --info=progress2 --exclude='.git/' --exclude="view-info-*.json" --exclude='crash/' -avz -avhe ssh ~/.lnav $DEST:~/
 echo "$cZ"
 
 echo "Copying ~/.fonts to$cG $DEST:$cZ"
