@@ -57,4 +57,5 @@ if len(agenda.strip()) == 0:
     sys.exit()
 
 dunstify('-p', agenda)
-call([expand('~/bin/,ding')])
+# call([expand('~/bin/,ding')])
+call(['/usr/bin/paplay',expand('~/sounds/ticking/tick-tock.wav')])
