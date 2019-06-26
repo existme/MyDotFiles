@@ -58,4 +58,4 @@ if len(agenda.strip()) == 0:
 
 dunstify('-p', agenda)
 # call([expand('~/bin/,ding')])
-call(['/usr/bin/paplay',expand('~/sounds/ticking/tick-tock.wav')])
+call(['/usr/bin/paplay','--volume','120000',expand('~/sounds/ticking/tick-tock.wav')])
