@@ -25,14 +25,14 @@ alias -g T="| tail"
 alias -g X="| xargs -I{}"
 # Strip ansi codes from stream and feed it in for XS
 alias -g XS="| perl -pe 's/\e\[?.*?[\@-~]//g' | xargs -I{} "
-alias -g L='| less -MNr'
+alias -g L='|& less -MNr'
 # Pipe to vim in readonly mode and let fast exiting by pressing `q`
-alias -g V="| vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf sh' -R -"
+alias -g V="|& vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf sh' -R -"
 # Pipe to vim but make it ansi enabled good for colored output
-alias -g VA="| vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' +'AnsiEsc' -R -"
+alias -g VA="|& vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf dts' +'AnsiEsc' -R -"
 alias -g N="\"\$(\\/bin\/ls -tp | grep -v '\/$' | head -1)\""
-alias -g C="| xclip"
-alias -g nul="> /dev/null 2>&1"
+alias -g C="|& xclip"
+alias -g nul=">/dev/null 2>&1"
 alias -g nerr="2> /dev/null"
 # **********************************************************************
 
