@@ -15,6 +15,7 @@ $NOPROMPT && echo "${bW}NOPROMPT${cZ} detected, assuming all questions to be tru
 declare selected=$(cat <<EOF
 i3
 i3-gaps
+i3ass
 sway
 surf
 tabbed
@@ -41,8 +42,8 @@ function gitPull(){
    local nosubmodule=$2
    echo "Compiling ${bY}$prj${cZ}"
    echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
-  
-   if [[ $NOPROMPT ]]; then
+   echo $NOPROMPT 
+   if [[ "$NOPROMPT" == "true" ]]; then
       pr="y"
    else
       read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?"
@@ -69,7 +70,7 @@ function clone(){
     fi
 }
 function okToBuild(){
-   if [[ $NOPROMPT ]]; then
+   if [[ "$NOPROMPT" == "true" ]]; then
       pr="y"
    else
       read -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?"
@@ -104,6 +105,16 @@ case "$res" in
             grc ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
             grc make -j8
             grc sudo make install
+        fi
+    ;;
+    i3ass)
+        prj=i3ass 
+        gitPull $prj https://github.com/budlabs/i3ass
+
+        if okToBuild; then
+            cd ~/git/$prj
+            sudo apt-get install xdotool wmctrl
+            sudo make install
         fi
     ;;
     sway)
@@ -392,6 +403,6 @@ case "$res" in
     ;;
 esac
 # echo "${bB}Build script finished.$cZ"
-dunstify -p ",Build" "<span color='#FF8888' weight='heavy'>... Finished</span>" -i "done-38"
+dunstify ",Build" "<span color='#FF8888' weight='heavy'>... Finished</span>" -i "done-38"
 toilet "Build script finished." -f future
 echo "Build done" | pv -qL 10
