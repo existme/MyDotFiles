@@ -26,6 +26,7 @@ alias -g X="| xargs -I{}"
 # Strip ansi codes from stream and feed it in for XS
 alias -g XS="| perl -pe 's/\e\[?.*?[\@-~]//g' | xargs -I{} "
 alias -g L='|& less -MNr'
+alias -g LL='|& lnav'
 # Pipe to vim in readonly mode and let fast exiting by pressing `q`
 alias -g V="|& vim +'nnoremap q :q!<enter>' +'set tm=0' +'setf sh' -R -"
 # Pipe to vim but make it ansi enabled good for colored output
