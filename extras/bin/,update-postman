@@ -1,4 +1,6 @@
+#!/bin/bash
 wget https://dl.pstmn.io/download/latest/linux64 -O /tmp/postman.tar.gz
+# wget https://dl.pstmn.io/download/version/7.2.0/linux64 -O /tmp/postman.tar.gz
 rm -rf /tmp/Postman
 tar -xvf /tmp/postman.tar.gz -C /tmp/ 
 sudo chown -R $USER /opt/Postman 
