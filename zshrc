@@ -162,4 +162,7 @@ tabs -8 # tput tbc;tput cup 39 1;tput hts;
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Initialize compinit at the end to avoid removal by other bash tools
+# Makesure this line is executed always at end
+source $SCRIPTPATH/zsh/compinit.sh

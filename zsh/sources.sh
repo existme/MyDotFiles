@@ -85,7 +85,6 @@ echoP "${plugin}z.sh"
 [[ -f $HOME/zshrc.local.post ]] && source $HOME/zshrc.local.post && echoP "${bB}~/zshrc.local.post${cZ}"
 
 source $SCRIPTPATH/zsh/allpath.sh
-source $SCRIPTPATH/zsh/compinit.sh
 #source $SCRIPTPATH/zsh/bundle/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 echoP "${plugin}zsh-autosuggestions.zsh"
