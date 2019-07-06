@@ -34,6 +34,7 @@ alias v='vim '
 alias vm='vim "$(fzf -m)"'
 alias -s md=vim
 alias s="sudo PATH=\"$PATH\" -E "
+alias sc="sudo PATH=\"$PATH\" -E systemctl --no-pager "
 alias dq="sudo dpkg-query --listfiles"
 alias iconf="code ~config/i3/config"
 alias reload!='. ~/.zshrc'
