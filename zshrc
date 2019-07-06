@@ -160,6 +160,6 @@ neofetch
 stty sane
 tabs -8 # tput tbc;tput cup 39 1;tput hts;
 
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /home/existme/git/hoarder-p/node_modules/tabtab/.completions/slss.zsh ]] && . /home/existme/git/hoarder-p/node_modules/tabtab/.completions/slss.zsh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
