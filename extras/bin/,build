@@ -216,7 +216,7 @@ case "$res" in
        clone $prj https://github.com/albertlauncher/albert.git
        gitPull $prj
        if okToBuild; then
-         sudo apt-get install libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev
+         sudo apt-get install libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev libqt5charts5-dev
          rm -rf albert-build
          mkdir albert-build
          cd albert-build
