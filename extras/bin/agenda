@@ -11,10 +11,10 @@ Options:
 """
 import os
 import sys
+from subprocess import call
 
 import sh
 from docopt import docopt
-from subprocess import call
 
 id = sh.Command('id').bake('-u')
 # XDG_RUNTIME_DIR should be properly set in order for sound to work
@@ -42,7 +42,7 @@ def expand(cmd):
 
 
 dunstify = sh.Command(expand('~/bin/dunstify'))
-dunstify = dunstify.bake('-i', 'done-38')
+dunstify = dunstify.bake('-i', 'red-128', '-a', 'agenda')
 
 # If file doesn't exists create it with initial text
 if not os.path.exists(agenda_path):
@@ -50,12 +50,18 @@ if not os.path.exists(agenda_path):
         f.write(f'edit this file: {agenda_path} with your agenda')
 
 f = open(agenda_path, "r")
-agenda = f.read()
+agenda = ""
+for l in f:
+    line = l.strip()
+    # Remove lines which starts with ## those are comments
+    if not line.startswith('##'):
+        agenda += line + "\n"
 
+agenda = f"{agenda}"
 # if agenda is empty just exit the app
 if len(agenda.strip()) == 0:
     sys.exit()
 
-dunstify('-p', agenda)
+dunstify('', '-p', agenda)
 # call([expand('~/bin/,ding')])
-call(['/usr/bin/paplay','--volume','120000',expand('~/sounds/ticking/tick-tock.wav')])
+call(['/usr/bin/paplay', '--volume', '30000', expand('~/sounds/ticking/tick-tock.wav')])

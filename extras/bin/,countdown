@@ -1,0 +1,13 @@
+#!/bin/zsh
+#https://superuser.com/a/611582/285113
+seconds=$1 
+if [[ -z "$seconds" ]]; then
+   print "usage:"
+   print ""
+   print ",countdown $cB<seconds>$cZ"
+   exit
+fi
+date1=$((`date +%s` + $seconds)); 
+while [ "$date1" -ge `date +%s` ]; do 
+  echo -ne "$(date -u --date @$(($date1 - `date +%s` )) +%H:%M:%S)\r"; 
+done
