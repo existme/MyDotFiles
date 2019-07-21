@@ -1,0 +1,27 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Path::Class;
+use Digest::SHA;
+
+my $dir = dir(shift);
+my %digest;
+
+# group files by digest
+for my $subdir (qw( cur new )) {
+
+	 # compute the digest with the extra headers
+	 push @{
+		  $digest{ Digest::SHA->new("sha1")->add(
+					 grep !m{^X-TUID: [a-zA-z0-9+/]{12}$},       # isync
+					 grep !m{^X-OfflineIMAP: [0-9]+-[0-9]+$},    # offlineimap
+					 $_->slurp
+				)->hexdigest
+		  }
+		},
+		$_
+		for $dir->subdir($subdir)->children;
+}
+
+print "@$_\n" for grep @$_ > 1, values %digest;
+

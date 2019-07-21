@@ -1,0 +1,3 @@
+#!/bin/zsh
+# https://superuser.com/a/611582/285113
+while true; do echo -ne "`date`\r"; done
