@@ -11,6 +11,7 @@ Options:
 """
 import os
 import sys
+from datetime import datetime
 from subprocess import call
 
 import sh
@@ -41,6 +42,16 @@ def expand(cmd):
     return os.path.expanduser(cmd)
 
 
+def processLine(originalLine):
+    current_line = originalLine
+    if current_line.strip().startswith('##'):
+        return ""
+    current_line = current_line.replace('$DATETIME$', datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    current_line = current_line.replace('$DATE$', datetime.now().strftime("%Y-%m-%d"))
+    current_line = current_line.replace('$TIME$', datetime.now().strftime("%H:%M:%S"))
+    return current_line
+
+
 dunstify = sh.Command(expand('~/bin/dunstify'))
 dunstify = dunstify.bake('-i', 'red-128', '-a', 'agenda')
 
@@ -52,10 +63,8 @@ if not os.path.exists(agenda_path):
 f = open(agenda_path, "r")
 agenda = ""
 for l in f:
-    line = l.strip()
     # Remove lines which starts with ## those are comments
-    if not line.startswith('##'):
-        agenda += line + "\n"
+    agenda += processLine(l)
 
 agenda = f"{agenda}"
 # if agenda is empty just exit the app
