@@ -31,11 +31,14 @@ echo "Make sure to add this line at the end of sudoers:"
 echo "sudo visudo"
 echo "<youruser> ALL=(ALL:ALL) NOPASSWD: ALL"
 
-curl -L -o /tmp/lnav.deb https://github.com/tstack/lnav/releases/download/v0.8.5/lnav_0.8.5_amd64.deb
+
+[ -f /tmp/lnav.deb ] || curl -L -o /tmp/lnav.deb https://github.com/tstack/lnav/releases/download/v0.8.5/lnav_0.8.5_amd64.deb
+
 rsync -q --info=progress2 -avz -avhe ssh /tmp/lnav.deb $DEST:~/
 ssh $DEST "http_proxy=$http_proxy https_proxy=$https_proxy bash -s" << 'ENDSSH'
+   export DEBIAN_FRONTEND=noninteractive
    sudo dpkg -i ~/lnav.deb
-	sudo apt install -y zsh grc git tig  lnav coreutils trash-cli highlight xclip neofetch vim-athena
+	sudo apt install -y zsh grc git tig  lnav coreutils trash-cli highlight xclip neofetch vim-athena 
   	sudo chsh `whoami` -s `which zsh`
 	sudo rm -rf ~/.vim
 	sudo rm ~/.viminfo
@@ -43,5 +46,5 @@ ssh $DEST "http_proxy=$http_proxy https_proxy=$https_proxy bash -s" << 'ENDSSH'
    rm -rf ~/.lnav/formats/https___github_com_hagfelsh_lnav_formats_git
    rm -rf ~/.lnav/formats/https___github_com_PaulWay_lnav_formats_git
    rm -rf ~/.lnav/formats/https___github_com_aspiers_lnav_formats_git
-   sudo apt install -y language-pack-en
+	sudo apt install -y language-pack-en
 ENDSSH
