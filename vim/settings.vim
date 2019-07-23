@@ -183,6 +183,14 @@ xmap     <leader>r   :!%:p<cr>
 " the new word and press enter
 nnoremap <c-n>       :%s///g<left><left>
 
+" After selecting the text in visual mode, use // to search the whole document
+" for it
+" You can leverage from <C-N> for replacing the selected text
+vnoremap // y/<C-R>"<CR>
+
+" /q will unselect/unhighlight what ever you have selected or searched for
+noremap /q :let @/ = ""<CR>
+
 " Save current file there might be some overlaps with vim-sorround
 nmap  <c-s> <esc>:w<cr>
 imap  <c-s> <esc>:w<cr>

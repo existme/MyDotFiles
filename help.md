@@ -30,11 +30,6 @@ Commands
 ╠════╣ files and buffers ╠═════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║                              ║                                                                     ║
-║ shift + right/left arrow     ║ move to next or previous buffer                                     ║
-║ ctrl+wc or ctrl+q            ║ close current buffer                                                ║
-║ ,,                           ║ toggle previous buffer                                              ║
-║ :bd                          ║ close current buffer                                                ║
-║ ,q                           ║ delete current buffer and move on                                   ║
 ║ :vert help e                 ║ show help in vertical mode                                          ║
 ║ :vsp                         ║ open another file in vertical                                       ║
 ║ :vsp ~/.zshrc                ║ open another file in vertical                                       ║
@@ -46,9 +41,13 @@ Commands
 ║                              ║                                                                     ║
 ╠══╣ Buffer manipulation ╠═════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
-║                              ║                                                                     ║
-║ :bn                          ║ next buffer                                                         ║
+║ ctrl+wc or ctrl+q            ║ close current buffer                                                ║
+║ :bd                          ║ close current buffer                                                ║
 ║ ,q                           ║ delete current buffer and move on                                   ║
+║                              ║                                                                     ║
+║ ,,                           ║ toggle previous buffer                                              ║
+║ shift + right/left arrow     ║ move to next or previous buffer                                     ║
+║ :bn                          ║ next buffer                                                         ║
 ║                              ║                                                                     ║
 ║                              ║                                                                     ║
 ╠══╣ **Window manipulation** ╠═════╬═════════════════════════════════════════════════════════════════════╣
@@ -74,6 +73,10 @@ Commands
 ║ <c-e> <c-e>                  ║ Toggle single mode through ZoomWin plugin (second toggle is slow)   ║
 ║                              ║                                                                     ║
 ╠════╣ search & replace ╠══════╬═════════════════════════════════════════════════════════════════════╣
+║                              ║                                                                     ║
+║ /q                           ║ will unselect/unhighlight what ever you have selected or searched   ║
+║ // followd by <c-n>          ║ Select visually some text and in vmod press // to search the whole  ║
+║                              ║ document for it. After selection is made use <c-n> to replace       ║
 ║                              ║                                                                     ║
 ║ :%s//new-string/g            ║ First use * to highlight the words, then run this for replacing all ║
 ║ <c-n>                        ║ This is a shortcut for the above one liner                          ║
