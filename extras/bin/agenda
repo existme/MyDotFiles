@@ -21,7 +21,7 @@ id = sh.Command('id').bake('-u')
 # XDG_RUNTIME_DIR should be properly set in order for sound to work
 os.environ['XDG_RUNTIME_DIR'] = '/run/user/' + str(id()).strip()
 
-agenda_path = os.path.expanduser('~/agenda.dat')
+agenda_path = os.path.expanduser('~/Dropbox/agenda.dat')
 
 arguments = docopt(__doc__, version='1.0.0rc2')
 
