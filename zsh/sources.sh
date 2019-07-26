@@ -53,7 +53,7 @@ fi
 [[ -f $HOME/zshrc.local.sh ]] &&	source $HOME/zshrc.local.sh && echoP "${bB}~/zshrc.local.sh${cZ}"
 
 # Add completion path before oh-my-zsh starts compinit
-export fpath=($SCRIPTPATH/zsh/completion $SCRIPTPATH/zsh/functions $fpath)
+fpath=($SCRIPTPATH/zsh/completion $SCRIPTPATH/zsh/functions $fpath)
 
 
 
