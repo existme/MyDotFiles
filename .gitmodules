@@ -60,3 +60,6 @@
 [submodule "zsh/addons/todo.actions.d/graph"]
 	path = zsh/addons/todo.actions.d/graph
 	url = https://github.com/timpulver/todo.txt-graph.git
+[submodule "zsh/bundle/zsh-completions"]
+	path = zsh/bundle/zsh-completions
+	url = git://github.com/zsh-users/zsh-completions.git
