@@ -211,6 +211,9 @@ Commands
 ║ gx                           ║ In normal mode, if you stand on a link and enter `g` then `x`       ║
 ║                              ║    the link will be opened in a browser window #browser #link       ║
 ║                              ║                                                                     ║
+║ <ctrl+a>                     ║ (Only in insert mode) brings rofi up and let you select an email    ║
+║                              ║ from the address book and then inserts it at the prompt             ║
+║                              ║                                                                     ║
 ╠════╣ installing plugins ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║ vim ~/.vimrc                 ║ edit vimrc and in the section which begins with: (circa 338)        ║

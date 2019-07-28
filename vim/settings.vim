@@ -66,7 +66,7 @@ nnoremap <Tab>k <C-w>k
 nmap <silent>		<leader>s :set spell!<CR>
 
 " =====  Get email from mutt aliases  =======
-inoremap <C-F>		<esc>:set virtualedit=onemore<cr>l:let @a=substitute(system('~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l'),"\n","","g")<CR>i<c-r>a<esc>:set virtualedit=<cr>a
+inoremap <C-A>		<esc>:set virtualedit=onemore<CR>l:let @a=substitute(system('~/.mutt/scripts/alias-manager.py --file=~/.mutt/alias.key -l'),"\n","","g")<CR>i<C-R>a<ESC>:set virtualedit=<CR>a
 
 
 " =========  Toggle list			 ===========
@@ -161,7 +161,6 @@ command! Wq wq
 nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
 
 "save and close buffer"
-nnoremap <c-a> <esc>:exec "w \| bd" <cr>
 nmap <c-q> <esc>:bd<cr>
 
 "vim sudo trick
