@@ -158,10 +158,12 @@ command! Q q
 command! Wq wq
 
 " help
-nmap <c-h> <esc>:execute "e ".dotfilespath."/help.md"<enter>
+nmap <c-h> <esc>:execute "e ".dotfilespath."/vim/vimhelp.md"<enter>
 
 "save and close buffer"
 nmap <c-q> <esc>:bd<cr>
+nmap <c-w><c-w> <esc>:.call DelQuit()<cr>
+imap <c-w><c-w> <esc>:.call DelQuit()<cr>
 
 "vim sudo trick
 nnoremap <c-o> <esc>:w !sudo tee % <cr>

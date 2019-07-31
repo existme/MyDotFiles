@@ -243,6 +243,25 @@ function ExportMap()
    e /tmp/vim_maps.txt
 endfunction 
 
+
+" ╔═════════════════════════════════════════════════════════════╗
+" ║       Delete a buffer or quit vim if it's the last buffer   ║
+" ╚═════════════════════════════════════════════════════════════╝
+function! DelQuit()
+    let buffers = map(filter(copy(getbufinfo()), 'v:val.listed'), 'v:val.bufnr')
+    try
+        if len(buffers)==1
+            quit
+        else
+            bdelete
+        endif
+    catch /.*/
+        redraw
+        echom "Let's not quit a modified buffer ..."
+    endtry
+endfunction
+
+
 " ========= Configuring Fonts for gvim =======
 if has("gui_running")
 	if has("gui_gtk2")			" Linux
