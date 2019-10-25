@@ -96,8 +96,11 @@ fi
 case "$res" in
     i3)
         prj=i3
+        clone $prj https://github.com/i3/i3.git
         gitPull $prj
         if okToBuild; then
+            sudo apt install -y autoconf libxcb-xrm-dev libxcb-shape0-dev
+            sudo apt build-dep -y i3-wm
             autoreconf -fi
             rm -rf ~/git/$prj/build
             mkdir ~/git/$prj/build
@@ -197,9 +200,9 @@ case "$res" in
             git submodule init
             git submodule update
             autoreconf --install
-            sudo apt-get install bison flex xutils-dev libxcb-ewmh-dev
-            sudo apt-get install librsvg2-dev
-            sudo apt-get install textinfo
+            sudo apt-get install -y bison flex xutils-dev libxcb-ewmh-dev
+            sudo apt-get install -y librsvg2-dev
+            sudo apt-get install -y textinfo
             # sudo pip install easybuild
             # Install latest version of check
             # https://github.com/libcheck/check.git
@@ -243,10 +246,11 @@ case "$res" in
     ;;
     compton)
        prj=compton
+       clone $prj https://github.com/chjj/compton.git
        gitPull $prj
 
        if okToBuild; then
-          sudo apt install libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-composite-dev x11-utils libpcre3-dev libconfig-dev libdrm-dev asciidoc libdbus-1-dev
+          sudo apt install -y libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-composite-dev x11-utils libpcre3-dev libconfig-dev libdrm-dev asciidoc libdbus-1-dev
     		 make 
     		 make docs
     		 sudo make install
@@ -260,8 +264,8 @@ case "$res" in
        gitPull $prj
 
        if okToBuild; then
-          sudo apt install libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk2.0-dev libxdg-basedir-dev
-          sudo apt install libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev libnotify-dev
+          sudo apt install -y libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk2.0-dev libxdg-basedir-dev
+          sudo apt install -y libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev libnotify-dev
           sudo make clean
     		 sudo make -j5
           sudo make clean-dunsitify
