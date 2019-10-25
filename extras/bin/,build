@@ -139,8 +139,8 @@ case "$res" in
       gitPull $prj
 
       if okToBuild; then
-         sudo apt-get install build-essential libgtk-3-dev webkit2gtk-4.0
-         sudo apt install libgcr-3-dev
+         sudo apt-get install -y build-essential libgtk-3-dev webkit2gtk-4.0
+         sudo apt install -y libgcr-3-dev
          sudo make install
       fi
     ;;
@@ -219,7 +219,8 @@ case "$res" in
        clone $prj https://github.com/albertlauncher/albert.git
        gitPull $prj
        if okToBuild; then
-         sudo apt-get install libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev libqt5charts5-dev
+         sudo apt-get install -y cmake libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev libqt5charts5-dev
+         sudo apt-get install -y python3-dev 
          rm -rf albert-build
          mkdir albert-build
          cd albert-build
