@@ -166,3 +166,7 @@ export NVM_DIR="$HOME/.nvm"
 # Initialize compinit at the end to avoid removal by other bash tools
 # Makesure this line is executed always at end
 source $SCRIPTPATH/zsh/compinit.sh
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi

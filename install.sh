@@ -27,9 +27,9 @@ ln -s ~/git/MyDotFiles/.vifm ~/.vifm
 rm ~/LESS_TERMCAP
 ln -s ~/git/MyDotFiles/zsh/LESS_TERMCAP ~/
 
-git submodule update --init
-git submodule foreach git pull origin master
-git submodule update
+# git submodule update --init
+# git submodule foreach git pull origin master
+# git submodule update
 
 ln -s ~/git/MyDotFiles/tmux.conf ~/.tmux.con
 ln -s ~/git/MyDotFiles/tmux ~/.tmux
@@ -38,12 +38,7 @@ ln -s ~/git/MyDotFiles/tmux ~/.tmux
 #---------------
 
 # install vim stuff
-sudo apt-get install ctags
-
-#install other stuff
-sudo apt-get install fortune
-sudo apt-get install grc
-sudo apt-get install pal
+sudo apt-get install -y ctags fortune grc pal
 
 #install cowsay
 wget http://ftp.acc.umu.se/mirror/cdimage/snapshot/Debian/pool/main/c/cowsay/cowsay_3.03.orig.tar.gz

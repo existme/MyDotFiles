@@ -126,7 +126,7 @@ case "$res" in
        gitPull $prj
 
        if okToBuild; then
-          sudo apt-get install meson
+          sudo apt-get install meson libevdev-dev libinput-dev libwlroots-dev
           meson build
           ninja -C build
           sudo ninja -C build install
