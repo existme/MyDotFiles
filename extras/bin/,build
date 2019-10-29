@@ -333,6 +333,7 @@ case "$res" in
        gitPull $prj
 
        if okToBuild; then
+          sudo apt-get install -y texinfo
           autoreconf --install
           ./configure
           make
@@ -399,8 +400,8 @@ case "$res" in
        set -e
        clone $prj https://github.com/tobi-wan-kenobi/bumblebee-status.git
        gitPull $prj
-       sudo pip install netifaces psutil requests i3ipc dnf
-       sudo apt install libx11-6 python-psutil python-requests python-netifaces
+       sudo apt install -y libx11-6 python-psutil python-requests python-netifaces python3-pip
+       sudo -H pip3 install netifaces psutil requests i3ipc dnf
     ;;
     quit)
         echo "${bB}Canceled$cZ"
