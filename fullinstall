@@ -1,0 +1,50 @@
+#!/bin/bash
+# assume only bash is available
+
+# Fix any locking issue
+sudo rm /var/lib/dpkg/lock-frontend
+sudo rm /var/lib/dpkg/lock
+sudo rm /var/cache/apt/archives/lock
+sudo apt-get install -f
+sudo sed -i~orig -e 's/# deb-src/deb-src/' /etc/apt/sources.list 
+sudo apt update
+sudo apt upgrade
+
+# Install minimum requirements
+sudo apt install -y zsh tilix curl wget git neofetch vim locate toilet grc pv
+mkdir -p ~/git
+
+# install oh-my-zsh
+if [ ! -d ~/.oh-my-zsh ]; then
+	export DEBIAN_FRONTEND=noninteractive
+	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+else
+	sudo chsh `whoami` -s /bin/zsh
+fi
+
+if [ ! -d ~/git/MyDotFiles ]; then
+	git clone --recurse-submodules -j8 https://github.com/existme/MyDotFiles ~/git/MyDotFiles
+else
+	cd ~/git/MyDotFiles
+	git pull
+	git submodule init
+	git submodule update
+	./install/link.sh
+	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+	
+fi
+
+if [ ! -d ~/git/doti3 ]; then
+	git clone --recurse-submodules -j8 https://github.com/existme/doti3 ~/git/doti3
+else
+	cd ~/git/doti3
+	git pull
+	cd ~/git/doti3
+	install/link.sh --s
+	
+	cd git/MyDotFiles/extras/bin/
+	
+fi
+
+sudo updatedb
+
