@@ -24,27 +24,26 @@ fi
 
 if [ ! -d ~/git/MyDotFiles ]; then
 	git clone --recurse-submodules -j8 https://github.com/existme/MyDotFiles ~/git/MyDotFiles
-else
-	cd ~/git/MyDotFiles
-	git pull
-	git submodule init
-	git submodule update
-	./install/link.sh
-	sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
-	
 fi
+cd ~/git/MyDotFiles
+git pull
+git submodule init
+git submodule update
+git submodule sync
+./install/link.sh
+sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
+vim -c ":PlugInstall" -c ":q" -c ":q"
 
 if [ ! -d ~/git/doti3 ]; then
 	git clone --recurse-submodules -j8 https://github.com/existme/doti3 ~/git/doti3
-else
-	cd ~/git/doti3
-	git pull
-	cd ~/git/doti3
-	install/link.sh --s
-	
-	cd git/MyDotFiles/extras/bin/
-	
 fi
+
+cd ~/git/doti3
+git pull
+cd ~/git/doti3
+install/link.sh --s
+	
+cd git/MyDotFiles/extras/bin/
 
 sudo updatedb
 
