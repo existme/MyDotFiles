@@ -1,3 +1,8 @@
+# Finish installation
+
+- write script for optional installation of fonts
+- write script for building all essential stuff for i3
+
 # don't put time on it
 
 1. takenote + fzf problem
