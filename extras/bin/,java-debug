@@ -1,0 +1,18 @@
+#!/bin/zsh
+echo "This script runs a jar file as another user, it takes care of the parameters needed"
+if [[ "$JAVA_HOME" == "" ]]; then
+   JAVA_HOME="/opt/wildfly/jdk/current"
+fi
+echo "Using:"
+echo "${bW}JAVA_HOME${cZ}=${cY}$JAVA_HOME${cZ}"
+echo "${bW}PATH${cZ}=${cY}$JAVA_HOME/bin/${cZ}"
+read -k 1 -r "pr?Ok to continue (${cY}Y${cZ}/${bW}n${cZ})?"
+
+read -r -d '' JAVA_DEBUG << EOM
+export JAVA_HOME=$JAVA_HOME
+export PATH="$PATH;$JAVA_HOME/bin/
+java -Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=7896 -jar user-center-1.7.0-SNAPSHOT.jar 
+EOM
+
+echo $JAVA_DEBUG
+sudo su svcjava -c "$JAVA_DEBUG"

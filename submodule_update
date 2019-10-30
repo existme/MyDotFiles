@@ -1,6 +1,11 @@
+#!/bin/zsh
 git submodule sync
 git submodule update --init
 git submodule foreach --recursive git reset --hard
 git submodule foreach --recursive git checkout master
 git submodule foreach --recursive git pull
 
+# fix powerlevel problems
+cd zsh/bundle/powerlevel9k
+git submodule sync
+git submodule update

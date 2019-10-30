@@ -9,7 +9,7 @@ stackMsg "${bW}$(date '+%D %T')${cZ}";
 # or in Linux:
 # TOOLBOX=/opt/JetBrains/Toolbox/apps/IDEA-U/ch-0
 if [ $TOOLBOX ]; then   
-   export IDEA_VERSION=$(find $TOOLBOX -maxdepth 1 -type d -printf "%f\n"| sort -r | head -n 2|tail -1)
+   export IDEA_VERSION=$(find $TOOLBOX -maxdepth 1 -type d ! -name "*.plugins" -printf "%f\n" | sort -r | head -n 2|tail -1)
    echo "IDEA_VERSION = $IDEA_VERSION"
    # IDEA_POSTIFIX should also be set in zshrc.local.sh ex:
    # IDEA_POSTIFIX=IntelliJ\ IDEA.app/Contents/MacOS/idea
