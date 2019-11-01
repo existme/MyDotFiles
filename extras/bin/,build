@@ -388,6 +388,7 @@ case "$res" in
        gitPull $prj false
 
        if okToBuild; then
+          sudo apt install -yf libsqlite3-dev
           ./autogen.sh
           ./configure
           make
