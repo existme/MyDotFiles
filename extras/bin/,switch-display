@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+LAYOUT=$(ls ~/.screenlayout/*.sh | $HOME/bini3/rmenu "Select the layout you want?")
+
+if ! [[ $LAYOUT ]]; then
+  $HOME/bin/dunstify "Cancelled"
+else
+#  $HOME/bin/dunstify "Switching to $LAYOUT"
+  xrandr --auto
+  res=$($LAYOUT 2>&1)
+#  echo "res=$res"
+  $HOME/bin/dunstify -app layout "results: " "[$res]<br>-----"
+fi

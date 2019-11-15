@@ -11,7 +11,7 @@ sudo apt update
 sudo apt upgrade
 
 # Install minimum requirements
-sudo apt install -y zsh tilix curl wget git neofetch vim locate toilet grc pv
+sudo apt install -y zsh tilix curl wget git neofetch vim locate toilet grc pv jq xclip
 mkdir -p ~/git
 
 # install oh-my-zsh
@@ -19,17 +19,18 @@ if [ ! -d ~/.oh-my-zsh ]; then
 	export DEBIAN_FRONTEND=noninteractive
 	sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 else
-	sudo chsh `whoami` -s /bin/zsh
+	sudo chsh $(whoami) -s /bin/zsh
 fi
 
 if [ ! -d ~/git/MyDotFiles ]; then
 	git clone --recurse-submodules -j8 https://github.com/existme/MyDotFiles ~/git/MyDotFiles
+  cd ~/git/MyDotFiles
+  git pull
+  git submodule init
+  git submodule update
+  git submodule sync
 fi
-cd ~/git/MyDotFiles
-git pull
-git submodule init
-git submodule update
-git submodule sync
+
 ./install/link.sh
 sudo ln -s /etc/profile.d/vte-2.91.sh /etc/profile.d/vte.sh
 vim -c ":PlugInstall" -c ":q" -c ":q"
@@ -47,3 +48,8 @@ cd git/MyDotFiles/extras/bin/
 
 sudo updatedb
 
+# install fzf if it is missing
+if ! [ -x "$(command -v fzf)" ]; then
+  cd /home/rezasa/git/MyDotFiles/zsh/completion/plugins/fzf/
+  ./install
+fi
