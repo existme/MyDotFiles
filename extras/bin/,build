@@ -13,6 +13,7 @@ fi
 $NOPROMPT && echo "${bW}NOPROMPT${cZ} detected, assuming all questions to be true"
 
 declare selected=$(cat <<EOF
+betterlockscreen
 i3
 i3-gaps
 i3ass
@@ -96,6 +97,16 @@ else
 fi
 
 case "$res" in
+    betterlockscreen)
+        prj=betterlockscreen
+        clone $prj https://github.com/pavanjadhaw/betterlockscreen.git
+        gitPull $prj
+        if okToBuild; then
+            sudo apt install -y x11-xserver-utils
+            cd ~/git/$prj
+            cp betterlockscreen ~/bini3/
+        fi
+    ;;
     i3)
         prj=i3
         clone $prj https://github.com/i3/i3.git
