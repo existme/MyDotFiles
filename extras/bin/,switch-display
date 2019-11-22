@@ -1,10 +1,32 @@
 #!/bin/zsh
 
+
 LAYOUT=$(ls ~/.screenlayout/*.sh | $HOME/bini3/rmenu "Select the layout you want?")
+
+
+echo $currentVT
 
 if ! [[ $LAYOUT ]]; then
   $HOME/bin/dunstify "Cancelled"
 else
+
+   currentVT=$(sudo fgconsole)
+   sudo chvt 8 && sudo chvt $currentVT
+
+   # From: https://wiki.archlinux.org/index.php/Xrandr
+   # Use this workaround to turn on connected outputs that may be in suspend mode and hence shown as disconnected, as is often the case of DisplayPort monitors:
+
+   declare -i count=2
+   declare -i seconds=1
+
+   while ((count)); do
+       xrandr >/dev/null
+       sleep $seconds
+       ((count--))
+   done
+
+
+
 #  $HOME/bin/dunstify "Switching to $LAYOUT"
   xrandr --auto
   res=$($LAYOUT 2>&1)
