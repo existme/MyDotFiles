@@ -221,8 +221,13 @@ case "$res" in
         clone $prj https://github.com/DaveDavenport/rofi.git
         gitPull $prj
         if okToBuild; then
+            sudo apt install -yf texinfo
             git submodule init
             git submodule update
+            git submodule foreach git checkout master
+            git submodule foreach git clean -d -f
+            git submodule foreach git pull
+            git submodule sync
             autoreconf --install
             sudo apt-get install -y bison flex xutils-dev libxcb-ewmh-dev
             sudo apt-get install -y librsvg2-dev
@@ -231,10 +236,11 @@ case "$res" in
             # Install latest version of check
             # https://github.com/libcheck/check.git
             rm -rf build
+            sudo make distclean
             mkdir build && cd build
             ../configure
 
-            sudo configure
+            sudo ./configure
             sudo make install
         fi
     ;;
