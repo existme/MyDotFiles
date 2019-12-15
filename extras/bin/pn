@@ -4,6 +4,7 @@ declare mclick="clicks/219015-microswitch.wav"
 # declare click="clicks/120555__mredig__elevator-button-press-2.aiff"
 # declare click="clicks/371191__plutoniumisotop__seatbelt.wav"
 declare click="clicks/54405__korgms2000b__button-click.wav"
+declare awkward="alert/alert-notification-sfx003.wav"
 declare wheel="effects/CK_Foley-16.wav"
 declare sound=$1
 
@@ -14,9 +15,10 @@ _play(){
    local file=$1
    paplay $root/$file $o
 }
-case $sound in   # $( arch ) returns machine architecture.                    
+case $sound in  
   ( mclick )   singleMode; _play $mclick;;
   ( click )    _play $click ;;
+  ( awkward )  _play $awkward ;;
   ( wheel )    singleMode; _play $wheel ;;
 # ^      ^                                                                       
   (    *    ) beep;;                                     
