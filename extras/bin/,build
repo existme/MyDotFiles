@@ -264,6 +264,7 @@ case "$res" in
     ;;
     xkb-switch)
        prj=xkb-switch
+       clone $prj https://github.com/ierton/xkb-switch.git
        gitPull $prj
 
        if okToBuild; then
@@ -273,6 +274,7 @@ case "$res" in
     		 cmake ..
     		 make
     		 sudo make install
+          sudo ldconfig
        fi
     ;;
     compton)
