@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+# this script will let you login as root into any container in K8s kluster 
+# taken from https://github.com/kubernetes/kubernetes/issues/30656#issuecomment-476872519
+set -xe
+
+POD=$(kubectl describe pod "$1")
+NODE=$(echo "$POD" | grep -m1 Node | awk -F'/' '{print $2}')
+CONTAINER=$(echo "$POD" | grep -m1 'Container ID' | awk -F 'docker://' '{print $2}')
+
+CONTAINER_SHELL=${2:-bash}
+
+set +e
+
+ssh -i ~/.minikube/machines/minikube/id_rsa -t docker@"$NODE" sudo docker exec --user 0 -it "$CONTAINER" "$CONTAINER_SHELL"
+
+if [ "$?" -gt 0 ]; then
+  set +x
+  echo 'SSH into pod failed. If you see an error message similar to "executable file not found in $PATH", please try:'
+  echo "$0 $1 sh"
+fi
