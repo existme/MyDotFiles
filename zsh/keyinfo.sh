@@ -40,3 +40,32 @@ bindkey '^[[1;3D'      cdUndoKey
 bindkey '^[[3;5~'      deleteLine
 bindkey '^_'           deleteToStart 
 bindkey "\e"           vi-cmd-mode      # Bind Escape to vi-cmd-mode
+
+
+
+bindkey '\t' expand-or-complete
+bindkey '\e.' insert-last-word
+
+# ctrl + back space should kill word
+bindkey '^H' backward-kill-word
+# alt+h for help file
+bindkey -s '^[h' '^Uvim ~mydotfiles/help.md^M'
+
+# bindkey '^e' __fdnote
+# bindkey '\ed' __fdnote
+
+# Use either c-x c-e or Esc-v or c-` (grave) to edit the current line in vim
+bindkey -M vicmd v edit-command-line
+bindkey "^X^E" edit-command-line
+# this is ctrl+grave typed by pressing ctrl+v in insert mode and then pressing ctrl+`
+bindkey "" edit-command-line
+
+zle -N _switch_prompt
+bindkey "\ew" _switch_prompt
+
+# alt+k        kill the whole line
+bindkey '\ek'  kill-whole-line
+# alt+s        git status
+# bindkey -s '\es' '^Ugit status^M'
+bindkey -s '\es' '^Utig status^M'
+

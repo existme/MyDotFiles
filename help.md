@@ -154,6 +154,10 @@ called mdp (https://github.com/visit1985/mdp).
 ╠════════════════════════╦════════════════════════╩═════════════════════════════════════╣
 ║ Esc-:                  ║ Shows execute named command prompt and you can run widgets   ║
 ╠════════════════════════╩══════════════════════════════════════════════════════════════╣
+║ completions are defined in zsh/compinit lookat kubectl as an example on how you can   ║
+║ define the same completion for an alias                                               ║
+║                                                                                       ║
+╠═══════════════════════════════════════════════════════════════════════════════════════╣
 ║ https://github.com/zsh-users/zsh-completions/blob/master/zsh-completions-howto.org    ║
 ║                                                                                       ║
 ║                                                                                       ║

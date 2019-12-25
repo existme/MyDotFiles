@@ -2,7 +2,7 @@ let mapleader=","				"Change the leader to comma
 let maplocalleader = "\\"			"Change localleader to backslash
 
 " ================ Tabularize =====================
-nmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a= :Tabularize /=<C
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a: :Tabularize /:\zs<CR>
 vmap <Leader>a: :Tabularize /:\zs<CR>
@@ -99,6 +99,11 @@ inoremap <C-End>			<Esc>G<End>
 inoremap <C-PageUp>		<Esc>gg
 inoremap <C-PageDown>	<Esc>G<End>
 
+" Use ctrl+backspace for backward deletion
+nmap <C-h>  <esc>db
+inoremap <C-H>  <esc>ldbha
+
+
 nmap <C-Home>				gg
 nmap <C-End>				G<End>
 nmap <C-PageUp>			gg
@@ -158,7 +163,10 @@ command! Q q
 command! Wq wq
 
 " help
-nmap <c-h> <esc>:execute "e ".dotfilespath."/vim/vimhelp.md"<enter>
+" Map alt+h to see how do ctrl+V then alt+h you will get ^[h replace ^[ with <escape>
+nmap <Esc>h <esc>:execute "e ".dotfilespath."/vim/vimhelp.md"<enter>
+" Removed ctrl+h because of collision with ctrl+backspace
+" nmap <c-h> <esc>:execute "e ".dotfilespath."/vim/vimhelp.md"<enter>
 
 "save and close buffer"
 nmap <c-q> <esc>:bd<cr>

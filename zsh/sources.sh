@@ -55,8 +55,6 @@ fi
 # Add completion path before oh-my-zsh starts compinit
 fpath=($SCRIPTPATH/zsh/completion $SCRIPTPATH/zsh/bundle/zsh-completions/src $SCRIPTPATH/zsh/functions $fpath)
 
-
-
 export F_PATH=$SCRIPTPATH/zsh/functions         # This variable is exported to be used inside other scripts ex: ,tilix
                                                 # inside script use: source ~/bin/,autoload
 
