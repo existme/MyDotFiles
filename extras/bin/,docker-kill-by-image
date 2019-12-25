@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+IMAGENAME=$1
+
+CONTAINERS=($(docker ps -a -q --filter ancestor=$IMAGENAME --format="{{.ID}}"))
+
+echo "Found containers:"
+docker ps -a --filter ancestor=$IMAGENAME
+
+echo 
+echo "killing containers:"
+echo "  ═╦═══════════════════════╗"
+for c ($CONTAINERS)
+do
+   # echo "Killing and removing [$c]"
+   echo "    ╠ killing  $bR$(docker kill $c)$cZ ║"
+   echo "    ║ stopping $bY$(docker stop $c)$cZ ║"
+   echo "    ║ removing $bW$(  docker rm $c)$cZ ║"
+   echo "    ║                       ║"
+done
+   echo "    ╚═══════════════════════╝"

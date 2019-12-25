@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ssh -O exit LNAX
+echo "Proxy to ${bY}LNAX${bR} stoped${cZ}."
+
