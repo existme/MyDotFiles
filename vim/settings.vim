@@ -100,8 +100,8 @@ inoremap <C-PageUp>		<Esc>gg
 inoremap <C-PageDown>	<Esc>G<End>
 
 " Use ctrl+backspace for backward deletion
-nmap <C-h>  <esc>db
-inoremap <C-H>  <esc>ldbha
+nmap <C-h>  <esc>vbd
+inoremap <C-H>  <esc>vbdha
 
 
 nmap <C-Home>				gg
