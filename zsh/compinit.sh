@@ -100,7 +100,7 @@ compdef _gnu_generic df wc tar make date mv cp grep sed feh awk tail head watch 
 
 
 alias k=kubectl
-source completion/_kube-completion 
+source $SCRIPTPATH/zsh/completion/_kube-completion 
 complete -F __start_kubectl k
 
 TRAPWINCH() {
