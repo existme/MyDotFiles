@@ -364,3 +364,16 @@ function pkg_install(){
   ((CURRENT++))  # this is increasing the level of service!
   _apt
 }
+
+unfunc run-bg
+function run-bg(){
+   local app=$1
+   shift
+   ( command $app $@ > /dev/null 2>&1 &)
+}
+
+alias dolphin="run-bg dolphin"
+alias gedit="run-bg gedit"
+alias code="run-bg code"
+alias thunar="run-bg thunar"
+alias geany="run-bg geany"
