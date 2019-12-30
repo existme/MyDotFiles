@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+ps -aux | grep --color=always "$@"

@@ -213,13 +213,28 @@ called mdp (https://github.com/visit1985/mdp).
 ║                        ║ **Usage:** `,pkg-find <enter>` (very slow)                       ║
 ║                        ║                                                              ║
 ║ asf                    ║ Uses fzf to list all files installed by packageses           ║
-║                        ║ **Usage:** `asf <enter>` and search for `_apt`                   ║
+║                        ║ **Usage:** `asf <enter>` and search for `_apt`                    ║
 ║                        ║                                                              ║
 ║ aps                    ║ Alias for aptitude search, searches in not installed packages║
 ║                        ║ **Usage:** `aps pinboard`                                        ║
 ║                        ║                                                              ║
 ║ dq                     ║ Query an installed package and list its fileskages           ║
 ║                        ║ **Usage:** `dq help`                                             ║
+║                        ║                                                              ║
+║ **Services**               ║                                                              ║
+║                        ║                                                              ║
+║ ,s                     ║ Show/rotate logs for different services using a rofi dialog  ║
+║                        ║ **Usage:** `,s <enter>`                                          ║
+║                        ║        `,s idsvr.service`                                    ║
+║                        ║        `,s idsvr.service lnav`                               ║
+║                        ║                                                              ║
+║ sc                     ║ Alias for systemctl                                          ║
+║                        ║ **Usage:** `sc <tab>`                                            ║
+║                        ║                                                              ║
+║ **Processes**              ║                                                              ║
+║                        ║                                                              ║
+║ ,ps                    ║ **EQ:** `ps -aux | grep $@`                                      ║
+║                        ║ **Usage:** `,ps perl`                                            ║
 ║                        ║                                                              ║
 ║ **Man pages**              ║                                                              ║
 ║                        ║                                                              ║
@@ -235,7 +250,7 @@ called mdp (https://github.com/visit1985/mdp).
 The follwing commands or aliases support special tab completion. Write the alias
 and press <Tab> to access helpers. These completion helpers are usually defined in
 `zsh/compinit.sh`, or `zsh/completion/`, or `zsh/completion/plugins/fzf/shell/completion.zsh`,
-or `fzf.zsh`. 
+or `fzf.zsh`.
 
 ╔════════════════════════╦══════════════════════════════════════════════════════════════╗
 ║ Commands               ║ Desc                                                         ║
