@@ -16,14 +16,16 @@ echoMe $0
 unalias ag >> /dev/null 2>&1
 unalias p >> /dev/null 2>&1
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias zshlocal="vim ~/zshrc.local.sh"
+alias zc="vim ~/.zshrc"
+alias zcc="code -n ~/git/MyDotFiles ~/git/MyDotFiles/zshrc"
+alias zlc="vim ~/zshrc.local.sh"
+alias ic="vim ~/.config/i3/config"
+alias icc="code -n ~/git/doti3/ ~/git/doti3/i3/config"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 alias ls="ls -GF --color"
 alias zdoc="xdg-open /usr/share/doc/zsh/doc/zsh.pdf >> /dev/null 2>&1 &"                  # requires `sudo apt install zsh-doc`
 #alias cat="grc cat"
 alias ds="du -hd 1| sort -h"
-alias k="k -h"
 alias hd="head -n 40 "
 # alias jq="jq '.' "
 alias ex="chmod u+x "
@@ -37,10 +39,8 @@ alias s="sudo PATH=\"$PATH\" -E "
 alias sc="sudo PATH=\"$PATH\" -E systemctl --no-pager "
 alias jj="sudo PATH=\"$PATH\" -E journalctl --no-pager "
 alias dq="sudo dpkg-query --listfiles"
-alias iconf="code ~config/i3/config"
 alias reload!='. ~/.zshrc'
 alias cls='clear' # Good 'ol Clear Screen command
-alias localzsh="vim ~/zshrc.local.sh"
 alias dpk="grc dpkg-query --listfiles"
 alias pp="s grc ps -aux|grep -v -E 'grep|vim|PATH='|grep "
 alias gg="_ex '/usr/bin/geany' '&>/dev/null &' "
@@ -84,9 +84,8 @@ fi
 
 # these are mappings for frequently used folder, type for example:
 #hash -d memo=~/Dropbox/Memo
-hash -d MyDotFiles=$SCRIPTPATH
-hash -d mydotfiles=$SCRIPTPATH
 hash -d m=$SCRIPTPATH
+hash -d dd=~/git/doti3
 hash -d z=$SCRIPTPATH/zsh/
 hash -d vim=$SCRIPTPATH
 hash -d download=~/Downloads

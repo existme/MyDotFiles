@@ -41,6 +41,14 @@ called mdp (https://github.com/visit1985/mdp).
 ║ h                      ║ Grep history for a specific keyword                          ║
 ║ zdoc                   ║ Opens zsh pdf document.                                      ║
 ║                        ║                                                              ║
+║ **Config Aliases**         ║                                                              ║
+║                        ║                                                              ║
+║ zc                     ║ vim ~/.zshrc                                                 ║
+║ zlc                    ║ vim ~/zshrc.local.sh                                         ║
+║ ic                     ║ vim ~/.config/i3/config                                      ║
+║ zcc                    ║ open `~/git/MyDotFiles` in VSCode                            ║
+║ icc                    ║ open `~/git/doti3` in VSCode                                 ║
+║                        ║                                                              ║
 ║ **App Openers**            ║                                                              ║
 ║                        ║                                                              ║
 ║ idea                   ║ Opens a file or folder in IntelliJ Idea                      ║
@@ -235,6 +243,7 @@ called mdp (https://github.com/visit1985/mdp).
 ║                        ║                                                              ║
 ║ ,ps                    ║ **EQ:** `ps -aux | grep $@`                                      ║
 ║                        ║ **Usage:** `,ps perl`                                            ║
+║ pp                     ║ same as above just for sudo                                  ║
 ║                        ║                                                              ║
 ║ **Man pages**              ║                                                              ║
 ║                        ║                                                              ║
