@@ -89,6 +89,17 @@ function rfind(){
    echo "find $2 -iname \"*$1*\"|grep -i \"$1\" --color=always"
    find $2 -iname "*$1*"|grep -i "$1" --color=always
 }
+
+unfunc ff
+function ff(){
+   if [[ $1 == "--help" || $# -eq 0 ]]; then
+      echo "Usage: ff ${bY}<partial file name>${cZ}"
+      ls -la
+      return
+   fi
+   local fn=$(echo $@|sed 's/\ /\\ /g')
+   find -iname "*$fn*"|grep -i "$fn" --color=always
+}
 # A macro to see the contents of a jar or war file
 unfunc lessj
 function lessj(){

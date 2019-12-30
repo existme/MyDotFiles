@@ -1,6 +1,7 @@
-# vim: set filetype=markdown 
+# vim: set filetype=markdown
+**Should be synced with ~/notes/dotfiles-shortcuts**
 
-# 1. My dot files 
+# 1. My dot files
 templates. To view markdown file the alias uses a terminal markdown viewer
 This guide goes through what aliases are available by using the provided
 called mdp (https://github.com/visit1985/mdp).
@@ -25,7 +26,7 @@ called mdp (https://github.com/visit1985/mdp).
 ║                           ║                                                              ║
 ╠═╣    Shortcut keys  ╠═════╬═════╣                                                        ║
 ║                           ║                                                              ║
-║ ctrl + h                  ║ Shows this file using vim                                    ║
+║ alt + h                   ║ Shows this file using vim                                    ║
 ║                           ║                                                              ║
 ╚═══════════════════════════╩══════════════════════════════════════════════════════════════╝
 
@@ -35,31 +36,46 @@ called mdp (https://github.com/visit1985/mdp).
 ║ aliases                ║ Desc                                                         ║
 ╠════════════════════════╬══════════════════════════════════════════════════════════════╣
 ║ **Help Pages**             ║                                                              ║
+║                        ║                                                              ║
 ║ help                   ║ Displays this help page.                                     ║
 ║ h                      ║ Grep history for a specific keyword                          ║
 ║ zdoc                   ║ Opens zsh pdf document.                                      ║
+║                        ║                                                              ║
 ║ **App Openers**            ║                                                              ║
+║                        ║                                                              ║
 ║ idea                   ║ Opens a file or folder in IntelliJ Idea                      ║
 ║ subl                   ║ Opens a file or folder in sublime texteditor                 ║
 ║ atom                   ║ Opens a file or folder in atom texteditor                    ║
+║                        ║                                                              ║
 ║ **Operations**             ║                                                              ║
+║                        ║                                                              ║
 ║ ds                     ║ Calculates subfolder sizes in a directory                    ║
-║ .                      ║ **EQ:**  to 'du ═hd 1'                                           ║
-║ Make a file executable ║                                                              ║
-║ ex                     ║ **EQ:** eq. to `chmod u+x`                                       ║
+║                        ║ **EQ:**  to 'du -hd 1'                                           ║
+║                        ║                                                              ║
+║ ex                     ║ Make a file executable                                       ║
+║                        ║ **EQ:** eq. to `chmod u+x`                                       ║
+║                        ║                                                              ║
+║ ff                     ║ Search current folder for a partial filename                 ║
+║                        ║ **Usage:** `$ ff .json`                                          ║
+║                        ║                                                              ║
 ║ rgrep                  ║ Search current folder for a specific keyword                 ║
-║ .                      ║ including all subfolders                                     ║
-║ .                      ║ **Usage:** $ rgrep alias                                         ║
-║ .                      ║ **EQ:** `grep ══color=always ═R ═i "$1" ‖ less;`                 ║
+║                        ║ including all subfolders                                     ║
+║                        ║ **Usage:** $ rgrep alias                                         ║
+║                        ║ **EQ:** `grep --color=always -R -i "$1" | less;`                 ║
+║                        ║                                                              ║
 ║ rfind                  ║                                                              ║
-║ .                      ║ **Usage:** `$ rfind mac.sh`                                      ║
-║ .                      ║ **EQ:** `find . ═iname "*$1*" ‖ grep ═i "$1" ══color=always`     ║
+║                        ║ **Usage:** `$ rfind mac.sh`                                      ║
+║                        ║ **EQ:** `find . -iname "*$1*" | grep -i "$1" --color=always`     ║
+║                        ║                                                              ║
 ║ dq                     ║ query installed packages and list their files                ║
-║ **Usage:** $ dq ls         ║                                                              ║
+║                        ║ Usage:** $ dq ls                                               ║
+║                        ║                                                              ║
 ║ extract                ║ extracts a file into the destination folder using `tar`      ║
-║ .                      ║ **Usage:** `$ extract x.tar "/your/destination"`                 ║
-║ .                      ║ **EQ:Usage:** `tar xf $1 ═C $2;`                                 ║
+║                        ║ **Usage:** `$ extract x.tar "/your/destination"`                 ║
+║                        ║ **EQ:** `tar xf $1 -C $2;`                                       ║
+║                        ║                                                              ║
 ║ **Web Search**             ║                                                              ║
+║                        ║                                                              ║
 ║ google                 ║ Search Google for a specific term                            ║
 ║ ddg                    ║ Search DuckDuckGo for a specific term                        ║
 ║ ducky                  ║ Search DuckDuckGo for a specific term (I'm feeling lucky)    ║
@@ -183,6 +199,29 @@ called mdp (https://github.com/visit1985/mdp).
 ╔════════════════════════╦══════════════════════════════════════════════════════════════╗
 ║ Commands               ║ Desc                                                         ║
 ╠════════════════════════╬══════════════════════════════════════════════════════════════╣
+║ **Packages**               ║                                                              ║
+║                        ║                                                              ║
+║ ,pkg-graph             ║ Visualizes the dependency graph for a package                ║
+║                        ║ **Usage:** `,pkg-graph ssh`                                      ║
+║                        ║                                                              ║
+║ ,pkg-info              ║ Tries to find a file within not installed packages           ║
+║                        ║ **Usage:** `,pkg-info wmpinboard`                                ║
+║                        ║ **Usage:** `,pkg-info <enter>`                                   ║
+║                        ║                                                              ║
+║ ,pkg-find              ║ Tries to find a file within not installed packages           ║
+║                        ║ **Usage:** `,pkg-find otfinfo`                                   ║
+║                        ║ **Usage:** `,pkg-find <enter>` (very slow)                       ║
+║                        ║                                                              ║
+║ asf                    ║ Uses fzf to list all files installed by packageses           ║
+║                        ║ **Usage:** `asf <enter>` and search for `_apt`                   ║
+║                        ║                                                              ║
+║ aps                    ║ Alias for aptitude search, searches in not installed packages║
+║                        ║ **Usage:** `aps pinboard`                                        ║
+║                        ║                                                              ║
+║ dq                     ║ Query an installed package and list its fileskages           ║
+║                        ║ **Usage:** `dq help`                                             ║
+║                        ║                                                              ║
+║ **Man pages**              ║                                                              ║
 ║                        ║                                                              ║
 ║ help                   ║ Displays this help page.                                     ║
 ║ h                      ║ Grep history for a specific keyword                          ║
@@ -192,7 +231,34 @@ called mdp (https://github.com/visit1985/mdp).
 ║ mand <command>         ║ Opens https://manpages.debian.org manual page for the command║
 ╚════════════════════════╩══════════════════════════════════════════════════════════════╝
 
-## 1.10.2 Useful manual pages
+## 1.10.2 Tab completion helpers
+The follwing commands or aliases support special tab completion. Write the alias
+and press <Tab> to access helpers. These completion helpers are usually defined in
+`zsh/compinit.sh`, or `zsh/completion/`, or `zsh/completion/plugins/fzf/shell/completion.zsh`,
+or `fzf.zsh`. 
+
+╔════════════════════════╦══════════════════════════════════════════════════════════════╗
+║ Commands               ║ Desc                                                         ║
+╠════════════════════════╬══════════════════════════════════════════════════════════════╣
+║                        ║                                                              ║
+║ kill                   ║ Gives the list of process with nice details about them       ║
+║                        ║ you will be able to select and kill theme                    ║
+║                        ║                                                              ║
+║ takenote               ║ Gives you the list of all files in ~/note folder and you     ║
+║                        ║ edit them in vim by selecting one of the rows                ║
+║                        ║                                                              ║
+║ dq                     ║ lists all installed packaged by picking one you can see      ║
+║                        ║ what files are installed by them                             ║
+║                        ║                                                              ║
+║ t                      ║ t will be completed by todo.txt                              ║
+║                        ║                                                              ║
+║ ~~                     ║ `~~` will trigger fzf file selection for the current folder  ║
+║                        ║ **EX:** `vim ~~<tab>`                                            ║
+║                        ║                                                              ║
+╚════════════════════════╩══════════════════════════════════════════════════════════════╝
+
+
+## 1.10.3 Useful manual pages
 
 ╔════════════════════════╦══════════════════════════════════════════════════════════════╗
 ║ Commands               ║ Desc                                                         ║

@@ -1,17 +1,5 @@
 # Setup fzf
 # ---------
-_fzf_complete_t2() {
-  _fzf_complete "--multi --reverse --header-lines=3" "$@" < <(
-    ls -al
-  )
-}
-
-_fzf_complete_t2_post() {
-  awk '{print $NF}'
-}
-
-[ -n "$BASH" ] && complete -F _fzf_complete_t2 -o default -o bashdefault t2
-
 
 export FZF_COMPLETION_TRIGGER='~~'
 if [[ ! "$PATH" == *$SCRIPTPATH/zsh/completion/plugins/fzf/bin* ]]; then
@@ -82,7 +70,6 @@ fzz(){
 }
 zle      -N    fzz
 bindkey '^F'   fzz
-#compdef fzz takenote
 
 # This is the same functionality as fzf's ctrl-t, except that the file or
 # directory selected is now automatically cd'ed or opened, respectively.
@@ -105,16 +92,3 @@ fzf-open-file-or-dir() {
 }
 zle     -N   fzf-open-file-or-dir
 bindkey '^P' fzf-open-file-or-dir
-# zle -A fzf-open-file-or-dir takenote 
-
-_fzf_complete_t2() {
-  _fzf_complete "--multi --reverse --header-lines=3" "$@" < <(
-    ls -al
-  )
-}
-
-_fzf_complete_t2_post() {
-  awk '{print $NF}'
-}
-
-[ -n "$BASH" ] && complete -F _fzf_complete_t2 -o default -o bashdefault t2

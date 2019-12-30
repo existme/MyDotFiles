@@ -108,22 +108,10 @@ TRAPWINCH() {
 }
 
 __fdnote(){
-   # zle-line-init
-   # zle-line-finish
    local dir
    zle kill-whole-line
    dir=$( find -L "$HOME/notes/" -print 2> /dev/null | fzf-tmux +m )
-   #LBUFFER=$(echo $dir)
-   # zle -N zle-line-init
-   # zle -N zle-line-init
-   # compadd -P '' -p '' $dir
-   #zle reset-prompt
-   # _alternative "directories:user directory:($dir)" "options:comma-separated opt: _values -s , $dir"
-   # builtin zle redisplay
-	# compadd  "$dir"
    zle .accept-line
-   # zle accept-and-menu-complete
-   #echo $dir
 }
 zle -N __fdnote
 zle -C note_complete 'menu-select'  __fdnote
@@ -133,6 +121,7 @@ complete-history () { compgen -d 0 '' }
 autoload edit-command-line; zle -N edit-command-line
 
 _switch_prompt(){source $HOME/bin/,switch-prompt; zle .accept-line }
+
 if [ -e ~/Dropbox/Apps/todotxttdi/todo_completion ]; then
    export TODOTXT_DEFAULT_ACTION=ls
    export TODO_SH="~/Dropbox/Apps/todotxttdi/todo.sh"
