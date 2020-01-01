@@ -473,4 +473,4 @@ vmap "+y :!xclip -f -selection c<cr>
 
 hi SpellBad cterm=undercurl,underline ctermfg=LightMagenta 
 " setlocal spell spelllang=en_us
-
+autocmd FileType zsh,sh setlocal shiftwidth=2 softtabstop=2 expandtab

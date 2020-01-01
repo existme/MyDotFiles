@@ -43,6 +43,8 @@ called mdp (https://github.com/visit1985/mdp).
 ║                        ║                                                              ║
 ║ **Config Aliases**         ║                                                              ║
 ║                        ║                                                              ║
+║ m                      ║ cd ~/MyDotFiles                                              ║
+║ x                      ║ cd ~/doti3                                                   ║
 ║ zc                     ║ vim ~/.zshrc                                                 ║
 ║ zlc                    ║ vim ~/zshrc.local.sh                                         ║
 ║ ic                     ║ vim ~/.config/i3/config                                      ║

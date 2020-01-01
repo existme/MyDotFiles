@@ -49,7 +49,7 @@ bindkey '\e.' insert-last-word
 # ctrl + back space should kill word
 bindkey '^H' backward-kill-word
 # alt+h for help file
-bindkey -s '^[h' '^Uvim ~mydotfiles/help.md^M'
+bindkey -s '^[h' '^Uvim ~m/help.md^M'
 
 # bindkey '^e' __fdnote
 # bindkey '\ed' __fdnote
