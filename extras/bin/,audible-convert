@@ -31,6 +31,6 @@ if [[ $pr =~ ^[Yy]$ ]]; then
    rm $FILE
    echo "$FILE removed!"
 else
-  echo "${bR}Nothing deleted${cZ}!"
+   echo "${bR}Nothing deleted${cZ}!"
 fi
 echo "Script is finished!"

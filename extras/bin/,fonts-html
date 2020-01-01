@@ -10,8 +10,7 @@ cat << __HEADER
 <body>
 __HEADER
 
-fc-list --format='%{family}\n' $1 | sort -u | while IFS='' read -r fontfamily
-do
+fc-list --format='%{family}\n' $1 | sort -u | while IFS='' read -r fontfamily; do
     cat << __BODY
     <hr/>
     <div style="font-family: '${fontfamily}', 'serif'">

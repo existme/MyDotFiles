@@ -7,7 +7,7 @@
 # DP-0 will be taken care with `,query-current-display`
 # grep -oE  will separate WIDTHxHEIGHT section
 # ${DISPLAY_PARAMS//x/ } will delimit the result by x
-DISPLAY_PARAMS=$(xrandr 2>/dev/null | grep $(,query-current-display)| grep -oE "[0-9]+x[0-9]+")
+DISPLAY_PARAMS=$(xrandr 2> /dev/null | grep $(,query-current-display) | grep -oE "[0-9]+x[0-9]+")
 DISPLAY_PARAMS=(${DISPLAY_PARAMS//x/ })
 echo ${DISPLAY_PARAMS[0]}
 

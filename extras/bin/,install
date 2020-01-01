@@ -1,12 +1,13 @@
 #!/bin/zsh
 # !! It's important to use bash or zsh otherwise reads doesn't work
 #
-declare selected=$(cat <<EOF
+declare selected=$(
+    cat                << EOF
 java
 quit
 EOF
 )
-function gitPull(){
+function gitPull() {
     local prj=$1
     echo "Compiling ${bY}$prj${cZ}"
     echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
@@ -21,66 +22,66 @@ function gitPull(){
         echo "${bR}Nothing pulled${cZ}!"
     fi
 }
-function clone(){
+function clone() {
     local prj=$1
     local prjPath="$HOME/git/$1"
     local repo=$2
     if [[ ! -d $prjPath ]]; then
-      echo "Cloning ${bW}$repo${cZ} to ${bY}$prjPath${cZ}"
-      git clone $repo $prjPath
+        echo "Cloning ${bW}$repo${cZ} to ${bY}$prjPath${cZ}"
+        git clone $repo $prjPath
     fi
 }
-function okToInstall(){
-   if [[ -z $prompt ]]; then
-      read -k 1 -r "pr?Ok to install (${cY}y${cZ}/${bW}N${cZ})?"
-      echo
-      if [[ ! $pr =~ ^[Yy]$ ]]; then
-          echo "${bR}Install Cancled${cZ}!"
-          return 1
-      fi
-      echo "${bG}Installing${cZ} ..."
-  fi 
-  return 0
+function okToInstall() {
+    if [[ -z $prompt ]]; then
+        read -k 1 -r "pr?Ok to install (${cY}y${cZ}/${bW}N${cZ})?"
+        echo
+        if [[ ! $pr =~ ^[Yy]$ ]]; then
+            echo "${bR}Install Cancled${cZ}!"
+            return 1
+        fi
+        echo "${bG}Installing${cZ} ..."
+    fi
+    return 0
 }
-function install(){
-   while test $# -gt 0
-   do
-      package=$1
-      echo "Installing ${bY}$package${cZ}..."
-      # sudo aptitude install $package -fy
-      sudo apt install $package -y
-      shift
-   done
+function install() {
+    while test $# -gt 0; do
+        package=$1
+        echo "Installing ${bY}$package${cZ}..."
+        # sudo aptitude install $package -fy
+        sudo apt install $package -y
+        shift
+    done
 }
 
 if [ -z "$1" ]; then
-   declare res=$(
-       echo $selected|tr '\n' '|'|
-       rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
-       )
+    declare res=$(
+        echo $selected \
+            | tr '\n' '|' \
+            | rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
+    )
 else
-   res=$1
+    res=$1
 fi
 
 if [[ "$2" == "-y" ]]; then
-   prompt=no
+    prompt=no
 fi
 case "$res" in
     java)
-      prj=java
-      if okToInstall; then
-         install default-jre openjdk-11-jre-headless openjdk-8-jre-headless default-jdk openjdk-11-jdk openjdk-8-jdk
-         sudo update-alternatives --config java
-         sudo update-alternatives --config javac
-         export JAVA_HOME=$(which javac|xargs readlink -f|xargs dirname|xargs dirname)
-         echo
-         echo "Export ${bB}JAVA_HOME${bW}=$JAVA_HOME${cZ}    in your init script."
-      fi
-    ;;
+        prj=java
+        if okToInstall; then
+            install default-jre openjdk-11-jre-headless openjdk-8-jre-headless default-jdk openjdk-11-jdk openjdk-8-jdk
+            sudo update-alternatives --config java
+            sudo update-alternatives --config javac
+            export JAVA_HOME=$(which javac | xargs readlink -f | xargs dirname | xargs dirname)
+            echo
+            echo "Export ${bB}JAVA_HOME${bW}=$JAVA_HOME${cZ}    in your init script."
+        fi
+        ;;
     quit)
         echo "${bB}Canceled$cZ"
         return
-    ;;
+        ;;
 esac
 echo "${bW}------------------------$cZ"
 echo "${bB}Install script finished.$cZ"

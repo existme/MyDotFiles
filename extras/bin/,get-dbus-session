@@ -5,5 +5,5 @@ echo $dbus_session_file
 if [ -e "$dbus_session_file" ]; then
   . "$dbus_session_file"
   export DBUS_SESSION_BUS_ADDRESS DBUS_SESSION_BUS_PID
-  echo $DBUS_SESSION_BUS_ADDRESS 
+  echo $DBUS_SESSION_BUS_ADDRESS
 fi

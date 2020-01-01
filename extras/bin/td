@@ -2,60 +2,57 @@
 
 # calculate time difference between two times
 
-
 #function toTime(time:seconds, fg:color , plusSign:true/false)
-tt(){
-   # Put a minus sign in front of time if the time duration is negative
-   local diff=$1
-   local fg=$2
-   local pSign=$3
+tt() {
+  # Put a minus sign in front of time if the time duration is negative
+  local  diff=$1
+  local  fg=$2
+  local  pSign=$3
 
-   if [[ "$fg" = "+" ]]; then 
-      unset fg
-      pSign=true
-   fi
+  if  [[ "$fg" = "+" ]]; then
+    unset   fg
+    pSign=true
+  fi
 
-   if [ $pSign ]; then
-      if [[ $diff -lt 0 ]]; then
-         echo -n "${bR}-${cZ}"
-         diff=$(( - $diff ))
-      else
-         echo -n "${bG}+${cZ}"
-      fi
-   fi 
-   # or +%T = +%H:%M:%S
-   echo ${fg}`date -ud@$diff +%H:%M`${cZ}
+  if  [ $pSign ]; then
+    if   [[ $diff -lt 0 ]]; then
+      echo    -n "${bR}-${cZ}"
+      diff=$((-$diff))
+    else
+      echo    -n "${bG}+${cZ}"
+    fi
+  fi
+  # or +%T = +%H:%M:%S
+  echo  ${fg}$(date -ud@$diff +%H:%M)${cZ}
 }
 
-
 if [ "$#" -ne 3 ]; then
-    echo "Usage: ${bZ}td ${bY}{timeFrom} {timeTo}${cZ} {decoration}"
-    echo
-    echo "example:"
-    echo "${bZ}td ${bY}14:02 16:01${cZ} \"║\""
-    exit
+  echo   "Usage: ${bZ}td ${bY}{timeFrom} {timeTo}${cZ} {decoration}"
+  echo
+  echo   "example:"
+  echo   "${bZ}td ${bY}14:02 16:01${cZ} \"║\""
+  exit
 fi
 
 _from=$1
 _to=$2
 _dec=$3
 
-[[ ! "$_from" =~ "(PM|pm|am|AM)$" ]] && _from="$_from AM";
-[[ ! "$_to" =~ "(PM|pm|am|AM)$" ]] && _to="$_to PM";
+[[ ! "$_from" =~ "(PM|pm|am|AM)$" ]] && _from="$_from AM"
+[[ ! "$_to" =~ "(PM|pm|am|AM)$" ]] && _to="$_to PM"
 d1=$(date -ud"1970-01-01 $_from" +%s)
 d2=$(date -ud"1970-01-01 $_to" +%s)
-diff=$(( d2-d1 ))
+diff=$((d2 - d1))
 
 if [[ diff -lt 0 ]]; then
-   echo "Usage: ${bZ}td ${bY}{timeFrom} {timeTo}${cZ}"
-   echo "${bR}Error${cZ}: ${bY}{timeTo}${cZ} should be greater than ${bY}{timeFrom}${cZ}"
-   exit
+  echo  "Usage: ${bZ}td ${bY}{timeFrom} {timeTo}${cZ}"
+  echo  "${bR}Error${cZ}: ${bY}{timeTo}${cZ} should be greater than ${bY}{timeFrom}${cZ}"
+  exit
 fi
 
 workDay=8
 echo    "${_dec}Period                : $(tt $d1 $bW) to $(tt $d2 $bW) ($(tt $diff $bW true))"
 echo -n "${_dec}Worked period (-$workDay:00) : "
 wd=$(date -ud"1970-01-01 $workDay:00" +%s)
-diffWd=$(( diff-wd ))
+diffWd=$((diff - wd))
 echo "$(tt $diffWd +) (hours)"
-

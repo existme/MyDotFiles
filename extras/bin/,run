@@ -1,13 +1,12 @@
-#!/usr/bin/zsh 
+#!/usr/bin/zsh
 
 # this function will assign a widget to temporarily run a script
 
 unfunction _run_widget
 cmd=$1
-_run_widget(){
-   exec "/usr/bin/pango-view ~/tmp/pango-test.markup --hinting full --markup"
+_run_widget() {
+  exec  "/usr/bin/pango-view ~/tmp/pango-test.markup --hinting full --markup"
 }
 zle -N _run_widget
 export _run_widget
 bindkey '^/' _run_widget
-

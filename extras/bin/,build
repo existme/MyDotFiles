@@ -7,12 +7,13 @@
 
 declare NOPROMPT=false
 if [[ "$2" == "-y" ]]; then
-   NOPROMPT=true
+  NOPROMPT=true
 fi
 
 $NOPROMPT && echo "${bW}NOPROMPT${cZ} detected, assuming all questions to be true"
 
-declare selected=$(cat <<EOF
+declare selected=$(
+  cat                  << EOF
 betterlockscreen
 i3
 i3-gaps
@@ -40,416 +41,416 @@ python
 quit
 EOF
 )
-function gitPull(){
-   local prj=$1
-   local nosubmodule=$2
-   echo "Compiling ${bY}$prj${cZ}"
-   echo "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
-   echo $NOPROMPT 
-   if [[ "$NOPROMPT" == "true" ]]; then
-      pr="y"
-   else
-      read -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?"
-   fi
-   echo
-   cd ~/git/$prj
+function gitPull() {
+  local  prj=$1
+  local  nosubmodule=$2
+  echo  "Compiling ${bY}$prj${cZ}"
+  echo  "Do you want to pull$bR $prj$cZ located at$cG $HOME/git/$prj$cZ?"
+  echo  $NOPROMPT
+  if  [[ "$NOPROMPT" == "true" ]]; then
+    pr="y"
+  else
+    read   -k 1 -r "pr?Ok to pull (${cY}y${cZ}/${bW}N${cZ})?"
+  fi
+  echo
+  cd  ~/git/$prj
 
-   if [[ $pr =~ ^[Yy]$ ]]; then
-      git pull
-      if [[ "$nosubmodule" != "false" ]]; then
-         git submodule foreach git pull
-      fi
-   else
-      echo "${bR}Nothing pulled${cZ}!"
-   fi
-}
-function clone(){
-    local prj=$1
-    local prjPath="$HOME/git/$1"
-    local repo=$2
-    if [[ ! -d "$prjPath" ]]; then
-      echo "Cloning ${bW}$repo${cZ} to ${bY}$prjPath${cZ}"
-      git clone $repo $prjPath --recursive 
+  if  [[ $pr =~ ^[Yy]$ ]]; then
+    git   pull
+    if   [[ "$nosubmodule" != "false" ]]; then
+      git    submodule foreach git pull
     fi
+  else
+    echo   "${bR}Nothing pulled${cZ}!"
+  fi
 }
-function okToBuild(){
-   if [[ "$NOPROMPT" == "true" ]]; then
-      pr="y"
-   else
-      read -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?"
-   fi
-   echo
-   if [[ ! $pr =~ ^[Yy]$ ]]; then
-      echo "${bR}Build Cancled${cZ}!"
-      return 1
-   fi
-   # echo "${bG}Building${cZ} ..."
-   toilet "Building..." -f future
-   return 0
+function clone() {
+  local   prj=$1
+  local   prjPath="$HOME/git/$1"
+  local   repo=$2
+  if   [[ ! -d "$prjPath" ]]; then
+    echo   "Cloning ${bW}$repo${cZ} to ${bY}$prjPath${cZ}"
+    git   clone $repo $prjPath --recursive
+  fi
+}
+function okToBuild() {
+  if  [[ "$NOPROMPT" == "true" ]]; then
+    pr="y"
+  else
+    read   -k 1 -r "pr?Ok to build (${cY}y${cZ}/${bW}N${cZ})?"
+  fi
+  echo
+  if  [[ ! $pr =~ ^[Yy]$ ]]; then
+    echo   "${bR}Build Cancled${cZ}!"
+    return   1
+  fi
+  # echo "${bG}Building${cZ} ..."
+  toilet  "Building..." -f future
+  return  0
 }
 if [ -z "$1" ]; then
-   declare res=$(
-       echo $selected|tr '\n' '|'|
-       rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
-       )
+  declare  res=$(
+    echo    $selected | tr '\n' '|' \
+                                 | rofi -dmenu -sep '|' -p "What project do you want to build? " -i -disable-history -levenshtein-sort -matching normal -e
+  )
 else
-   res=$1
+  res=$1
 fi
 
 case "$res" in
-    betterlockscreen)
-        prj=betterlockscreen
-        clone $prj https://github.com/pavanjadhaw/betterlockscreen.git
-        gitPull $prj
-        if okToBuild; then
-            sudo apt install -y x11-xserver-utils
-            cd ~/git/$prj
-            cp betterlockscreen ~/bini3/
-        fi
+  betterlockscreen)
+    prj=betterlockscreen
+    clone     $prj https://github.com/pavanjadhaw/betterlockscreen.git
+    gitPull     $prj
+    if     okToBuild; then
+      sudo       apt install -y x11-xserver-utils
+      cd       ~/git/$prj
+      cp       betterlockscreen ~/bini3/
+    fi
     ;;
-    i3)
-        prj=i3
-        clone $prj https://github.com/i3/i3.git
-        gitPull $prj
-        if okToBuild; then
-            sudo apt install -y autoconf libxcb-xrm-dev libxcb-shape0-dev
-            sudo apt build-dep -y i3-wm
-            autoreconf -fi
-            rm -rf ~/git/$prj/build
-            mkdir ~/git/$prj/build
-            cd ~/git/$prj/build
-            grc ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-            grc make -j8
-            grc sudo make install
-        fi
+  i3)
+    prj=i3
+    clone     $prj https://github.com/i3/i3.git
+    gitPull     $prj
+    if     okToBuild; then
+      sudo       apt install -y autoconf libxcb-xrm-dev libxcb-shape0-dev
+      sudo       apt build-dep -y i3-wm
+      autoreconf       -fi
+      rm       -rf ~/git/$prj/build
+      mkdir       ~/git/$prj/build
+      cd       ~/git/$prj/build
+      grc       ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+      grc       make -j8
+      grc       sudo make install
+    fi
     ;;
-    i3ass)
-        prj=i3ass 
-        gitPull $prj https://github.com/budlabs/i3ass
+  i3ass)
+    prj=i3ass
+    gitPull     $prj https://github.com/budlabs/i3ass
 
-        if okToBuild; then
-            cd ~/git/$prj
-            sudo apt-get install xdotool wmctrl
-            sudo make install
-        fi
+    if     okToBuild; then
+      cd       ~/git/$prj
+      sudo       apt-get install xdotool wmctrl
+      sudo       make install
+    fi
     ;;
-    sway)
-       prj=sway
-       clone $prj https://github.com/swaywm/sway.git
-       gitPull $prj
+  sway)
+    prj=sway
+    clone    $prj https://github.com/swaywm/sway.git
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt-get install meson libevdev-dev libinput-dev libwlroots-dev
-          meson build
-          ninja -C build
-          sudo ninja -C build install
-          sudo chmod a+s /usr/local/bin/sway
-       fi
+    if    okToBuild; then
+      sudo     apt-get install meson libevdev-dev libinput-dev libwlroots-dev
+      meson     build
+      ninja     -C build
+      sudo     ninja -C build install
+      sudo     chmod a+s /usr/local/bin/sway
+    fi
     ;;
-    surf)
-      prj=surf
-      clone $prj https://git.suckless.org/surf
-      gitPull $prj
+  surf)
+    prj=surf
+    clone   $prj https://git.suckless.org/surf
+    gitPull   $prj
 
-      if okToBuild; then
-         sudo apt-get install -y build-essential libgtk-3-dev webkit2gtk-4.0
-         sudo apt install -y libgcr-3-dev
-         sudo make install
-      fi
+    if   okToBuild; then
+      sudo    apt-get install -y build-essential libgtk-3-dev webkit2gtk-4.0
+      sudo    apt install -y libgcr-3-dev
+      sudo    make install
+    fi
     ;;
-    st)
-      prj=st
-      clone $prj https://git.suckless.org/st
-      gitPull $prj
+  st)
+    prj=st
+    clone   $prj https://git.suckless.org/st
+    gitPull   $prj
 
-      if okToBuild; then
-         sudo apt-get install -y build-essential libgtk-3-dev webkit2gtk-4.0
-         sudo apt install -y libgcr-3-dev
-         sudo make install
-      fi
+    if   okToBuild; then
+      sudo    apt-get install -y build-essential libgtk-3-dev webkit2gtk-4.0
+      sudo    apt install -y libgcr-3-dev
+      sudo    make install
+    fi
     ;;
-    tabbed)
-      prj=tabbed
-      clone $prj https://git.suckless.org/tabbed
-      gitPull $prj
+  tabbed)
+    prj=tabbed
+    clone   $prj https://git.suckless.org/tabbed
+    gitPull   $prj
 
-      if okToBuild; then
-         # sudo apt install build-essential libgtk-3-dev
-         sudo make install
-      fi
+    if   okToBuild; then
+      # sudo apt install build-essential libgtk-3-dev
+      sudo    make install
+    fi
     ;;
-    i3-gaps)
-        prj=i3-gaps
-        gitPull $prj
+  i3-gaps)
+    prj=i3-gaps
+    gitPull     $prj
     ;;
-    vim)
-        prj=vim
-        clone $prj https://github.com/vim/vim.git
-        gitPull $prj
+  vim)
+    prj=vim
+    clone     $prj https://github.com/vim/vim.git
+    gitPull     $prj
 
-        if okToBuild; then
-            sudo apt-get -qy remove --purge vim vim-runtime vim-gnome vim-tiny vim-common vim-gui-common
-            sudo apt-get -qy build-dep vim-gnome
-            sudo apt-get install -qy build-essential liblua5.3-0 liblua5.3-dev python-dev ruby-dev libperl-dev libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
-            sudo rm -rf /usr/local/share/vim /usr/bin/vim /usr/local/bin/vim
-            sudo mkdir /usr/include/lua5.3/{include,lib}
-            sudo cp /usr/include/lua5.3/*.h /usr/include/lua5.3/include/
-            sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/include/lua5.3/lib/liblua.so
-            sudo ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.a /usr/include/lua5.3/lib/liblua.a
-            sudo make distclean
-            ./configure --with-features=huge \
-               --enable-rubyinterp \
-               --enable-largefile \
-               --disable-netbeans \
-               --enable-python3interp \
-               --with-python-config-dir=$(python3-config --configdir) \
-               --enable-perlinterp \
-               --enable-luainterp \
-               --enable-gui=auto \
-               --enable-fail-if-missing \
-               --with-lua-prefix=/usr/include/lua5.3 \
-               --enable-cscope \
-               --enable-multibyte
-            sudo make
-            sudo make install
-            # sudo apt install checkinstall
-            # sudo checkinstall
-        fi
+    if     okToBuild; then
+      sudo       apt-get -qy remove --purge vim vim-runtime vim-gnome vim-tiny vim-common vim-gui-common
+      sudo       apt-get -qy build-dep vim-gnome
+      sudo       apt-get install -qy build-essential liblua5.3-0 liblua5.3-dev python-dev ruby-dev libperl-dev libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
+      sudo       rm -rf /usr/local/share/vim /usr/bin/vim /usr/local/bin/vim
+      sudo       mkdir /usr/include/lua5.3/{include,lib}
+      sudo       cp /usr/include/lua5.3/*.h /usr/include/lua5.3/include/
+      sudo       ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/include/lua5.3/lib/liblua.so
+      sudo       ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.a /usr/include/lua5.3/lib/liblua.a
+      sudo       make distclean
+      ./configure       --with-features=huge \
+        --enable-rubyinterp \
+        --enable-largefile \
+        --disable-netbeans \
+        --enable-python3interp \
+        --with-python-config-dir=$(       python3-config --configdir) \
+        --enable-perlinterp \
+        --enable-luainterp \
+        --enable-gui=auto \
+        --enable-fail-if-missing \
+        --with-lua-prefix=/usr/include/lua5.3 \
+        --enable-cscope \
+        --enable-multibyte
+      sudo       make
+      sudo       make install
+      # sudo apt install checkinstall
+      # sudo checkinstall
+    fi
     ;;
-    rofi)
-        prj=rofi
-        clone $prj https://github.com/DaveDavenport/rofi.git
-        gitPull $prj
-        if okToBuild; then
-            sudo apt install -yf texinfo
-            git submodule init
-            git submodule update
-            git submodule foreach git checkout master
-            git submodule foreach git clean -d -f
-            git submodule foreach git pull
-            git submodule sync
-            autoreconf --install
-            sudo apt-get install -y bison flex xutils-dev libxcb-ewmh-dev
-            sudo apt-get install -y librsvg2-dev
-            sudo apt-get install -y textinfo
-            # sudo pip install easybuild
-            # Install latest version of check
-            # https://github.com/libcheck/check.git
-            rm -rf build
-            sudo make distclean
-            mkdir build && cd build
-            ../configure
+  rofi)
+    prj=rofi
+    clone     $prj https://github.com/DaveDavenport/rofi.git
+    gitPull     $prj
+    if     okToBuild; then
+      sudo       apt install -yf texinfo
+      git       submodule init
+      git       submodule update
+      git       submodule foreach git checkout master
+      git       submodule foreach git clean -d -f
+      git       submodule foreach git pull
+      git       submodule sync
+      autoreconf       --install
+      sudo       apt-get install -y bison flex xutils-dev libxcb-ewmh-dev
+      sudo       apt-get install -y librsvg2-dev
+      sudo       apt-get install -y textinfo
+      # sudo pip install easybuild
+      # Install latest version of check
+      # https://github.com/libcheck/check.git
+      rm       -rf build
+      sudo       make distclean
+      mkdir       build && cd build
+      ../configure
 
-            sudo ./configure
-            sudo make install
-        fi
+      sudo       ./configure
+      sudo       make install
+    fi
     ;;
-    albert)
-       prj=albert
-       clone $prj https://github.com/albertlauncher/albert.git
-       gitPull $prj
-       if okToBuild; then
-         sudo apt-get install -y cmake libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev libqt5charts5-dev
-         sudo apt-get install -y python3-dev 
-         rm -rf albert-build
-         mkdir albert-build
-         cd albert-build
-         cmake ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DBUILD_VIRTUALBOX=OFF
-         make
-         sudo make install
-         echo "${bY}Warning:${cZ} be sure that you have cloned the repo recursively otherwise you might ran into strange problems"
-         echo "${bB}git clone https://github.com/albertlauncher/albert.git --recursive ${cZ}"
-         echo "${bY}Warning-2:${cZ} if you have problems with qalculate plugin you need to compile it from source"
-       fi
+  albert)
+    prj=albert
+    clone    $prj https://github.com/albertlauncher/albert.git
+    gitPull    $prj
+    if    okToBuild; then
+      sudo    apt-get install -y cmake libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev libqt5charts5-dev
+      sudo    apt-get install -y python3-dev
+      rm    -rf albert-build
+      mkdir    albert-build
+      cd    albert-build
+      cmake    ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DBUILD_VIRTUALBOX=OFF
+      make
+      sudo    make install
+      echo    "${bY}Warning:${cZ} be sure that you have cloned the repo recursively otherwise you might ran into strange problems"
+      echo    "${bB}git clone https://github.com/albertlauncher/albert.git --recursive ${cZ}"
+      echo    "${bY}Warning-2:${cZ} if you have problems with qalculate plugin you need to compile it from source"
+    fi
     ;;
-    xkb-switch)
-       prj=xkb-switch
-       clone $prj https://github.com/ierton/xkb-switch.git
-       gitPull $prj
+  xkb-switch)
+    prj=xkb-switch
+    clone    $prj https://github.com/ierton/xkb-switch.git
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt install libxkbfile-dev 
-          mkdir build 
-          cd build
-    		 cmake ..
-    		 make
-    		 sudo make install
-          sudo ldconfig
-       fi
+    if    okToBuild; then
+      sudo     apt install libxkbfile-dev
+      mkdir     build
+      cd     build
+      cmake    ..
+      make
+      sudo    make install
+      sudo     ldconfig
+    fi
     ;;
-    compton)
-       prj=compton
-       clone $prj https://github.com/chjj/compton.git
-       gitPull $prj
+  compton)
+    prj=compton
+    clone    $prj https://github.com/chjj/compton.git
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt install -y libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-composite-dev x11-utils libpcre3-dev libconfig-dev libdrm-dev asciidoc libdbus-1-dev
-    		 make 
-    		 make docs
-    		 sudo make install
-       fi
+    if    okToBuild; then
+      sudo     apt install -y libx11-dev libxcomposite-dev libxdamage-dev libxfixes-dev libxrender-dev libxrandr-dev libxinerama-dev pkg-config make x11proto-composite-dev x11-utils libpcre3-dev libconfig-dev libdrm-dev asciidoc libdbus-1-dev
+      make
+      make    docs
+      sudo    make install
+    fi
     ;;
-    dunst)
-       prj=dunst
-       clone $prj https://github.com/dunst-project/dunst.git
-       # git clone https://github.com/PandorasFox/i3lock-color
-       # https://wiki.archlinux.org/index.php/Desktop_notifications
-       gitPull $prj
+  dunst)
+    prj=dunst
+    clone    $prj https://github.com/dunst-project/dunst.git
+    # git clone https://github.com/PandorasFox/i3lock-color
+    # https://wiki.archlinux.org/index.php/Desktop_notifications
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt install -y libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk2.0-dev libxdg-basedir-dev
-          sudo apt install -y libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev libnotify-dev
-          sudo make clean
-    		 sudo make -j5
-          sudo make clean-dunsitify
-    		 sudo make dunstify
-          cp dunstify ~/bin/
-    		 sudo make clean install
-          sudo make install-service
-          sudo make install-service-dbus
-          sudo killall dunst
-          dunst -config ~/.config/dunst/dunstrc &
-       fi
+    if    okToBuild; then
+      sudo     apt install -y libdbus-1-dev libx11-dev libxinerama-dev libxrandr-dev libxss-dev libglib2.0-dev libpango1.0-dev libgtk2.0-dev libxdg-basedir-dev
+      sudo     apt install -y libgtk-3-dev libgdk-pixbuf2.0-dev libxss-dev libxdg-basedir-dev libnotify-dev
+      sudo     make clean
+      sudo    make -j5
+      sudo     make clean-dunsitify
+      sudo    make dunstify
+      cp     dunstify ~/bin/
+      sudo    make clean install
+      sudo     make install-service
+      sudo     make install-service-dbus
+      sudo     killall dunst
+      dunst     -config ~/.config/dunst/dunstrc &
+    fi
     ;;
-    zathura)
-       prj=zathura
-       clone $prj https://git.pwmt.org/pwmt/zathura.git 
-       gitPull $prj
+  zathura)
+    prj=zathura
+    clone    $prj https://git.pwmt.org/pwmt/zathura.git
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt install libgirara-dev
-          meson build
-          cd build
-          ninja
-          sudo ninja install
-       fi
+    if    okToBuild; then
+      sudo     apt install libgirara-dev
+      meson     build
+      cd     build
+      ninja
+      sudo     ninja install
+    fi
     ;;
-    i3lock-color)
-       prj=i3lock-color
-       # clone $prj https://github.com/PandorasFox/i3lock-color.git
-       clone $prj https://github.com/chrjguill/i3lock-color.git
-       # clone $prj https://github.com/meskarune/i3lock-color.git
-       gitPull $prj
+  i3lock-color)
+    prj=i3lock-color
+    # clone $prj https://github.com/PandorasFox/i3lock-color.git
+    clone    $prj https://github.com/chrjguill/i3lock-color.git
+    # clone $prj https://github.com/meskarune/i3lock-color.git
+    gitPull    $prj
 
-       if okToBuild; then
-          # sudo apt install dbus libxinerama libxrandr libxss libxdg-basedir glib pango cairo libgtk-3-dev
-          sudo apt install -y libxcb-dpms0-dev libpam0g-dev libxcb-dpms0 libpam-dev libcairo-dev libx11-dev libx11-xcb-dev libxcb-composite0-dev libjpeg-dev daemontools
-          sudo apt remove i3lock
+    if    okToBuild; then
+      # sudo apt install dbus libxinerama libxrandr libxss libxdg-basedir glib pango cairo libgtk-3-dev
+      sudo     apt install -y libxcb-dpms0-dev libpam0g-dev libxcb-dpms0 libpam-dev libcairo-dev libx11-dev libx11-xcb-dev libxcb-composite0-dev libjpeg-dev daemontools
+      sudo     apt remove i3lock
 
-          # export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3.0.0
-          autoreconf -i && ./configure && make
-          sudo make install
-       fi
+      # export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libasan.so.3.0.0
+      autoreconf     -i && ./configure && make
+      sudo     make install
+    fi
     ;;
-    cmus)
-       prj=cmus 
-       clone $prj https://github.com/cmus/cmus.git
-       gitPull $prj
-       
-       if okToBuild; then
-          sudo apt install libncursesw5-dev libmad0-dev 
-          sudo apt remove cmus
+  cmus)
+    prj=cmus
+    clone    $prj https://github.com/cmus/cmus.git
+    gitPull    $prj
 
-          # to list all features use:
-          # ./configure --help
+    if    okToBuild; then
+      sudo     apt install libncursesw5-dev libmad0-dev
+      sudo     apt remove cmus
 
-          ./configure && make clean && make
-          sudo make install
-       fi
+      # to list all features use:
+      # ./configure --help
+
+      ./configure     && make clean && make
+      sudo     make install
+    fi
     ;;
-    check)
-       prj=check
-       set -e
+  check)
+    prj=check
+    set    -e
 
-       clone $prj https://github.com/libcheck/check
-       gitPull $prj
+    clone    $prj https://github.com/libcheck/check
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt-get install -y texinfo
-          autoreconf --install
-          ./configure
-          make
-          sudo make install
-       fi
+    if    okToBuild; then
+      sudo     apt-get install -y texinfo
+      autoreconf     --install
+      ./configure
+      make
+      sudo     make install
+    fi
     ;;
-    sshuttle)
-       prj=sshuttle
-       set -e
+  sshuttle)
+    prj=sshuttle
+    set    -e
 
-       clone $prj https://github.com/sshuttle/sshuttle
-       gitPull $prj
+    clone    $prj https://github.com/sshuttle/sshuttle
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt remove sshuttle
-          sudo ./setup.py install
-       fi
+    if    okToBuild; then
+      sudo     apt remove sshuttle
+      sudo     ./setup.py install
+    fi
     ;;
-    tig)
-       prj=tig
-       set -e
+  tig)
+    prj=tig
+    set    -e
 
-       clone $prj https://github.com/jonas/tig.git
-       gitPull $prj
+    clone    $prj https://github.com/jonas/tig.git
+    gitPull    $prj
 
-       if okToBuild; then
-          sudo apt install asciidoc
-          sudo apt remove tig
-          make prefix=/usr/local
-          sudo make install prefix=/usr/local
-          sudo make install-doc
-       fi
+    if    okToBuild; then
+      sudo     apt install asciidoc
+      sudo     apt remove tig
+      make     prefix=/usr/local
+      sudo     make install prefix=/usr/local
+      sudo     make install-doc
+    fi
     ;;
-    lnav)
-       prj=lnav
-       set -e
+  lnav)
+    prj=lnav
+    set    -e
 
-       clone $prj https://github.com/tstack/lnav.git
-       gitPull $prj false
+    clone    $prj https://github.com/tstack/lnav.git
+    gitPull    $prj false
 
-       if okToBuild; then
-          sudo apt install -yf libsqlite3-dev
-          ./autogen.sh
-          ./configure
-          make
-          sudo make install
-       fi
+    if    okToBuild; then
+      sudo     apt install -yf libsqlite3-dev
+      ./autogen.sh
+      ./configure
+      make
+      sudo     make install
+    fi
     ;;
-    xrectsel)
-       prj=xrectsel
-       set -e
+  xrectsel)
+    prj=xrectsel
+    set    -e
 
-       clone $prj https://github.com/lolilolicon/xrectsel.git
-       gitPull $prj
+    clone    $prj https://github.com/lolilolicon/xrectsel.git
+    gitPull    $prj
 
-       if okToBuild; then
-          ./bootstrap
-          ./configure --prefix /usr/local
-          make prefix=/usr/local
-          sudo make install prefix=/usr/local
-       fi
+    if    okToBuild; then
+      ./bootstrap
+      ./configure     --prefix /usr/local
+      make     prefix=/usr/local
+      sudo     make install prefix=/usr/local
+    fi
     ;;
-    bumblebee-status)
-       prj=bumblebee-status
-       set -e
-       clone $prj https://github.com/tobi-wan-kenobi/bumblebee-status.git
-       gitPull $prj
-       sudo apt install -y libx11-6 python-psutil python-requests python-netifaces python3-pip
-       sudo -H pip3 install netifaces psutil requests i3ipc dnf
+  bumblebee-status)
+    prj=bumblebee-status
+    set    -e
+    clone    $prj https://github.com/tobi-wan-kenobi/bumblebee-status.git
+    gitPull    $prj
+    sudo    apt install -y libx11-6 python-psutil python-requests python-netifaces python3-pip
+    sudo    -H pip3 install netifaces psutil requests i3ipc dnf
     ;;
-    python)
-       prj=cpython
-       clone $prj https://github.com/python/cpython.git
-       gitPull $prj
-       sudo apt-get install zlib1g-dev
-       sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
-       ./configure
-       make
-       sudo make install
+  python)
+    prj=cpython
+    clone    $prj https://github.com/python/cpython.git
+    gitPull    $prj
+    sudo    apt-get install zlib1g-dev
+    sudo    apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+    ./configure
+    make
+    sudo    make install
 
     ;;
-    quit)
-        echo "${bB}Canceled$cZ"
-        return
+  quit)
+    echo     "${bB}Canceled$cZ"
+    return
     ;;
 esac
 # echo "${bB}Build script finished.$cZ"

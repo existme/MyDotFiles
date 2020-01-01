@@ -7,7 +7,7 @@ CONTAINERS=($(docker ps -a -q --filter ancestor=$IMAGENAME --format="{{.ID}}"))
 echo "Found containers:"
 docker ps -a --filter ancestor=$IMAGENAME
 
-echo 
+echo
 echo "killing containers:"
 echo "  ═╦═══════════════════════╗"
 for c ($CONTAINERS)

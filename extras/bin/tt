@@ -1,4 +1,3 @@
 #!/bin/bash
 declare pp=$1
 sudo htop -p $(pgrep -d',' -f $pp)
-

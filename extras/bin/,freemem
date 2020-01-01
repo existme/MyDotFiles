@@ -16,13 +16,13 @@
 # to enable it permanently
 # sudo sysctl -w vm.swappiness=10
 #cat /proc/meminfo
-# 
+#
 # before this was set 50
 # sudo sysctl -w vm.vfs_cache_pressure=200
 
 sudo sysctl -w vm.drop_caches=3
-sudo sync 
+sudo sync
 echo 1 | sudo tee /proc/sys/vm/drop_caches
 echo 2 | sudo tee /proc/sys/vm/drop_caches
 echo 3 | sudo tee /proc/sys/vm/drop_caches
-sudo sync 
+sudo sync

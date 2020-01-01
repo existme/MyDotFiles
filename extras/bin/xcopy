@@ -1,8 +1,9 @@
 #!/bin/zsh
-read sel; echo $sel;
+read sel
+echo $sel
 
-echo -n $sel|xclip -selection clipboard
+echo -n $sel | xclip -selection clipboard
 
 # Encode html tags before sending to dunst
-encoded=$(echo $sel|sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g')
+encoded=$(echo $sel | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g; s/"/\&quot;/g; s/'"'"'/\&#39;/g')
 notify-send "Copied to clipboard:" "<br><big>$encoded</big>" -i clipboard-128

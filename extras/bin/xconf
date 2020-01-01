@@ -2,4 +2,3 @@
 
 conf="$HOME/conf/bconf.conf"
 echo $1=$2
-

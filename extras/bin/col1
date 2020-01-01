@@ -20,10 +20,10 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 if [ $# -gt 0 ]; then
-    ifs='-F'"$1"
-    shift || true
+  ifs='-F'"$1"
+  shift || true
 else
-    ifs="-F "
+  ifs="-F "
 fi
 b=$(basename $0)
 awk "$ifs" '{print $'${b#col}'}' "$@"
