@@ -100,6 +100,16 @@ function ff(){
    local fn=$(echo $@|sed 's/\ /\\ /g')
    find -iname "*$fn*"|grep -i "$fn" --color=always
 }
+unfunc ffb
+function ffb(){
+   if [[ $1 == "--help" || $# -eq 0 ]]; then
+      echo "Usage: ffb ${bY}<partial file name>${cZ}"
+      ls -la
+      return
+   fi
+   local fn=$(echo $@|sed 's/\ /\\ /g')
+   find -iname "*$fn*"|grep -i "$fn" --color=never
+}
 # A macro to see the contents of a jar or war file
 unfunc lessj
 function lessj(){

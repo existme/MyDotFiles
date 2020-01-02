@@ -1,6 +1,6 @@
 echoMe $0
 # If you dont't know what is the code for a key combination, use <ctrl-v> followed by the key sequence
-# Enable vi-mode 
+# Enable vi-mode
 if [[ $EDITOR == 'enablevim' ]]; then
 	source $SCRIPTPATH/extras/vi-mode.sh
 	echo "VI mode ENABLED"
@@ -26,7 +26,7 @@ fi
 # bindkey '\e[B' history-beginning-search-forward
 
 
-# Custom key bindings for list of all commands see: 
+# Custom key bindings for list of all commands see:
 #
 # 		http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html
 #
@@ -37,11 +37,29 @@ zle -N                 deleteLine
 zle -N                 deleteToStart
 bindkey '^[[1;3A'      cdParentKey
 bindkey '^[[1;3D'      cdUndoKey
-bindkey '^[[3;5~'      deleteLine
-bindkey '^_'           deleteToStart 
+bindkey '^_'           deleteToStart
 bindkey "\e"           vi-cmd-mode      # Bind Escape to vi-cmd-mode
 
+# Helper bindings to go to vi-mode
+bindkey '^@'           vi-cmd-mode
+bindkey -s '^q'        '^@l'            # calling vi-cmd-mod will send cursor
+                                        # one character back this is a workaround to fix it
 
+# ctrl+delete                           first go to vi-mode then delete the word and go back to insert mode
+bindkey -s '^[[3;5~'   '^qdWi'
+
+# ctrl+z                                first go to vi-mode then undo last change and then go back to insert mode
+bindkey -s "^z"        '^qua'
+
+# ctrl+ 
+# bindkey -s "^[[1;5D"   '^qbi'
+# ctrl+shift+ 
+bindkey -s "^[[1;6D"   '^qBi'
+
+# ctrl+ 
+# bindkey -s "^[[1;5C"   '^qwi'
+# ctrl+shift+ 
+bindkey -s "^[[1;6C"   '^qWi'
 
 bindkey '\t' expand-or-complete
 bindkey '\e.' insert-last-word
