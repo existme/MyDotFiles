@@ -1,4 +1,5 @@
 echoMe $0
+export KEYTIMEOUT=1
 # If you dont't know what is the code for a key combination, use <ctrl-v> followed by the key sequence
 # Enable vi-mode
 if [[ $EDITOR == 'enablevim' ]]; then
@@ -51,15 +52,19 @@ bindkey -s '^[[3;5~'   '^qdWi'
 # ctrl+z                                first go to vi-mode then undo last change and then go back to insert mode
 bindkey -s "^z"        '^qua'
 
-# ctrl+ 
+# ctrl+  (currently disabled since it's slow)
 # bindkey -s "^[[1;5D"   '^qbi'
+# shift+ 
+bindkey -s "^[[1;2D"   '^@lBi'
 # ctrl+shift+ 
-bindkey -s "^[[1;6D"   '^qBi'
+bindkey -s "^[[1;6D"   '^@lBi'
 
-# ctrl+ 
+# ctrl+   (currently disabled since it's slow)
 # bindkey -s "^[[1;5C"   '^qwi'
+# shift+ 
+bindkey -s "^[[1;2C"   '^@lWi'
 # ctrl+shift+ 
-bindkey -s "^[[1;6C"   '^qWi'
+bindkey -s "^[[1;6C"   '^@lWi'
 
 bindkey '\t' expand-or-complete
 bindkey '\e.' insert-last-word
