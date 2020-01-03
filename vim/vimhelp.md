@@ -191,6 +191,15 @@
 ║ <ctrl+a>                     ║ (Only in insert mode) brings rofi up and let you select an email    ║
 ║                              ║ from the address book and then inserts it at the prompt             ║
 ║                              ║                                                                     ║
+╠════╣   vim file types   ╠════╬═════════════════════════════════════════════════════════════════════╣
+║                              ║                                                                     ║
+║ Associating to a filetype    ║ Add the following line to the begining or ending of the file:       ║
+║                              ║     # vim:filetype=i3                                               ║
+║                              ║                                                                     ║
+║ Get list of available syntax ║ :setfiletype <tab>   (space is required before the tab)             ║
+║                              ║ :echo getcompletion('', 'filetype')                                 ║
+║                              ║ :echo getcompletion('c', 'filetype')                                ║
+║                              ║                                                                     ║
 ╠════╣ installing plugins ╠════╬═════════════════════════════════════════════════════════════════════╣
 ║                              ║                                                                     ║
 ║ vim ~/.vimrc                 ║ edit vimrc and in the section which begins with: (circa 338)        ║
