@@ -18,6 +18,7 @@ betterlockscreen
 i3
 i3-gaps
 i3ass
+jgmenu
 sway
 surf
 st
@@ -132,6 +133,20 @@ case "$res" in
       cd       ~/git/$prj
       sudo       apt-get install xdotool wmctrl
       sudo       make install
+    fi
+    ;;
+  jgmenu)
+    prj=jgmenu
+    clone   $prj https://github.com/johanmalm/jgmenu.git
+    gitPull   $prj
+
+    if   okToBuild; then
+      # sudo    apt-get install -y build-essential libgtk-3-dev webkit2gtk-4.0
+      sudo apt install -y libx11-dev libxrandr-dev libcairo2-dev libpango1.0-dev librsvg2-dev libglib2.0-dev libxml2-dev
+      sudo make uninstall
+      make clean
+      make
+      sudo make install
     fi
     ;;
   sway)

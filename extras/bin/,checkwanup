@@ -1,0 +1,8 @@
+#!/bin/bash    
+wlan=`nmcli n connectivity`    
+if [ $wlan != "full" ]; then    
+    sudo ifconfig wlan0 down
+    sudo ifconfig wlan0 up
+else    
+    echo interface is up    
+fi
