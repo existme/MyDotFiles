@@ -137,6 +137,8 @@
 ╠══╣ visual mode              ═╬═                                                                   ═╣
 ║                              ║                                                                     ║
 ║ S"                           ║ Sorround selection with "                                           ║
+║ u                            ║ Change the currently selected block to lowercase                    ║
+║ U                            ║ Change the currently selected block to uppercase                    ║
 ║                              ║                                                                     ║
 ╠══╣ normal mode              ═╬═                                                                   ═╣
 ║                              ║                                                                     ║

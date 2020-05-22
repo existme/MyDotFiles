@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+# Check if the original caller is sourced or not
+function isSourced(){
+  # See https://stackoverflow.com/a/28776166/161312
+  sourced=0
+  if [ -n "$ZSH_EVAL_CONTEXT" ]; then
+    case $ZSH_EVAL_CONTEXT in *:file*) sourced=1;; esac
+  elif [ -n "$BASH_VERSION" ]; then
+     [[ -n "$BASH_SOURCE" ]] && sourced=1
+  fi
+  return $sourced
+}
+
+# This function exits execustion if the original script wasnot sourced
+function onlyAllowSourced(){
+  isSourced 
+  res=$?
+  if [[ $res == 0 ]]; then
+    echo "This script should be sourced $bY$ZSH_ARGZERO$cZ" 
+    exit
+  fi
+  return $res
+}

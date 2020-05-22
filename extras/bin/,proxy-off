@@ -2,4 +2,8 @@
 
 ssh -O exit LNAX
 echo "Proxy to ${bY}LNAX${bR} stoped${cZ}."
+echo "Use the following command to uset enrvironment proxy:"
+echo
+echo "${cW}. ,proxy ${cY}off${cZ}"
+
 

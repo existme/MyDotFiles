@@ -1,0 +1,44 @@
+#!/bin/zsh
+# This script will set the bash environment proxy settings to the proxy specified
+#   by TEMP_PROXY
+#   if you are using a socks proxy make sure this variable is set to something 
+#   like: TEMP_PROXY=socks5h://localhost:8070
+#
+# For other settings see https://bit.ly/2zWspTs
+SW=$1 # Proxy on/off switch
+source $SCRIPTPATH/zsh/functions/isSourced
+onlyAllowSourced 
+if [[ -z $TEMP_PROXY ]]; then
+  echo "TEMP_PROXY should be set to the local socks proxy. ex: socks5h://localhost:8070"
+  return 1
+fi
+if [[ -z $TEMP_RPROXY ]]; then
+  echo "TEMP_RPROXY should be set to the remote proxy"
+  return 1
+fi
+case $SW in
+  on)
+    echo "${bG}Adding${cZ} proxy configuration to BASH, git, npm"
+    echo "Using local socks proxy: $bG$TEMP_PROXY$cZ"
+    echo "Using remote proxy: $cG$TEMP_RPROXY$cZ"
+
+    export {http,https,ftp,rsync,all}_proxy=$TEMP_PROXY
+    export {HTTP,HTTPS,FTP,RSYNC,ALL}_PROXY=$TEMP_PROXY
+    git config --global --unset http.proxy 
+    git config --global --add http.proxy $TEMP_PROXY
+    npm config set proxy $TEMP_RPROXY
+    npm config set https-proxy $TEMP_RPROXY
+    ;;
+  off)
+    echo "${bR}Removing${cZ} proxy configuration from BASH, git, npm"
+    unset -v http_proxy https_proxy HTTPS_PROXY HTTP_PROXY
+    unset -v ftp_proxy rsync_proxy all_proxy
+    unset -v FTP_PROXY RSYNC_PROXY ALL_PROXY
+    npm config rm proxy
+    npm config rm https-proxy
+    git config --global --unset http.proxy 
+    ;;
+  *)
+    echo "Only on/off is acceptable"
+    ;;
+esac

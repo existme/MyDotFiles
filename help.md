@@ -209,6 +209,11 @@ called mdp (https://github.com/visit1985/mdp).
 ╔════════════════════════╦══════════════════════════════════════════════════════════════╗
 ║ Commands               ║ Desc                                                         ║
 ╠════════════════════════╬══════════════════════════════════════════════════════════════╣
+║                        ║                                                              ║
+║ **File related**           ║                                                              ║
+║                        ║                                                              ║
+║ ,show-permission       ║ show access rights of a file/folder in the octal value format║
+║                        ║                                                              ║
 ║ **Packages**               ║                                                              ║
 ║                        ║                                                              ║
 ║ ,pkg-graph             ║ Visualizes the dependency graph for a package                ║
@@ -223,7 +228,7 @@ called mdp (https://github.com/visit1985/mdp).
 ║                        ║ **Usage:** `,pkg-find <enter>` (very slow)                       ║
 ║                        ║                                                              ║
 ║ asf                    ║ Uses fzf to list all files installed by packageses           ║
-║                        ║ **Usage:** `asf <enter>` and search for `_apt`                    ║
+║                        ║ **Usage:** `asf <enter>` and search for `_apt`                   ║
 ║                        ║                                                              ║
 ║ aps                    ║ Alias for aptitude search, searches in not installed packages║
 ║                        ║ **Usage:** `aps pinboard`                                        ║

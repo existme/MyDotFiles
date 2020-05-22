@@ -2,3 +2,6 @@
 
 ssh -fN LNAX 2> /dev/null
 echo "Proxy to ${bY}LNAX${bG} started${cZ}."
+echo "Use the following command to set enrvironment proxy:"
+echo 
+echo "${cW}. ,proxy on"

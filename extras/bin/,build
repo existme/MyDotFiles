@@ -4,7 +4,7 @@
 #     ,build
 #     ,build i3
 #     ,build i3 -y     # user will not be prompted at all
-
+set -e
 declare NOPROMPT=false
 if [[ "$2" == "-y" ]]; then
   NOPROMPT=true
@@ -38,6 +38,7 @@ lnav
 xrectsel
 bumblebee-status
 zathura
+jgmenu
 python
 quit
 EOF
@@ -205,10 +206,11 @@ case "$res" in
 
     if     okToBuild; then
       sudo       apt-get -qy remove --purge vim vim-runtime vim-gnome vim-tiny vim-common vim-gui-common
-      sudo       apt-get -qy build-dep vim-gnome
-      sudo       apt-get install -qy build-essential liblua5.3-0 liblua5.3-dev python-dev ruby-dev libperl-dev libncurses5-dev libgnome2-dev libgnomeui-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
+      sudo       apt-get -qy build-dep vim-gtk3
+      sudo       apt-get install -qy build-essential liblua5.3-0 liblua5.3-dev python-dev ruby-dev libperl-dev libncurses5-dev libgnome2-dev libgtk2.0-dev libatk1.0-dev libbonoboui2-dev libcairo2-dev libx11-dev libxpm-dev libxt-dev
+      #libgnomeui-dev
       sudo       rm -rf /usr/local/share/vim /usr/bin/vim /usr/local/bin/vim
-      sudo       mkdir /usr/include/lua5.3/{include,lib}
+      [[ -e  /usr/include/lua5.3 ]] || sudo mkdir /usr/include/lua5.3/{include,lib}
       sudo       cp /usr/include/lua5.3/*.h /usr/include/lua5.3/include/
       sudo       ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.so /usr/include/lua5.3/lib/liblua.so
       sudo       ln -sf /usr/lib/x86_64-linux-gnu/liblua5.3.a /usr/include/lua5.3/lib/liblua.a
@@ -303,6 +305,20 @@ case "$res" in
       make
       make    docs
       sudo    make install
+    fi
+    ;;
+  jgmenu)
+    prj=jgmenu
+    clone    $prj https://github.com/johanmalm/jgmenu.git
+    gitPull    $prj
+
+    if    okToBuild; then
+      sudo apt install -y libmenu-cache-dev xfce4-panel-dev libxfce4panel-2.0-dev
+      ./configure --prefix=$HOME --with-lx --with-pmenu
+      make clean
+      make
+      sudo make install
+      # dpkg-buildpackage -tc -b -us -uc
     fi
     ;;
   dunst)
@@ -449,8 +465,8 @@ case "$res" in
     set    -e
     clone    $prj https://github.com/tobi-wan-kenobi/bumblebee-status.git
     gitPull    $prj
-    sudo    apt install -y libx11-6 python-psutil python-requests python-netifaces python3-pip python3-dev
-    sudo    -H pip3 install netifaces psutil requests i3ipc dnf
+    sudo    apt install -y libx11-6 python-psutil python-netifaces python3-pip
+    sudo    -H pip3 install netifaces psutil requests i3ipc dnf xkbgroup
     ;;
   python)
     prj=cpython

@@ -25,13 +25,14 @@ dunst=/usr/bin/dunst
 
 if [ "$toggle" = "true" ]; then
    # sudo mv /usr/share/dbus-1/services/org.freedesktop.Notifications.service.disabled /usr/share/dbus-1/services/org.freedesktop.Notifications.service
-   sed -e "s|Exec=.*|Exec=$dunst|" $service | sudo tee $service 
+   # sed -e "s|Exec=.*|Exec=$dunst|" $service | sudo tee $service 
+   /usr/local/bin/dunst -config ~/.config/dunst/dunstrc &
    notify.sh "Notifications are enabled"
    echo "Notifications are enabled"
 else
    beep
    # sudo mv /usr/share/dbus-1/services/org.freedesktop.Notifications.service /usr/share/dbus-1/services/org.freedesktop.Notifications.service.disabled
-   sed -e "s|Exec=.*|Exec=${dunst}-disabled|" $service | sudo tee $service
+   # sed -e "s|Exec=.*|Exec=${dunst}-disabled|" $service | sudo tee $service
    killall dunst
    notify.sh "Notification is disabled" 
    echo "Notifications are disabled" 
