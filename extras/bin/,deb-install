@@ -1,0 +1,28 @@
+#!/bin/bash
+# This scripts tries to download and install a missing package from https://launchpad.net/ubuntu/<UBUNTU_CODENAME>
+if [[ -z $1 ]]; then
+  echo "Please specify the package that you want to install:"
+  echo "Example:"
+  echo "  $bW,deb-install ${bY}libmouse-perl$cZ"
+  exit
+fi
+DEP=$1
+. /etc/os-release
+DEP_LNK="ubuntu/$UBUNTU_CODENAME/amd64/$DEP"
+LB_URL="https://launchpad.net/$DEP_LNK"
+echo "Ubuntu release is: $bY$UBUNTU_CODENAME$cZ"
+first_href=$(curl -s $LB_URL | \grep $DEP_LNK | \grep -Ev "index|Register"|head -n 1)
+echo "Using the following searched page: $bB$LB_URL$cZ"
+echo "... First link found from page is: $bY$first_href$cZ"
+first_link="https://launchpad.net"$(echo $first_href | sed -r 's/.*href="([^"]+).*/\1/g')
+echo "... Extracted link for first link: $bG$first_link$cZ"
+deb_href=$(curl -s $first_link | \grep href | \grep deb)
+deb_link=$(echo $deb_href | sed -r 's/.*href="([^"]+).*/\1/g')
+echo "... Downloading debian package   : $bC$deb_link$cZ"
+mkdir -p /tmp/depinstall
+wget $deb_link -P /tmp/depinstall
+deb_file=$(echo ${deb_link##*/})
+echo "... Installing deb file          : $bG/tmp/depinstall/$deb_file$cZ"
+sudo dpkg -i /tmp/depinstall/$deb_file
+
+
