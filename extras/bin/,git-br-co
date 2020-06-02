@@ -1,0 +1,6 @@
+#!/bin/bash
+
+BRANCH=$1
+git checkout origin/$BRANCH -b $BRANCH
+
+

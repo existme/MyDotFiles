@@ -1,0 +1,9 @@
+#!/bin/bash
+
+BRANCH=$1
+git checkout master
+git branch -D  $BRANCH
+git push origin --delete $BRANCH
+git remote prune origin
+git branch --all
+
