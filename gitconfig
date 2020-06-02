@@ -93,7 +93,7 @@
 	shortnocolor = log --pretty=format:\"%h %cr %cn %s\"
 
 	up = !git pull --rebase --prune $@ && git submodule update --init --r
-	save = !git add -A && git commit -m 'SAVEPOINT'
+	saveme = !git add -A && git commit -m 'SAVEPOINT'
 	test = "!f(){ git difftool $1~ $1; }; f"
 
 	#List commits in short form, with colors and branch/tag annotation
