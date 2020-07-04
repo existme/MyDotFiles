@@ -9,6 +9,7 @@ Options:
     -e      edit agenda
     -r      removes agenda and doesn't display anything
 """
+# pip3 install docopt sh
 import os
 import sys
 from datetime import datetime
