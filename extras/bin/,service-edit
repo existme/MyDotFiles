@@ -1,0 +1,4 @@
+#!/bin/bash
+SERVICE_NAME=$1
+export SYSTEMD_EDITOR="vim"
+sudo -E systemctl edit $SERVICE_NAME --full

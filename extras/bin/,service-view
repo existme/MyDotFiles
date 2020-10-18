@@ -1,0 +1,13 @@
+#!/bin/bash
+SERVICE_NAME=$1
+
+echo
+echo "$bY--- Dependencies ---$cZ"
+echo
+sudo systemctl list-dependencies $SERVICE_NAME --no-pager
+
+echo
+echo "$bY--- Service file ---$cZ"
+echo
+
+sudo systemctl cat $SERVICE_NAME --no-pager

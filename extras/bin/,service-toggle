@@ -13,14 +13,18 @@ function disable(){
    echo "${bW}Stoping and disabling ${bY}$SERVICE${cZ}"
    sudo service $SERVICE stop
    sudo systemctl mask $SERVICE 
-   sudo service $SERVICE status
+   sudo systemctl status --no-pager $SERVICE 
+   sudo systemctl daemon-reload
+   sudo systemctl reset-failed
 }
 function enable(){
    local SERVICE=$1
    echo "${bW}Enabling and starting ${bY}$SERVICE${cZ}"
    sudo systemctl unmask $SERVICE 
    sudo service $SERVICE start
-   sudo service $SERVICE status
+   sudo systemctl status --no-pager $SERVICE 
+   sudo systemctl daemon-reload
+   sudo systemctl reset-failed
 }
 case $VERB in
    start|enable)
@@ -45,6 +49,6 @@ case $VERB in
       echo "Use either start/stop/enable/disable to stop/start mysql,idsvr,apache2"
       echo "   example: ${cY},ss stop${cZ}"
       echo "Or use either start/stop/enable/disable <service>"
-      echo "   example: ${cY},ss stop mysql${cZ}"
+      echo "   example: ${cY},ss stop teamviewerd${cZ}"
 esac
 

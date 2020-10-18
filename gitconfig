@@ -251,3 +251,5 @@
 	submoduleSummary = 1
 [cola]
 	spellcheck = false
+[http "https://se.axis.com"]
+	proxy = http://wwwproxy.axis.com:3128

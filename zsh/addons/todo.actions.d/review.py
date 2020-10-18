@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 # encoding: utf-8
 """
 review.py
@@ -57,8 +57,8 @@ def print_file(todofile):
 			print (mdown.h3("%s" % prj.replace("+", "")))
 		print (mdown.li(projects[prj]))
 
-	print ""
-	print mdown.h2("By context:")
+	print ("")
+	print (mdown.h2("By context:"))
 	for ctx in contexts.keys():
 		if ctx == "":
 			print (mdown.h3("No context assigned"))

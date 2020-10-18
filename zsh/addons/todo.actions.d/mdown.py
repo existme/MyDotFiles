@@ -70,10 +70,10 @@ class MarkdownDocument(object):
 		return "..."	
 
 def main():
-	print h1("Emil Erlandsson")
-	print li(["apa", "bepa", "cepa"])
-	print a("text", "http://localhost")
-	print h2("a second level heading")
+	print (h1("Emil Erlandsson"))
+	print (li(["apa", "bepa", "cepa"]))
+	print (a("text", "http://localhost"))
+	print (h2("a second level heading"))
 
 
 if __name__ == '__main__':

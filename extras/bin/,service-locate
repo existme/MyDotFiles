@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SERVICE_NAME=$1
+
+sudo ag "$SERVICE_NAME" /lib/ /etc/init.d/ /lib64/ /usr/lib/systemd /etc/systemd
+sudo ag -g "$SERVICE_NAME" -r /lib/systemd /etc/init.d /etc/systemd /usr/lib/systemd

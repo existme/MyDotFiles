@@ -1,0 +1,22 @@
+#!/bin/bash
+
+FILTER=$1
+
+if [[ $FILTER == "-h" ]]; then
+  echo "List all services running on the system including systemctl, systemd, and inactive ones"
+  echo "Usage:"
+  echo
+  echo "  $bW,service-list $bB[FILTER]$cZ"
+  echo
+  echo "Example:"
+  echo 
+  echo "  ,service-list idsvr"
+  echo "  ,service-list not-found"
+  echo "  ,service-list masked"
+  echo "  ,service-list loaded"
+  echo "  ,service-list"
+elif [[ -n $FILTER ]]; then
+  systemctl list-units --type=service --all --no-pager | grep $FILTER
+else
+  systemctl list-units --type=service --all --no-pager
+fi
