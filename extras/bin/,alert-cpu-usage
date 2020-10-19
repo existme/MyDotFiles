@@ -1,0 +1,24 @@
+#!/bin/bash
+THRESHOLD=50
+PREV_NAME=""
+PREV_CPU=0
+PROC=$(nproc)
+while true
+do
+  # TOP=($(sudo ps -Ao user,uid,comm,pid,pcpu,tty --sort=-pcpu | head -n 2 | tail -n 1))
+  TOP=($(top -b -n 1 | head -n 8 | tail -n 1))
+  # PCPU=$(bc -l <<< "${TOP[4]}/$PROC")
+  PCPU=$(bc -l <<< "${TOP[8]}/$PROC")
+  PPCPU=$(printf "%03.1f" $PCPU);
+  NAME=${TOP[11]}
+  if [ "$PREV_NAME" != "$NAME" ] || [ "$PREV_CPU" != "$PPCPU" ]; then
+    printf "$NAME is > [%03.1f]\n" $PCPU
+  fi
+  if (( $(echo "$PCPU > $THRESHOLD" | bc -l) )); then
+    dunstify -i "stop-48" -r 2593 -u normal "$(printf "$NAME is > %s %%" $PPCPU)" -a cpu
+  fi
+  # echo $NAME $CPU - $PREV_NAME $PREV_CPU
+  PREV_NAME=$NAME
+  PREV_CPU=$PPCPU
+  sleep 1
+done
