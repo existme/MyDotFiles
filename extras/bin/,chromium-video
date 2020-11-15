@@ -1,0 +1,36 @@
+#!/bin/bash
+OTHER=$@
+
+chromium \
+   --enable-gpu-rasterization \
+   --enable-native-gpu-memory-buffers \
+   --ignore-gpu-blocklist \
+   --enable-gpu-compositing \
+   --enable-webgl \
+   --disable-gpu-sandbox \
+   --enable-oop-rasterization \
+   --enable-accelerated-video \
+   --enable-accelerated-mjpeg-decode \
+   --enable-zero-copy \
+   --test-type \
+   --enable-pinch \
+   --enable-gpu-rasterization \
+   --enable-native-gpu-memory-buffers \
+   --ignore-gpu-blocklist \
+   --enable-gpu-compositing \
+   --enable-webgl \
+   --enable-oop-rasterization \
+   --enable-accelerated-video \
+   --enable-accelerated-mjpeg-decode \
+   --enable-zero-copy \
+   --disable-gpu-driver-workarounds \
+   --use-cmd-decoder=validating \
+   --use-gl=desktop \
+   --force-device-scale-factor=1.2 \
+   --flag-switches-begin \
+   --enable-accelerated-video-decode \
+   --enable-gpu-rasterization \
+   --enable-smooth-scrolling \
+   --flag-switches-end \
+   $OTHER
+

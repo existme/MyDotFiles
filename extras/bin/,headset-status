@@ -1,0 +1,21 @@
+#!/bin/bash
+# Shows Steelseries Headset set status, intended for bumblebee status!
+battery=$(headsetcontrol -b -c)
+
+BI=""
+if (( $battery > 95 )); then
+  BI=""
+elif (( $battery > 85 )); then
+  BI=""
+elif (( $battery > 50 )); then
+  BI=""
+elif (( $battery > 25 )); then
+  BI=""
+elif (( $battery > 0 )); then
+  BI=""
+else
+  echo ""
+  exit
+fi
+
+echo "$battery% $BI "

@@ -16,6 +16,15 @@ if [[ -z $TEMP_RPROXY ]]; then
   echo "TEMP_RPROXY should be set to the remote proxy"
   return 1
 fi
+function removeProxy() {
+    echo "${bR}Removing${cZ} proxy configuration from BASH, git, npm"
+    unset -v http_proxy https_proxy HTTPS_PROXY HTTP_PROXY
+    unset -v ftp_proxy rsync_proxy all_proxy
+    unset -v FTP_PROXY RSYNC_PROXY ALL_PROXY
+    npm config rm proxy
+    npm config rm https-proxy
+    git config --global --unset http.proxy 
+}
 case $SW in
   on)
     echo "${bG}Adding${cZ} proxy configuration to BASH, git, npm"
@@ -29,14 +38,25 @@ case $SW in
     npm config set proxy $TEMP_RPROXY
     npm config set https-proxy $TEMP_RPROXY
     ;;
-  off)
-    echo "${bR}Removing${cZ} proxy configuration from BASH, git, npm"
-    unset -v http_proxy https_proxy HTTPS_PROXY HTTP_PROXY
-    unset -v ftp_proxy rsync_proxy all_proxy
-    unset -v FTP_PROXY RSYNC_PROXY ALL_PROXY
-    npm config rm proxy
-    npm config rm https-proxy
+  on2)
+    PROXY_AVAILABLE=$(timeout 1 bash -c "curl -s -f $TEMP_RPROXY --noproxy '*'" || echo "$?")
+    if [[ $PROXY_AVAILABLE != 22 ]]; then
+      echo "Checking proxy: $cG$TEMP_RPROXY$cZ ... ${bY}not available${cZ}... skipping"
+      removeProxy
+      return 0
+    fi
+    echo "${bG}Adding${cZ} proxy configuration to BASH, git, npm"
+    echo "Using remote proxy: $cG$TEMP_RPROXY$cZ"
+
+    export {http,https,ftp,rsync,all}_proxy=$TEMP_RPROXY
+    export {HTTP,HTTPS,FTP,RSYNC,ALL}_PROXY=$TEMP_RPROXY
     git config --global --unset http.proxy 
+    git config --global --add http.proxy "$TEMP_RPROXY"
+    npm config set proxy $TEMP_RPROXY
+    npm config set https-proxy $TEMP_RPROXY
+    ;;
+  off)
+    removeProxy
     ;;
   *)
     echo "Only on/off is acceptable"

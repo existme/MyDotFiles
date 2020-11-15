@@ -37,7 +37,9 @@ tig
 lnav
 xrectsel
 bumblebee-status
+HeadsetControl
 zathura
+up
 jgmenu
 python
 quit
@@ -198,6 +200,13 @@ case "$res" in
   i3-gaps)
     prj=i3-gaps
     gitPull     $prj
+    ;;
+  up)
+    echo "Downloading latest version of up..."
+    curl -o /tmp/up -L https://github.com/akavel/up/releases/latest/download/up
+    sudo chmod +x /tmp/up
+    sudo mv /tmp/up /usr/local/bin/up
+    echo "Latest version of up installed in /usr/local/bin/up"
     ;;
   vim)
     prj=vim
@@ -445,6 +454,25 @@ case "$res" in
       make
       sudo     make install
     fi
+    ;;
+  HeadsetControl)
+    prj=HeadsetControl
+    set    -e
+
+    clone    $prj https://github.com/Sapd/HeadsetControl
+    gitPull    $prj false
+
+    if    okToBuild; then
+      sudo     apt install -yf build-essential git cmake libhidapi-dev
+      rm -rf build
+      mkdir build && cd build
+      cmake ..
+      make
+      sudo make install
+    fi
+    echo
+    echo "Use: ${bY}headsetcontrol -h${cZ}"
+    echo
     ;;
   xrectsel)
     prj=xrectsel
