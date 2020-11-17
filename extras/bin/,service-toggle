@@ -12,6 +12,7 @@ function disable(){
    local SERVICE=$1
    echo "${bW}Stoping and disabling ${bY}$SERVICE${cZ}"
    sudo service $SERVICE stop
+   # sudo systemctl disable $SERVICE
    sudo systemctl mask $SERVICE 
    sudo systemctl status --no-pager $SERVICE 
    sudo systemctl daemon-reload

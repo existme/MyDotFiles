@@ -119,13 +119,16 @@ case "$res" in
     if     okToBuild; then
       sudo       apt install -y autoconf libxcb-xrm-dev libxcb-shape0-dev
       sudo       apt build-dep -y i3-wm
-      autoreconf       -fi
       rm       -rf ~/git/$prj/build
       mkdir       ~/git/$prj/build
       cd       ~/git/$prj/build
-      grc       ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
-      grc       make -j8
-      grc       sudo make install
+      # grc       ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+      # grc       make -j8
+      # grc       sudo make install
+      meson configure -Dprefix=/usr
+      meson      
+      ninja
+      sudo ninja install 
     fi
     ;;
   i3ass)
@@ -275,13 +278,19 @@ case "$res" in
     prj=albert
     clone    $prj https://github.com/albertlauncher/albert.git
     gitPull    $prj
+    # if fails... instead use: https://albertlauncher.github.io/docs/installing/
+    # curl https://build.opensuse.org/projects/home:manuelschneid3r/public_key | sudo apt-key add -
+    # echo 'deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_20.04/ /' | sudo tee /etc/apt/sources.list.d/home:manuelschneid3r.list
+    # sudo wget -nv https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_20.04/Release.key -O "/etc/apt/trusted.gpg.d/home:manuelschneid3r.asc"
+    # sudo apt update
+    # sudo apt install albert
     if    okToBuild; then
       sudo    apt-get install -y cmake libqt5xmlpatterns5-dev qtbase5-dev libqt5x11extras5-dev libqt5svg5-dev libqt5qml5 qtdeclarative5-dev libqalculate-dev libmuparser-dev libqt5charts5-dev
       sudo    apt-get install -y python3-dev
       rm    -rf albert-build
       mkdir    albert-build
       cd    albert-build
-      cmake    ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DBUILD_VIRTUALBOX=OFF
+      cmake    ../ -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Debug -DBUILD_VIRTUALBOX=OFF -DPYTHON_EXECUTABLE=$(which python)
       make
       sudo    make install
       echo    "${bY}Warning:${cZ} be sure that you have cloned the repo recursively otherwise you might ran into strange problems"
