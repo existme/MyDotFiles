@@ -41,10 +41,30 @@ HeadsetControl
 zathura
 up
 jgmenu
+pomogoro
 python
 quit
 EOF
 )
+function download_latest_release(){
+  #example: phux/pomogoro
+  local GITHUBREPO=$1
+  local file=$(curl -s https://api.github.com/repos/$GITHUBREPO/releases/latest | \grep "browser_download_url.*linux.*amd64" | cut -d '"' -f 4)
+  local dest=/tmp/extractedrepo
+  local downloaded=${file##*/}
+  \rm /tmp/$downloaded
+  echo "Latest release: $bY$file$cZ"
+  echo "Downloading..."
+  wget -q $file
+  echo "Downloaded: /tmp/$downloaded"
+  ls -lah $downloaded 
+  \rm -rf $dest
+  mkdir $dest
+  tar -xzf $downloaded -C $dest
+  echo "Extracted to $bY$dest$cZ"
+  ls -lah $dest
+}
+
 function gitPull() {
   local  prj=$1
   local  nosubmodule=$2
@@ -515,6 +535,13 @@ case "$res" in
     make
     sudo    make install
 
+    ;;
+  pomogoro)
+    cd /tmp
+    download_latest_release "phux/pomogoro"
+    sudo mv /tmp/extractedrepo/pomogoro /usr/local/bin/
+    echo "run:"
+    echo "pomogoro"
     ;;
   quit)
     echo     "${bB}Canceled$cZ"

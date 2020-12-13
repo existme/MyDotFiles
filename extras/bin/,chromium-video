@@ -1,13 +1,13 @@
 #!/bin/bash
 OTHER=$@
 
-google-chrome \
-   --flag-switches-begin \
-   --enable-smooth-scrolling \
+google-chrome-beta \
    --force-device-scale-factor=1.2 \
-   --flag-switches-end \
    $OTHER
 
+   # --flag-switches-begin \
+   # --flag-switches-end \
+   # --enable-smooth-scrolling \
    # --use-cmd-decoder=validating \
    # --enable-accelerated-mjpeg-decode --enable-accelerated-video --ignore-gpu-blacklist --enable-native-gpu-memory-buffers --enable-gpu-rasterization \
    # --disable-gpu-driver-bug-workarounds \
