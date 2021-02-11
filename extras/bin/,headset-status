@@ -7,7 +7,7 @@ if (( $battery > 95 )); then
   BI=""
 elif (( $battery > 85 )); then
   BI=""
-elif (( $battery > 50 )); then
+elif (( $battery > 40 )); then
   BI=""
 elif (( $battery > 25 )); then
   BI=""
