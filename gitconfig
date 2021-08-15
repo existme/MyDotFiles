@@ -220,7 +220,7 @@
 [github]
 	user = existme
 [credential]
-	helper = cache --timeout=300000
+	helper = store
 # User section moved to the local config file .gitconfig.user
 [difftool]
 	prompt = false

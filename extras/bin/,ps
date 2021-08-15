@@ -1,3 +1,5 @@
 #!/bin/zsh
 
-ps -aux | grep --color=always "$@"
+# sudo ps -aux | \grep --color=always "$@" | \grep -v "grep --color" | grep '\/bin.*'
+# sudo ps -aux | grep $@ | grep -v "grep --color" | grep -v ".*/bin/zsh .*$@$"
+sudo ps -aux | grep --color="always" $@ | grep -v "grep --color" | grep -v "grep [\-v]" | grep -v ",ps "

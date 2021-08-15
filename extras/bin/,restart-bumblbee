@@ -1,0 +1,14 @@
+#!/bin/bash
+
+echo "Edit the following file config file before:"
+echo
+echo "vim ~/.config/bumblebee-status.conf"
+echo
+BP=($(ps -aux | grep "bumblebee-status -m" | grep -v 'grep' | col2))
+for i in "${BP[@]}"
+do
+  echo "Killing process ${bG}${i}${cZ}"
+  kill ${i}
+done
+i3 restart
+

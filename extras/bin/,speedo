@@ -1,0 +1,2 @@
+#!/bin/bash
+speedometer -l -r wls2 -t wls2 -m $(( 1024 * 1024 * 12 ))

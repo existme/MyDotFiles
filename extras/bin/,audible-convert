@@ -4,25 +4,37 @@ FILE=$1
 FILENAME=${FILE:t}
 FILENAME=${FILENAME%%_*}
 EXT=${FILE:e}
-if [[ "$EXT" != "aa" ]]; then
-   echo "Only *.aa files are accepted"
+if [[ "$EXT" != "aax" ]]; then
+   echo "Only *.aax files are accepted"
    exit
 fi
 
+if [[ -z "$AUDIBLE_ACTIVATION" ]]; then
+  echo "Add the following to your ~/.zshrc or ~/zshrclocal ~/zshrc.local.sh file:"
+  echo "export AUDIBLE_ACTIVATION=xxxxxx"
+  echo
+  echo "To get the activation:"
+  echo "cd ~/git/audible-activator"
+  echo "./audible-activator.py --username=xxxx@zzzz.com --password=yyyy"
+  exit
+else
+  echo "Using the following activation:"
+  echo "-activation_bytes ${bG}$AUDIBLE_ACTIVATION${cz}"
+fi
 echo FILENAME=\"$FILENAME\"
 echo EXT=\"$EXT\"
 
 echo "Converting to mp3..."
-res=$(ffmpeg -i $FILE -codec copy /tmp/$FILENAME.mp3)
-if ! [[ -e /tmp/$FILENAME.mp3 ]]; then
+res=$(ffmpeg -activation_bytes $AUDIBLE_ACTIVATION -i $FILE -codec copy /tmp/$FILENAME.m4b)
+if ! [[ -e /tmp/$FILENAME.m4b ]]; then
    exit
 fi
 echo "Moving /tmp/$FILENAME.mp3 to DropBox folder..."
-mv /tmp/$FILENAME.mp3 ~/Dropbox/purchased-music/audible/
+mv /tmp/$FILENAME.m4b ~/Dropbox/purchased-music/audible/
 echo "Done!"
-echo "Converted file is: ${cY}~/Dropbox/purchased-music/audible/$FILENAME.mp3${cZ}"
+echo "Converted file is: ${cY}~/Dropbox/purchased-music/audible/$FILENAME.m4b${cZ}"
 echo "playing the converted file"
-vlc ~/Dropbox/purchased-music/audible/$FILENAME.mp3
+vlc ~/Dropbox/purchased-music/audible/$FILENAME.m4b
 
 echo "Do you want to delete the original file: $bR $FILE$cZ?"
 read -k 1 -r "pr?Ok to delete (${cY}y${cZ}/${bW}N${cZ})?"

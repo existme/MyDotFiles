@@ -1,6 +1,6 @@
 #!/bin/bash
 # Shows Steelseries Headset set status, intended for bumblebee status!
-battery=$(headsetcontrol -b -c > /dev/null 2>&1)
+battery=$(headsetcontrol -b -c 2> /dev/null )
 
 if [ "x${battery}x" = "xNo supported headset foundx" ] || [ "x${battery}x" = "xx" ] ; then
   echo ""
