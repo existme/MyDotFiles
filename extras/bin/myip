@@ -1,4 +1,5 @@
 #!/bin/sh
 echo "Your external ip address is:"
 echo
-dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+# dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+curl http://ipinfo.io -s | jq -r '.ip'
