@@ -30,6 +30,7 @@ export CLICOLOR=true
 export GUI_EDITOR=code
 export DEFAULT_MAIL="gmail"       # Default mail account used with neomutt
 export QT_QPA_PLATFORMTHEME=qt5ct
+export NO_AT_BRIDGE=1
 
 # setopt BANG_HIST               # Treat the '!' character specially during expansion.
 unsetopt BANG_HIST               # Prevent "!" characters from being special on the command line

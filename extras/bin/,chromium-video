@@ -3,8 +3,12 @@ OTHER=$@
 
 google-chrome-beta \
    --force-device-scale-factor=1.2 \
+   --scroll-pixels=150 \
+   --use-gl=desktop \
+   --enable-features=VaapiVideoDecoder,VaapiVideoEncoder \
    $OTHER
-
+   
+   # --disable-features=UseChromeOSDirectVideoDecoder,UseOzonePlatform 
    # --flag-switches-begin \
    # --flag-switches-end \
    # --enable-smooth-scrolling \

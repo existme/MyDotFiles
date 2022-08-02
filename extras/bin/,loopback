@@ -1,0 +1,16 @@
+#!/bin/bash
+# This script will create a loopback audio stream
+OPT=$1
+
+if [[ $OPT == "apply" ]]; then
+  pacmd load-module module-loopback latency_msec=5
+  echo "loopback module ${bG}loaded${cZ}"
+elif [[ $OPT == "revert" ]]; then
+  pacmd unload-module module-loopback
+  echo "loopback module ${bR}unloaded${cZ}"
+else
+  echo "Usage:"
+  echo
+  echo ",loopback <${bG}apply${cZ}|${bR}revert${cZ}>"
+fi
+
