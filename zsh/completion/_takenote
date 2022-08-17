@@ -15,10 +15,9 @@ local query=$(echo $arr[1]|awk '{$1=$1};1')  # trim white space
 query=${query// /-}                          # replace space with dash
 local selected=$arr[2]
 
-if [[ -z $selected ]]; then                  # if no choice was available, use the entered filename
-   compadd -U -- "$query"
-else                                         # if user selected one of the choices
-   compadd -U -- "$selected"
-fi
+compadd $selected
 
+TRAPEXIT() {
+   zle reset-prompt
+}
 return 0

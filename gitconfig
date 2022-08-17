@@ -220,7 +220,7 @@
 [include]
 	path = .gitconfig.user
 [github]
-	user = existme
+	# user = existme
 [credential]
 	helper = store
 # User section moved to the local config file .gitconfig.user

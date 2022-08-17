@@ -134,20 +134,6 @@ echoMsgs
 # fix for overwritted: zsh/bundle/powerlevel9k/functions/icons.zsh:167> local LC_ALL='' LC_CTYPE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
-# Fix for referencing $WIDGET with zsh prior to 5.0.3
-autoload -U is-at-least
-if is-at-least 5.0.3; then
-    TMOUT=1
-    TRAPALRM() {
-        if [[ "$WIDGET" =~ ^(complete-word|fzf-completion)$ ]]; then
-            # limit the reset-prompt functionality to the `takenote` script
-            if [[ "$LBUFFER" =~ ^(takenote\ |,.*\ )*$ ]]; then
-                zle reset-prompt
-            fi
-        fi
-    }
-fi
-
 # ~/bin/,c-logo
 neofetch
 
