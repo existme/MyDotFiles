@@ -222,7 +222,10 @@
 [github]
 	# user = existme
 [credential]
-	helper = store
+	credentialStore = secretservice
+	helper = 
+	helper = /usr/local/bin/git-credential-manager
+	# helper = store
 # User section moved to the local config file .gitconfig.user
 [difftool]
 	prompt = false
@@ -255,3 +258,9 @@
 	spellcheck = false
 [http "https://se.axis.com"]
 	proxy = http://wwwproxy.axis.com:3128
+[credential "https://github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/usr/bin/gh auth git-credential
+[credential "https://dev.azure.com"]
+	useHttpPath = true
