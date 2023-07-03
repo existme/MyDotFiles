@@ -2,26 +2,25 @@
 
 # Usage:
 #
-# ,o 1 "terminator"
+# ,killall chrome
 #
-# open terminator in workspace 1
+# will find all process names that include chrome in their names and forcefully kills them
 
 PROCESS_NAME=$1
 
-#PROCESSES=$(ps -aux | grep "$PROCESS_NAME" --color=always | grep -v "grep"| grep -v "killall")
 PROCESSES=$(ps -aux | grep "$PROCESS_NAME" --color=always | egrep -v "grep|killall|vim")
-# shellcheck disable=SC2028
 echo "$PROCESSES\n"
-# shellcheck disable=SC2028
-
 
 read   -k 1 -r "pr?Do you want to kill all the above processes (${cY}y${cZ}/${bW}N${cZ})?"
 echo ""
 if [[ $pr =~ ^[Yy]$ ]]; then
-    echo "$PROCESSES" | awk '{print $2}' | xargs -I {} kill -9 {}
-    # shellcheck disable=SC2028
     echo "\nKilling all processes ... processes left:\n"
-    ps -aux | grep "$PROCESS_NAME" --color=always | egrep -v "grep|killall|vim"
+
+    #This code finds and forcefully terminates all running processes that match a given $PROCESS_NAME using a pipeline of commands and a while loop.
+    ps -aux | grep "$PROCESS_NAME" --color=always | egrep -v "grep|killall|vim" | awk '{print $2}' | while read -r pid 
+    do
+      echo "sudo kill -9 ${bR}$pid${cZ}"
+      sudo kill -9 $pid
+    done
 fi
 
-#ps -aux | grep $PROCESS_NAME | grep -v grep | awk '{print $2}' | xargs -I {} kill -9 {}

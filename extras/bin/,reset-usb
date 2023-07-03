@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+import os
+import sys
+from subprocess import Popen, PIPE
+import fcntl
+USBDEVFS_RESET= 21780
+
+if len(sys.argv) < 2:
+    print("you need to specify which driver you want to reset, choose one of the below:\n")
+    lsusb_process = Popen(['lsusb'], stdout=PIPE, stderr=PIPE, text=True)
+    output, errors = lsusb_process.communicate()
+    print(output)
+    sys.exit()
+
+driver = sys.argv[-1]
+print("resetting driver:", driver)
+
+try:
+    lsusb_out_text = Popen("lsusb | grep -i %s"%driver, shell=True, bufsize=64, stdin=PIPE, stdout=PIPE, close_fds=True).stdout.read()
+    lsusb_out = lsusb_out_text.strip().split()
+    print(lsusb_out_text.decode('ascii') )
+    bus = lsusb_out[1].decode('ascii')
+    device = lsusb_out[3][:-1].decode('ascii')
+    print(device)
+    f = open("/dev/bus/usb/%s/%s"%(bus, device), 'w', os.O_WRONLY)
+    fcntl.ioctl(f, USBDEVFS_RESET, 0)
+except Exception as msg:
+    print("failed to reset device:", msg)

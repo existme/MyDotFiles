@@ -1,5 +1,7 @@
 #!/bin/bash
 sudo service networking restart
 sudo service network-manager restart
-sudo dhclient -r wls2
-sudo dhclient -v wls2
+sudo dhclient -r wlp3s0
+sudo dhclient -v wlp3s0
+sudo ip -s -s neigh flush all
+sudo ip route flush cache

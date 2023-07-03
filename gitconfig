@@ -251,7 +251,7 @@
 [fsck]
 	zeroPaddedFilemode = warn
 [url "https://github.com/"]
-	insteadOf = git://github.com/
+	insteadOf = git@github.com:
 [status]
 	submoduleSummary = 1
 [cola]
@@ -264,3 +264,5 @@
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://dev.azure.com"]
 	useHttpPath = true
+[url "https://"]
+	insteadOf = ssh://

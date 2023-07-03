@@ -1,0 +1,67 @@
+#!/bin/bash
+
+#################################################################
+# get_latest_release - Retrieve the download URL
+#                     of the latest release for
+#                     a given GitHub repository.
+#
+# Parameters:
+#   $1 - GitHub username or organization
+#   $2 - Repository name
+#   $3 - File extension to filter downloads
+#   $4 - Excluded file extension to filter out
+#
+# Returns:
+#   The URL of the latest release file matching
+#   the specified extension, excluding the excluded
+#   extension.
+#################################################################
+get_latest_release() {
+  user=$1
+  repo=$2
+  ext=$3
+  excluded_ext=$4
+  res=$(curl -s "https://api.github.com/repos/$user/$repo/releases/latest" \
+    | grep "browser_download_url.*${ext}" \
+    | grep -v "${excluded_ext}" | cut -d: -f 2,3 \
+    | tr -d \")
+  echo $res
+}
+
+download_and_install() {
+  local name=$1
+  local url=$2
+  local dest=$3
+  echo "Removing old ${bW} $dest${cZ}"
+  sudo \rm $dest
+  echo "Downloading ${bW}${name} from: ${bG}${url}${cZ}"
+  sudo wget -q --show-progress -O $dest --no-check-certificate $url
+  local group=$(id -gn $USER)
+  sudo chown $USER:$group $dest
+  chmod u+x $dest
+  ls -la $dest
+  ,create-shortcut $dest $name
+  ls -la /usr/share/applications/${name}.desktop
+}
+
+# Logseq
+logseq_url=$(get_latest_release "logseq" "logseq" "AppImage" "arm64")
+logseq_file="/opt/logseq.AppImage"
+
+# Obsidian
+obsidian_url="$(get_latest_release "obsidianmd" "obsidian-releases" "AppImage" "arm64")"
+obsidian_file="/opt/obsidian.AppImage"
+
+# Download & istall Logseq
+download_and_install "Logseq" $logseq_url $logseq_file
+
+# Download & istall Obsidian
+download_and_install "Obsidian" $obsidian_url $obsidian_file
+
+echo "Download and setup completed."
+
+echo "Setting the default browser for xdg-settings"
+xdg-settings set default-web-browser google-chrome-beta.desktop
+
+## if links don't work try running:
+##    xdg-open https://google.com

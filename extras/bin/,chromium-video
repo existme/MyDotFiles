@@ -1,13 +1,26 @@
 #!/bin/bash
-OTHER=$@
+ARGS=$@
+CHROME=google-chrome-beta
 
-google-chrome-beta \
+# determine and remove script related arguments
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --use-stable)
+      CHROME=google-chrome-stable
+      ARGS=${ARGS// --use-stable/}
+      ;;
+  esac
+  shift
+done
+
+$CHROME \
    --force-device-scale-factor=1.2 \
    --scroll-pixels=150 \
+   --vmodule=vaapi_wrapper=4,vaapi_video_decode_accelerator=4 --ignore-gpu-blocklist \
    --use-gl=desktop \
-   --enable-features=VaapiVideoDecoder,VaapiVideoEncoder \
-   $OTHER
+   $ARGS
    
+   # --enable-features=VaapiVideoDecoder,VaapiVideoEncoder \
    # --disable-features=UseChromeOSDirectVideoDecoder,UseOzonePlatform 
    # --flag-switches-begin \
    # --flag-switches-end \
