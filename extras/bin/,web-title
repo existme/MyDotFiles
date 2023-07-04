@@ -1,0 +1,4 @@
+#!/bin/bash
+URL=$1
+wget -qO- "$1" |
+  perl -l -0777 -ne 'print $1 if /<title.*?>\s*(.*?)\s*<\/title/si'
