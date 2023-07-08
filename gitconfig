@@ -208,11 +208,11 @@
 	# instead of a/b/c/d as prefixes for patches
 	mnemonicprefix = true
 	algorithm = MYERS
-	tool = vimdiff
+	tool = meld
    #external = kdiff3									# for others
 	#external = /Users/rezasa/bin/git-diff-cmd.sh # for mac
 	# See the third answer here http://stackoverflow.com/questions/14754762/can-gitconfig-options-be-set-conditionally
-	merge = vimdiff
+	merge = meld
 [rerere]
 	# Remember my merges
 	# http://gitfu.wordpress.com/2008/04/20/git-rerere-rereremember-what-you-did-last-time/
@@ -232,6 +232,9 @@
 [mergetool "diffmerge"]
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
 	trustExitCode = false
+[difftool "idea"]
+	cmd = idea merge \"$LOCAL\" \"$REMOTE\" 
+	trustExitCode = true
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [difftool "sourcetree"]
