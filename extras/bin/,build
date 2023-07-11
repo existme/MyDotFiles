@@ -536,6 +536,17 @@ case "$res" in
     sudo    make install
 
     ;;
+  meld)
+    prj=meld
+    clone    $prj https://gitlab.gnome.org/GNOME/meld.git
+    pip3 install --upgrade meson
+    sudo apt install libgtksourceview-4-dev python-gi-dev itstool -y
+    # sudo apt upgrade meson -y
+    meson _build
+    cd _build
+    ninja
+    ninja install
+    ;;
   pomogoro)
     cd /tmp
     download_latest_release "phux/pomogoro"
