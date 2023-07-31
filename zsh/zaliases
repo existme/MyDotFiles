@@ -78,6 +78,7 @@ alias -g ,1='2>&1 '
 alias -g ERR='2>&1 '
 alias -g ,2='2>/dev/null '
 alias -g ,3='&>/dev/null '
+alias pipenv-list='for venv in ~/.local/share/virtualenvs/* ; do basename $venv; cat $venv/.project | sed "s/\(.*\)/\t\1\n/" ; done'
 
 if [ -x "$(command -v trash-put)" ]; then
    alias rm=trash-put

@@ -534,7 +534,6 @@ case "$res" in
     ./configure
     make
     sudo    make install
-
     ;;
   meld)
     prj=meld
@@ -546,6 +545,17 @@ case "$res" in
     cd _build
     ninja
     ninja install
+    ;;
+  emote)
+    prj=emote
+    echo "${bR} Not working yet!!${cZ}"
+    echo "Instead use: ${bG}sudo snap install emote${cZ}"
+    clone $prj https://github.com/tom-james-watson/Emote
+    gitPull $prj
+    sudo apt install xdotool libgtk-3-dev libgirepository1.0-dev python3-venv gir1.2-keybinder-3.0 libkeybinder-dev desktop-file-utils python3.11 -y
+    sudo pip3 install pipenv
+    make install
+    make dev
     ;;
   pomogoro)
     cd /tmp
