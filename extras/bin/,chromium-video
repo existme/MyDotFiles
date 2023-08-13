@@ -16,10 +16,10 @@ done
 $CHROME \
    --force-device-scale-factor=1.2 \
    --scroll-pixels=150 \
-   --vmodule=vaapi_wrapper=4,vaapi_video_decode_accelerator=4 --ignore-gpu-blocklist \
-   --use-gl=desktop \
    $ARGS
    
+   # --use-gl=desktop \         # There are flickering issues with this parameter!
+   # --vmodule=vaapi_wrapper=4,vaapi_video_decode_accelerator=4 --ignore-gpu-blocklist \
    # --enable-features=VaapiVideoDecoder,VaapiVideoEncoder \
    # --disable-features=UseChromeOSDirectVideoDecoder,UseOzonePlatform 
    # --flag-switches-begin \

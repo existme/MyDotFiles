@@ -25,6 +25,7 @@ export HISTCONTROL=ignoreboth:erasedups
 #export XDG_RUNTIME_DIR=/run/user/0
 export STOW_DIR="$HOME/local/stow"
 export MANPATH=/usr/share/man
+export XDG_CONFIG_HOME="$HOME/.config"
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CLICOLOR=true
 export GUI_EDITOR=code
