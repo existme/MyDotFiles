@@ -17,6 +17,8 @@ if [[ $FILTER == "-h" ]]; then
   echo "  ,service-list"
 elif [[ -n $FILTER ]]; then
   systemctl list-units --type=service --all --no-pager | grep $FILTER
+  systemctl list-units --type=service --all --no-pager --user | grep $FILTER
 else
   systemctl list-units --type=service --all --no-pager
+  systemctl list-units --type=service --all --no-pager --user
 fi

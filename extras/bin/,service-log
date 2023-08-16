@@ -1,0 +1,27 @@
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+    echo "Usage: $0 <service_name>"
+    exit 1
+fi
+
+SERVICE_NAME=$1
+
+export SYSTEMD_PAGER=""
+try_system=$(sudo systemctl show -p Type --value $SERVICE_NAME)
+try_user=$(systemctl show -p Type --value $SERVICE_NAME --user)
+
+# journalctl --user -xe -u $1
+if [ -n "$try_user" ]; then 
+  echo "User service type: $try_user"
+  journalctl --user -xe -u $SERVICE_NAME -f |& lnav -q
+elif [ -n "$try_system" ]; then
+  echo "System service type: $try_system"
+  sudo journalctl -xe -u $SERVICE_NAME -f |& lnav -q
+else 
+  echo "Service not found."
+  echo
+  echo "Try one of the following services:"
+  echo
+  ,service-list | grep --color=always $SERVICE_NAME
+fi
