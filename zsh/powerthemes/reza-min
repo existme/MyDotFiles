@@ -103,7 +103,7 @@ unset POWERLEVEL9K_CHANGESET_HASH_LENGTH
 plugins=(git git-extras sudo history history-substring-search debian last-working-dir compleat)
 
 source $ZSH/oh-my-zsh.sh
-source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme
+source $SCRIPTPATH/zsh/bundle/powerlevel10k/powerlevel10k.zsh-theme
 #                      
 export OS_ICON=''
 

@@ -41,7 +41,7 @@ else
 
    #Fix ram problem due to grep alias
    source $SCRIPTPATH/zsh/powerthemes/xengine
-   source $SCRIPTPATH/zsh/bundle/powerlevel9k/powerlevel9k.zsh-theme
+   source $SCRIPTPATH/zsh/bundle/powerlevel10k/powerlevel10k.zsh-theme
    function prompt_ram() {
      local base=''
      local ramfree=0

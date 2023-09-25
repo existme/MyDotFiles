@@ -2,10 +2,6 @@
 	path = bundle/colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
 	ignore = dirty
-[submodule "extras/fonts"]
-	path = extras/fonts
-	url = https://github.com/powerline/fonts.git
-	ignore = dirty
 [submodule "zsh/bundle/lesaint-mvn"]
 	path = zsh/bundle/lesaint-mvn
 	url = https://github.com/lesaint/lesaint-mvn.git
@@ -14,28 +10,6 @@
 	path = zsh/bundle/LS_COLORS
 	url = https://github.com/trapd00r/LS_COLORS
 	ignore = dirty
-[submodule "zsh/bundle/opp.zsh"]
-	path = zsh/bundle/opp.zsh
-	url = https://github.com/hchbaw/opp.zsh
-	ignore = dirty
-[submodule "tmux/plugins/tmux-themepack"]
-	path = tmux/plugins/tmux-themepack
-	url = https://github.com/jimeh/tmux-themepack.git
-	ignore = dirty
-[submodule "tmux/plugins/tmux-yank"]
-	path = tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank.git
-	ignore = dirty
-[submodule "tmux/plugins/tmux-sensible"]
-	path = tmux/plugins/tmux-sensible
-	url = https://github.com/tmux-plugins/tmux-sensible.git
-	ignore = dirty
-[submodule "bundle/z"]
-	path = bundle/z
-	url = https://github.com/rupa/z.git
-[submodule "vim/bundle/supertab"]
-	path = vim/bundle/supertab
-	url = https://github.com/ervandew/supertab.git
 [submodule "zsh/bundle/zsh-syntax-highlighting"]
 	path = zsh/bundle/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
@@ -51,12 +25,9 @@
 [submodule "zsh/completion/plugins/fzf"]
 	path = zsh/completion/plugins/fzf
 	url = https://github.com/junegunn/fzf.git
-[submodule "zsh/bundle/powerlevel9k"]
-	path = zsh/bundle/powerlevel9k
-	url = https://github.com/bhilburn/powerlevel9k.git
-[submodule "zsh/addons/todo.actions.d/graph"]
-	path = zsh/addons/todo.actions.d/graph
-	url = https://github.com/timpulver/todo.txt-graph.git
+[submodule "zsh/bundle/powerlevel10k"]
+	path = zsh/bundle/powerlevel10k
+	url = https://github.com/romkatv/powerlevel10k
 [submodule "zsh/bundle/zsh-completions"]
 	path = zsh/bundle/zsh-completions
-	url = git://github.com/zsh-users/zsh-completions.git
+	url = https://github.com/zsh-users/zsh-completions.git

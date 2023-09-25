@@ -77,9 +77,6 @@ eval $( dircolors -b ~/.dircolors)
 
 source $SCRIPTPATH/zsh/keyinfo.sh               # Load keyboard shortcuts
 
-echoP "${plugin}z.sh"
-. $SCRIPTPATH/bundle/z/z.sh
-
 [[ -f $HOME/zshrc.local.post ]] && source $HOME/zshrc.local.post && echoP "${bB}~/zshrc.local.post${cZ}"
 
 source $SCRIPTPATH/zsh/allpath.sh
