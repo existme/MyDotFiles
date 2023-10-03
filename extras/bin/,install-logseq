@@ -48,6 +48,15 @@ download_and_install() {
 logseq_url=$(get_latest_release "logseq" "logseq" "AppImage" "arm64")
 logseq_file="/opt/logseq.AppImage"
 
+echo $logseq_url
+read -n1 -r -p "pr?Ok to download (${cY}y${cZ}/${bW}N${cZ})?" pr
+if [[ $pr =~ ^[Yy]$ ]]; then
+  echo ""
+else
+  echo   "${bR}exiting${cZ}!"
+  exit 0
+fi
+
 # Obsidian
 obsidian_url="$(get_latest_release "obsidianmd" "obsidian-releases" "AppImage" "arm64")"
 obsidian_file="/opt/obsidian.AppImage"

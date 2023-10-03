@@ -107,7 +107,8 @@ plugins=(git history-substring-search debian last-working-dir ubuntu colored-man
 
 source $SCRIPTPATH/zsh/messages.sh
 
-if [[ -f "$HOME/zshrc.local.sh" ]]; then
+OUTPUT_SIZE=$(echo -n $OUTPUT | wc -c)
+if [[ -f "$HOME/zshrc.local.sh" ]] && [[ $OUTPUT_SIZE != 0 ]]; then
   echo
   echo "╔══════════════════════════════ ${bG}~/zshrc.local.sh${cZ} ════════════════════════════════╗"
   echo $OUTPUT | prepend "║ "

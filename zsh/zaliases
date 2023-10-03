@@ -117,7 +117,7 @@ if [ -x "$(command -v exa)" ]; then
    alias ll="exa -lgaF --time-style long-iso --color=always --color-scale --group-directories-first"
    alias lart="exa -lgaF@ -s modified --time-style long-iso --color=always --color-scale"
 else
-   stackMsg "${cB}exa $cZ is not installed, using normal $cR ls $cZ"
+   # stackMsg "${cB}exa $cZ is not installed, using normal $cR ls $cZ"
    alias lart="grc ls -lart"
 fi
 

@@ -13,12 +13,13 @@ singleMode(){
 }
 _play(){
    local file=$1
-   paplay $root/$file $o
+   local volume=$2
+   pw-play $root/$file $volume
 }
 case $sound in  
   ( mclick )   singleMode; _play $mclick;;
   ( click )    _play $click ;;
-  ( awkward )  _play $awkward ;;
+  ( awkward )  _play $awkward "--volume=0.01";;
   ( wheel )    singleMode; _play $wheel ;;
 # ^      ^                                                                       
   (    *    ) beep;;                                     

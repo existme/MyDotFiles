@@ -13,9 +13,4 @@
 #
 notify-send -i boxes-128 "          Lunching IntelliJ          "
 
-IJPATH=$(awk "NR==4" ~/.local/share/JetBrains/Toolbox/scripts/idea|col1)
-echo $IJPATH
-
-echo $IJPATH | cut -d "/" -f11
-
-$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@
+$HOME/.local/share/JetBrains/Toolbox/scripts/idea $@ &>/dev/null

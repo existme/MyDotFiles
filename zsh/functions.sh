@@ -32,7 +32,6 @@ function prepend() { while read line; do echo "${1}${line}"; done; }
 
 unfunc echoMsgs
 echoMsgs(){
-  echo
   echo "${cW}░▒▓   ${cZ}"
   local bar="${bgColorBorder}║${reset_color}"
 #  echo "${cW}╔══════╦══════╦══════╦══════╦══════╗${cZ}"
