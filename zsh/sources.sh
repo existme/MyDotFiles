@@ -13,8 +13,8 @@ echoMe() {
   me=${me//'~\/'$relRepo/  }
   echoP $me
 }
-local plugin="${bY}  ${bB}${bY} "
 echoMe $0
+local plugin="${bY}  ${bB}${bY} "
 
 # **********************************************************************
 # ********** Specific aliases that might be used in functions **********
@@ -49,8 +49,12 @@ elif [[ "$unamestr" == 'Darwin' ]]; then
    export platform='mac'
 fi
 
-
-[[ -f $HOME/zshrc.local.sh ]] &&	source $HOME/zshrc.local.sh && echoP "${bB}~/zshrc.local.sh${cZ}"
+if [[ -f "$HOME/zshrc.local.sh" ]]; then
+  OUTPUT_FILE=$(mktemp)
+	source "$HOME/zshrc.local.sh" > $OUTPUT_FILE 2>&1
+	echoP "${plugin}~/zshrc.local.sh${cZ}"
+  OUTPUT="$(< "$OUTPUT_FILE")"
+fi
 
 # Add completion path before oh-my-zsh starts compinit
 fpath=($SCRIPTPATH/zsh/completion $SCRIPTPATH/zsh/bundle/zsh-completions/src $SCRIPTPATH/zsh/functions $fpath)
@@ -59,8 +63,7 @@ export F_PATH=$SCRIPTPATH/zsh/functions         # This variable is exported to b
                                                 # inside script use: source ~/bin/,autoload
 
 autoload -Uz okPrompt
-echoP "${plugin}oh-my-zsh.sh"
-source $ZSH/oh-my-zsh.sh                        #
+
 
 if [[ $platform == 'linux' ]]; then
 	source $SCRIPTPATH/zsh/linux.sh
@@ -103,3 +106,12 @@ source $SCRIPTPATH/zsh/zaliases
 plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases fancy-ctrl-z fasd)
 
 source $SCRIPTPATH/zsh/messages.sh
+
+if [[ -f "$HOME/zshrc.local.sh" ]]; then
+  echo
+  echo "╔══════════════════════════════ ${bG}~/zshrc.local.sh${cZ} ════════════════════════════════╗"
+  echo $OUTPUT | prepend "║ "
+  echo "╚════════════════════════════════════════════════════════════════════════════════╝"
+  rm -f "$OUTPUT_FILE"
+
+fi

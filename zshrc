@@ -124,7 +124,6 @@ unset BROWSER
 export NVM_DIR="$HOME/.nvm"
 stackMsg $APPS
 unset APPS APP_SEP
-echoMsgs
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -144,6 +143,7 @@ neofetch
 # fix terminal insanity! because we fiddled with tabstop in echoP
 stty sane
 tabs -8 # tput tbc;tput cup 39 1;tput hts;
+echoMsgs
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -158,3 +158,4 @@ fi
 
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

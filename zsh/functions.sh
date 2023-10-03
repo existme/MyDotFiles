@@ -27,20 +27,30 @@ stackMsg(){
   export stack
 }
 
+unfunc prepend
+function prepend() { while read line; do echo "${1}${line}"; done; }
+
 unfunc echoMsgs
 echoMsgs(){
   echo
   echo "${cW}░▒▓   ${cZ}"
   local bar="${bgColorBorder}║${reset_color}"
-  echo "${cW}╔══════╦══════╦══════╦══════╦══════╗${cZ}"
-  echo ${bar====bar}
-  echo "${bgColorBorder}╚══════╩══════╩══════╩══════╩══════╝${reset_color}"
+#  echo "${cW}╔══════╦══════╦══════╦══════╦══════╗${cZ}"
+  local width_bar=$(printf -- "═%.0s" {1..80})
+  echo "${cW}╔$width_bar╗${cZ}"
   # local line="${bgColorBorder}╠══════╬══════╬══════╬══════╬══════╣${reset_color}"
 
   for s in $stack
   do
-    echo $s
+    echo -n "${bar}"
+    echo -n " $s"
+    stripped=$(echo $s | sed -r "s/\x1B\[([0-9]{1,3}(;[0-9]{1,2};?)?)?[mGK]//g")
+    len=${#stripped}
+    printf -- " %-.0s" {1..$((78-$len))}
+    echo " ${bar}"
   done
+#  echo "${bgColorBorder}╚══════╩══════╩══════╩══════╩══════╝${reset_color}"
+  echo "${bgColorBorder}╚$width_bar╝${reset_color}"
   unset stack
 }
 
@@ -145,13 +155,13 @@ function __is_slow_storage() {
    fi
 }
 
-unfunc git_prompt_info
-# Fix  oh-myzsh git prompt slowness issue for some repos
-function git_prompt_info() {
-  local ref
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
-}
+#unfunc git_prompt_info
+## Fix  oh-myzsh git prompt slowness issue for some repos
+#function git_prompt_info() {
+#  local ref
+#  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+#  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}${ZSH_THEME_GIT_PROMPT_CLEAN}${ZSH_THEME_GIT_PROMPT_SUFFIX}"
+#}
 
 # function hh(){
 #    # var=("${(f@)$(cat)}")

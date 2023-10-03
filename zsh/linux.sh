@@ -1,14 +1,8 @@
 echoMe $0
 # export DISPLAY=:0.0
 
-#export ZSH_THEME="blinks"
-export ZSH_THEME="agnoster"
-
 eval $( dircolors -b ~/.dircolors)
 
-alias crmdoc="texstudio ~/Dropbox/Work/crmdoc/crmdoc.tex > /dev/null 2>&1 &"
-alias sublime='/opt/sublime_text/sublime_text $1> /dev/null 2>&1'
-alias sublime='/opt/sublime_text/subl $1> /dev/null 2>&1'
 # Use custom shell prompt
 autoload -Uz add-zsh-hook
 function xterm_title_precmd () {
@@ -31,15 +25,20 @@ if [ -n "$NO_ZSH_THEME" ]; then
    echoP "${bR}Not using any theme${cZ}"
    source $ZSH/oh-my-zsh.sh   
 elif [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' || $OTERM == 'rxvt-256color' || $OTERM == 'screen-256color' ]] && ! isSSH ; then
-	# source $SCRIPTPATH/zsh/shell-prompt.sh
-   source $SCRIPTPATH/zsh/powerthemes/reza-min
+#	 source $SCRIPTPATH/zsh/shell-prompt.sh
+   echoP "${plugin}oh-my-zsh.sh"
+   plugins=(git git-extras sudo history history-substring-search debian last-working-dir compleat)
+   source $ZSH/oh-my-zsh.sh
+   echoP "${plugin}powerlevel10k.zsh-theme"
+   source $SCRIPTPATH/zsh/powerthemes/reza-p10
+   source $SCRIPTPATH/zsh/bundle/powerlevel10k/powerlevel10k.zsh-theme
    add-zsh-hook -Uz precmd xterm_title_precmd
    add-zsh-hook -Uz preexec xterm_title_preexec
 	# echo "--- Shell prompt loaded ---"
 else
 	# export ZSH_THEME="agnoster"
 
-   #Fix ram problem due to grep alias
+   #Fix ram problem due to grep alias"
    source $SCRIPTPATH/zsh/powerthemes/xengine
    source $SCRIPTPATH/zsh/bundle/powerlevel10k/powerlevel10k.zsh-theme
    function prompt_ram() {

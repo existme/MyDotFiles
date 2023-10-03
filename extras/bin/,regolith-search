@@ -1,0 +1,4 @@
+#!/bin/bash
+
+key="$1"
+ag -u "$key" "/usr/share/regolith" "$HOME/.config/regolith3" "/etc/regolith"

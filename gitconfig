@@ -223,8 +223,7 @@
 	# user = existme
 [credential]
 	credentialStore = secretservice
-	helper = 
-	helper = /usr/local/bin/git-credential-manager
+	helper = /usr/bin/gh auth git-credential
 	# helper = store
 # User section moved to the local config file .gitconfig.user
 [difftool]
@@ -249,8 +248,8 @@
 	template = ~/.stCommitMsg
 # move this part to '~/.gitconfig.user'
 [user]
- 	email = rezasa@axis.com
- 	name = Reza Shams Amiri
+	email = reza.shams@axis.com
+	name = reza-shams-amiri
 [fsck]
 	zeroPaddedFilemode = warn
 [url "https://github.com/"]
