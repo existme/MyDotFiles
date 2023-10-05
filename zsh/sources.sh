@@ -4,7 +4,7 @@ echoP(){
     export counter
     printf "   ${bW}%02d ${bR}- ${bY}%s ${bC}${cZ}" $counter $1
     tput hpa $(((counter%3)*35))
-    [[ $((counter%3)) -eq 0 ]] && tput tbc && echo
+    [[ $((counter%3)) -eq 0 ]] && echo
 }
 echoMe() {
   # local me=`realpath --relative-to=$SCRIPTPATH $1`
@@ -103,9 +103,6 @@ source $SCRIPTPATH/zsh/zaliases
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search debian last-working-dir ubuntu colored-man-pages common-aliases fancy-ctrl-z fasd)
-
-source $SCRIPTPATH/zsh/messages.sh
 
 OUTPUT_SIZE=$(echo -n $OUTPUT | wc -c)
 if [[ -f "$HOME/zshrc.local.sh" ]] && [[ $OUTPUT_SIZE != 0 ]]; then
