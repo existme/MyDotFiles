@@ -8,18 +8,20 @@ function unfunc(){
 }
 
 unfunc isSSH
-isSSH(){
-   export SESSION_TYPE=""
-   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-     export SESSION_TYPE=ssh
-   # many other tests omitted
-   else
-     case $(ps -o comm= -p $PPID) in
-       sshd|*/sshd) export SESSION_TYPE=ssh;;
-     esac
-   fi
-   [ "$SESSION_TYPE" = "ssh" ] && return 0 || return 1
-}
+# disabling isSSH function because apparently it's expensive
+isSSH(){ return 1 }
+#isSSH(){
+#   export SESSION_TYPE=""
+#   if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+#     export SESSION_TYPE=ssh
+#   # many other tests omitted
+#   else
+#     case $(ps -o comm= -p $PPID) in
+#       sshd|*/sshd) export SESSION_TYPE=ssh;;
+#     esac
+#   fi
+#   [ "$SESSION_TYPE" = "ssh" ] && return 0 || return 1
+#}
 
 unfunc stackMsg
 stackMsg(){

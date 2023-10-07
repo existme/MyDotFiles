@@ -20,8 +20,9 @@ unset dist
 
 if [ -n "$NO_ZSH_THEME" ]; then
    # kafeitu bira gentoo kafeitu lukerandall michelebologna obraun
-   # mortalscumbag ys 
-	export ZSH_THEME="bira"
+   # mortalscumbag ys
+
+   export ZSH_THEME="powerlevel10k/powerlevel10k"
    echoP "${bR}Not using any theme${cZ}"
    source $ZSH/oh-my-zsh.sh   
 elif [[ $OTERM == 'xterm' || $OTERM == 'xterm-256color' || $OTERM == 'rxvt-256color' || $OTERM == 'screen-256color' ]] && ! isSSH ; then
@@ -39,27 +40,7 @@ else
 	# export ZSH_THEME="agnoster"
 
    #Fix ram problem due to grep alias"
-   source $SCRIPTPATH/zsh/powerthemes/xengine
+   source $SCRIPTPATH/zsh/powerthemes/reza-p10
    source $SCRIPTPATH/zsh/bundle/powerlevel10k/powerlevel10k.zsh-theme
-   function prompt_ram() {
-     local base=''
-     local ramfree=0
-     if [[ "$OS" == "OSX" ]]; then
-       # Available = Free + Inactive
-       # See https://support.apple.com/en-us/HT201538
-       ramfree=$(vm_stat | /bin/grep "Pages free" | /bin/grep -o -E '[0-9]+')
-       ramfree=$((ramfree + $(vm_stat | grep "Pages inactive" | /bin/grep -o -E '[0-9]+')))
-       # Convert pages into Bytes
-       ramfree=$(( ramfree * 4096 ))
-     else
-       if [[ "$OS" == "BSD" ]]; then
-         ramfree=$(/bin/grep 'avail memory' /var/run/dmesg.boot | awk '{print $4}')
-       else
-         ramfree=$(/bin/grep -o -E "MemAvailable:\s+[0-9]+" /proc/meminfo | /bin/grep -o "[0-9]*")
-         base='K'
-       fi
-     fi
-     "$1_prompt_segment" "$0" "$2" "yellow" "$DEFAULT_COLOR" "$(printSizeHumanReadable "$ramfree" $base)" 'RAM_ICON'
-   }
 fi
 

@@ -121,7 +121,6 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
 # export BROWSER=google-chrome
 unset BROWSER
 
-export NVM_DIR="$HOME/.nvm"
 stackMsg $APPS
 unset APPS APP_SEP
 
