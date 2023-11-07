@@ -168,6 +168,7 @@
    review = push origin HEAD:refs/for/develop	
    # pushl = push -o merge_request.create
    pushl = !git push -u origin $(git branch --show current) -o merge_request.create
+	cot = !git checkout --track origin/$1 -b 
 [format]
 	pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
 [mergetool]
